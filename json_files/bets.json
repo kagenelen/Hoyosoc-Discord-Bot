@@ -1,0 +1,45 @@
+{
+    "4 star demo 3.1": {
+        "candidates": [
+            "heizou",
+            "kuki",
+            "faruzan"
+        ],
+        "end_time": 167985200,
+        "bets": {
+            "962959061912018955": [
+                200,
+                "heizou"
+            ],
+            "300937279197806604": [
+                500,
+                "kuki"
+            ],
+            "318337790708547588": [
+                9,
+                "heizou"
+            ]
+        }
+    },
+    "inazuma series 1.1": {
+        "candidates": [
+            "thundering pulse",
+            "kagura's verity"
+        ],
+        "end_time": 1679943600,
+        "bets": {
+            "318337790708547588": [
+                500,
+                "thundering pulse"
+            ]
+        }
+    },
+    "inazuma series 1.2": {
+        "candidates": [
+            "engulfing lightning",
+            "mistplitter reforged"
+        ],
+        "end_time": 1679943600,
+        "bets": {}
+    }
+}

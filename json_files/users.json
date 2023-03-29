@@ -1,0 +1,1789 @@
+{
+    "318337790708547588": {
+        "currency": 1655,
+        "next_checkin": 1680134402,
+        "role": {
+            "anemo": 1680347955
+        },
+        "checkin_streak": 2,
+        "uids": []
+    },
+    "280905494091005954": {
+        "currency": 179,
+        "next_checkin": 1680048050,
+        "role": {},
+        "checkin_streak": 1,
+        "uids": []
+    },
+    "302346316959449088": {
+        "currency": 0,
+        "next_checkin": 1680048039,
+        "role": {},
+        "checkin_streak": 1,
+        "uids": [
+            "841313078"
+        ]
+    },
+    "501628004620042241": {
+        "currency": 0,
+        "next_checkin": 1680048014,
+        "role": {},
+        "checkin_streak": 1,
+        "uids": [
+            "608604687"
+        ]
+    },
+    "305564624227401728": {
+        "currency": 0,
+        "next_checkin": 1680048023,
+        "role": {},
+        "checkin_streak": 2,
+        "uids": []
+    },
+    "530215840780648448": {
+        "currency": 455,
+        "next_checkin": 1680048015,
+        "role": {},
+        "checkin_streak": 1,
+        "uids": [
+            "800006781"
+        ]
+    },
+    "437834249744285708": {
+        "currency": 155,
+        "next_checkin": 1680048009,
+        "role": {},
+        "checkin_streak": 1,
+        "uids": []
+    },
+    "318723992905056259": {
+        "currency": 455,
+        "next_checkin": 1680048010,
+        "role": {},
+        "checkin_streak": 1,
+        "uids": []
+    },
+    "368630963330220032": {
+        "currency": 150,
+        "next_checkin": 1679829201,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "809958756"
+        ]
+    },
+    "1074318389708861460": {
+        "currency": 615,
+        "next_checkin": 1680134443,
+        "role": {},
+        "checkin_streak": 2,
+        "uids": []
+    },
+    "348414134636904452": {
+        "currency": 505,
+        "next_checkin": 1680048054,
+        "role": {
+            "geo": 1680562692,
+            "hydro": 1680562692
+        },
+        "checkin_streak": 1,
+        "uids": [
+            "613636035",
+            "823913674"
+        ]
+    },
+    "294049450882629632": {
+        "currency": 155,
+        "next_checkin": 1680048043,
+        "role": {},
+        "checkin_streak": 1,
+        "uids": [
+            "809477946"
+        ]
+    },
+    "937000926835773460": {
+        "currency": 150,
+        "next_checkin": 1679829239,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": []
+    },
+    "384949403452047362": {
+        "currency": 1384,
+        "next_checkin": 1680134437,
+        "role": {
+            "anemo": 1680562692,
+            "pyro": 1680562692,
+            "geo": 1680562692
+        },
+        "checkin_streak": 2,
+        "uids": []
+    },
+    "308020379744600064": {
+        "currency": 160,
+        "next_checkin": 1680134441,
+        "role": {
+            "anemo": 1680562692,
+            "pyro": 1680562692,
+            "hydro": 1680562692
+        },
+        "checkin_streak": 2,
+        "uids": [
+            "826275883",
+            "653145544"
+        ]
+    },
+    "852095686932824087": {
+        "currency": 465,
+        "next_checkin": 1680048029,
+        "role": {},
+        "checkin_streak": 2,
+        "uids": [
+            "629106473"
+        ]
+    },
+    "512531622558564362": {
+        "currency": 150,
+        "next_checkin": 1679961623,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "827803374"
+        ]
+    },
+    "437944593992908800": {
+        "currency": 150,
+        "next_checkin": 1679961614,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": []
+    },
+    "620206680956731392": {
+        "currency": 150,
+        "next_checkin": 1679961607,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": []
+    },
+    "838329161474506782": {
+        "currency": 150,
+        "next_checkin": 1679961642,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": []
+    },
+    "269324017436065795": {
+        "currency": 150,
+        "next_checkin": 1679961602,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "804899527",
+            "603433178"
+        ]
+    },
+    "166807404716097537": {
+        "currency": 0,
+        "next_checkin": 1679961621,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": []
+    },
+    "414263860103610369": {
+        "currency": 150,
+        "next_checkin": 1679961635,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "848630783"
+        ]
+    },
+    "611856491506434068": {
+        "currency": 0,
+        "next_checkin": 1680048001,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "816760254"
+        ]
+    },
+    "153435291355447296": {
+        "currency": 0,
+        "next_checkin": 1680002593,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "800006781"
+        ]
+    },
+    "986446621468405852": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "Nice try."
+        ]
+    },
+    "345546240949354496": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "817026874"
+        ]
+    },
+    "324446494285496322": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "808483603"
+        ]
+    },
+    "247608057079529473": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "812636800"
+        ]
+    },
+    "487183699360612353": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "810195192"
+        ]
+    },
+    "494069211568799774": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "601062937"
+        ]
+    },
+    "698055404873187478": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "813972477"
+        ]
+    },
+    "626677030641205259": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "623774990"
+        ]
+    },
+    "529608818556928001": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "805485805"
+        ]
+    },
+    "273650598845349888": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "807433968"
+        ]
+    },
+    "485407753607577600": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "823663719",
+            "627374037"
+        ]
+    },
+    "308533285472960513": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "603557399"
+        ]
+    },
+    "331604660039188481": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "841843678"
+        ]
+    },
+    "487012233705160764": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "827169840",
+            "750978698",
+            "600686982"
+        ]
+    },
+    "336774405986451457": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "814227011"
+        ]
+    },
+    "508860948929314816": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "625749283"
+        ]
+    },
+    "538697533556391946": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "649300303"
+        ]
+    },
+    "375872817197088769": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "804011828"
+        ]
+    },
+    "248074461868326913": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "800198346"
+        ]
+    },
+    "771899922370265118": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "813171584"
+        ]
+    },
+    "450611984371810319": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "807570252"
+        ]
+    },
+    "273376678598934528": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "800533342"
+        ]
+    },
+    "437177952598491136": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "813242321"
+        ]
+    },
+    "309127419720105985": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "863678622"
+        ]
+    },
+    "294797591231594497": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "804902836"
+        ]
+    },
+    "202753491708542976": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "806729275"
+        ]
+    },
+    "861905983085609021": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "623496073"
+        ]
+    },
+    "374113453184647169": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "805784822"
+        ]
+    },
+    "726126702677458967": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "903519604"
+        ]
+    },
+    "653982566214402058": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "800187397"
+        ]
+    },
+    "355597627150041089": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "613489149"
+        ]
+    },
+    "340069159226310656": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "801502169"
+        ]
+    },
+    "438896487812825098": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "812257946"
+        ]
+    },
+    "392883103502434304": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "635341744"
+        ]
+    },
+    "853187165734961173": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "824469842"
+        ]
+    },
+    "263627234227650561": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "608120615"
+        ]
+    },
+    "218671529905356803": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "820299479"
+        ]
+    },
+    "377468166386876417": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "612551711"
+        ]
+    },
+    "760794317542785044": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "643043973"
+        ]
+    },
+    "562479423874400256": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "813773606"
+        ]
+    },
+    "141910518314041344": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "633173825"
+        ]
+    },
+    "296575022200389632": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "843230839"
+        ]
+    },
+    "706155929929908295": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "600942236"
+        ]
+    },
+    "748647961592070249": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "630798942"
+        ]
+    },
+    "202414892454641666": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "601900887"
+        ]
+    },
+    "554939269756616705": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "820809445"
+        ]
+    },
+    "586422043969454124": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "800127526"
+        ]
+    },
+    "159886926248280064": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "609493647"
+        ]
+    },
+    "548015866155892746": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "607490648"
+        ]
+    },
+    "306017902207696898": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "800463073"
+        ]
+    },
+    "204908621719535616": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "803373295"
+        ]
+    },
+    "252334506210492417": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "850782333"
+        ]
+    },
+    "650345469175660559": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "802191015"
+        ]
+    },
+    "940795297129447455": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "140385433"
+        ]
+    },
+    "303058183222591488": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "738807606",
+            "812732543"
+        ]
+    },
+    "561139034311753738": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "106857692"
+        ]
+    },
+    "427629098349625354": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "813118371"
+        ]
+    },
+    "199802136840634368": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "615654001"
+        ]
+    },
+    "466462045018259476": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "820534154"
+        ]
+    },
+    "448384664315363330": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "805579038"
+        ]
+    },
+    "221501979317239808": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "819689868"
+        ]
+    },
+    "901065077715796028": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "803035323"
+        ]
+    },
+    "778065743807119361": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "814479936"
+        ]
+    },
+    "759964941439467544": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "819111037"
+        ]
+    },
+    "690032584281161730": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "817678878"
+        ]
+    },
+    "759618068355088445": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "634910386"
+        ]
+    },
+    "762445557960146997": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "615851420"
+        ]
+    },
+    "314739379618709506": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "600411223"
+        ]
+    },
+    "425266752474185738": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "807636705"
+        ]
+    },
+    "371740104126889995": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "800207057"
+        ]
+    },
+    "524334947885121551": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "834322434",
+            "603568406"
+        ]
+    },
+    "209915926886219788": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "800336298"
+        ]
+    },
+    "795213735203307520": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "729635357"
+        ]
+    },
+    "410325825683193866": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "833628756"
+        ]
+    },
+    "330876154246594610": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "615198002"
+        ]
+    },
+    "464383174718259221": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "834508138"
+        ]
+    },
+    "388167280334471168": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "820433204"
+        ]
+    },
+    "212853542409601024": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "600850239",
+            "852536197"
+        ]
+    },
+    "889127621730906173": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "608577066"
+        ]
+    },
+    "712987369820913685": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "849222449"
+        ]
+    },
+    "257071274512220175": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "803319339",
+            "644717738"
+        ]
+    },
+    "456226577798135808": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "807380224",
+            "824469842"
+        ]
+    },
+    "491070418497830924": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "606008508"
+        ]
+    },
+    "533201972556333067": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "725246275",
+            "641117305"
+        ]
+    },
+    "302610719403278336": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "807866618"
+        ]
+    },
+    "310399907561340930": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "821132248"
+        ]
+    },
+    "209898273811595274": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "811176226"
+        ]
+    },
+    "612219832233885706": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "835056721"
+        ]
+    },
+    "81431674457436160": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "645645506"
+        ]
+    },
+    "314927201243889674": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "814166066"
+        ]
+    },
+    "436448411563196416": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "633158919",
+            "854012653"
+        ]
+    },
+    "198326789120983041": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "805016880"
+        ]
+    },
+    "611887355069988865": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "806526626"
+        ]
+    },
+    "525652777775529994": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "849548376"
+        ]
+    },
+    "702396989417193482": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "819882725"
+        ]
+    },
+    "120490489811173376": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "841581120"
+        ]
+    },
+    "322702816873283584": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "800681181"
+        ]
+    },
+    "290103035085062144": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "802717923"
+        ]
+    },
+    "293549117953540097": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "731473414"
+        ]
+    },
+    "344031878652624897": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "832331584"
+        ]
+    },
+    "318262928245522432": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "803117598"
+        ]
+    },
+    "691460238615904348": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "818840577"
+        ]
+    },
+    "297903628084314144": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "802445954"
+        ]
+    },
+    "886856503431163925": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "801273795"
+        ]
+    },
+    "129566212181983232": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "822829447"
+        ]
+    },
+    "603535090966069257": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "821623225",
+            "635761497"
+        ]
+    },
+    "376326547562299393": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "800079561"
+        ]
+    },
+    "338319217143316480": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "801174975"
+        ]
+    },
+    "181163176191197184": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "801668886"
+        ]
+    },
+    "461782690321006602": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "605404785"
+        ]
+    },
+    "492236427166220289": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "838092147"
+        ]
+    },
+    "630578256470474763": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "605386359"
+        ]
+    },
+    "810708376508956742": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "823804875"
+        ]
+    },
+    "331461570775482379": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "836549324"
+        ]
+    },
+    "419454258098995202": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "802988248"
+        ]
+    },
+    "868341461417074739": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "819985385",
+            "823310119"
+        ]
+    },
+    "378182486980558858": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "618871139"
+        ]
+    },
+    "263365563374501888": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "606591866"
+        ]
+    },
+    "144705466025508864": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "600446170"
+        ]
+    },
+    "162691613179510785": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "607643654"
+        ]
+    },
+    "287041936248930305": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "617855742"
+        ]
+    },
+    "234649449727655937": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "606618089"
+        ]
+    },
+    "304237385196240896": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "621502731"
+        ]
+    },
+    "327776424868184064": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "814149768"
+        ]
+    },
+    "337846119641907221": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "814476933"
+        ]
+    },
+    "118028239883993088": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "815721771"
+        ]
+    },
+    "176984970705764352": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "801073749"
+        ]
+    },
+    "250147040284246016": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "811750410"
+        ]
+    },
+    "321253628515975168": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "817544114"
+        ]
+    },
+    "154497707912724480": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "820571383"
+        ]
+    },
+    "814332543535939614": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "821979526"
+        ]
+    },
+    "839024128752746517": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "824816024"
+        ]
+    },
+    "172909657860341760": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "601860688"
+        ]
+    },
+    "163093223835828225": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "804456130"
+        ]
+    },
+    "228913322076930049": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "831372972"
+        ]
+    },
+    "266065004929875978": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "808966851"
+        ]
+    },
+    "202673851094663168": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "807824033"
+        ]
+    },
+    "344984109833256961": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "821210277"
+        ]
+    },
+    "204127710459461632": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "804108857"
+        ]
+    },
+    "397392336868343812": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "800181937"
+        ]
+    },
+    "210596276310376449": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "816311927"
+        ]
+    },
+    "192189955643015168": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "619057648",
+            "814212210"
+        ]
+    },
+    "213924329019277312": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "807169436"
+        ]
+    },
+    "283165051051835392": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "601759519"
+        ]
+    },
+    "267224583302676480": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "813332463"
+        ]
+    },
+    "401168410701987845": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "819907691"
+        ]
+    },
+    "155903967057018880": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "800293779"
+        ]
+    },
+    "239298105495912449": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "614022643"
+        ]
+    },
+    "183458242070839296": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "601784835"
+        ]
+    },
+    "274020345735020545": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "803237437"
+        ]
+    },
+    "316212624813588482": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "610428455"
+        ]
+    },
+    "354949163659689984": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "618505937"
+        ]
+    },
+    "173745227180277760": {
+        "currency": 0,
+        "next_checkin": 1680002824,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "804213248"
+        ]
+    },
+    "542623017306554369": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "819826519"
+        ]
+    },
+    "248965165645692929": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "600061545"
+        ]
+    },
+    "426954265626673153": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "801049093"
+        ]
+    },
+    "440797636308762624": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "648576997"
+        ]
+    },
+    "811060982456909834": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "109398440"
+        ]
+    },
+    "704691482442858498": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "807958069"
+        ]
+    },
+    "255217990633652224": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "818546216"
+        ]
+    },
+    "556043145281011712": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "630546016"
+        ]
+    },
+    "1071965717357936682": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "249421600"
+        ]
+    },
+    "381397051906326530": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "800253225"
+        ]
+    },
+    "156589794124759040": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "629666871"
+        ]
+    },
+    "726383897067388965": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "857958399"
+        ]
+    },
+    "691496445081026590": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "608109551"
+        ]
+    },
+    "282528299924717571": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "813979949"
+        ]
+    },
+    "933894084924411914": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "852771635"
+        ]
+    },
+    "388933971393642497": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "818121957"
+        ]
+    },
+    "443302520618745866": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "820241446"
+        ]
+    },
+    "224476045821214720": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "801965937"
+        ]
+    },
+    "713663683896541217": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "822121627"
+        ]
+    },
+    "772985526105276426": {
+        "currency": 0,
+        "next_checkin": 1680002825,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [
+            "816237688"
+        ]
+    }
+}
