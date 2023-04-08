@@ -9,8 +9,8 @@
     "361660958843863040": {
         "minigame": "hangman",
         "difficulty": "extreme",
-        "lives": 2,
-        "guessed_letters": "ialtne",
-        "hangman_word": "Angelfish"
+        "lives": 1,
+        "guessed_letters": "aotpdl",
+        "hangman_word": "Royal Longsword"
     }
 }
