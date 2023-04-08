@@ -1,22 +1,20 @@
 {
     "318337790708547588": {
-        "currency": 3520,
-        "next_checkin": 1680566450,
-        "role": {
-            "electro": 1680821406
-        },
-        "checkin_streak": 7,
+        "currency": 6279,
+        "next_checkin": 1680998435,
+        "role": {},
+        "checkin_streak": 12,
         "uids": []
     },
     "280905494091005954": {
-        "currency": 1885,
-        "next_checkin": 1680566444,
+        "currency": 6707,
+        "next_checkin": 1680912051,
         "role": {},
         "checkin_streak": 1,
         "uids": []
     },
     "302346316959449088": {
-        "currency": 0,
+        "currency": 1000,
         "next_checkin": 1680480059,
         "role": {},
         "checkin_streak": 0,
@@ -25,19 +23,19 @@
         ]
     },
     "501628004620042241": {
-        "currency": 4815,
-        "next_checkin": 1680566411,
+        "currency": 8109,
+        "next_checkin": 1680912036,
         "role": {},
-        "checkin_streak": 7,
+        "checkin_streak": 11,
         "uids": [
             "608604687"
         ]
     },
     "305564624227401728": {
-        "currency": 185,
-        "next_checkin": 1680480022,
+        "currency": 525,
+        "next_checkin": 1680566456,
         "role": {},
-        "checkin_streak": 7,
+        "checkin_streak": 8,
         "uids": []
     },
     "530215840780648448": {
@@ -59,7 +57,7 @@
         "uids": []
     },
     "318723992905056259": {
-        "currency": 5350,
+        "currency": 7110,
         "next_checkin": 1680480024,
         "role": {},
         "checkin_streak": 0,
@@ -75,72 +73,62 @@
         ]
     },
     "1074318389708861460": {
-        "currency": 5485,
-        "next_checkin": 1680566458,
-        "role": {},
-        "checkin_streak": 7,
+        "currency": 2605,
+        "next_checkin": 1680998406,
+        "role": {
+            "hydro": 2145919483
+        },
+        "checkin_streak": 12,
         "uids": [
             "811233287",
             "111032240"
         ]
     },
     "348414134636904452": {
-        "currency": 15950,
-        "next_checkin": 1680480018,
-        "role": {
-            "geo": 1680562692,
-            "hydro": 1680562692
-        },
-        "checkin_streak": 6,
+        "currency": 24980,
+        "next_checkin": 1680912057,
+        "role": {},
+        "checkin_streak": 3,
         "uids": [
             "613636035",
             "823913674"
         ]
     },
     "294049450882629632": {
-        "currency": 0,
-        "next_checkin": 1680480015,
+        "currency": 480,
+        "next_checkin": 1680912049,
         "role": {},
-        "checkin_streak": 1,
+        "checkin_streak": 6,
         "uids": [
             "809477946"
         ]
     },
     "937000926835773460": {
-        "currency": 655,
-        "next_checkin": 1680480027,
+        "currency": 4110,
+        "next_checkin": 1680912046,
         "role": {},
-        "checkin_streak": 1,
+        "checkin_streak": 0,
         "uids": []
     },
     "384949403452047362": {
-        "currency": 365,
-        "next_checkin": 1680566444,
-        "role": {
-            "anemo": 1680562692,
-            "pyro": 1680562692,
-            "geo": 1680562692
-        },
-        "checkin_streak": 7,
+        "currency": 3665,
+        "next_checkin": 1680998437,
+        "role": {},
+        "checkin_streak": 12,
         "uids": []
     },
     "308020379744600064": {
-        "currency": 16900,
-        "next_checkin": 1680566432,
-        "role": {
-            "anemo": 1680562692,
-            "pyro": 1680562692,
-            "hydro": 1680562692,
-            "electro": 1680821576
-        },
-        "checkin_streak": 7,
+        "currency": 41891,
+        "next_checkin": 1680825633,
+        "role": {},
+        "checkin_streak": 10,
         "uids": [
             "826275883",
             "653145544"
         ]
     },
     "852095686932824087": {
-        "currency": 465,
+        "currency": 1465,
         "next_checkin": 1680048029,
         "role": {},
         "checkin_streak": 2,
@@ -179,8 +167,8 @@
         "uids": []
     },
     "269324017436065795": {
-        "currency": 1930,
-        "next_checkin": 1680566443,
+        "currency": 2235,
+        "next_checkin": 1680825644,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -189,7 +177,7 @@
         ]
     },
     "166807404716097537": {
-        "currency": 0,
+        "currency": 1000,
         "next_checkin": 1679961621,
         "role": {},
         "checkin_streak": 0,
@@ -460,7 +448,7 @@
         ]
     },
     "861905983085609021": {
-        "currency": 1000,
+        "currency": 2000,
         "next_checkin": 1680002824,
         "role": {},
         "checkin_streak": 0,
@@ -1557,7 +1545,7 @@
         ]
     },
     "224476045821214720": {
-        "currency": 0,
+        "currency": 1000,
         "next_checkin": 1680002825,
         "role": {},
         "checkin_streak": 0,
@@ -1605,14 +1593,14 @@
         "uids": []
     },
     "266068819858948097": {
-        "currency": 1000,
+        "currency": 2000,
         "next_checkin": 1680078900,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "474462937499697152": {
-        "currency": 1000,
+        "currency": 2000,
         "next_checkin": 1680079372,
         "role": {},
         "checkin_streak": 0,
@@ -1656,12 +1644,68 @@
         "uids": []
     },
     "253777866980982795": {
-        "currency": 0,
+        "currency": 1000,
         "next_checkin": 1680269715,
         "role": {},
         "checkin_streak": 0,
         "uids": [
             "820310777"
         ]
+    },
+    "312172066482814979": {
+        "currency": 500,
+        "next_checkin": 1680698611,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": []
+    },
+    "306912349120364547": {
+        "currency": 50,
+        "next_checkin": 1680699228,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": []
+    },
+    "282040152099127296": {
+        "currency": 1000,
+        "next_checkin": 1680774245,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": []
+    },
+    "271620639524126720": {
+        "currency": 1000,
+        "next_checkin": 1680774245,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": []
+    },
+    "422660666373963787": {
+        "currency": 1000,
+        "next_checkin": 1680774245,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": []
+    },
+    "379548095924666368": {
+        "currency": 1000,
+        "next_checkin": 1680774245,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": []
+    },
+    "878202494747033650": {
+        "currency": 1000,
+        "next_checkin": 1680774245,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": []
+    },
+    "361660958843863040": {
+        "currency": 190,
+        "next_checkin": 1680927737,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": []
     }
 }

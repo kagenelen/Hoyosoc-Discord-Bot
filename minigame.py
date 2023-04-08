@@ -23,7 +23,7 @@ furniture name (evil)
 CARDS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"]
 HM_NORMAL = 10
 HM_HARD = 30
-HM_EXTREME = 100
+HM_EXTREME = 150
 
 
 # Make new guess session. Where the number range is 0 - bet.

@@ -6,11 +6,11 @@
         "guessed_letters": "e",
         "hangman_word": "Konda Village"
     },
-    "308020379744600064": {
+    "361660958843863040": {
         "minigame": "hangman",
         "difficulty": "extreme",
         "lives": 2,
-        "guessed_letters": "aiosu",
-        "hangman_word": "Gladiators Finale"
+        "guessed_letters": "ialtne",
+        "hangman_word": "Angelfish"
     }
 }
