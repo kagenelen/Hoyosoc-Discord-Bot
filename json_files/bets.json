@@ -1,45 +1,152 @@
 {
-    "4 star demo 3.1": {
+    "Companion 1.1": {
         "candidates": [
-            "heizou",
-            "kuki",
-            "faruzan"
+            "blue seelie",
+            "bongo-head",
+            "paimon"
         ],
-        "end_time": 167985200,
+        "end_time": 1680336000,
         "bets": {
-            "962959061912018955": [
+            "318337790708547588": [
+                1000,
+                "bongo-head"
+            ],
+            "530215840780648448": [
+                950,
+                "blue seelie"
+            ],
+            "318723992905056259": [
+                500,
+                "paimon"
+            ],
+            "501628004620042241": [
+                300,
+                "bongo-head"
+            ]
+        }
+    },
+    "Companion 1.2": {
+        "candidates": [
+            "pink seelie",
+            "cloud retainers device",
+            "kageroumaru"
+        ],
+        "end_time": 1680508800,
+        "bets": {
+            "280905494091005954": [
+                100,
+                "kageroumaru"
+            ],
+            "501628004620042241": [
+                400,
+                "cloud retainers device"
+            ],
+            "1074318389708861460": [
+                1000,
+                "cloud retainers device"
+            ],
+            "318337790708547588": [
+                1000,
+                "cloud retainers device"
+            ]
+        }
+    },
+    "Companion 1.3": {
+        "candidates": [
+            "green seelie",
+            "purple seelie",
+            "shiki koshou"
+        ],
+        "end_time": 1680688800,
+        "bets": {
+            "1074318389708861460": [
+                500,
+                "purple seelie"
+            ],
+            "501628004620042241": [
+                400,
+                "shiki koshou"
+            ],
+            "318337790708547588": [
+                1000,
+                "shiki koshou"
+            ],
+            "308020379744600064": [
+                2000,
+                "shiki koshou"
+            ],
+            "318723992905056259": [
+                1000,
+                "shiki koshou"
+            ],
+            "280905494091005954": [
                 200,
-                "heizou"
+                "shiki koshou"
+            ]
+        }
+    },
+    "Companion 1.4": {
+        "candidates": [
+            "yellow seelie",
+            "liloupar",
+            "endora"
+        ],
+        "end_time": 1680861600,
+        "bets": {
+            "318337790708547588": [
+                1000,
+                "endora"
+            ],
+            "280905494091005954": [
+                100,
+                "endora"
+            ],
+            "1074318389708861460": [
+                150,
+                "liloupar"
             ],
             "300937279197806604": [
-                500,
-                "kuki"
-            ],
-            "318337790708547588": [
-                9,
-                "heizou"
+                2000,
+                "endora"
             ]
         }
     },
-    "inazuma series 1.1": {
+    "2.1": {
         "candidates": [
-            "thundering pulse",
-            "kagura's verity"
+            "paimon",
+            "kageroumaru"
         ],
-        "end_time": 1679943600,
+        "end_time": 1681034400,
         "bets": {
             "318337790708547588": [
-                500,
-                "thundering pulse"
+                1000,
+                "paimon"
+            ],
+            "300937279197806604": [
+                2000,
+                "paimon"
+            ],
+            "1074318389708861460": [
+                200,
+                "paimon"
             ]
         }
     },
-    "inazuma series 1.2": {
+    "2.2": {
         "candidates": [
-            "engulfing lightning",
-            "mistplitter reforged"
+            "shiki koshou",
+            "endora"
         ],
-        "end_time": 1679943600,
-        "bets": {}
+        "end_time": 1681207200,
+        "bets": {
+            "348414134636904452": [
+                2000,
+                "endora"
+            ],
+            "308020379744600064": [
+                2000,
+                "shiki koshou"
+            ]
+        }
     }
 }

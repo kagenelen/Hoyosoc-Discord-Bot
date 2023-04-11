@@ -65,7 +65,9 @@ def is_team(interaction):
                               interaction.guild.roles)
   admin = discord.utils.find(lambda r: r.name == EXEC_ROLE,
                              interaction.guild.roles)
-  if subcom not in interaction.user.roles and admin not in interaction.user.roles:
+
+	# This no longer checks for subcom
+  if admin not in interaction.user.roles:
     return False
   return True
 
