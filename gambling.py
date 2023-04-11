@@ -116,7 +116,7 @@ def submit_bet(discord_id, bracket_id, chosen_candidate, bet_amount):
 
 # Give currency to all winning bets of a bracket
 # Argument: bracket identifier string, winning candidate string
-# Return: List of winner's discord id or None if invalid bracket id
+# Return: List of winner's discord id + earning or None if invalid bracket id
 def give_bet_rewards(bracket_id, winning_candidate):
 	bracket_id = bracket_id.lower()
 	data = helper.read_file("bets.json")
@@ -141,7 +141,7 @@ def give_bet_rewards(bracket_id, winning_candidate):
 		if bracket_entry["bets"][user][1] == winning_candidate:
 			earning = total_bets * (bracket_entry["bets"][user][0] / total_winner_bets)
 			update_user_currency(user, earning)
-			winners.append(user)
+			winners.append([user, earning])
 
 	return winners
 
@@ -169,17 +169,21 @@ def view_own_bets(discord_id):
 
 
 # See bets that are ongoing (end time not passed)
-# Return: List of (bracket id, candidate list as string, end time as date string)
+# Return: List of (bracket id, candidate list as string, end time as date string, current prize pool)
 def view_ongoing_bets():
 	data = helper.read_file("bets.json")
-
+	
 	ongoing_bets = []
 	for bracket in data:
 		if time.time() < data[bracket]["end_time"]:
 			end_datetime = datetime.datetime.utcfromtimestamp(
-			 data[bracket]["end_time"] + TIME_OFFSET).strftime('%d/%m/%Y')
+				data[bracket]["end_time"] + TIME_OFFSET).strftime('%d/%m/%Y')
 			candidates = ", ".join(data[bracket]["candidates"])
-			ongoing_bets.append([bracket, candidates.title(), end_datetime])
+
+			all_bets = [x[0] for x in list(data[bracket]["bets"].values())]
+			current_prize = sum(all_bets) + PRIZE_POOL * len(all_bets)
+			
+			ongoing_bets.append([bracket, candidates.title(), end_datetime, current_prize])
 
 	return ongoing_bets
 
@@ -317,6 +321,7 @@ def get_inventory(discord_id):
 def buy_role(discord_id, role, duration, is_booster):
 	discord_id = str(discord_id)
 	duration = int(duration)
+	role = role.lower()
 	helper.get_user_entry(discord_id)
 	data = helper.read_file("users.json")
 	user_entry = data.get(discord_id)
@@ -341,7 +346,7 @@ def buy_role(discord_id, role, duration, is_booster):
 		# Insufficient currency
 		return "Insufficent primojem."
 
-	if role.lower() not in [
+	if role not in [
 	  "geo", "anemo", "electro", "pyro", "hydro", "cryo", "abyss", "dendro"
 	]:
 		return "Invalid role."

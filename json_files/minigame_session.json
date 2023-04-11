@@ -1,16 +1,23 @@
 {
-    "318337790708547588": {
+    "740472796580151377": {
         "minigame": "hangman",
         "difficulty": "extreme",
         "lives": 3,
-        "guessed_letters": "e",
-        "hangman_word": "Konda Village"
+        "guessed_letters": "eaildsht",
+        "hangman_word": "Heatshield Potion"
     },
-    "361660958843863040": {
+    "1074318389708861460": {
         "minigame": "hangman",
         "difficulty": "extreme",
-        "lives": 1,
-        "guessed_letters": "aotpdl",
-        "hangman_word": "Royal Longsword"
+        "lives": 2,
+        "guessed_letters": "earsunolit",
+        "hangman_word": "Canis Bellatoris"
+    },
+    "384949403452047362": {
+        "minigame": "hangman",
+        "difficulty": "extreme",
+        "lives": 3,
+        "guessed_letters": "",
+        "hangman_word": "Yearning"
     }
 }

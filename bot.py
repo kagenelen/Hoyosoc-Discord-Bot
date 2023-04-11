@@ -249,7 +249,7 @@ def runbot():
 		# bracket_id | Ending: end_date
 		# candidates
 		for r in range(0, len(res)):
-			embed.add_field(name="ID: " + res[r][0].title() + " | Ending: " + res[r][2],
+			embed.add_field(name="ID: " + res[r][0].title() + " | Current Prize Pool: " + str(res[r][3]) + " | Ending: " + res[r][2],
 							value=res[r][1],
 							inline=False)
 	
@@ -443,13 +443,11 @@ def runbot():
 	
 	@tree.command(
 		name="blackjack",
-		description="Play blackjack with primojems. You may bet all.",
+		description="Play blackjack with primojems. You can specify \'all\'",
 		guild=discord.Object(id=GENSOC_SERVER))
 	async def blackjack(interaction, bet: str):
-		# Bet all but with cap of 10000
 		if "all" in bet:
-			entry = helper.get_user_entry(interaction.user.id)
-			bet = min(entry["currency"], 10000)
+			bet = helper.get_user_entry(interaction.user.id)
 	
 		res = minigame.new_blackjack(interaction.user.id, int(bet))
 	

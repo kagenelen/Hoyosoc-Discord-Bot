@@ -1,5 +1,5 @@
 {
-    "1.1": {
+    "Companion 1.1": {
         "candidates": [
             "blue seelie",
             "bongo-head",
@@ -25,7 +25,7 @@
             ]
         }
     },
-    "1.2": {
+    "Companion 1.2": {
         "candidates": [
             "pink seelie",
             "cloud retainers device",
@@ -51,7 +51,7 @@
             ]
         }
     },
-    "1.3": {
+    "Companion 1.3": {
         "candidates": [
             "green seelie",
             "purple seelie",
@@ -85,7 +85,7 @@
             ]
         }
     },
-    "1.4": {
+    "Companion 1.4": {
         "candidates": [
             "yellow seelie",
             "liloupar",
@@ -104,6 +104,10 @@
             "1074318389708861460": [
                 150,
                 "liloupar"
+            ],
+            "300937279197806604": [
+                2000,
+                "endora"
             ]
         }
     },
@@ -117,6 +121,31 @@
             "318337790708547588": [
                 1000,
                 "paimon"
+            ],
+            "300937279197806604": [
+                2000,
+                "paimon"
+            ],
+            "1074318389708861460": [
+                200,
+                "paimon"
+            ]
+        }
+    },
+    "2.2": {
+        "candidates": [
+            "shiki koshou",
+            "endora"
+        ],
+        "end_time": 1681207200,
+        "bets": {
+            "348414134636904452": [
+                2000,
+                "endora"
+            ],
+            "308020379744600064": [
+                2000,
+                "shiki koshou"
             ]
         }
     }
