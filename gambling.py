@@ -154,15 +154,11 @@ def view_own_bets(discord_id):
 	data = helper.read_file("bets.json")
 
 	recent_bets = []
-	counter = 0
 	for bracket in data:
 		betters = list(data[bracket]["bets"].keys())
 		if discord_id in betters:
 			this_bet = data[bracket]["bets"].get(discord_id)
 			recent_bets.append([bracket] + this_bet)
-			counter += 1
-		if counter == 5:
-			break
 
 	recent_bets.reverse()
 	return recent_bets
