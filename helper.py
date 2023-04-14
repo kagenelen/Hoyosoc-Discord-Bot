@@ -29,7 +29,7 @@ def backup_file(file):
 	
 	tz_Sydney = pytz.timezone('Australia/Sydney')
 	datetime_Sydney = datetime.datetime.now(tz_Sydney)
-	date_format = datetime_Sydney.strftime("%d-%b_%H.%M")
+	date_format = datetime_Sydney.strftime("%d%b_%H.%M")
 
 	target = os.path.dirname(os.path.abspath(__file__)) + "/backup/" + date_format + ".json"
 	shutil.copyfile(original, target)
