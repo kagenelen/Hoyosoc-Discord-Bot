@@ -267,7 +267,8 @@ def currency_checkin(discord_id):
 
 	# Check login streak still remains, and increment streak
 	if user_entry["next_checkin"] + 86400 < time.time():
-		user_entry["checkin_streak"] = 0
+		#user_entry["checkin_streak"] = 0
+		user_entry["checkin_streak"] += 1
 	else:
 		user_entry["checkin_streak"] += 1
 	amount_earned = CHECKIN + user_entry["checkin_streak"] * STREAK_MULTIPLIER

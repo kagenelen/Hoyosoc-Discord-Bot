@@ -26,5 +26,12 @@
         "lives": 2,
         "guessed_letters": "edaru",
         "hangman_word": "Alley Hunter"
+    },
+    "318337790708547588": {
+        "minigame": "hangman",
+        "difficulty": "extreme",
+        "lives": 3,
+        "guessed_letters": "",
+        "hangman_word": "Tsurumi Island"
     }
 }
