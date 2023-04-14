@@ -1,23 +1,37 @@
 {
-    "740472796580151377": {
+    "530215840780648448": {
         "minigame": "hangman",
-        "difficulty": "extreme",
-        "lives": 3,
-        "guessed_letters": "eaildsht",
-        "hangman_word": "Heatshield Potion"
+        "difficulty": "hard",
+        "lives": 6,
+        "guessed_letters": "e",
+        "hangman_word": "Forbidden Scroll"
     },
-    "1074318389708861460": {
+    "501628004620042241": {
         "minigame": "hangman",
         "difficulty": "extreme",
         "lives": 2,
-        "guessed_letters": "earsunolit",
-        "hangman_word": "Canis Bellatoris"
+        "guessed_letters": "eaois",
+        "hangman_word": "Polarizing Prism"
     },
     "384949403452047362": {
         "minigame": "hangman",
         "difficulty": "extreme",
         "lives": 3,
         "guessed_letters": "",
-        "hangman_word": "Yearning"
+        "hangman_word": "Scholar"
+    },
+    "740472796580151377": {
+        "minigame": "hangman",
+        "difficulty": "extreme",
+        "lives": 2,
+        "guessed_letters": "edaru",
+        "hangman_word": "Alley Hunter"
+    },
+    "318337790708547588": {
+        "minigame": "hangman",
+        "difficulty": "extreme",
+        "lives": 3,
+        "guessed_letters": "",
+        "hangman_word": "Tsurumi Island"
     }
 }

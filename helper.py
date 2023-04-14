@@ -3,16 +3,17 @@ import discord
 import re
 import os
 import time
+import datetime
+import shutil
+import pytz
 
 SUBCOM_ROLE = "Subcommittee"
 EXEC_ROLE = "2023 Gensoc Team"
-
 
 def write_file(file, data):
   absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
   with open(absolute_path + file, "w") as f:
     json.dump(data, f, indent=4, separators=(',', ': '))
-
 
 def read_file(file):
   absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
@@ -20,6 +21,19 @@ def read_file(file):
     data = json.load(f)
   return data
 
+# Make file backup in backup folder
+# Argument: file name (must be in json_file folder)
+# Return: None
+def backup_file(file):
+	original = os.path.dirname(os.path.abspath(__file__)) + "/json_files/" + file
+	
+	tz_Sydney = pytz.timezone('Australia/Sydney')
+	datetime_Sydney = datetime.datetime.now(tz_Sydney)
+	date_format = datetime_Sydney.strftime("%d%b_%H.%M")
+
+	target = os.path.dirname(os.path.abspath(__file__)) + "/backup/" + date_format + ".json"
+	shutil.copyfile(original, target)
+	print("Backup of " + file + " done at " + date_format)
 
 # Get user entry
 # Function mainly used to create entry for new users

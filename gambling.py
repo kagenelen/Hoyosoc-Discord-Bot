@@ -154,15 +154,11 @@ def view_own_bets(discord_id):
 	data = helper.read_file("bets.json")
 
 	recent_bets = []
-	counter = 0
 	for bracket in data:
 		betters = list(data[bracket]["bets"].keys())
 		if discord_id in betters:
 			this_bet = data[bracket]["bets"].get(discord_id)
 			recent_bets.append([bracket] + this_bet)
-			counter += 1
-		if counter == 5:
-			break
 
 	recent_bets.reverse()
 	return recent_bets
@@ -252,6 +248,15 @@ def update_user_list_currency(discord_list, change, server):
 
 	return successful
 
+# Change all user's currency by amount
+def update_all_currency(change, server):
+	data = helper.read_file("users.json")
+
+	for u in data:
+		if data[u]["currency"] > 0:
+			update_user_currency(u, change)
+
+	print("Compensation given.")
 
 ############################### Shop, checkin, roles, inventory ##############################################
 
