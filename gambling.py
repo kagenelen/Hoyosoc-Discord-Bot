@@ -248,6 +248,15 @@ def update_user_list_currency(discord_list, change, server):
 
 	return successful
 
+# Change all user's currency by amount
+def update_all_currency(change, server):
+	data = helper.read_file("users.json")
+
+	for u in data:
+		if data[u]["currency"] > 0:
+			update_user_currency(u, change)
+
+	print("Compensation given.")
 
 ############################### Shop, checkin, roles, inventory ##############################################
 
@@ -267,8 +276,7 @@ def currency_checkin(discord_id):
 
 	# Check login streak still remains, and increment streak
 	if user_entry["next_checkin"] + 86400 < time.time():
-		#user_entry["checkin_streak"] = 0
-		user_entry["checkin_streak"] += 1
+		user_entry["checkin_streak"] = 0
 	else:
 		user_entry["checkin_streak"] += 1
 	amount_earned = CHECKIN + user_entry["checkin_streak"] * STREAK_MULTIPLIER

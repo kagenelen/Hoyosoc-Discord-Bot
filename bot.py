@@ -44,6 +44,7 @@ def runbot():
 		print("*****Bot has connected*****")
 		await tree.sync(guild=discord.Object(id=GENSOC_SERVER))
 		daily_role_expiry_check.start()
+		make_backup.start()
 	
 	@client.event
 	async def on_message(message):
@@ -98,6 +99,10 @@ def runbot():
 									 name=e[1][0].capitalize())
 			await user.remove_roles(role, reason="Expired role.")
 			print(role.name + " removed from " + user.name)
+
+	@tasks.loop(hours=24)
+	async def make_backup():
+		helper.backup_file("users.json")
 	
 	########################## COMMANDS ########################################
 	
