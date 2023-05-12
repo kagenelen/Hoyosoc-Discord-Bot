@@ -1,23 +1,21 @@
 {
     "318337790708547588": {
-        "currency": 10935,
-        "next_checkin": 1681516812,
-        "role": {
-            "anemo": 1682061023
-        },
-        "checkin_streak": 18,
+        "currency": 41867,
+        "next_checkin": 1683936051,
+        "role": {},
+        "checkin_streak": 46,
         "uids": []
     },
     "280905494091005954": {
-        "currency": 8826,
-        "next_checkin": 1681516812,
+        "currency": 11185,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 1,
         "uids": []
     },
     "302346316959449088": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -25,24 +23,24 @@
         ]
     },
     "501628004620042241": {
-        "currency": 11934,
-        "next_checkin": 1681516812,
+        "currency": 24397,
+        "next_checkin": 1683849636,
         "role": {},
-        "checkin_streak": 18,
+        "checkin_streak": 13,
         "uids": [
             "608604687"
         ]
     },
     "305564624227401728": {
-        "currency": 2180,
-        "next_checkin": 1681516812,
+        "currency": 2530,
+        "next_checkin": 1683936033,
         "role": {},
-        "checkin_streak": 8,
+        "checkin_streak": 0,
         "uids": []
     },
     "530215840780648448": {
-        "currency": 1780,
-        "next_checkin": 1681516812,
+        "currency": 2780,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 8,
         "uids": [
@@ -50,22 +48,22 @@
         ]
     },
     "437834249744285708": {
-        "currency": 1875,
-        "next_checkin": 1681516812,
+        "currency": 2875,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "318723992905056259": {
-        "currency": 9610,
-        "next_checkin": 1681516812,
+        "currency": 10610,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "368630963330220032": {
-        "currency": 4723,
-        "next_checkin": 1681516812,
+        "currency": 5723,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -73,75 +71,76 @@
         ]
     },
     "1074318389708861460": {
-        "currency": 6143,
-        "next_checkin": 1681516812,
+        "currency": 11927,
+        "next_checkin": 1683849633,
         "role": {
             "hydro": 2145919483,
             "geo": 2145919483,
-            "anemo": 1682061073,
-            "cryo": 1682061171
+            "anemo": 2145919483
         },
-        "checkin_streak": 4,
+        "checkin_streak": 30,
         "uids": [
             "811233287",
             "111032240"
         ]
     },
     "348414134636904452": {
-        "currency": 31348,
-        "next_checkin": 1681516812,
+        "currency": 41908,
+        "next_checkin": 1683763258,
         "role": {},
-        "checkin_streak": 11,
+        "checkin_streak": 2,
         "uids": [
             "613636035",
             "823913674"
         ]
     },
     "294049450882629632": {
-        "currency": 1715,
-        "next_checkin": 1681516812,
+        "currency": 1305,
+        "next_checkin": 1682985630,
         "role": {},
-        "checkin_streak": 13,
+        "checkin_streak": 1,
         "uids": [
             "809477946"
         ]
     },
     "937000926835773460": {
-        "currency": 5410,
-        "next_checkin": 1681516812,
+        "currency": 1925,
+        "next_checkin": 1683763204,
         "role": {},
-        "checkin_streak": 1,
+        "checkin_streak": 0,
         "uids": []
     },
     "384949403452047362": {
-        "currency": 10280,
-        "next_checkin": 1681516812,
-        "role": {},
-        "checkin_streak": 18,
+        "currency": 5078,
+        "next_checkin": 1683936013,
+        "role": {
+            "pyro": 2145919483
+        },
+        "checkin_streak": 0,
         "uids": []
     },
     "308020379744600064": {
-        "currency": 55360,
-        "next_checkin": 1681516812,
+        "currency": 89121,
+        "next_checkin": 1683849618,
         "role": {},
-        "checkin_streak": 6,
+        "checkin_streak": 4,
         "uids": [
             "826275883",
             "653145544"
         ]
     },
     "852095686932824087": {
-        "currency": 3125,
-        "next_checkin": 1681516812,
+        "currency": 6100,
+        "next_checkin": 1682985630,
         "role": {},
-        "checkin_streak": 2,
+        "checkin_streak": 5,
         "uids": [
             "629106473"
         ]
     },
     "512531622558564362": {
-        "currency": 1650,
-        "next_checkin": 1681516812,
+        "currency": 2650,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -149,46 +148,46 @@
         ]
     },
     "437944593992908800": {
-        "currency": 1650,
-        "next_checkin": 1681516812,
+        "currency": 2800,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "620206680956731392": {
-        "currency": 1650,
-        "next_checkin": 1681516812,
+        "currency": 2650,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "838329161474506782": {
-        "currency": 1800,
-        "next_checkin": 1681516812,
+        "currency": 2800,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "269324017436065795": {
-        "currency": 4015,
-        "next_checkin": 1681516812,
+        "currency": 5315,
+        "next_checkin": 1683158457,
         "role": {},
-        "checkin_streak": 1,
+        "checkin_streak": 0,
         "uids": [
             "804899527",
             "603433178"
         ]
     },
     "166807404716097537": {
-        "currency": 2500,
-        "next_checkin": 1681516812,
+        "currency": 4500,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "414263860103610369": {
-        "currency": 1650,
-        "next_checkin": 1681516812,
+        "currency": 2650,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -196,17 +195,17 @@
         ]
     },
     "611856491506434068": {
-        "currency": 3324,
-        "next_checkin": 1681516812,
+        "currency": 5778,
+        "next_checkin": 1683072050,
         "role": {},
-        "checkin_streak": 3,
+        "checkin_streak": 1,
         "uids": [
             "816760254"
         ]
     },
     "153435291355447296": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -215,7 +214,7 @@
     },
     "986446621468405852": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 1,
         "uids": [
@@ -224,7 +223,7 @@
     },
     "345546240949354496": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -233,7 +232,7 @@
     },
     "324446494285496322": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -242,7 +241,7 @@
     },
     "247608057079529473": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -251,7 +250,7 @@
     },
     "487183699360612353": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -260,7 +259,7 @@
     },
     "494069211568799774": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -269,7 +268,7 @@
     },
     "698055404873187478": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -278,7 +277,7 @@
     },
     "626677030641205259": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -287,7 +286,7 @@
     },
     "529608818556928001": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -296,7 +295,7 @@
     },
     "273650598845349888": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -305,7 +304,7 @@
     },
     "485407753607577600": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -315,7 +314,7 @@
     },
     "308533285472960513": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -324,7 +323,7 @@
     },
     "331604660039188481": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -333,7 +332,7 @@
     },
     "487012233705160764": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -344,7 +343,7 @@
     },
     "336774405986451457": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -353,7 +352,7 @@
     },
     "508860948929314816": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -362,7 +361,7 @@
     },
     "538697533556391946": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -371,7 +370,7 @@
     },
     "375872817197088769": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -380,7 +379,7 @@
     },
     "248074461868326913": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -388,8 +387,8 @@
         ]
     },
     "771899922370265118": {
-        "currency": 2500,
-        "next_checkin": 1681516812,
+        "currency": 3500,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -398,7 +397,7 @@
     },
     "450611984371810319": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -407,7 +406,7 @@
     },
     "273376678598934528": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -416,7 +415,7 @@
     },
     "437177952598491136": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -425,7 +424,7 @@
     },
     "309127419720105985": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -434,7 +433,7 @@
     },
     "294797591231594497": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -443,7 +442,7 @@
     },
     "202753491708542976": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -451,8 +450,8 @@
         ]
     },
     "861905983085609021": {
-        "currency": 3500,
-        "next_checkin": 1681516812,
+        "currency": 5500,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -461,7 +460,7 @@
     },
     "374113453184647169": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -470,7 +469,7 @@
     },
     "726126702677458967": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -479,7 +478,7 @@
     },
     "653982566214402058": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -488,7 +487,7 @@
     },
     "355597627150041089": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -497,7 +496,7 @@
     },
     "340069159226310656": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -506,7 +505,7 @@
     },
     "438896487812825098": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -515,7 +514,7 @@
     },
     "392883103502434304": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -524,7 +523,7 @@
     },
     "263627234227650561": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -533,7 +532,7 @@
     },
     "218671529905356803": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -541,8 +540,8 @@
         ]
     },
     "377468166386876417": {
-        "currency": 1650,
-        "next_checkin": 1681516812,
+        "currency": 2650,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -551,7 +550,7 @@
     },
     "760794317542785044": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -560,7 +559,7 @@
     },
     "141910518314041344": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -569,7 +568,7 @@
     },
     "296575022200389632": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -578,7 +577,7 @@
     },
     "706155929929908295": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -587,7 +586,7 @@
     },
     "202414892454641666": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -596,7 +595,7 @@
     },
     "554939269756616705": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -605,7 +604,7 @@
     },
     "586422043969454124": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -614,7 +613,7 @@
     },
     "159886926248280064": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -623,7 +622,7 @@
     },
     "548015866155892746": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -632,7 +631,7 @@
     },
     "306017902207696898": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -641,7 +640,7 @@
     },
     "204908621719535616": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -650,7 +649,7 @@
     },
     "252334506210492417": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -659,7 +658,7 @@
     },
     "650345469175660559": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -668,7 +667,7 @@
     },
     "940795297129447455": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -677,7 +676,7 @@
     },
     "303058183222591488": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -687,7 +686,7 @@
     },
     "561139034311753738": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -696,7 +695,7 @@
     },
     "427629098349625354": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -705,7 +704,7 @@
     },
     "199802136840634368": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -714,7 +713,7 @@
     },
     "466462045018259476": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -723,7 +722,7 @@
     },
     "448384664315363330": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -732,7 +731,7 @@
     },
     "221501979317239808": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -741,7 +740,7 @@
     },
     "901065077715796028": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -750,7 +749,7 @@
     },
     "778065743807119361": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -759,7 +758,7 @@
     },
     "759964941439467544": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -768,7 +767,7 @@
     },
     "690032584281161730": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -777,7 +776,7 @@
     },
     "759618068355088445": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -786,7 +785,7 @@
     },
     "762445557960146997": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -795,7 +794,7 @@
     },
     "314739379618709506": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -804,7 +803,7 @@
     },
     "425266752474185738": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -813,7 +812,7 @@
     },
     "371740104126889995": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -822,7 +821,7 @@
     },
     "524334947885121551": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -832,7 +831,7 @@
     },
     "209915926886219788": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -841,7 +840,7 @@
     },
     "795213735203307520": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -849,8 +848,8 @@
         ]
     },
     "410325825683193866": {
-        "currency": 2500,
-        "next_checkin": 1681516812,
+        "currency": 3500,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -859,7 +858,7 @@
     },
     "330876154246594610": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -868,7 +867,7 @@
     },
     "388167280334471168": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -877,7 +876,7 @@
     },
     "212853542409601024": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -887,7 +886,7 @@
     },
     "889127621730906173": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -896,7 +895,7 @@
     },
     "712987369820913685": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -905,7 +904,7 @@
     },
     "257071274512220175": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -915,7 +914,7 @@
     },
     "491070418497830924": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -924,7 +923,7 @@
     },
     "533201972556333067": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -934,7 +933,7 @@
     },
     "302610719403278336": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -943,7 +942,7 @@
     },
     "310399907561340930": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -952,7 +951,7 @@
     },
     "209898273811595274": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -961,7 +960,7 @@
     },
     "612219832233885706": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -970,7 +969,7 @@
     },
     "81431674457436160": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -979,7 +978,7 @@
     },
     "314927201243889674": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -988,7 +987,7 @@
     },
     "436448411563196416": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -998,7 +997,7 @@
     },
     "198326789120983041": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1007,7 +1006,7 @@
     },
     "611887355069988865": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1016,7 +1015,7 @@
     },
     "525652777775529994": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1024,8 +1023,8 @@
         ]
     },
     "702396989417193482": {
-        "currency": 2500,
-        "next_checkin": 1681516812,
+        "currency": 3500,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1034,7 +1033,7 @@
     },
     "120490489811173376": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1043,7 +1042,7 @@
     },
     "322702816873283584": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1052,7 +1051,7 @@
     },
     "290103035085062144": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1061,7 +1060,7 @@
     },
     "293549117953540097": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1070,7 +1069,7 @@
     },
     "344031878652624897": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1079,7 +1078,7 @@
     },
     "318262928245522432": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1088,7 +1087,7 @@
     },
     "691460238615904348": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1097,7 +1096,7 @@
     },
     "297903628084314144": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1106,7 +1105,7 @@
     },
     "129566212181983232": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1115,7 +1114,7 @@
     },
     "603535090966069257": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1125,7 +1124,7 @@
     },
     "338319217143316480": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1134,7 +1133,7 @@
     },
     "181163176191197184": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1143,7 +1142,7 @@
     },
     "461782690321006602": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1152,7 +1151,7 @@
     },
     "630578256470474763": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1161,7 +1160,7 @@
     },
     "810708376508956742": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1170,7 +1169,7 @@
     },
     "419454258098995202": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1179,7 +1178,7 @@
     },
     "144705466025508864": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1188,7 +1187,7 @@
     },
     "162691613179510785": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1197,7 +1196,7 @@
     },
     "287041936248930305": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1206,7 +1205,7 @@
     },
     "234649449727655937": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1215,7 +1214,7 @@
     },
     "304237385196240896": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1224,7 +1223,7 @@
     },
     "250147040284246016": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1233,7 +1232,7 @@
     },
     "154497707912724480": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1242,7 +1241,7 @@
     },
     "814332543535939614": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1251,7 +1250,7 @@
     },
     "172909657860341760": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1260,7 +1259,7 @@
     },
     "228913322076930049": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1269,7 +1268,7 @@
     },
     "266065004929875978": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1278,7 +1277,7 @@
     },
     "202673851094663168": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1287,7 +1286,7 @@
     },
     "344984109833256961": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1296,7 +1295,7 @@
     },
     "397392336868343812": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1305,7 +1304,7 @@
     },
     "210596276310376449": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1314,7 +1313,7 @@
     },
     "192189955643015168": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1324,7 +1323,7 @@
     },
     "213924329019277312": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1333,7 +1332,7 @@
     },
     "283165051051835392": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1342,7 +1341,7 @@
     },
     "267224583302676480": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1351,7 +1350,7 @@
     },
     "401168410701987845": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1360,7 +1359,7 @@
     },
     "155903967057018880": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1369,7 +1368,7 @@
     },
     "239298105495912449": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1378,7 +1377,7 @@
     },
     "183458242070839296": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1387,7 +1386,7 @@
     },
     "316212624813588482": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1396,7 +1395,7 @@
     },
     "354949163659689984": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1405,7 +1404,7 @@
     },
     "173745227180277760": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1414,7 +1413,7 @@
     },
     "542623017306554369": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1423,7 +1422,7 @@
     },
     "248965165645692929": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1432,7 +1431,7 @@
     },
     "426954265626673153": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1441,7 +1440,7 @@
     },
     "440797636308762624": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1450,7 +1449,7 @@
     },
     "811060982456909834": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1459,7 +1458,7 @@
     },
     "704691482442858498": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1468,7 +1467,7 @@
     },
     "255217990633652224": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1477,7 +1476,7 @@
     },
     "1071965717357936682": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1486,7 +1485,7 @@
     },
     "381397051906326530": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1495,7 +1494,7 @@
     },
     "156589794124759040": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1504,7 +1503,7 @@
     },
     "726383897067388965": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1513,7 +1512,7 @@
     },
     "691496445081026590": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1522,7 +1521,7 @@
     },
     "282528299924717571": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1531,7 +1530,7 @@
     },
     "933894084924411914": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1540,7 +1539,7 @@
     },
     "443302520618745866": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1548,8 +1547,8 @@
         ]
     },
     "224476045821214720": {
-        "currency": 2500,
-        "next_checkin": 1681516812,
+        "currency": 3500,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1558,7 +1557,7 @@
     },
     "713663683896541217": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1567,7 +1566,7 @@
     },
     "772985526105276426": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1575,57 +1574,57 @@
         ]
     },
     "217933338407731200": {
-        "currency": 2870,
-        "next_checkin": 1681516812,
+        "currency": 0,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "601421722784366603": {
-        "currency": 2500,
-        "next_checkin": 1681516812,
+        "currency": 3500,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "1076313620385898629": {
-        "currency": 2500,
-        "next_checkin": 1681516812,
+        "currency": 3500,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "266068819858948097": {
-        "currency": 3500,
-        "next_checkin": 1681516812,
+        "currency": 4500,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "474462937499697152": {
-        "currency": 3500,
-        "next_checkin": 1681516812,
+        "currency": 4500,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "861981307704573962": {
-        "currency": 2500,
-        "next_checkin": 1681516812,
+        "currency": 3500,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "300937279197806604": {
-        "currency": 18772,
-        "next_checkin": 1681516812,
+        "currency": 18272,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 2,
         "uids": []
     },
     "864213503848873994": {
         "currency": 0,
-        "next_checkin": 1681516812,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1633,22 +1632,22 @@
         ]
     },
     "334604190598823936": {
-        "currency": 1580,
-        "next_checkin": 1681516812,
+        "currency": 2580,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "435701153230094336": {
-        "currency": 1655,
-        "next_checkin": 1681516812,
+        "currency": 2655,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 1,
         "uids": []
     },
     "253777866980982795": {
-        "currency": 2500,
-        "next_checkin": 1681516812,
+        "currency": 3500,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": [
@@ -1656,64 +1655,78 @@
         ]
     },
     "312172066482814979": {
-        "currency": 2000,
-        "next_checkin": 1681516812,
+        "currency": 3000,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "306912349120364547": {
-        "currency": 7000,
-        "next_checkin": 1681516812,
+        "currency": 19455,
+        "next_checkin": 1682985630,
         "role": {},
-        "checkin_streak": 4,
+        "checkin_streak": 0,
         "uids": []
     },
     "282040152099127296": {
-        "currency": 2500,
-        "next_checkin": 1681516812,
+        "currency": 4500,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "271620639524126720": {
-        "currency": 2500,
-        "next_checkin": 1681516812,
+        "currency": 3500,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "422660666373963787": {
-        "currency": 2500,
-        "next_checkin": 1681516812,
+        "currency": 3500,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "379548095924666368": {
-        "currency": 2500,
-        "next_checkin": 1681516812,
+        "currency": 4500,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "878202494747033650": {
-        "currency": 2500,
-        "next_checkin": 1681516812,
+        "currency": 3500,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "361660958843863040": {
-        "currency": 2140,
-        "next_checkin": 1681516812,
+        "currency": 3140,
+        "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "uids": []
     },
     "740472796580151377": {
-        "currency": 10710,
-        "next_checkin": 1681516812,
+        "currency": 11710,
+        "next_checkin": 1682985630,
+        "role": {},
+        "checkin_streak": 1,
+        "uids": []
+    },
+    "691223441356881971": {
+        "currency": 2000,
+        "next_checkin": 1682985630,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": []
+    },
+    "573019300328243200": {
+        "currency": 225,
+        "next_checkin": 1683763239,
         "role": {},
         "checkin_streak": 1,
         "uids": []

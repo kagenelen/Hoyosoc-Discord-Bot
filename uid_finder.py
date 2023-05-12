@@ -48,6 +48,17 @@ def find_uid(discord_id):
 
   return ", ".join(user["uids"])
 
+# Find which person an uid belongs to
+# Argument: uid
+# Return: discord id of owner or False if uid not registered, 
+def whose_uid(uid):
+	data = helper.read_file("users.json")
+	for user in data:
+		if uid in data[user]["uids"]:
+			return user
+			
+	return False
+
 
 # Read through message history in channel and add uid to database
 # Argument:
