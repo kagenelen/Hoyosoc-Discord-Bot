@@ -175,6 +175,23 @@ def runbot():
 		else:
 			await interaction.response.send_message(
 				target_user.name + " has the following uid: " + result)
+
+	@tree.command(name="whose_uid",
+				  description="Find the owner of an uid",
+				  guild=discord.Object(id=GENSOC_SERVER))
+	async def reverse_find_uid(interaction, uid: str):
+		if not uid.isnumeric() or int(uid) >= 999999999 or int(uid) <= 0:
+			await interaction.response.send_message("Invalid uid.", ephemeral=True)
+			return
+			
+		result = uid_finder.whose_uid(uid)
+		if result == False:
+			await interaction.response.send_message(
+				uid + " does not belong to anyone in this server.")
+		else:
+			owner = await client.fetch_user(int(result))
+			await interaction.response.send_message(
+				owner.name + " owns the uid " + uid)
 	
 	#################################### BETTING ###################################
 	
@@ -452,8 +469,8 @@ def runbot():
 		guild=discord.Object(id=GENSOC_SERVER))
 	async def blackjack(interaction, bet: str):
 		if "all" in bet:
-			bet = helper.get_user_entry(interaction.user.id)
-	
+			bet = helper.get_user_entry(interaction.user.id)["currency"]
+			
 		res = minigame.new_blackjack(interaction.user.id, int(bet))
 	
 		if isinstance(res, str):
