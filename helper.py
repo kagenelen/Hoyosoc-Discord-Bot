@@ -33,7 +33,13 @@ def backup_file(file):
 
 	target = os.path.dirname(os.path.abspath(__file__)) + "/backup/" + date_format + ".json"
 	shutil.copyfile(original, target)
-	print("Backup of " + file + " done at " + date_format)
+	print("Backup of " + file + " done at " + unix_to_syd(time.time()))
+
+# Convert unix to sydney time
+def unix_to_syd(unix_time):
+	tz_Sydney = pytz.timezone('Australia/Sydney')
+	datetime_Sydney = datetime.datetime.now(tz_Sydney)
+	return datetime_Sydney.strftime("%d/%m %H:%M")
 
 # Get user entry
 # Function mainly used to create entry for new users
@@ -62,13 +68,15 @@ def get_user_entry(discord_id):
 # One time function for modifying database structure
 # Modify this function to suit your need
 def rewrite_structure():
-  data = read_file("users.json")
-  for user in data:
-    if data[user].get("checkin_streak", None) == None:
-      data[user]["checkin_streak"] = 0
-  write_file("users.json", data)
+	data = read_file("users.json")
+	for user in data:
+		if data[user].get("role_icon", None) == None:
+			data[user]["role_icon"] = []
+			data[user]["jemdust"] = 0
+		
+	write_file("users.json", data)
 
-  print("Database modification complete")
+	print("Database modification complete")
 
 
 # Determines whether user is subcom or exec

@@ -3,31 +3,13 @@ import helper
 import datetime
 import time
 import discord
+import random
 from operator import getitem
 
 # ISSUE: Sometimes data doesn't get written because another function that uses write is called. This would overwrite the data.
 # FIX: Call update user currency (or something similar) after write data
 '''
-For future if people still have interest in gambling:
-▢ Gacha with currency. 3 star weapons and 4, 5 star characters. 
-	160 primojem each pull, can specify any number of pull
-	1% 5 star, 5% 4 star
-▢ Duplicates become moonglitter
-	25 jemdust for 5 star, 5 jemdust for 4 star, 1 jemdust for 3 star
-▢ 180 jemdust for 5 star icon, 34 moonglitter for 4 star icon
-▢ Scrap role icon for moonglitter
-▢ Equip role icon (no expiry)
-▢ Trading/Sell role icons/primojem/moonglitter (maybe)
-
-Available Role Icons:
-Nahida, Alhaitham, Tighnari, Kaveh
-Raiden, Keqing, Cyno, Fischl
-Venti, Kazuha, Wanderer, Heizou
-Zhongli, Itto, Albedo, Noelle
-Hu Tao, Yoimiya, Diluc, Bennett
-Eula, Ayaka, Ganyu, Kaeya
-Kokomi, Yelan, Childe, Xingqiu
-Debate Club
+▢ (Maybe) Role icon trading
 
 '''
 
@@ -42,6 +24,14 @@ PRIZE_POOL = 500
 EVENT_ATTENDANCE = 1000
 BOOSTER_DISCOUNT = 0.5
 STREAK_MULTIPLIER = 5
+FIVE_STAR_RARITY = 1
+FOUR_STAR_RARITY = 5
+THREE_STAR_RARITY = 94
+FIVE_STAR_DUP = 25
+FOUR_STAR_DUP = 5
+THREE_STAR_DUP = 1
+FIVE_STAR_COST = 180
+FOUR_STAR_COST = 34
 
 ############################# Functions that deal with bets #############################################
 
@@ -259,7 +249,7 @@ def update_all_currency(change, server):
     print("Compensation given.")
 
 
-############################### Shop, checkin, roles, inventory ##############################################
+########### Shop, checkin, roles, inventory ##############################################
 
 
 # Give currency for user weekly checkin
@@ -299,12 +289,12 @@ def currency_checkin(discord_id):
 def is_role_owned(discord_id, role):
     user_entry = helper.get_user_entry(str(discord_id))
 
-    return role.lower() in user_entry["role"]
+    return role.lower() in user_entry["role"] or role.title() in user_entry["role_icon"]
 
 
 # Get user's currency, roles, role duration
 # Argument: discord id string
-# Return: list[currency, (role1, duration1), ...]
+# Return: list[currency, jemdust, [(role1, duration1), ...], role_icons]
 def get_inventory(discord_id):
     discord_id = str(discord_id)
     user_entry = helper.get_user_entry(discord_id)
@@ -317,58 +307,70 @@ def get_inventory(discord_id):
             r[1])).strftime('%d/%m/%Y')
         roles.append([r[0], r_datetime])
 
-    inventory = [user_entry["currency"]] + roles
+    inventory = [user_entry["currency"], user_entry["jemdust"], roles, ", ".join(user_entry["role_icon"])]
     return inventory
 
 
 # Adds role to inventory or renew duration
-# Argument: discord id string, role string, duration (7 or 30)
+# Argument: discord id string, role string, duration (7 or 30), server booster boolean
 # Return: None if successful or error string
 def buy_role(discord_id, role, duration, is_booster):
-    discord_id = str(discord_id)
-    duration = int(duration)
-    role = role.lower()
-    helper.get_user_entry(discord_id)
-    data = helper.read_file("users.json")
-    user_entry = data.get(discord_id)
+	discord_id = str(discord_id)
+	role = role.lower()
+	helper.get_user_entry(discord_id)
+	data = helper.read_file("users.json")
+	gacha_pool = helper.read_file("role_icon.json")
+	user_entry = data.get(discord_id)
 
-    # Determine cost
-    price = 0
-    if duration == 30:
-        price = ONE_MONTH_ROLE
-    elif duration == 7:
-        price = ONE_WEEK_ROLE
-    elif duration == 999:
-        price = PERMANENT_ROLE
-    else:
-        # Invalid duration
-        return "Invalid duration."
+	if duration != None:
+		duration = int(duration)
 
-    # Server booster discount
-    if is_booster:
-        price = int(BOOSTER_DISCOUNT * price)
+	# Determine whether it is role or role icon and the price
+	primojem_price = 0
+	jemdust_price = 0
+	if role in ["geo", "anemo", "electro", "pyro", "hydro", "cryo", "abyss", "dendro"]:
+		if duration == 30:
+			price = ONE_MONTH_ROLE
+		elif duration == 7:
+			price = ONE_WEEK_ROLE
+		elif duration == 5000:
+			price = PERMANENT_ROLE
+		elif duration == None:
+			return "Please specify a duration for colour roles."
+		else:
+			return "Invalid duration."
 
-    if user_entry["currency"] < price:
-        # Insufficient currency
-        return "Insufficent primojem."
+		if is_booster:
+			price = int(BOOSTER_DISCOUNT * price)
+			
+	elif role.title() in gacha_pool["5"]:
+		jemdust_price = FIVE_STAR_COST
+	
+	elif role.title() in gacha_pool["4"]:
+		jemdust_price = FOUR_STAR_COST
+		
+	else: 
+		return "Invalid role."
+	
+	if user_entry["currency"] < primojem_price or user_entry["jemdust"] < jemdust_price:
+		# Insufficient currency
+		return "Insufficent primojem or jemdust."
+	
+	# Update role duration
+	current_end_time = user_entry["role"].get(role, int(time.time()))
+	if duration == 7:
+		user_entry["role"][role] = current_end_time + 604800
+	elif duration == 30:
+		user_entry["role"][role] = current_end_time + 2592000
+	elif duration == 5000:
+		user_entry["role"][role] = 2145919483
+	else:
+		# Duration not applicable for role icon
+		user_entry["role_icon"].append(role.title())
 
-    if role not in [
-            "geo", "anemo", "electro", "pyro", "hydro", "cryo", "abyss",
-            "dendro"
-    ]:
-        return "Invalid role."
-
-    # Update role duration
-    current_end_time = user_entry["role"].get(role, int(time.time()))
-    if duration == 7:
-        user_entry["role"][role] = current_end_time + 604800
-    elif duration == 30:
-        user_entry["role"][role] = current_end_time + 2592000
-    elif duration == 999:
-        user_entry["role"][role] = 2145919483
-
-    helper.write_file("users.json", data)
-    update_user_currency(discord_id, -1 * price)
+	user_entry["jemdust"] += -1 * jemdust_price
+	helper.write_file("users.json", data)
+	update_user_currency(discord_id, -1 * primojem_price)
 
 
 # Function called daily to check expiry of all roles, and remove role if expired
@@ -386,3 +388,83 @@ def check_role_expiry():
 
     helper.write_file("users.json", data)
     return expired_roles
+
+############## Gacha ################################
+
+# Do some amount of pulls
+# Argument: discord id string, number of pulls, server booster boolean
+# Return: Obtained character/weapons in a list or error string
+def gacha(discord_id, pull_amount, is_booster):
+	discord_id = str(discord_id)
+	helper.get_user_entry(discord_id)
+	data = helper.read_file("users.json")
+	user_entry = data.get(discord_id)
+	
+	if pull_amount < 1 or pull_amount > 10:
+		return "Invalid pull amount."
+		
+	# Determine cost and apply server booster discount if applicable
+	price = pull_amount * 160
+	if is_booster:
+		price = int(BOOSTER_DISCOUNT * price)
+	
+	if user_entry["currency"] < price:
+		# Insufficient currency
+		return "Insufficent primojem."
+	
+	gacha_pool = helper.read_file("role_icon.json")
+	
+	# Determine rarity sequence
+	rarity_sequence = random.choices(("5", "4", "3"), 
+		weights=(FIVE_STAR_RARITY, FOUR_STAR_RARITY, THREE_STAR_RARITY), k=pull_amount)
+
+	# Determine jemdust sequence for rarity sequence
+	jemdust_sequence = [25 if x == "5" else 5 if x == "4" else 1 for x in rarity_sequence]
+	
+	# Determine the character/weapon for each rarity in sequence
+	gacha_items = []
+	for rarity in rarity_sequence:
+		gacha_items.append(random.choice(gacha_pool[rarity]))
+
+	# Add obtained character/weapon to inventory
+	gacha_res = []
+	for index, item in enumerate(gacha_items):
+		if item not in user_entry["role_icon"] and item not in gacha_pool["3"]:
+			user_entry["role_icon"].append(item)
+			gacha_res.append([item, "🎊 NEW 🎊"])
+		else:
+			# Give jemdust for duplicate/3 star 
+			user_entry["jemdust"] += jemdust_sequence[index]
+			gacha_res.append([item, str(jemdust_sequence[index]) + " <:Jemdust:1108591111649362043>"])
+
+	helper.write_file("users.json", data)
+	update_user_currency(discord_id, -1 * price)
+	return gacha_res
+
+# Destroy a role icon for jemdust
+# Arguments: discord id string, role icon str
+# Return: Obtained jemdust amount or None if invalid role icon
+def scrap_role_icon(discord_id, role):
+	helper.get_user_entry(discord_id)
+	data = helper.read_file("users.json")
+	user_entry = data.get(str(discord_id))
+	
+	role = role.title()
+	if not is_role_owned(discord_id, role):
+		return None
+
+	jemdust_amount = 0
+	gacha_pool = helper.read_file("role_icon.json")
+	if role in gacha_pool["5"]:
+		jemdust_amount = FIVE_STAR_DUP
+		user_entry["role_icon"].remove(role)
+	elif role in gacha_pool["4"]:
+		jemdust_amount = FOUR_STAR_DUP
+		user_entry["role_icon"].remove(role)
+	else:
+		return False
+
+	user_entry["jemdust"] += jemdust_amount
+	helper.write_file("users.json", data)
+	return jemdust_amount
+	

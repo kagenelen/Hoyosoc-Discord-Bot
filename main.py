@@ -14,12 +14,16 @@ import gambling
 import minigame
 # from keep_alive import keep_alive
 
+# IMPORTANT: Replit code is using a test bot on the test server. Before committing please change GENSOC_SERVER back to actual server's id
+
 ############################ CONSTANTS ###################################
 VERIFICATION_CHANNEL = 822423063697948693
-GENSOC_SERVER = 822411164846653490
+GENSOC_SERVER = 822411164846653490 # Actual gensoc server
+# GENSOC_SERVER = 962970271545982986 # Test server
 WELCOME_CHANNEL = 822411164846653492
 WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265>."
-TEST_CHANNEL = 962970271545982989
+PRIMOJEM_EMOTE = "<:Primojem:1108620629902626816>"
+JEMDUST_EMOTE = "<:Jemdust:1108591111649362043>"
 
 # Read json file for channel
 absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
@@ -82,10 +86,10 @@ async def on_message(message):
 
 ########################## LOOPS ###########################################
 
-@tasks.loop(hours=24)
+@tasks.loop(hours=12)
 async def daily_role_expiry_check():
 	expired = gambling.check_role_expiry()
-	print("Role expiry check done at " + str(time.time()))
+	print("Role expiry check done at " + helper.unix_to_syd(time.time()))
 
 	if expired == None:
 		return
@@ -294,63 +298,77 @@ async def checkin(interaction):
 			str(res[1]) + ".")
 
 @tree.command(name="inventory",
-				description="Check your primojem and owned roles.",
+				description="Check your primojem, jemdust and owned roles.",
 				guild=discord.Object(id=GENSOC_SERVER))
 async def inventory(interaction):
 	res = gambling.get_inventory(interaction.user.id)
 
 	embed = discord.Embed(title=interaction.user.name + "\'s inventory",
-							description="Primojem: " + str(res[0]),
+							description=str(res[0]) + " " + PRIMOJEM_EMOTE + "  |  " + 
+						  		str(res[1]) + " " + JEMDUST_EMOTE,
 							color=0x61dfff)
 
-	# Add embed field for each item
-	for r in range(1, len(res)):
-		embed.add_field(name=res[r][0].capitalize(),
-						value=res[r][1],
+	# Add embed field for each roles
+	for r in res[2]:
+		embed.add_field(name=r[0].capitalize(),
+						value=r[1],
+						inline=False)
+
+	embed.add_field(name="Role Icons",
+						value=res[3],
 						inline=False)
 
 	await interaction.response.send_message(embed=embed)
 
 @tree.command(name="shop",
-				description="View role shop.",
+				description="View role shop. Options: primojem/jemdust",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def view_shop(interaction):
+async def view_shop(interaction, option: str="primojem"):
 	res = gambling.get_inventory(interaction.user.id)
+	gacha_pool = helper.read_file("role_icon.json")
+	option = option.lower()
 
-	price = [1500, 4500, 30000]
+	price = [1500, 4500, 30000, 160]
 	if helper.is_booster(interaction.user):
 		price = [int(x / 2) for x in price]
 
-	description = ("7 day role costs " + str(price[0]) + "\n" +
-					 "30 day role costs " + str(price[1]) + "\n" +
-					 "Permanent role costs " + str(price[2]) + "\n" +
-					 "Buying a role you own will increase the duration.\n\n")
+	description = ""
+	if option in ["primojem", "colour", "role", "1"]:
+		description = ("7 days: " + str(price[0]) + " " + PRIMOJEM_EMOTE + "  |  " +
+			"30 day: " + str(price[1]) + " " + PRIMOJEM_EMOTE + "  |  " +
+			"Permanent: " + str(price[2]) + " " + PRIMOJEM_EMOTE + "\n" +
+			"1 pull: " + str(price[3]) + " " + PRIMOJEM_EMOTE + "\n\n")
+	elif option in ["jemdust", "icon", "role icon", "2"]:
+		description = ("5 star role icon: 180 " + JEMDUST_EMOTE + "  |  " +
+			"4 star role icon: 34 " + JEMDUST_EMOTE + "\n\n")
 
 	embed = discord.Embed(title="Shop",
 							description=description,
 							color=0x61dfff)
-	embed.set_footer(text="Owned primojem: " + str(res[0]))
-
+	embed.set_footer(text="Primojems: " + str(res[0]) + "  |  " + "Jemdust: " + str(res[1]))
+	
 	# Add embed field for each role
-	embed.add_field(name="Abyss", value="Colour = gray", inline=False)
-	embed.add_field(name="Anemo", value="Colour = teal", inline=False)
-	embed.add_field(name="Cryo",
-					value="Colour = whitish blue",
-					inline=False)
-	embed.add_field(name="Dendro", value="Colour = green", inline=False)
-	embed.add_field(name="Electro", value="Colour = magenta", inline=False)
-	embed.add_field(name="Geo", value="Colour = yellow", inline=False)
-	embed.add_field(name="Hydro", value="Colour = blue", inline=False)
-	embed.add_field(name="Pyro", value="Colour = red", inline=False)
+	if option in ["primojem", "colour", "role", "1"]:
+		embed.add_field(name="Abyss", value="Colour = gray", inline=False)
+		embed.add_field(name="Anemo", value="Colour = teal", inline=False)
+		embed.add_field(name="Cryo", value="Colour = whitish blue", inline=False)
+		embed.add_field(name="Dendro", value="Colour = green", inline=False)
+		embed.add_field(name="Electro", value="Colour = magenta", inline=False)
+		embed.add_field(name="Geo", value="Colour = yellow", inline=False)
+		embed.add_field(name="Hydro", value="Colour = blue", inline=False)
+		embed.add_field(name="Pyro", value="Colour = red", inline=False)
+	elif option in ["jemdust", "icon", "role icon", "2"]:
+		embed.add_field(name="5 Star Role Icons", value=", ".join(gacha_pool["5"]), inline=False)
+		embed.add_field(name="4 Star Role Icons", value=", ".join(gacha_pool["4"]), inline=False)
 
 	await interaction.response.send_message(embed=embed)
 
 @tree.command(name="buy",
 				description="Buy item from shop.",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def buy_item(interaction, item_name: str, duration: str):
-	if duration.lower() == "permanent":
-		duration = 999
+async def buy_item(interaction, item_name: str, duration: str=None):
+	if duration != None and duration.lower() == "permanent":
+		duration = 5000
 
 	booster = helper.is_booster(interaction.user)
 	res = gambling.buy_role(interaction.user.id, item_name, duration,
@@ -358,9 +376,12 @@ async def buy_item(interaction, item_name: str, duration: str):
 
 	if res != None:
 		await interaction.response.send_message(res, ephemeral=True)
+	elif duration == None or duration == 5000:
+		await interaction.response.send_message(
+			"Successfully bought " + item_name.title() + " role. Use **/equip** to use the role.")
 	else:
 		await interaction.response.send_message(
-			"Successfully bought " + item_name.lower() + " for " +
+			"Successfully bought " + item_name.title() + " role for " +
 			str(duration) + " days. Use **/equip** to use the role.")
 
 @tree.command(name="equip",
@@ -613,6 +634,47 @@ async def hangman_guess(interaction, guess: str):
 		embed.add_field(name="Lives: ", value=res[1][3], inline=True)
 		embed.add_field(name=res[1][4], value="", inline=True)
 		await interaction.response.send_message(embed=embed)
+
+################### GACHA ####################################################
+
+@tree.command(name="gacha",
+				description="Gacha for role icons. Max 10 pulls per multi.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def role_icon_gacha(interaction, pull_amount: int):
+	booster = helper.is_booster(interaction.user)
+	res = gambling.gacha(interaction.user.id, pull_amount, booster)
+
+	if isinstance(res, str):
+		await interaction.response.send_message(res, ephemeral=True)
+		return
+
+	embed = discord.Embed(title=interaction.user.name + "'s Gacha",
+							color=0x61dfff)
+	embed.set_thumbnail(url=interaction.user.avatar.url)
+	
+	# Add embed field for each gacha result item
+	for item in res:
+		embed.add_field(name=item[0], value=item[1], inline=False)
+
+	await interaction.response.send_message(embed=embed)
+
+@tree.command(name="salvage",
+				description="Salvage a role icon for jemdust",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def salvage_role(interaction, role: str):
+	res = gambling.scrap_role_icon(interaction.user.id, role)
+
+	if res == None:
+		await interaction.response.send_message("Invalid or you do not own this role.", ephemeral=True)
+	else:
+		# Unequip the salvaged role
+		role_obj = discord.utils.get(interaction.guild.roles, name=role.title())
+		if role_obj in interaction.user.roles:
+			await interaction.user.remove_roles(role_obj, reason="Salvaged role.")
+		
+		await interaction.response.send_message("Successfully salvaged " + role.title() + " role for " + 
+													str(res) + " " + JEMDUST_EMOTE)
+
 
 # keep_alive()
 # token = os.environ.get("TOKEN")
