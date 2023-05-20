@@ -19,7 +19,7 @@ import minigame
 ############################ CONSTANTS ###################################
 VERIFICATION_CHANNEL = 822423063697948693
 GENSOC_SERVER = 822411164846653490 # Actual gensoc server
-GENSOC_SERVER = 962970271545982986 # Test server
+# GENSOC_SERVER = 962970271545982986 # Test server
 WELCOME_CHANNEL = 822411164846653492
 WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265>."
 PRIMOJEM_EMOTE = "<:Primojem:1108620629902626816>"
@@ -313,10 +313,11 @@ async def inventory(interaction):
 		embed.add_field(name=r[0].capitalize(),
 						value=r[1],
 						inline=False)
-
-	embed.add_field(name="Role Icons",
-						value=res[3],
-						inline=False)
+	
+	if len(res[3]) != 0:
+		embed.add_field(name="Role Icons",
+							value=res[3],
+							inline=False)
 
 	await interaction.response.send_message(embed=embed)
 
@@ -337,10 +338,12 @@ async def view_shop(interaction, option: str="primojem"):
 		description = ("7 days: " + str(price[0]) + " " + PRIMOJEM_EMOTE + "  |  " +
 			"30 day: " + str(price[1]) + " " + PRIMOJEM_EMOTE + "  |  " +
 			"Permanent: " + str(price[2]) + " " + PRIMOJEM_EMOTE + "\n" +
-			"1 pull: " + str(price[3]) + " " + PRIMOJEM_EMOTE + "\n\n")
+			"1 pull: " + str(price[3]) + " " + PRIMOJEM_EMOTE + "\n" + 
+			"Use **/shop jemdust** to see the role icons shop.\n" + 
+			"Use **/gacha** to pull for role icons.\n\n")
 	elif option in ["jemdust", "icon", "role icon", "2"]:
 		description = ("5 star role icon: 180 " + JEMDUST_EMOTE + "  |  " +
-			"4 star role icon: 34 " + JEMDUST_EMOTE + "\n\n")
+			"4 star role icon: 34 " + JEMDUST_EMOTE + "\n")
 
 	embed = discord.Embed(title="Shop",
 							description=description,
@@ -658,6 +661,7 @@ async def role_icon_gacha(interaction, pull_amount: int):
 
 	await interaction.response.send_message(embed=embed)
 
+'''
 @tree.command(name="salvage",
 				description="Salvage a role icon for jemdust",
 				guild=discord.Object(id=GENSOC_SERVER))
@@ -674,6 +678,8 @@ async def salvage_role(interaction, role: str):
 		
 		await interaction.response.send_message("Successfully salvaged " + role.title() + " role for " + 
 													str(res) + " " + JEMDUST_EMOTE)
+'''
+
 
 
 # keep_alive()

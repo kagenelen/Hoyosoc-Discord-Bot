@@ -401,7 +401,7 @@ def gacha(discord_id, pull_amount, is_booster):
 	user_entry = data.get(discord_id)
 	
 	if pull_amount < 1 or pull_amount > 10:
-		return "Invalid pull amount."
+		return "Invalid pull amount. Valid range is 1 - 10."
 		
 	# Determine cost and apply server booster discount if applicable
 	price = pull_amount * 160
