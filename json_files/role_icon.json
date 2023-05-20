@@ -1,19 +1,18 @@
 {
 	"5": ["Ganyu, Ayaka, Shenhe",
-		"Hu Tao", "Yoimiya", "Diluc",
-		"Kazuha", "Xiao", "Wanderer",
+		"Hutao", "Yoimiya", "Diluc",
+		"Kazuha", "Venti", "Wanderer",
 		"Zhongli", "Albedo", "Itto",
 		"Raiden", "Yae", "Keqing",
 		"Nahida", "Alhaitham", "Tighnari",
 		"Kokomi", "Ayato", "Yelan"
 	],
-	"4": ["Kaeya", 
+	"4": ["Mika", 
 		"Xiangling", "Bennett",
 		"Heizou", "Faruzan",
-		"Noelle", "Gorou",
+		"Noelle",
 		"Fischl",
-		"Kaveh", "Kirara",
-		"Xingqiu"
+		"Kaveh"
 	],
 	"3": ["Debate Club", "Black Tassel", "Bloodtainted Greatsword", "Cool Steel", "Harbinger of Dawn", "Magic Guide", "Raven Bow", "Slingshot", "Thrilling Tales of Dragon Slayers"]
 }

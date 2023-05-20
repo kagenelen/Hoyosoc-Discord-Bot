@@ -313,10 +313,11 @@ async def inventory(interaction):
 		embed.add_field(name=r[0].capitalize(),
 						value=r[1],
 						inline=False)
-
-	embed.add_field(name="Role Icons",
-						value=res[3],
-						inline=False)
+	
+	if len(res[3]) != 0:
+		embed.add_field(name="Role Icons",
+							value=res[3],
+							inline=False)
 
 	await interaction.response.send_message(embed=embed)
 
@@ -337,10 +338,12 @@ async def view_shop(interaction, option: str="primojem"):
 		description = ("7 days: " + str(price[0]) + " " + PRIMOJEM_EMOTE + "  |  " +
 			"30 day: " + str(price[1]) + " " + PRIMOJEM_EMOTE + "  |  " +
 			"Permanent: " + str(price[2]) + " " + PRIMOJEM_EMOTE + "\n" +
-			"1 pull: " + str(price[3]) + " " + PRIMOJEM_EMOTE + "\n\n")
+			"1 pull: " + str(price[3]) + " " + PRIMOJEM_EMOTE + "\n" + 
+			"Use **/shop jemdust** to see the role icons shop.\n" + 
+			"Use **/gacha** to pull for role icons.\n\n")
 	elif option in ["jemdust", "icon", "role icon", "2"]:
 		description = ("5 star role icon: 180 " + JEMDUST_EMOTE + "  |  " +
-			"4 star role icon: 34 " + JEMDUST_EMOTE + "\n\n")
+			"4 star role icon: 34 " + JEMDUST_EMOTE + "\n")
 
 	embed = discord.Embed(title="Shop",
 							description=description,
@@ -658,6 +661,7 @@ async def role_icon_gacha(interaction, pull_amount: int):
 
 	await interaction.response.send_message(embed=embed)
 
+'''
 @tree.command(name="salvage",
 				description="Salvage a role icon for jemdust",
 				guild=discord.Object(id=GENSOC_SERVER))
@@ -674,6 +678,8 @@ async def salvage_role(interaction, role: str):
 		
 		await interaction.response.send_message("Successfully salvaged " + role.title() + " role for " + 
 													str(res) + " " + JEMDUST_EMOTE)
+'''
+
 
 
 # keep_alive()

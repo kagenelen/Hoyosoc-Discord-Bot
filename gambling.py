@@ -24,9 +24,9 @@ PRIZE_POOL = 500
 EVENT_ATTENDANCE = 1000
 BOOSTER_DISCOUNT = 0.5
 STREAK_MULTIPLIER = 5
-FIVE_STAR_RARITY = 1
-FOUR_STAR_RARITY = 5
-THREE_STAR_RARITY = 94
+FIVE_STAR_RARITY = 6
+FOUR_STAR_RARITY = 50
+THREE_STAR_RARITY = 944
 FIVE_STAR_DUP = 25
 FOUR_STAR_DUP = 5
 THREE_STAR_DUP = 1
@@ -330,11 +330,11 @@ def buy_role(discord_id, role, duration, is_booster):
 	jemdust_price = 0
 	if role in ["geo", "anemo", "electro", "pyro", "hydro", "cryo", "abyss", "dendro"]:
 		if duration == 30:
-			price = ONE_MONTH_ROLE
+			primojem_price = ONE_MONTH_ROLE
 		elif duration == 7:
-			price = ONE_WEEK_ROLE
+			primojem_price = ONE_WEEK_ROLE
 		elif duration == 5000:
-			price = PERMANENT_ROLE
+			primojem_price = PERMANENT_ROLE
 		elif duration == None:
 			return "Please specify a duration for colour roles."
 		else:
@@ -367,7 +367,7 @@ def buy_role(discord_id, role, duration, is_booster):
 	else:
 		# Duration not applicable for role icon
 		user_entry["role_icon"].append(role.title())
-
+		
 	user_entry["jemdust"] += -1 * jemdust_price
 	helper.write_file("users.json", data)
 	update_user_currency(discord_id, -1 * primojem_price)
@@ -401,7 +401,7 @@ def gacha(discord_id, pull_amount, is_booster):
 	user_entry = data.get(discord_id)
 	
 	if pull_amount < 1 or pull_amount > 10:
-		return "Invalid pull amount."
+		return "Invalid pull amount. Valid range is 1 - 10."
 		
 	# Determine cost and apply server booster discount if applicable
 	price = pull_amount * 160
