@@ -330,11 +330,11 @@ def buy_role(discord_id, role, duration, is_booster):
 	jemdust_price = 0
 	if role in ["geo", "anemo", "electro", "pyro", "hydro", "cryo", "abyss", "dendro"]:
 		if duration == 30:
-			price = ONE_MONTH_ROLE
+			primojem_price = ONE_MONTH_ROLE
 		elif duration == 7:
-			price = ONE_WEEK_ROLE
+			primojem_price = ONE_WEEK_ROLE
 		elif duration == 5000:
-			price = PERMANENT_ROLE
+			primojem_price = PERMANENT_ROLE
 		elif duration == None:
 			return "Please specify a duration for colour roles."
 		else:
@@ -367,7 +367,7 @@ def buy_role(discord_id, role, duration, is_booster):
 	else:
 		# Duration not applicable for role icon
 		user_entry["role_icon"].append(role.title())
-
+		
 	user_entry["jemdust"] += -1 * jemdust_price
 	helper.write_file("users.json", data)
 	update_user_currency(discord_id, -1 * primojem_price)
