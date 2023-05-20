@@ -1,17 +1,29 @@
 {
     "318337790708547588": {
-        "currency": 45152,
-        "next_checkin": 1684454400,
+        "currency": 40087,
+        "next_checkin": 1684627200,
         "role": {},
-        "checkin_streak": 52,
-        "uids": []
+        "checkin_streak": 54,
+        "uids": [],
+        "role_icon": [
+            "Heizou",
+            "Mika"
+        ],
+        "jemdust": 5
     },
     "280905494091005954": {
-        "currency": 11185,
+        "currency": 145,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 1,
-        "uids": []
+        "uids": [],
+        "role_icon": [
+            "Noelle",
+            "Fischl",
+            "Kokomi",
+            "Xiangling"
+        ],
+        "jemdust": 65
     },
     "302346316959449088": {
         "currency": 1000,
@@ -20,23 +32,29 @@
         "checkin_streak": 0,
         "uids": [
             "841313078"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "501628004620042241": {
-        "currency": 25002,
-        "next_checkin": 1684368014,
-        "role": {},
-        "checkin_streak": 1,
-        "uids": [
-            "608604687"
-        ]
-    },
-    "305564624227401728": {
-        "currency": 2680,
-        "next_checkin": 1684368033,
+        "currency": 25152,
+        "next_checkin": 1684627242,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [
+            "608604687"
+        ],
+        "role_icon": [],
+        "jemdust": 0
+    },
+    "305564624227401728": {
+        "currency": 2830,
+        "next_checkin": 1684540837,
+        "role": {},
+        "checkin_streak": 0,
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "530215840780648448": {
         "currency": 2780,
@@ -45,21 +63,27 @@
         "checkin_streak": 8,
         "uids": [
             "800006781"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "437834249744285708": {
         "currency": 2875,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "318723992905056259": {
         "currency": 10610,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "368630963330220032": {
         "currency": 5723,
@@ -68,34 +92,49 @@
         "checkin_streak": 0,
         "uids": [
             "809958756"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "1074318389708861460": {
-        "currency": 13832,
-        "next_checkin": 1684368007,
+        "currency": 16002,
+        "next_checkin": 1684627237,
         "role": {
             "hydro": 2145919483,
-            "geo": 2145919483,
-            "anemo": 2145919483
+            "geo": 2145919483
         },
-        "checkin_streak": 36,
+        "checkin_streak": 39,
         "uids": [
             "811233287",
             "111032240"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "348414134636904452": {
-        "currency": 15058,
-        "next_checkin": 1684368042,
+        "currency": 4343,
+        "next_checkin": 1684540853,
         "role": {
             "hydro": 2145919483,
             "abyss": 2145919483
         },
-        "checkin_streak": 0,
+        "checkin_streak": 2,
         "uids": [
             "613636035",
             "823913674"
-        ]
+        ],
+        "role_icon": [
+            "Mika",
+            "Heizou",
+            "Bennett",
+            "Noelle",
+            "Xiangling",
+            "Tighnari",
+            "Wanderer",
+            "Fischl",
+            "Hutao"
+        ],
+        "jemdust": 21
     },
     "294049450882629632": {
         "currency": 1305,
@@ -104,27 +143,38 @@
         "checkin_streak": 1,
         "uids": [
             "809477946"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "937000926835773460": {
-        "currency": 0,
-        "next_checkin": 1684368004,
+        "currency": 150,
+        "next_checkin": 1684540856,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "384949403452047362": {
-        "currency": 7583,
-        "next_checkin": 1684454433,
+        "currency": 1078,
+        "next_checkin": 1684627243,
         "role": {
             "pyro": 2145919483
         },
-        "checkin_streak": 6,
-        "uids": []
+        "checkin_streak": 8,
+        "uids": [],
+        "role_icon": [
+            "Xiangling",
+            "Bennett",
+            "Kaveh",
+            "Ayato"
+        ],
+        "jemdust": 123
     },
     "308020379744600064": {
-        "currency": 30396,
-        "next_checkin": 1684454451,
+        "currency": 29151,
+        "next_checkin": 1684627205,
         "role": {
             "abyss": 2145919483,
             "anemo": 2145919483,
@@ -135,20 +185,27 @@
             "hydro": 2145919483,
             "pyro": 2145919483
         },
-        "checkin_streak": 4,
+        "checkin_streak": 6,
         "uids": [
             "826275883",
             "653145544"
-        ]
+        ],
+        "role_icon": [
+            "Xiangling",
+            "Kokomi"
+        ],
+        "jemdust": 18
     },
     "852095686932824087": {
-        "currency": 6665,
-        "next_checkin": 1684454444,
+        "currency": 6815,
+        "next_checkin": 1684627258,
         "role": {},
         "checkin_streak": 0,
         "uids": [
             "629106473"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "512531622558564362": {
         "currency": 2650,
@@ -157,45 +214,60 @@
         "checkin_streak": 0,
         "uids": [
             "827803374"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "437944593992908800": {
         "currency": 2800,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "620206680956731392": {
         "currency": 2650,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "838329161474506782": {
         "currency": 2800,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "269324017436065795": {
-        "currency": 6465,
-        "next_checkin": 1684368001,
+        "currency": 380,
+        "next_checkin": 1684540832,
         "role": {},
-        "checkin_streak": 0,
+        "checkin_streak": 2,
         "uids": [
             "804899527",
             "603433178"
-        ]
+        ],
+        "role_icon": [
+            "Albedo",
+            "Faruzan"
+        ],
+        "jemdust": 38
     },
     "166807404716097537": {
         "currency": 4500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "414263860103610369": {
         "currency": 2650,
@@ -204,7 +276,9 @@
         "checkin_streak": 0,
         "uids": [
             "848630783"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "611856491506434068": {
         "currency": 5778,
@@ -213,7 +287,9 @@
         "checkin_streak": 1,
         "uids": [
             "816760254"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "153435291355447296": {
         "currency": 0,
@@ -222,7 +298,9 @@
         "checkin_streak": 0,
         "uids": [
             "800006781"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "986446621468405852": {
         "currency": 0,
@@ -231,7 +309,9 @@
         "checkin_streak": 1,
         "uids": [
             "Nice try."
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "345546240949354496": {
         "currency": 0,
@@ -240,7 +320,9 @@
         "checkin_streak": 0,
         "uids": [
             "817026874"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "324446494285496322": {
         "currency": 0,
@@ -249,7 +331,9 @@
         "checkin_streak": 0,
         "uids": [
             "808483603"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "247608057079529473": {
         "currency": 0,
@@ -258,7 +342,9 @@
         "checkin_streak": 0,
         "uids": [
             "812636800"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "487183699360612353": {
         "currency": 0,
@@ -267,7 +353,9 @@
         "checkin_streak": 0,
         "uids": [
             "810195192"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "494069211568799774": {
         "currency": 0,
@@ -276,7 +364,9 @@
         "checkin_streak": 0,
         "uids": [
             "601062937"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "698055404873187478": {
         "currency": 0,
@@ -285,7 +375,9 @@
         "checkin_streak": 0,
         "uids": [
             "813972477"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "626677030641205259": {
         "currency": 0,
@@ -294,7 +386,9 @@
         "checkin_streak": 0,
         "uids": [
             "623774990"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "529608818556928001": {
         "currency": 0,
@@ -303,7 +397,9 @@
         "checkin_streak": 0,
         "uids": [
             "805485805"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "273650598845349888": {
         "currency": 0,
@@ -312,7 +408,9 @@
         "checkin_streak": 0,
         "uids": [
             "807433968"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "485407753607577600": {
         "currency": 0,
@@ -322,7 +420,9 @@
         "uids": [
             "823663719",
             "627374037"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "308533285472960513": {
         "currency": 0,
@@ -331,7 +431,9 @@
         "checkin_streak": 0,
         "uids": [
             "603557399"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "331604660039188481": {
         "currency": 0,
@@ -340,7 +442,9 @@
         "checkin_streak": 0,
         "uids": [
             "841843678"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "487012233705160764": {
         "currency": 0,
@@ -351,7 +455,9 @@
             "827169840",
             "750978698",
             "600686982"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "336774405986451457": {
         "currency": 0,
@@ -360,7 +466,9 @@
         "checkin_streak": 0,
         "uids": [
             "814227011"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "508860948929314816": {
         "currency": 0,
@@ -369,7 +477,9 @@
         "checkin_streak": 0,
         "uids": [
             "625749283"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "538697533556391946": {
         "currency": 0,
@@ -378,7 +488,9 @@
         "checkin_streak": 0,
         "uids": [
             "649300303"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "375872817197088769": {
         "currency": 0,
@@ -387,7 +499,9 @@
         "checkin_streak": 0,
         "uids": [
             "804011828"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "248074461868326913": {
         "currency": 0,
@@ -396,7 +510,9 @@
         "checkin_streak": 0,
         "uids": [
             "800198346"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "771899922370265118": {
         "currency": 3500,
@@ -405,7 +521,9 @@
         "checkin_streak": 0,
         "uids": [
             "813171584"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "450611984371810319": {
         "currency": 0,
@@ -414,7 +532,9 @@
         "checkin_streak": 0,
         "uids": [
             "807570252"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "273376678598934528": {
         "currency": 0,
@@ -423,7 +543,9 @@
         "checkin_streak": 0,
         "uids": [
             "800533342"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "437177952598491136": {
         "currency": 0,
@@ -432,7 +554,9 @@
         "checkin_streak": 0,
         "uids": [
             "813242321"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "309127419720105985": {
         "currency": 0,
@@ -441,7 +565,9 @@
         "checkin_streak": 0,
         "uids": [
             "863678622"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "294797591231594497": {
         "currency": 0,
@@ -450,7 +576,9 @@
         "checkin_streak": 0,
         "uids": [
             "804902836"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "202753491708542976": {
         "currency": 0,
@@ -459,7 +587,9 @@
         "checkin_streak": 0,
         "uids": [
             "806729275"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "861905983085609021": {
         "currency": 6500,
@@ -468,7 +598,9 @@
         "checkin_streak": 0,
         "uids": [
             "623496073"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "374113453184647169": {
         "currency": 0,
@@ -477,7 +609,9 @@
         "checkin_streak": 0,
         "uids": [
             "805784822"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "726126702677458967": {
         "currency": 0,
@@ -486,7 +620,9 @@
         "checkin_streak": 0,
         "uids": [
             "903519604"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "653982566214402058": {
         "currency": 0,
@@ -495,7 +631,9 @@
         "checkin_streak": 0,
         "uids": [
             "800187397"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "355597627150041089": {
         "currency": 0,
@@ -504,7 +642,9 @@
         "checkin_streak": 0,
         "uids": [
             "613489149"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "340069159226310656": {
         "currency": 0,
@@ -513,7 +653,9 @@
         "checkin_streak": 0,
         "uids": [
             "801502169"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "438896487812825098": {
         "currency": 0,
@@ -522,7 +664,9 @@
         "checkin_streak": 0,
         "uids": [
             "812257946"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "392883103502434304": {
         "currency": 0,
@@ -531,7 +675,9 @@
         "checkin_streak": 0,
         "uids": [
             "635341744"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "263627234227650561": {
         "currency": 0,
@@ -540,7 +686,9 @@
         "checkin_streak": 0,
         "uids": [
             "608120615"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "218671529905356803": {
         "currency": 0,
@@ -549,7 +697,9 @@
         "checkin_streak": 0,
         "uids": [
             "820299479"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "377468166386876417": {
         "currency": 2650,
@@ -558,7 +708,9 @@
         "checkin_streak": 0,
         "uids": [
             "612551711"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "760794317542785044": {
         "currency": 0,
@@ -567,7 +719,9 @@
         "checkin_streak": 0,
         "uids": [
             "643043973"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "141910518314041344": {
         "currency": 0,
@@ -576,7 +730,9 @@
         "checkin_streak": 0,
         "uids": [
             "633173825"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "296575022200389632": {
         "currency": 0,
@@ -585,7 +741,9 @@
         "checkin_streak": 0,
         "uids": [
             "843230839"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "706155929929908295": {
         "currency": 0,
@@ -594,7 +752,9 @@
         "checkin_streak": 0,
         "uids": [
             "600942236"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "202414892454641666": {
         "currency": 0,
@@ -603,7 +763,9 @@
         "checkin_streak": 0,
         "uids": [
             "601900887"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "554939269756616705": {
         "currency": 0,
@@ -612,7 +774,9 @@
         "checkin_streak": 0,
         "uids": [
             "820809445"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "586422043969454124": {
         "currency": 0,
@@ -621,7 +785,9 @@
         "checkin_streak": 0,
         "uids": [
             "800127526"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "159886926248280064": {
         "currency": 0,
@@ -630,7 +796,9 @@
         "checkin_streak": 0,
         "uids": [
             "609493647"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "548015866155892746": {
         "currency": 0,
@@ -639,7 +807,9 @@
         "checkin_streak": 0,
         "uids": [
             "607490648"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "306017902207696898": {
         "currency": 0,
@@ -648,7 +818,9 @@
         "checkin_streak": 0,
         "uids": [
             "800463073"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "204908621719535616": {
         "currency": 0,
@@ -657,7 +829,9 @@
         "checkin_streak": 0,
         "uids": [
             "803373295"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "252334506210492417": {
         "currency": 0,
@@ -666,7 +840,9 @@
         "checkin_streak": 0,
         "uids": [
             "850782333"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "650345469175660559": {
         "currency": 0,
@@ -675,7 +851,9 @@
         "checkin_streak": 0,
         "uids": [
             "802191015"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "940795297129447455": {
         "currency": 0,
@@ -684,7 +862,9 @@
         "checkin_streak": 0,
         "uids": [
             "140385433"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "303058183222591488": {
         "currency": 0,
@@ -694,7 +874,9 @@
         "uids": [
             "738807606",
             "812732543"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "561139034311753738": {
         "currency": 0,
@@ -703,7 +885,9 @@
         "checkin_streak": 0,
         "uids": [
             "106857692"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "427629098349625354": {
         "currency": 0,
@@ -712,7 +896,9 @@
         "checkin_streak": 0,
         "uids": [
             "813118371"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "199802136840634368": {
         "currency": 0,
@@ -721,7 +907,9 @@
         "checkin_streak": 0,
         "uids": [
             "615654001"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "466462045018259476": {
         "currency": 0,
@@ -730,7 +918,9 @@
         "checkin_streak": 0,
         "uids": [
             "820534154"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "448384664315363330": {
         "currency": 0,
@@ -739,7 +929,9 @@
         "checkin_streak": 0,
         "uids": [
             "805579038"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "221501979317239808": {
         "currency": 0,
@@ -748,7 +940,9 @@
         "checkin_streak": 0,
         "uids": [
             "819689868"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "901065077715796028": {
         "currency": 0,
@@ -757,7 +951,9 @@
         "checkin_streak": 0,
         "uids": [
             "803035323"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "778065743807119361": {
         "currency": 0,
@@ -766,7 +962,9 @@
         "checkin_streak": 0,
         "uids": [
             "814479936"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "759964941439467544": {
         "currency": 0,
@@ -775,7 +973,9 @@
         "checkin_streak": 0,
         "uids": [
             "819111037"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "690032584281161730": {
         "currency": 0,
@@ -784,7 +984,9 @@
         "checkin_streak": 0,
         "uids": [
             "817678878"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "759618068355088445": {
         "currency": 0,
@@ -793,7 +995,9 @@
         "checkin_streak": 0,
         "uids": [
             "634910386"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "762445557960146997": {
         "currency": 0,
@@ -802,7 +1006,9 @@
         "checkin_streak": 0,
         "uids": [
             "615851420"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "314739379618709506": {
         "currency": 0,
@@ -811,7 +1017,9 @@
         "checkin_streak": 0,
         "uids": [
             "600411223"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "425266752474185738": {
         "currency": 0,
@@ -820,7 +1028,9 @@
         "checkin_streak": 0,
         "uids": [
             "807636705"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "371740104126889995": {
         "currency": 0,
@@ -829,7 +1039,9 @@
         "checkin_streak": 0,
         "uids": [
             "800207057"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "524334947885121551": {
         "currency": 0,
@@ -839,7 +1051,9 @@
         "uids": [
             "834322434",
             "603568406"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "209915926886219788": {
         "currency": 0,
@@ -848,7 +1062,9 @@
         "checkin_streak": 0,
         "uids": [
             "800336298"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "795213735203307520": {
         "currency": 0,
@@ -857,7 +1073,9 @@
         "checkin_streak": 0,
         "uids": [
             "729635357"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "410325825683193866": {
         "currency": 3500,
@@ -866,7 +1084,9 @@
         "checkin_streak": 0,
         "uids": [
             "833628756"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "330876154246594610": {
         "currency": 0,
@@ -875,7 +1095,9 @@
         "checkin_streak": 0,
         "uids": [
             "615198002"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "388167280334471168": {
         "currency": 0,
@@ -884,7 +1106,9 @@
         "checkin_streak": 0,
         "uids": [
             "820433204"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "212853542409601024": {
         "currency": 0,
@@ -894,7 +1118,9 @@
         "uids": [
             "600850239",
             "852536197"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "889127621730906173": {
         "currency": 0,
@@ -903,7 +1129,9 @@
         "checkin_streak": 0,
         "uids": [
             "608577066"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "712987369820913685": {
         "currency": 0,
@@ -912,7 +1140,9 @@
         "checkin_streak": 0,
         "uids": [
             "849222449"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "257071274512220175": {
         "currency": 0,
@@ -922,7 +1152,9 @@
         "uids": [
             "803319339",
             "644717738"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "491070418497830924": {
         "currency": 0,
@@ -931,7 +1163,9 @@
         "checkin_streak": 0,
         "uids": [
             "606008508"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "533201972556333067": {
         "currency": 0,
@@ -941,7 +1175,9 @@
         "uids": [
             "725246275",
             "641117305"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "302610719403278336": {
         "currency": 0,
@@ -950,7 +1186,9 @@
         "checkin_streak": 0,
         "uids": [
             "807866618"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "310399907561340930": {
         "currency": 0,
@@ -959,7 +1197,9 @@
         "checkin_streak": 0,
         "uids": [
             "821132248"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "209898273811595274": {
         "currency": 0,
@@ -968,7 +1208,9 @@
         "checkin_streak": 0,
         "uids": [
             "811176226"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "612219832233885706": {
         "currency": 0,
@@ -977,7 +1219,9 @@
         "checkin_streak": 0,
         "uids": [
             "835056721"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "81431674457436160": {
         "currency": 0,
@@ -986,7 +1230,9 @@
         "checkin_streak": 0,
         "uids": [
             "645645506"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "314927201243889674": {
         "currency": 0,
@@ -995,7 +1241,9 @@
         "checkin_streak": 0,
         "uids": [
             "814166066"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "436448411563196416": {
         "currency": 0,
@@ -1005,7 +1253,9 @@
         "uids": [
             "633158919",
             "854012653"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "198326789120983041": {
         "currency": 0,
@@ -1014,7 +1264,9 @@
         "checkin_streak": 0,
         "uids": [
             "805016880"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "611887355069988865": {
         "currency": 0,
@@ -1023,7 +1275,9 @@
         "checkin_streak": 0,
         "uids": [
             "806526626"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "525652777775529994": {
         "currency": 0,
@@ -1032,7 +1286,9 @@
         "checkin_streak": 0,
         "uids": [
             "849548376"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "702396989417193482": {
         "currency": 3500,
@@ -1041,7 +1297,9 @@
         "checkin_streak": 0,
         "uids": [
             "819882725"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "120490489811173376": {
         "currency": 0,
@@ -1050,7 +1308,9 @@
         "checkin_streak": 0,
         "uids": [
             "841581120"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "322702816873283584": {
         "currency": 0,
@@ -1059,7 +1319,9 @@
         "checkin_streak": 0,
         "uids": [
             "800681181"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "290103035085062144": {
         "currency": 0,
@@ -1068,7 +1330,9 @@
         "checkin_streak": 0,
         "uids": [
             "802717923"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "293549117953540097": {
         "currency": 0,
@@ -1077,7 +1341,9 @@
         "checkin_streak": 0,
         "uids": [
             "731473414"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "344031878652624897": {
         "currency": 0,
@@ -1086,7 +1352,9 @@
         "checkin_streak": 0,
         "uids": [
             "832331584"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "318262928245522432": {
         "currency": 0,
@@ -1095,7 +1363,9 @@
         "checkin_streak": 0,
         "uids": [
             "803117598"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "691460238615904348": {
         "currency": 0,
@@ -1104,7 +1374,9 @@
         "checkin_streak": 0,
         "uids": [
             "818840577"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "297903628084314144": {
         "currency": 0,
@@ -1113,7 +1385,9 @@
         "checkin_streak": 0,
         "uids": [
             "802445954"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "129566212181983232": {
         "currency": 0,
@@ -1122,7 +1396,9 @@
         "checkin_streak": 0,
         "uids": [
             "822829447"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "603535090966069257": {
         "currency": 0,
@@ -1132,7 +1408,9 @@
         "uids": [
             "821623225",
             "635761497"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "338319217143316480": {
         "currency": 0,
@@ -1141,7 +1419,9 @@
         "checkin_streak": 0,
         "uids": [
             "801174975"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "181163176191197184": {
         "currency": 0,
@@ -1150,7 +1430,9 @@
         "checkin_streak": 0,
         "uids": [
             "801668886"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "461782690321006602": {
         "currency": 0,
@@ -1159,7 +1441,9 @@
         "checkin_streak": 0,
         "uids": [
             "605404785"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "630578256470474763": {
         "currency": 0,
@@ -1168,7 +1452,9 @@
         "checkin_streak": 0,
         "uids": [
             "605386359"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "810708376508956742": {
         "currency": 0,
@@ -1177,7 +1463,9 @@
         "checkin_streak": 0,
         "uids": [
             "823804875"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "419454258098995202": {
         "currency": 0,
@@ -1186,7 +1474,9 @@
         "checkin_streak": 0,
         "uids": [
             "802988248"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "144705466025508864": {
         "currency": 0,
@@ -1195,7 +1485,9 @@
         "checkin_streak": 0,
         "uids": [
             "600446170"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "162691613179510785": {
         "currency": 0,
@@ -1204,7 +1496,9 @@
         "checkin_streak": 0,
         "uids": [
             "607643654"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "287041936248930305": {
         "currency": 0,
@@ -1213,7 +1507,9 @@
         "checkin_streak": 0,
         "uids": [
             "617855742"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "234649449727655937": {
         "currency": 0,
@@ -1222,7 +1518,9 @@
         "checkin_streak": 0,
         "uids": [
             "606618089"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "304237385196240896": {
         "currency": 0,
@@ -1231,7 +1529,9 @@
         "checkin_streak": 0,
         "uids": [
             "621502731"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "250147040284246016": {
         "currency": 0,
@@ -1240,7 +1540,9 @@
         "checkin_streak": 0,
         "uids": [
             "811750410"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "154497707912724480": {
         "currency": 0,
@@ -1249,7 +1551,9 @@
         "checkin_streak": 0,
         "uids": [
             "820571383"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "814332543535939614": {
         "currency": 0,
@@ -1258,7 +1562,9 @@
         "checkin_streak": 0,
         "uids": [
             "821979526"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "172909657860341760": {
         "currency": 0,
@@ -1267,7 +1573,9 @@
         "checkin_streak": 0,
         "uids": [
             "601860688"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "228913322076930049": {
         "currency": 0,
@@ -1276,7 +1584,9 @@
         "checkin_streak": 0,
         "uids": [
             "831372972"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "266065004929875978": {
         "currency": 0,
@@ -1285,7 +1595,9 @@
         "checkin_streak": 0,
         "uids": [
             "808966851"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "202673851094663168": {
         "currency": 0,
@@ -1294,7 +1606,9 @@
         "checkin_streak": 0,
         "uids": [
             "807824033"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "344984109833256961": {
         "currency": 0,
@@ -1303,7 +1617,9 @@
         "checkin_streak": 0,
         "uids": [
             "821210277"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "397392336868343812": {
         "currency": 0,
@@ -1312,7 +1628,9 @@
         "checkin_streak": 0,
         "uids": [
             "800181937"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "210596276310376449": {
         "currency": 0,
@@ -1321,7 +1639,9 @@
         "checkin_streak": 0,
         "uids": [
             "816311927"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "192189955643015168": {
         "currency": 0,
@@ -1331,7 +1651,9 @@
         "uids": [
             "619057648",
             "814212210"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "213924329019277312": {
         "currency": 0,
@@ -1340,7 +1662,9 @@
         "checkin_streak": 0,
         "uids": [
             "807169436"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "283165051051835392": {
         "currency": 0,
@@ -1349,7 +1673,9 @@
         "checkin_streak": 0,
         "uids": [
             "601759519"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "267224583302676480": {
         "currency": 0,
@@ -1358,7 +1684,9 @@
         "checkin_streak": 0,
         "uids": [
             "813332463"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "401168410701987845": {
         "currency": 0,
@@ -1367,7 +1695,9 @@
         "checkin_streak": 0,
         "uids": [
             "819907691"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "155903967057018880": {
         "currency": 0,
@@ -1376,7 +1706,9 @@
         "checkin_streak": 0,
         "uids": [
             "800293779"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "239298105495912449": {
         "currency": 0,
@@ -1385,7 +1717,9 @@
         "checkin_streak": 0,
         "uids": [
             "614022643"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "183458242070839296": {
         "currency": 0,
@@ -1394,7 +1728,9 @@
         "checkin_streak": 0,
         "uids": [
             "601784835"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "316212624813588482": {
         "currency": 0,
@@ -1403,7 +1739,9 @@
         "checkin_streak": 0,
         "uids": [
             "610428455"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "354949163659689984": {
         "currency": 0,
@@ -1412,7 +1750,9 @@
         "checkin_streak": 0,
         "uids": [
             "618505937"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "173745227180277760": {
         "currency": 0,
@@ -1421,7 +1761,9 @@
         "checkin_streak": 0,
         "uids": [
             "804213248"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "542623017306554369": {
         "currency": 0,
@@ -1430,7 +1772,9 @@
         "checkin_streak": 0,
         "uids": [
             "819826519"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "248965165645692929": {
         "currency": 0,
@@ -1439,7 +1783,9 @@
         "checkin_streak": 0,
         "uids": [
             "600061545"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "426954265626673153": {
         "currency": 0,
@@ -1448,7 +1794,9 @@
         "checkin_streak": 0,
         "uids": [
             "801049093"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "440797636308762624": {
         "currency": 0,
@@ -1457,7 +1805,9 @@
         "checkin_streak": 0,
         "uids": [
             "648576997"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "811060982456909834": {
         "currency": 0,
@@ -1466,7 +1816,9 @@
         "checkin_streak": 0,
         "uids": [
             "109398440"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "704691482442858498": {
         "currency": 0,
@@ -1475,7 +1827,9 @@
         "checkin_streak": 0,
         "uids": [
             "807958069"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "255217990633652224": {
         "currency": 0,
@@ -1484,7 +1838,9 @@
         "checkin_streak": 0,
         "uids": [
             "818546216"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "1071965717357936682": {
         "currency": 0,
@@ -1493,7 +1849,9 @@
         "checkin_streak": 0,
         "uids": [
             "249421600"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "381397051906326530": {
         "currency": 0,
@@ -1502,7 +1860,9 @@
         "checkin_streak": 0,
         "uids": [
             "800253225"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "156589794124759040": {
         "currency": 0,
@@ -1511,7 +1871,9 @@
         "checkin_streak": 0,
         "uids": [
             "629666871"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "726383897067388965": {
         "currency": 0,
@@ -1520,7 +1882,9 @@
         "checkin_streak": 0,
         "uids": [
             "857958399"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "691496445081026590": {
         "currency": 0,
@@ -1529,7 +1893,9 @@
         "checkin_streak": 0,
         "uids": [
             "608109551"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "282528299924717571": {
         "currency": 0,
@@ -1538,7 +1904,9 @@
         "checkin_streak": 0,
         "uids": [
             "813979949"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "933894084924411914": {
         "currency": 0,
@@ -1547,7 +1915,9 @@
         "checkin_streak": 0,
         "uids": [
             "852771635"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "443302520618745866": {
         "currency": 0,
@@ -1556,7 +1926,9 @@
         "checkin_streak": 0,
         "uids": [
             "820241446"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "224476045821214720": {
         "currency": 3500,
@@ -1565,7 +1937,9 @@
         "checkin_streak": 0,
         "uids": [
             "801965937"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "713663683896541217": {
         "currency": 0,
@@ -1574,7 +1948,9 @@
         "checkin_streak": 0,
         "uids": [
             "822121627"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "772985526105276426": {
         "currency": 0,
@@ -1583,56 +1959,75 @@
         "checkin_streak": 0,
         "uids": [
             "816237688"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "217933338407731200": {
         "currency": 0,
         "next_checkin": 1684368047,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "601421722784366603": {
         "currency": 3500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "1076313620385898629": {
         "currency": 3500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "266068819858948097": {
         "currency": 4500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "474462937499697152": {
         "currency": 4500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "861981307704573962": {
         "currency": 3500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "300937279197806604": {
-        "currency": 18272,
+        "currency": 17272,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 2,
-        "uids": []
+        "uids": [],
+        "role_icon": [
+            "Keqing",
+            "Kaveh"
+        ],
+        "jemdust": 9
     },
     "864213503848873994": {
         "currency": 0,
@@ -1641,21 +2036,27 @@
         "checkin_streak": 0,
         "uids": [
             "700657896"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "334604190598823936": {
         "currency": 2580,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "435701153230094336": {
         "currency": 2655,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 1,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "253777866980982795": {
         "currency": 3500,
@@ -1664,90 +2065,125 @@
         "checkin_streak": 0,
         "uids": [
             "820310777"
-        ]
+        ],
+        "role_icon": [],
+        "jemdust": 0
     },
     "312172066482814979": {
-        "currency": 3000,
-        "next_checkin": 1682985630,
+        "currency": 90,
+        "next_checkin": 1684454428,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [
+            "Heizou"
+        ],
+        "jemdust": 20
     },
     "306912349120364547": {
         "currency": 19455,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "282040152099127296": {
         "currency": 5500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "271620639524126720": {
         "currency": 4500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "422660666373963787": {
         "currency": 3500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "379548095924666368": {
         "currency": 5500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "878202494747033650": {
         "currency": 3500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "361660958843863040": {
         "currency": 3140,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "740472796580151377": {
         "currency": 11710,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 1,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "691223441356881971": {
         "currency": 2000,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "573019300328243200": {
         "currency": 225,
         "next_checkin": 1683763239,
         "role": {},
         "checkin_streak": 1,
-        "uids": []
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "212876268146917376": {
         "currency": 1000,
         "next_checkin": 1684320052,
         "role": {},
         "checkin_streak": 0,
+        "uids": [],
+        "role_icon": [],
+        "jemdust": 0
+    },
+    "438647958079143938": {
+        "currency": 154,
+        "next_checkin": 1684454455,
+        "role": {},
+        "checkin_streak": 1,
         "uids": []
     }
 }
