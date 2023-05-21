@@ -341,7 +341,7 @@ def buy_role(discord_id, role, duration, is_booster):
 			return "Invalid duration."
 
 		if is_booster:
-			price = int(BOOSTER_DISCOUNT * price)
+			primojem_price = int(BOOSTER_DISCOUNT * primojem_price)
 			
 	elif role.title() in gacha_pool["5"]:
 		jemdust_price = FIVE_STAR_COST
@@ -358,6 +358,8 @@ def buy_role(discord_id, role, duration, is_booster):
 	
 	# Update role duration
 	current_end_time = user_entry["role"].get(role, int(time.time()))
+	if user_entry["role"].get(role, 0) == 2145919483:
+		return "You already have this permanent role."
 	if duration == 7:
 		user_entry["role"][role] = current_end_time + 604800
 	elif duration == 30:
