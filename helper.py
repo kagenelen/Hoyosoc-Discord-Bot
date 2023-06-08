@@ -108,36 +108,45 @@ def is_booster(user):
 # Arg: Message (class)
 # Return: User (member class) or None if user not found
 async def verify_user(message):
-  # Deals message type: either embed or not embed
-  message_words = []
-  if (len(message.embeds) > 0):
-    message_words = message.embeds[0].description.split('\n')
-  else:
-    message_words = message.content.split('\n')
+	# Deals message type: either embed or not embed
+	message_words = []
+	if (len(message.embeds) > 0):
+		message_words = message.embeds[0].description.split('\n')
+	else:
+		message_words = message.content.split('\n')
 
-  found = False
-  for word in message_words:
-    search_res = re.search(r'(?:!\w+\s+)?([^\n]*#[0-9]*)', word)
-    if (search_res != None):  # Discord username found
-      found = True
-      username = search_res.group()
-      username_list = username.split("#")
-  if found == False:  # No discord username in message
-    return
+	old_username = False
+	username = None
+	for word in message_words:
+		search_res = re.search(r'(?:!\w+\s+)?([^\n]*#[0-9]*)', word)
+		if search_res != None and "JohnSmith#1234" not in word:  # Discord old username format found
+			old_username = True
+			username = search_res.group()
+			username_list = username.split("#")
 
-  role = discord.utils.get(message.guild.roles, name="Traveller")
-  if role == None:
-    return
+	for index, word1 in enumerate(message_words):
+		if "What is your Discord ID?" in word1: # Discord new username format
+			username = message_words[index + 1]
 
-  user = discord.utils.get(message.guild.members,
-                           name=username_list[0],
-                           discriminator=username_list[1])
-  if user == None:
-    await message.add_reaction("❌")
-    print(username + " does not exist in the server")
-  else:
-    await user.add_roles(role)
-    await message.add_reaction("✅")
-    print(username + " has been given a role")
+	role = discord.utils.get(message.guild.roles, name="Traveller")
+	if role == None:
+		return
 
-  return user
+	if old_username:
+		user = discord.utils.get(message.guild.members,
+														 name=username_list[0],
+														 discriminator=username_list[1])
+	else:
+		user = discord.utils.get(message.guild.members,
+														 name=username)
+		
+	if user == None:
+		await message.add_reaction("❌")
+		print(username + " does not exist in the server")
+	else:
+		await user.add_roles(role)
+		await message.add_reaction("✅")
+		print(username + " has been given a role")
+	
+	return user
+
