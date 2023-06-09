@@ -46,7 +46,7 @@ def remove_uid(discord_id, uid):
 def find_uid(discord_id):
 	user = helper.get_user_entry(discord_id)
 	
-	if len(user["genshin_uids"]) != 0 and len(user["hsr_uids"]) == 0:
+	if len(user["genshin_uids"]) == 0 and len(user["hsr_uids"]) == 0:
 		return False
 	
 	uid_list = ""
