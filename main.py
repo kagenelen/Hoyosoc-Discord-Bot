@@ -19,7 +19,7 @@ import minigame
 ############################ CONSTANTS ###################################
 VERIFICATION_CHANNEL = 822423063697948693
 GENSOC_SERVER = 822411164846653490 # Actual gensoc server
-# GENSOC_SERVER = 962970271545982986 # Test server
+GENSOC_SERVER = 962970271545982986 # Test server
 WELCOME_CHANNEL = 822411164846653492
 WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265>."
 PRIMOJEM_EMOTE = "<:Primojem:1108620629902626816>"
@@ -145,8 +145,12 @@ async def set_verification(interaction, verify_channel: str):
 @tree.command(name="add_uid",
 				description="Add your UID to be easily found",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def add_uid(interaction, uid: str):
-	result = uid_finder.save_uid(str(interaction.user.id), uid)
+@app_commands.choices(game=[
+	discord.app_commands.Choice(name="Genshin Impact", value="genshin"),
+	discord.app_commands.Choice(name="Honkai Star Rail", value="hsr"),
+])
+async def add_uid(interaction, game: app_commands.Choice[str], uid: str):
+	result = uid_finder.save_uid(str(interaction.user.id), uid, game.value)
 	if result == False:
 		await interaction.response.send_message("Invalid UID",
 												ephemeral=True)
@@ -177,17 +181,21 @@ async def find_uid(interaction, target_user: discord.Member):
 			target_user.name + " does not have any uid saved.")
 	else:
 		await interaction.response.send_message(
-			target_user.name + " has the following uid: " + result)
+			target_user.name + " has the following uid: \n" + result)
 
 @tree.command(name="whose_uid",
 				description="Find the owner of an uid",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def reverse_find_uid(interaction, uid: str):
+@app_commands.choices(game=[
+	discord.app_commands.Choice(name="Genshin Impact", value="genshin"),
+	discord.app_commands.Choice(name="Honkai Star Rail", value="hsr"),
+])
+async def reverse_find_uid(interaction, game:app_commands.Choice[str], uid: str):
 	if not uid.isnumeric() or int(uid) >= 999999999 or int(uid) <= 0:
 		await interaction.response.send_message("Invalid uid.", ephemeral=True)
 		return
 		
-	result = uid_finder.whose_uid(uid)
+	result = uid_finder.whose_uid(uid, game)
 	if result == False:
 		await interaction.response.send_message(
 			uid + " does not belong to anyone in this server.")
@@ -195,6 +203,14 @@ async def reverse_find_uid(interaction, uid: str):
 		owner = await client.fetch_user(int(result))
 		await interaction.response.send_message(
 			owner.name + " owns the uid " + uid)
+
+@tree.command(name="scrape_uid",
+				description="Add all uids from a channel",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def scrape_uid_message(interaction, channel: int):
+	uid_finder.scrape_uid(channel)
+	await interaction.response.send_message("Scraping uid in progress.", ephemeral=True)
+	
 
 #################################### BETTING ###################################
 
@@ -322,26 +338,29 @@ async def inventory(interaction):
 	await interaction.response.send_message(embed=embed)
 
 @tree.command(name="shop",
-				description="View role shop. Options: primojem/jemdust",
+				description="View role shop.",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def view_shop(interaction, option: str="primojem"):
+@app_commands.choices(shop=[
+	discord.app_commands.Choice(name="Primojem/Role Shop", value="primojem"),
+	discord.app_commands.Choice(name="Jemdust/Role Icon Shop", value="jemdust"),
+])
+async def view_shop(interaction, shop: app_commands.Choice[str]):
 	res = gambling.get_inventory(interaction.user.id)
 	gacha_pool = helper.read_file("role_icon.json")
-	option = option.lower()
 
 	price = [1500, 4500, 30000, 160]
 	if helper.is_booster(interaction.user):
 		price = [int(x / 2) for x in price]
 
 	description = ""
-	if option in ["primojem", "colour", "role", "1"]:
+	if shop.value == "primojem":
 		description = ("7 days: " + str(price[0]) + " " + PRIMOJEM_EMOTE + "  |  " +
 			"30 day: " + str(price[1]) + " " + PRIMOJEM_EMOTE + "  |  " +
 			"Permanent: " + str(price[2]) + " " + PRIMOJEM_EMOTE + "\n" +
 			"1 pull: " + str(price[3]) + " " + PRIMOJEM_EMOTE + "\n" + 
 			"Use **/shop jemdust** to see the role icons shop.\n" + 
 			"Use **/gacha** to pull for role icons.\n\n")
-	elif option in ["jemdust", "icon", "role icon", "2"]:
+	elif shop.value == "jemdust":
 		description = ("5 star role icon: 180 " + JEMDUST_EMOTE + "  |  " +
 			"4 star role icon: 34 " + JEMDUST_EMOTE + "\n")
 
@@ -351,7 +370,7 @@ async def view_shop(interaction, option: str="primojem"):
 	embed.set_footer(text="Primojems: " + str(res[0]) + "  |  " + "Jemdust: " + str(res[1]))
 	
 	# Add embed field for each role
-	if option in ["primojem", "colour", "role", "1"]:
+	if shop.value == "primojem":
 		embed.add_field(name="Abyss", value="Colour = gray", inline=False)
 		embed.add_field(name="Anemo", value="Colour = teal", inline=False)
 		embed.add_field(name="Cryo", value="Colour = whitish blue", inline=False)
@@ -360,7 +379,7 @@ async def view_shop(interaction, option: str="primojem"):
 		embed.add_field(name="Geo", value="Colour = yellow", inline=False)
 		embed.add_field(name="Hydro", value="Colour = blue", inline=False)
 		embed.add_field(name="Pyro", value="Colour = red", inline=False)
-	elif option in ["jemdust", "icon", "role icon", "2"]:
+	elif shop.value == "jemdust":
 		embed.add_field(name="5 Star Role Icons", value=", ".join(gacha_pool["5"]), inline=False)
 		embed.add_field(name="4 Star Role Icons", value=", ".join(gacha_pool["4"]), inline=False)
 
@@ -369,13 +388,14 @@ async def view_shop(interaction, option: str="primojem"):
 @tree.command(name="buy",
 				description="Buy item from shop.",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def buy_item(interaction, item_name: str, duration: str=None):
-	if duration != None and duration.lower() == "permanent":
-		duration = 5000
-
+@app_commands.choices(duration=[
+	discord.app_commands.Choice(name="7 days", value=7),
+	discord.app_commands.Choice(name="30 days", value=30),
+	discord.app_commands.Choice(name="Permanent role", value=5000)
+])
+async def buy_item(interaction, item_name: str, duration: app_commands.Choice[int]):
 	booster = helper.is_booster(interaction.user)
-	res = gambling.buy_role(interaction.user.id, item_name, duration,
-							booster)
+	res = gambling.buy_role(interaction.user.id, item_name, duration.value, booster)
 
 	if res != None:
 		await interaction.response.send_message(res, ephemeral=True)
@@ -385,7 +405,7 @@ async def buy_item(interaction, item_name: str, duration: str=None):
 	else:
 		await interaction.response.send_message(
 			"Successfully bought " + item_name.title() + " role for " +
-			str(duration) + " days. Use **/equip** to use the role.")
+			str(duration.value) + " days. Use **/equip** to use the role.")
 
 @tree.command(name="equip",
 				description="Equip or unequip an owned role.",
@@ -576,8 +596,13 @@ async def stand(interaction):
 	description=
 	"Play hangman at Normal (9 lives), Hard (6 lives), or Extreme (3 lives) difficulty.",
 	guild=discord.Object(id=GENSOC_SERVER))
-async def hangman(interaction, difficulty: str):
-	res = minigame.new_hangman(interaction.user.id, difficulty)
+@app_commands.choices(difficulty=[
+	discord.app_commands.Choice(name="Normal", value="normal"),
+	discord.app_commands.Choice(name="Hard", value="hard"),
+	discord.app_commands.Choice(name="Extreme", value="extreme"),
+])
+async def hangman(interaction, difficulty: app_commands.Choice[str]):
+	res = minigame.new_hangman(interaction.user.id, difficulty.value)
 	if res[0] == -1:
 		await interaction.response.send_message(res[1][0])
 	else:
