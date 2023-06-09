@@ -70,9 +70,8 @@ def get_user_entry(discord_id):
 def rewrite_structure():
 	data = read_file("users.json")
 	for user in data:
-		if data[user].get("role_icon", None) == None:
-			data[user]["role_icon"] = []
-			data[user]["jemdust"] = 0
+		if data[user].get("hsr_uids", None) == None:
+			data[user]["hsr_uids"] = []
 		
 	write_file("users.json", data)
 
