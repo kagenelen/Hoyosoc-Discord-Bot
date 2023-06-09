@@ -78,7 +78,7 @@ def whose_uid(uid, game):
 # Return:
 async def scrape_uid(target_channel):
   async for message in target_channel.history(limit=500):
-    search_res1 = re.findall(r"\s\d{9}", message.content)
+    search_res1 = re.findall(r"\b\d{9}\b", message.content)
 
     if search_res1 != None and message.author.id != 986446621468405852:
       for uid in search_res1:
