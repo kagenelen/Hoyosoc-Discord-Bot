@@ -208,7 +208,7 @@ async def reverse_find_uid(interaction, game:app_commands.Choice[str], uid: str)
 				description="Add all uids from a channel",
 				guild=discord.Object(id=GENSOC_SERVER))
 async def scrape_uid_message(interaction, channel: str):
-	uid_finder.scrape_uid(channel)
+	await uid_finder.scrape_uid(channel)
 	await interaction.response.send_message("Scraping uid in progress.", ephemeral=True)
 	
 
