@@ -24,6 +24,7 @@ PRIZE_POOL = 500
 EVENT_ATTENDANCE = 1000
 BOOSTER_DISCOUNT = 0.5
 STREAK_MULTIPLIER = 5
+ONE_PULL = 160
 FIVE_STAR_RARITY = 6
 FOUR_STAR_RARITY = 50
 THREE_STAR_RARITY = 944
@@ -223,19 +224,23 @@ def get_leaderboard():
 # Argument: Discord tag (Bob#1234) list as string, change by x amount, server object
 # Return: Successful usernames
 def update_user_list_currency(discord_list, change, server):
-    usernames = [d.strip() for d in discord_list.split(",")]
-
-    successful = []
-    for u in usernames:
-        username_parts = u.split("#")
-        user = discord.utils.get(server.members,
-                                 name=username_parts[0],
-                                 discriminator=username_parts[1])
-        if user != None:
-            update_user_currency(user.id, change)
-            successful.append(u)
-
-    return successful
+		usernames = [d.strip() for d in discord_list.split(",")]
+	
+		successful = []
+		for u in usernames:
+				username_parts = u.split("#")
+				if len(username_parts) == 1: # New username format
+					user = discord.utils.get(server.members,
+																	 name=username_parts[0])
+				else: # Old username format
+					user = discord.utils.get(server.members,
+																	 name=username_parts[0],
+																	 discriminator=username_parts[1])
+				if user != None:
+						update_user_currency(user.id, change)
+						successful.append(u)
+	
+		return successful
 
 
 # Change all user's currency by amount
@@ -406,7 +411,7 @@ def gacha(discord_id, pull_amount, is_booster):
 		return "Invalid pull amount. Valid range is 1 - 10."
 		
 	# Determine cost and apply server booster discount if applicable
-	price = pull_amount * 160
+	price = pull_amount * ONE_PULL
 	if is_booster:
 		price = int(BOOSTER_DISCOUNT * price)
 	
