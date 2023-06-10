@@ -57,7 +57,10 @@ def get_user_entry(discord_id):
       "next_checkin": int(time.time()),
       "role": {},
       "checkin_streak": 0,
-      "uids": []
+      "genshin_uids": [],
+			"role_icon": [],
+			"jemdust": 0,
+			"hsr_uids": []
     }
     data[discord_id] = user_entry
 
@@ -70,7 +73,9 @@ def get_user_entry(discord_id):
 def rewrite_structure():
 	data = read_file("users.json")
 	for user in data:
-		if data[user].get("hsr_uids", None) == None:
+		if data[user].get("hsr_uids", None) == None or data[user].get("jemdust", None) == None:
+			data[user]["role_icon"] = []
+			data[user]["jemdust"] = 0
 			data[user]["hsr_uids"] = []
 		
 	write_file("users.json", data)
