@@ -1,125 +1,147 @@
 {
     "318337790708547588": {
-        "currency": 40087,
-        "next_checkin": 1684627200,
+        "currency": 42902,
+        "next_checkin": 1686441610,
         "role": {},
-        "checkin_streak": 54,
-        "uids": [],
+        "checkin_streak": 75,
+        "genshin_uids": [],
         "role_icon": [
             "Heizou",
-            "Mika"
+            "Mika",
+            "Xiangling",
+            "Bennett"
         ],
-        "jemdust": 5
+        "jemdust": 54,
+        "hsr_uids": []
     },
     "280905494091005954": {
         "currency": 145,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 1,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [
             "Noelle",
             "Fischl",
             "Kokomi",
             "Xiangling"
         ],
-        "jemdust": 65
+        "jemdust": 65,
+        "hsr_uids": []
     },
     "302346316959449088": {
-        "currency": 1000,
+        "currency": 2000,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "841313078"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "501628004620042241": {
-        "currency": 25152,
-        "next_checkin": 1684627242,
+        "currency": 28627,
+        "next_checkin": 1686355253,
         "role": {},
-        "checkin_streak": 0,
-        "uids": [
+        "checkin_streak": 4,
+        "genshin_uids": [
             "608604687"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "305564624227401728": {
-        "currency": 2830,
-        "next_checkin": 1684540837,
+        "currency": 3135,
+        "next_checkin": 1686182439,
         "role": {},
-        "checkin_streak": 0,
-        "uids": [],
+        "checkin_streak": 1,
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "530215840780648448": {
-        "currency": 2780,
+        "currency": 3780,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 8,
-        "uids": [
+        "genshin_uids": [
             "800006781"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "437834249744285708": {
         "currency": 2875,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "318723992905056259": {
         "currency": 10610,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "368630963330220032": {
-        "currency": 5723,
+        "currency": 6723,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "809958756"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "1074318389708861460": {
-        "currency": 16002,
-        "next_checkin": 1684627237,
+        "currency": 5137,
+        "next_checkin": 1686182409,
         "role": {
             "hydro": 2145919483,
-            "geo": 2145919483
+            "geo": 2145919483,
+            "anemo": 2145919483
         },
-        "checkin_streak": 39,
-        "uids": [
+        "checkin_streak": 0,
+        "genshin_uids": [
             "811233287",
             "111032240"
         ],
-        "role_icon": [],
-        "jemdust": 0
+        "role_icon": [
+            "Kaveh",
+            "Raiden",
+            "Heizou",
+            "Mika",
+            "Xiangling",
+            "Fischl",
+            "Noelle",
+            "Alhaitham"
+        ],
+        "jemdust": 39,
+        "hsr_uids": []
     },
     "348414134636904452": {
-        "currency": 4343,
-        "next_checkin": 1684540853,
+        "currency": 6408,
+        "next_checkin": 1686441615,
         "role": {
             "hydro": 2145919483,
             "abyss": 2145919483
         },
-        "checkin_streak": 2,
-        "uids": [
+        "checkin_streak": 0,
+        "genshin_uids": [
             "613636035",
             "823913674"
         ],
@@ -134,47 +156,51 @@
             "Fischl",
             "Hutao"
         ],
-        "jemdust": 21
+        "jemdust": 21,
+        "hsr_uids": []
     },
     "294049450882629632": {
-        "currency": 1305,
+        "currency": 2305,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 1,
-        "uids": [
+        "genshin_uids": [
             "809477946"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "937000926835773460": {
-        "currency": 150,
-        "next_checkin": 1684540856,
+        "currency": 300,
+        "next_checkin": 1685232007,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "384949403452047362": {
-        "currency": 1078,
-        "next_checkin": 1684627243,
+        "currency": 5738,
+        "next_checkin": 1686355234,
         "role": {
             "pyro": 2145919483
         },
-        "checkin_streak": 8,
-        "uids": [],
+        "checkin_streak": 17,
+        "genshin_uids": [],
         "role_icon": [
             "Xiangling",
             "Bennett",
             "Kaveh",
             "Ayato"
         ],
-        "jemdust": 123
+        "jemdust": 123,
+        "hsr_uids": []
     },
     "308020379744600064": {
-        "currency": 29151,
-        "next_checkin": 1684627205,
+        "currency": 34531,
+        "next_checkin": 1686355204,
         "role": {
             "abyss": 2145919483,
             "anemo": 2145919483,
@@ -185,8 +211,8 @@
             "hydro": 2145919483,
             "pyro": 2145919483
         },
-        "checkin_streak": 6,
-        "uids": [
+        "checkin_streak": 2,
+        "genshin_uids": [
             "826275883",
             "653145544"
         ],
@@ -194,63 +220,69 @@
             "Xiangling",
             "Kokomi"
         ],
-        "jemdust": 18
+        "jemdust": 18,
+        "hsr_uids": []
     },
     "852095686932824087": {
-        "currency": 6815,
-        "next_checkin": 1684627258,
+        "currency": 9810,
+        "next_checkin": 1686441619,
         "role": {},
-        "checkin_streak": 0,
-        "uids": [
+        "checkin_streak": 8,
+        "genshin_uids": [
             "629106473"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "512531622558564362": {
         "currency": 2650,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "827803374"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "437944593992908800": {
         "currency": 2800,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "620206680956731392": {
         "currency": 2650,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "838329161474506782": {
         "currency": 2800,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "269324017436065795": {
-        "currency": 380,
-        "next_checkin": 1684540832,
+        "currency": 1445,
+        "next_checkin": 1685836838,
         "role": {},
-        "checkin_streak": 2,
-        "uids": [
+        "checkin_streak": 0,
+        "genshin_uids": [
             "804899527",
             "603433178"
         ],
@@ -258,1932 +290,2217 @@
             "Albedo",
             "Faruzan"
         ],
-        "jemdust": 38
+        "jemdust": 38,
+        "hsr_uids": []
     },
     "166807404716097537": {
-        "currency": 4500,
+        "currency": 5500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "414263860103610369": {
         "currency": 2650,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "848630783"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "611856491506434068": {
-        "currency": 5778,
+        "currency": 6778,
         "next_checkin": 1683072050,
         "role": {},
         "checkin_streak": 1,
-        "uids": [
+        "genshin_uids": [
             "816760254"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "153435291355447296": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "800006781"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "986446621468405852": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 1,
-        "uids": [
+        "genshin_uids": [
             "Nice try."
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "345546240949354496": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "817026874"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "324446494285496322": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "808483603"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "247608057079529473": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "812636800"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "487183699360612353": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "810195192"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "494069211568799774": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "601062937"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "698055404873187478": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "813972477"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "626677030641205259": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "623774990"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "529608818556928001": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "805485805"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "273650598845349888": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "807433968"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "485407753607577600": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "823663719",
             "627374037"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "308533285472960513": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "603557399"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "331604660039188481": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "841843678"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "487012233705160764": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "827169840",
             "750978698",
             "600686982"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "336774405986451457": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "814227011"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "508860948929314816": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "625749283"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "538697533556391946": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "649300303"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "375872817197088769": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "804011828"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "248074461868326913": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "800198346"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "771899922370265118": {
         "currency": 3500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "813171584"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "450611984371810319": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "807570252"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "273376678598934528": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "800533342"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "437177952598491136": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "813242321"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "309127419720105985": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "863678622"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "294797591231594497": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "804902836"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "202753491708542976": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "806729275"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "861905983085609021": {
-        "currency": 6500,
+        "currency": 7500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "623496073"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "374113453184647169": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "805784822"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "726126702677458967": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "903519604"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "653982566214402058": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "800187397"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "355597627150041089": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "613489149"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "340069159226310656": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "801502169"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "438896487812825098": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "812257946"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "392883103502434304": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "635341744"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "263627234227650561": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "608120615"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "218671529905356803": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "820299479"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "377468166386876417": {
         "currency": 2650,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "612551711"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "760794317542785044": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "643043973"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "141910518314041344": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "633173825"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "296575022200389632": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "843230839"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "706155929929908295": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "600942236"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "202414892454641666": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "601900887"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "554939269756616705": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "820809445"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "586422043969454124": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "800127526"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "159886926248280064": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "609493647"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "548015866155892746": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "607490648"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "306017902207696898": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "800463073"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "204908621719535616": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "803373295"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "252334506210492417": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "850782333"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "650345469175660559": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "802191015"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "940795297129447455": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "140385433"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "303058183222591488": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "738807606",
             "812732543"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "561139034311753738": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "106857692"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "427629098349625354": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "813118371"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "199802136840634368": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "615654001"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "466462045018259476": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "820534154"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "448384664315363330": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "805579038"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "221501979317239808": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "819689868"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "901065077715796028": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "803035323"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "778065743807119361": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "814479936"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "759964941439467544": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "819111037"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "690032584281161730": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "817678878"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "759618068355088445": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "634910386"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "762445557960146997": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "615851420"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "314739379618709506": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "600411223"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "425266752474185738": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "807636705"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "371740104126889995": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "800207057"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "524334947885121551": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "834322434",
             "603568406"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "209915926886219788": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "800336298"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "795213735203307520": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "729635357"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "410325825683193866": {
         "currency": 3500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "833628756"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "330876154246594610": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "615198002"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "388167280334471168": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "820433204"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "212853542409601024": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "600850239",
             "852536197"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "889127621730906173": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "608577066"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "712987369820913685": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "849222449"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "257071274512220175": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "803319339",
             "644717738"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "491070418497830924": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "606008508"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "533201972556333067": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "725246275",
             "641117305"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "302610719403278336": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "807866618"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "310399907561340930": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "821132248"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "209898273811595274": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "811176226"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "612219832233885706": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "835056721"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "81431674457436160": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "645645506"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "314927201243889674": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "814166066"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "436448411563196416": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "633158919",
             "854012653"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "198326789120983041": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "805016880"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "611887355069988865": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "806526626"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "525652777775529994": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "849548376"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "702396989417193482": {
         "currency": 3500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "819882725"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "120490489811173376": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "841581120"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "322702816873283584": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "800681181"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "290103035085062144": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "802717923"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "293549117953540097": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "731473414"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "344031878652624897": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "832331584"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "318262928245522432": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "803117598"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "691460238615904348": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "818840577"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "297903628084314144": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "802445954"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "129566212181983232": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "822829447"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "603535090966069257": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "821623225",
             "635761497"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "338319217143316480": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "801174975"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "181163176191197184": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "801668886"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "461782690321006602": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "605404785"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "630578256470474763": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "605386359"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "810708376508956742": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "823804875"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "419454258098995202": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "802988248"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "144705466025508864": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "600446170"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "162691613179510785": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "607643654"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "287041936248930305": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "617855742"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "234649449727655937": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "606618089"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "304237385196240896": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "621502731"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "250147040284246016": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "811750410"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "154497707912724480": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "820571383"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "814332543535939614": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "821979526"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "172909657860341760": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "601860688"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "228913322076930049": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "831372972"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "266065004929875978": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "808966851"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "202673851094663168": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "807824033"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "344984109833256961": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "821210277"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "397392336868343812": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "800181937"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "210596276310376449": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "816311927"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "192189955643015168": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "619057648",
             "814212210"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "213924329019277312": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "807169436"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "283165051051835392": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "601759519"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "267224583302676480": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "813332463"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "401168410701987845": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "819907691"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "155903967057018880": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "800293779"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "239298105495912449": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "614022643"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "183458242070839296": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "601784835"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "316212624813588482": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "610428455"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "354949163659689984": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "618505937"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "173745227180277760": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "804213248"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "542623017306554369": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "819826519"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "248965165645692929": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "600061545"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "426954265626673153": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "801049093"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "440797636308762624": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "648576997"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "811060982456909834": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "109398440"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "704691482442858498": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "807958069"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "255217990633652224": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "818546216"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "1071965717357936682": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "249421600"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "381397051906326530": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "800253225"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "156589794124759040": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "629666871"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "726383897067388965": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "857958399"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "691496445081026590": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "608109551"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "282528299924717571": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "813979949"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "933894084924411914": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "852771635"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "443302520618745866": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "820241446"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "224476045821214720": {
         "currency": 3500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "801965937"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "713663683896541217": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "822121627"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "772985526105276426": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "816237688"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "217933338407731200": {
         "currency": 0,
         "next_checkin": 1684368047,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "601421722784366603": {
         "currency": 3500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "1076313620385898629": {
         "currency": 3500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "266068819858948097": {
-        "currency": 4500,
+        "currency": 5500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "474462937499697152": {
         "currency": 4500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "861981307704573962": {
         "currency": 3500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "300937279197806604": {
         "currency": 17272,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 2,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [
             "Keqing",
             "Kaveh"
         ],
-        "jemdust": 9
+        "jemdust": 9,
+        "hsr_uids": []
     },
     "864213503848873994": {
         "currency": 0,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "700657896"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "334604190598823936": {
         "currency": 2580,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "435701153230094336": {
         "currency": 2655,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 1,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "253777866980982795": {
-        "currency": 3500,
+        "currency": 4500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [
+        "genshin_uids": [
             "820310777"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "312172066482814979": {
-        "currency": 90,
+        "currency": 1090,
         "next_checkin": 1684454428,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [
             "Heizou"
         ],
-        "jemdust": 20
+        "jemdust": 20,
+        "hsr_uids": []
     },
     "306912349120364547": {
         "currency": 19455,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "282040152099127296": {
         "currency": 5500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "271620639524126720": {
-        "currency": 4500,
+        "currency": 5500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "422660666373963787": {
         "currency": 3500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "379548095924666368": {
-        "currency": 5500,
+        "currency": 6500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "878202494747033650": {
         "currency": 3500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "361660958843863040": {
         "currency": 3140,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "740472796580151377": {
         "currency": 11710,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 1,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "691223441356881971": {
-        "currency": 2000,
+        "currency": 3000,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "573019300328243200": {
-        "currency": 225,
-        "next_checkin": 1683763239,
+        "currency": 215,
+        "next_checkin": 1685404848,
         "role": {},
-        "checkin_streak": 1,
-        "uids": [],
-        "role_icon": [],
-        "jemdust": 0
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [
+            "Kaveh"
+        ],
+        "jemdust": 1,
+        "hsr_uids": []
     },
     "212876268146917376": {
         "currency": 1000,
         "next_checkin": 1684320052,
         "role": {},
         "checkin_streak": 0,
-        "uids": [],
+        "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "hsr_uids": []
     },
     "438647958079143938": {
-        "currency": 154,
+        "currency": 1154,
         "next_checkin": 1684454455,
         "role": {},
         "checkin_streak": 1,
-        "uids": []
+        "genshin_uids": [],
+        "hsr_uids": []
+    },
+    "495781159431700481": {
+        "currency": 1650,
+        "next_checkin": 1686355251,
+        "role": {},
+        "checkin_streak": 4,
+        "genshin_uids": [],
+        "hsr_uids": []
+    },
+    "369318622520147988": {
+        "currency": 1000,
+        "next_checkin": 1686124454,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "hsr_uids": []
+    },
+    "405599855952658434": {
+        "currency": 1000,
+        "next_checkin": 1686124454,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "hsr_uids": []
+    },
+    "259147833666437120": {
+        "currency": 1000,
+        "next_checkin": 1686124454,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "hsr_uids": []
+    },
+    "279119312072081408": {
+        "currency": 1000,
+        "next_checkin": 1686124584,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "hsr_uids": []
+    },
+    "460720745597763594": {
+        "currency": 1000,
+        "next_checkin": 1686124584,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "hsr_uids": []
+    },
+    "184547402705797120": {
+        "currency": 1000,
+        "next_checkin": 1686124584,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "hsr_uids": []
+    },
+    "240433856031883264": {
+        "currency": 1000,
+        "next_checkin": 1686124584,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "hsr_uids": []
+    },
+    "478091090625560576": {
+        "currency": 1000,
+        "next_checkin": 1686124584,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "hsr_uids": []
+    },
+    "253448557518913536": {
+        "currency": 1000,
+        "next_checkin": 1686124584,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "hsr_uids": []
+    },
+    "249134139146502145": {
+        "currency": 1000,
+        "next_checkin": 1686124584,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "hsr_uids": []
+    },
+    "772683659785535488": {
+        "currency": 1000,
+        "next_checkin": 1686124584,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "hsr_uids": []
+    },
+    "395159253264105473": {
+        "currency": 1000,
+        "next_checkin": 1686124584,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "hsr_uids": []
     }
 }
