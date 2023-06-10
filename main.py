@@ -203,14 +203,6 @@ async def reverse_find_uid(interaction, game:app_commands.Choice[str], uid: str)
 		owner = await client.fetch_user(int(result))
 		await interaction.response.send_message(
 			owner.name + " owns the uid " + uid)
-
-@tree.command(name="scrape_uid",
-				description="Add all uids from a channel",
-				guild=discord.Object(id=GENSOC_SERVER))
-async def scrape_uid_message(interaction, channel_id: str):
-	channel = client.get_channel(int(channel_id))
-	await uid_finder.scrape_uid(channel)
-	await interaction.response.send_message("Scraping uid in progress.", ephemeral=True)
 	
 
 #################################### BETTING ###################################
@@ -686,26 +678,6 @@ async def role_icon_gacha(interaction, pull_amount: int):
 		embed.add_field(name=item[0], value=item[1], inline=False)
 
 	await interaction.response.send_message(embed=embed)
-
-'''
-@tree.command(name="salvage",
-				description="Salvage a role icon for jemdust",
-				guild=discord.Object(id=GENSOC_SERVER))
-async def salvage_role(interaction, role: str):
-	res = gambling.scrap_role_icon(interaction.user.id, role)
-
-	if res == None:
-		await interaction.response.send_message("Invalid or you do not own this role.", ephemeral=True)
-	else:
-		# Unequip the salvaged role
-		role_obj = discord.utils.get(interaction.guild.roles, name=role.title())
-		if role_obj in interaction.user.roles:
-			await interaction.user.remove_roles(role_obj, reason="Salvaged role.")
-		
-		await interaction.response.send_message("Successfully salvaged " + role.title() + " role for " + 
-													str(res) + " " + JEMDUST_EMOTE)
-'''
-
 
 
 # keep_alive()
