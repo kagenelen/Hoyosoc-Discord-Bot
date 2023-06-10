@@ -2397,7 +2397,9 @@
         "role": {},
         "checkin_streak": 1,
         "genshin_uids": [],
-        "hsr_uids": []
+        "hsr_uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "495781159431700481": {
         "currency": 1650,
@@ -2405,7 +2407,9 @@
         "role": {},
         "checkin_streak": 4,
         "genshin_uids": [],
-        "hsr_uids": []
+        "hsr_uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "369318622520147988": {
         "currency": 1000,
@@ -2413,7 +2417,9 @@
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
-        "hsr_uids": []
+        "hsr_uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "405599855952658434": {
         "currency": 1000,
@@ -2421,7 +2427,9 @@
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
-        "hsr_uids": []
+        "hsr_uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "259147833666437120": {
         "currency": 1000,
@@ -2429,7 +2437,9 @@
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
-        "hsr_uids": []
+        "hsr_uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "279119312072081408": {
         "currency": 1000,
@@ -2437,7 +2447,9 @@
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
-        "hsr_uids": []
+        "hsr_uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "460720745597763594": {
         "currency": 1000,
@@ -2445,7 +2457,9 @@
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
-        "hsr_uids": []
+        "hsr_uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "184547402705797120": {
         "currency": 1000,
@@ -2453,7 +2467,9 @@
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
-        "hsr_uids": []
+        "hsr_uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "240433856031883264": {
         "currency": 1000,
@@ -2461,7 +2477,9 @@
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
-        "hsr_uids": []
+        "hsr_uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "478091090625560576": {
         "currency": 1000,
@@ -2469,7 +2487,9 @@
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
-        "hsr_uids": []
+        "hsr_uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "253448557518913536": {
         "currency": 1000,
@@ -2477,7 +2497,9 @@
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
-        "hsr_uids": []
+        "hsr_uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "249134139146502145": {
         "currency": 1000,
@@ -2485,7 +2507,9 @@
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
-        "hsr_uids": []
+        "hsr_uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "772683659785535488": {
         "currency": 1000,
@@ -2493,7 +2517,9 @@
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
-        "hsr_uids": []
+        "hsr_uids": [],
+        "role_icon": [],
+        "jemdust": 0
     },
     "395159253264105473": {
         "currency": 1000,
@@ -2501,6 +2527,8 @@
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
-        "hsr_uids": []
+        "hsr_uids": [],
+        "role_icon": [],
+        "jemdust": 0
     }
 }
