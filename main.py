@@ -181,7 +181,7 @@ async def find_uid(interaction, target_user: discord.Member):
 			target_user.name + " does not have any uid saved.")
 	else:
 		await interaction.response.send_message(
-			target_user.name + " has the following uid: \n" + result)
+			"**" + target_user.name + " has the following uid** \n" + result)
 
 @tree.command(name="whose_uid",
 				description="Find the owner of an uid",
@@ -203,6 +203,19 @@ async def reverse_find_uid(interaction, game:app_commands.Choice[str], uid: str)
 		owner = await client.fetch_user(int(result))
 		await interaction.response.send_message(
 			owner.name + " owns the uid " + uid)
+
+@tree.command(name="scrape_uid",
+				description="Add all uids from a channel",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def scrape_uid_message(interaction, channel_id: str):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+		
+	channel = client.get_channel(int(channel_id))
+	await uid_finder.scrape_uid(channel)
+	await interaction.response.send_message("Scraping uid in progress.", ephemeral=True)
 	
 
 #################################### BETTING ###################################
