@@ -19,7 +19,7 @@ import minigame
 ############################ CONSTANTS ###################################
 VERIFICATION_CHANNEL = 822423063697948693
 GENSOC_SERVER = 822411164846653490 # Actual gensoc server
-GENSOC_SERVER = 962970271545982986 # Test server
+# GENSOC_SERVER = 962970271545982986 # Test server
 WELCOME_CHANNEL = 822411164846653492
 WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265>."
 PRIMOJEM_EMOTE = "<:Primojem:1108620629902626816>"
@@ -207,8 +207,9 @@ async def reverse_find_uid(interaction, game:app_commands.Choice[str], uid: str)
 @tree.command(name="scrape_uid",
 				description="Add all uids from a channel",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def scrape_uid_message(interaction, channel: int):
-	uid_finder.scrape_uid(channel)
+async def scrape_uid_message(interaction, channel_id: str):
+	channel = client.get_channel(int(channel_id))
+	await uid_finder.scrape_uid(channel)
 	await interaction.response.send_message("Scraping uid in progress.", ephemeral=True)
 	
 
