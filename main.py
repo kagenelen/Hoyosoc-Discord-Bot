@@ -181,7 +181,7 @@ async def find_uid(interaction, target_user: discord.Member):
 			target_user.name + " does not have any uid saved.")
 	else:
 		await interaction.response.send_message(
-			target_user.name + " has the following uid: \n" + result)
+			"**" + target_user.name + " has the following uid** \n" + result)
 
 @tree.command(name="whose_uid",
 				description="Find the owner of an uid",
