@@ -101,7 +101,7 @@ async def daily_role_expiry_check():
 		role = discord.utils.get(gensoc_guild.roles,
 								 name=e[1][0].capitalize())
 		await user.remove_roles(role, reason="Expired role.")
-		print(role.name + " removed from " + user.name)
+		print(role.name + " removed from " + user.display_name)
 
 @tasks.loop(hours=24)
 async def make_backup():
@@ -178,10 +178,10 @@ async def find_uid(interaction, target_user: discord.Member):
 	result = uid_finder.find_uid(str(target_user.id))
 	if result == False:
 		await interaction.response.send_message(
-			target_user.name + " does not have any uid saved.")
+			target_user.display_name + " does not have any uid saved.")
 	else:
 		await interaction.response.send_message(
-			"**" + target_user.name + " has the following uid** \n" + result)
+			"**" + target_user.display_name + " has the following uid** \n" + result)
 
 @tree.command(name="whose_uid",
 				description="Find the owner of an uid",
@@ -202,7 +202,7 @@ async def reverse_find_uid(interaction, game:app_commands.Choice[str], uid: str)
 	else:
 		owner = await client.fetch_user(int(result))
 		await interaction.response.send_message(
-			owner.name + " owns the uid " + uid)
+			owner.display_name + " owns the uid " + uid)
 
 @tree.command(name="scrape_uid",
 				description="Add all uids from a channel",
@@ -271,7 +271,7 @@ async def make_bet(interaction, bracket_id: str, candidate: str,
 async def my_bets(interaction):
 	res = gambling.view_own_bets(interaction.user.id)
 
-	embed = discord.Embed(title=interaction.user.name + "\'s recent bets",
+	embed = discord.Embed(title=interaction.user.display_name + "\'s recent bets",
 							color=0x61dfff)
 
 	# Add embed field for each recent bet
@@ -328,7 +328,7 @@ async def checkin(interaction):
 async def inventory(interaction):
 	res = gambling.get_inventory(interaction.user.id)
 
-	embed = discord.Embed(title=interaction.user.name + "\'s inventory",
+	embed = discord.Embed(title=interaction.user.display_name + "\'s inventory",
 							description=str(res[0]) + " " + PRIMOJEM_EMOTE + "  |  " + 
 						  		str(res[1]) + " " + JEMDUST_EMOTE,
 							color=0x61dfff)
@@ -508,7 +508,7 @@ async def flip(interaction, coin_amount: int, head_amount: int, bet: int):
 	flip_string = " ".join(res[0])
 	description += flip_string
 
-	embed = discord.Embed(title=interaction.user.name + "\'s Coinflip",
+	embed = discord.Embed(title=interaction.user.display_name + "\'s Coinflip",
 							description=description,
 							color=0x61dfff)
 	embed.set_thumbnail(url=interaction.user.avatar.url)
@@ -530,7 +530,7 @@ async def blackjack(interaction, bet: str):
 		return
 
 	embed = discord.Embed(
-		title=interaction.user.name + "\'s Blackjack Game",
+		title=interaction.user.display_name + "\'s Blackjack Game",
 		description="Use **/hit** or **/stand**\n" + res[0],
 		color=0x61dfff)
 	embed.set_thumbnail(url=interaction.user.avatar.url)
@@ -556,7 +556,7 @@ async def hit(interaction):
 		await interaction.response.send_message(res)
 		return
 
-	embed = discord.Embed(title=interaction.user.name +
+	embed = discord.Embed(title=interaction.user.display_name +
 							"\'s Blackjack Game",
 							description=res[0],
 							color=0x61dfff)
@@ -583,7 +583,7 @@ async def stand(interaction):
 		await interaction.response.send_message(res)
 		return
 
-	embed = discord.Embed(title=interaction.user.name +
+	embed = discord.Embed(title=interaction.user.display_name +
 							"\'s Blackjack Game",
 							description=res[0],
 							color=0x61dfff)
@@ -616,7 +616,7 @@ async def hangman(interaction, difficulty: app_commands.Choice[str]):
 		await interaction.response.send_message(res[1][0])
 	else:
 		embed = discord.Embed(
-			title=interaction.user.name + "\'s Hangman Game",
+			title=interaction.user.display_name + "\'s Hangman Game",
 			description="Use **/guess [letter]**\n",
 			color=0x61dfff)
 		embed.set_thumbnail(url=interaction.user.avatar.url)
@@ -636,7 +636,7 @@ async def hangman_guess(interaction, guess: str):
 		await interaction.response.send_message(res[1][0] + "\n" +
 												res[1][1])
 	elif res[0] == 0:
-		embed = discord.Embed(title=interaction.user.name +
+		embed = discord.Embed(title=interaction.user.display_name +
 								"\'s Hangman Game",
 								description=res[1][0],
 								color=0x61dfff)
@@ -646,7 +646,7 @@ async def hangman_guess(interaction, guess: str):
 						inline=True)
 		await interaction.response.send_message(embed=embed)
 	elif res[0] == 1:
-		embed = discord.Embed(title=interaction.user.name +
+		embed = discord.Embed(title=interaction.user.display_name +
 								"\'s Hangman Game",
 								description=res[1][0],
 								color=0x61dfff)
@@ -660,7 +660,7 @@ async def hangman_guess(interaction, guess: str):
 		embed.add_field(name="Lives: ", value=res[1][3], inline=True)
 		await interaction.response.send_message(embed=embed)
 	else:  #res[0] == 2
-		embed = discord.Embed(title=interaction.user.name +
+		embed = discord.Embed(title=interaction.user.display_name +
 								"\'s Hangman Game",
 								description=res[1][0],
 								color=0x61dfff)
@@ -685,7 +685,7 @@ async def role_icon_gacha(interaction, pull_amount: int):
 		await interaction.response.send_message(res, ephemeral=True)
 		return
 
-	embed = discord.Embed(title=interaction.user.name + "'s Gacha",
+	embed = discord.Embed(title=interaction.user.display_name + "'s Gacha",
 							color=0x61dfff)
 	embed.set_thumbnail(url=interaction.user.avatar.url)
 	
