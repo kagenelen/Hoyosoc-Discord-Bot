@@ -58,9 +58,9 @@ def get_user_entry(discord_id):
       "role": {},
       "checkin_streak": 0,
       "genshin_uids": [],
-			"role_icon": [],
-			"jemdust": 0,
-			"hsr_uids": []
+	"role_icon": [],
+	"jemdust": 0,
+	"hsr_uids": []
     }
     data[discord_id] = user_entry
 
