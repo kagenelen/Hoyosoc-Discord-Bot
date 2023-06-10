@@ -76,12 +76,15 @@ def whose_uid(uid, game):
 # Read through message history in channel and add uid to database
 # Argument:
 # Return:
-async def scrape_uid(target_channel):
-  async for message in target_channel.history(limit=500):
-    search_res1 = re.findall(r"\b\d{9}\b", message.content)
-
-    if search_res1 != None and message.author.id != 986446621468405852:
-      for uid in search_res1:
-        save_uid(str(message.author.id), uid.strip(), "hsr")
-        print(uid + " added for user " + message.author.name + " " +
-              str(message.author.id))
+async def scrape_uid(target_channel, game):
+	async for message in target_channel.history(limit=500):
+		search_res1 = re.findall(r"\b\d{9}\b", message.content)
+	
+		if game != "hsr" or game != "genshin":
+			return False
+	
+		if search_res1 != None and message.author.id != 986446621468405852:
+			for uid in search_res1:
+				save_uid(str(message.author.id), uid.strip(), game)
+				print(uid + " added for user " + message.author.name + " " +
+							str(message.author.id))
