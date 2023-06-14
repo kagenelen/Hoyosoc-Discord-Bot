@@ -140,6 +140,34 @@ async def set_verification(interaction, verify_channel: str):
 	data['channel'] = int(verify_channel)
 	helper.write_file("config.json", data)
 
+@tree.command(name="help",
+				description="View all available bot commands.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def help_commands(interaction):
+	embed = discord.Embed(title="Bot Commands",
+							color=0x61dfff)
+	
+	embed.add_field(name="**/checkin**", value="Daily free primojems.", inline=False)
+	embed.add_field(name="**/leaderboard**", value="See top 10 primojem earners and your own rank.", inline=False)
+	embed.add_field(name="**/shop**", value="See which roles and role icons you can buy.", inline=False)
+	embed.add_field(name="**/buy**", value="Buy a role from the shop.", inline=False)
+	embed.add_field(name="**/equip**", value="Equip or unequip a role.", inline=False)
+	embed.add_field(name="**/inventory**", value="Check primojem, jemdust and owned roles.", inline=False)
+	embed.add_field(name="**/blackjack**", value="Play blackjack.", inline=False)
+	embed.add_field(name="**/hangman**", value="Play hangman.", inline=False)
+	embed.add_field(name="**/coinflip**", value="Play heads or tails.", inline=False)
+	embed.add_field(name="**/gacha**", value="Gacha for role icons.", inline=False)
+	embed.add_field(name="**/bet**", value="Make a bet on this-or-that bracket.", inline=False)
+	embed.add_field(name="**/ongoing_bets**", value="See the bracket id of ongoing bets.", inline=False)
+	embed.add_field(name="**/my_bets**", value="See which brackets you have betted on.", inline=False)
+	embed.add_field(name="**/add_uid**", value="Add UID to bot database.", inline=False)
+	embed.add_field(name="**/remove_uid**", value="Remove UID from bot database.", inline=False)
+	embed.add_field(name="**/find_uid**", value="List all UIDs of an user.", inline=False)
+	embed.add_field(name="**/whose_uid**", value="Find the owner of an UID.", inline=False)
+
+	await interaction.response.send_message(embed=embed)
+	
+
 ################################ UID #################################
 
 @tree.command(name="add_uid",
