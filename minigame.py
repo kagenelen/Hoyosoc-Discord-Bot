@@ -109,7 +109,7 @@ def make_guess(discord_id, guess):
 def new_blackjack(discord_id, bet):
   discord_id = str(discord_id)
   data = helper.read_file("minigame_session.json")
-  dealer_hand = random.choices(CARDS, k=2)
+  dealer_hand = random.choices(CARDS, k=1)
   your_hand = random.choices(CARDS, k=2)
 
   if bet <= 0:
