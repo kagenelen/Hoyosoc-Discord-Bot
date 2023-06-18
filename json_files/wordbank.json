@@ -63,7 +63,7 @@
 	"King Deshret",
 	"Istaroth",
 	"Makoto",
-	"Naku Malikata",
+	"Nabu Malikata",
 	"Orobashi",
 	"Unknown God",
 	"Pierro",
@@ -100,6 +100,7 @@
 	"Cuilein Anbar",
 	"Beisht",
 	"Osial",
+	"Apep",
 
 	"Akademiya",
 	"Amurta",
@@ -120,6 +121,7 @@
 	"Honorary Knight",
 	"Liyue Qixing",
 	"Millelith",
+	"The Steambird",
 	"Yaksha",
 	"The Crux",
 	"Adeptus",
@@ -760,6 +762,8 @@
 	"Toukabou Shigure",
 	"Tulaytullahs Remembrance",
 	"Mailed Flower",
+	"Ibis Piercer",
+	"Jadefalls Splendor",
 	
 	"Adventurer",
 	"Lucky Dog",
@@ -790,6 +794,8 @@
 	"Vermillion Hereafter",
 	"Deepwood Memories",
 	"Gilded Dreams",
+	"Nymphs Dream",
+	"Vourukashas Glow",
 
 	"Viator",
 	"Princeps Cretaceus",
@@ -980,5 +986,6 @@
 	"Zhongli",
 	"Baizhu",
 	"Kirara",
-	"Kaveh"
+	"Kaveh",
+	"Charlotte"
 ]
