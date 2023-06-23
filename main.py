@@ -436,7 +436,7 @@ async def buy_item(interaction, item_name: str, duration: app_commands.Choice[in
 
 	if res != None:
 		await interaction.response.send_message(res, ephemeral=True)
-	elif duration == None or duration == 5000:
+	elif duration.value == 5000:
 		await interaction.response.send_message(
 			"Successfully bought " + item_name.title() + " role. Use **/equip** to use the role.")
 	else:

@@ -365,15 +365,16 @@ def buy_role(discord_id, role, duration, is_booster):
 	current_end_time = user_entry["role"].get(role, int(time.time()))
 	if user_entry["role"].get(role, 0) == 2145919483:
 		return "You already have this permanent role."
-	if duration == 7:
+
+	if jemdust_price != 0:
+		user_entry["role_icon"].append(role.title())
+	elif duration == 7:
 		user_entry["role"][role] = current_end_time + 604800
 	elif duration == 30:
 		user_entry["role"][role] = current_end_time + 2592000
 	elif duration == 5000:
 		user_entry["role"][role] = 2145919483
-	else:
-		# Duration not applicable for role icon
-		user_entry["role_icon"].append(role.title())
+		
 		
 	user_entry["jemdust"] += -1 * jemdust_price
 	helper.write_file("users.json", data)
