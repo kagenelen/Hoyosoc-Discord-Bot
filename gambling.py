@@ -4,6 +4,7 @@ import datetime
 import time
 import discord
 import random
+import discord
 from operator import getitem
 
 # ISSUE: Sometimes data doesn't get written because another function that uses write is called. This would overwrite the data.
@@ -20,6 +21,7 @@ ONE_WEEK_ROLE = 1500
 ONE_MONTH_ROLE = 4500
 PERMANENT_ROLE = 30000
 CHECKIN = 150
+INITIAL_POOL = 2000
 PRIZE_POOL = 500
 EVENT_ATTENDANCE = 1000
 BOOSTER_DISCOUNT = 0.5
@@ -45,14 +47,16 @@ def create_bet(bracket_id, candidates, end_time):
     # Convert candidate string to list
     candidate_list = [c.strip().lower() for c in candidates.split(",")]
 
-    # Convert end_time string to unix. Expected format e.g. 4/12/2023 17:15
-    end_time_dt = datetime.datetime.strptime(end_time, "%d/%m/%Y %H:%M")
-    end_time_unix = time.mktime(end_time_dt.timetuple())
+    # Convert end_time string to unix. Expected format e.g. 4/12/23 17:15
+    end_time_dt = datetime.datetime.strptime(end_time, "%d/%m/%y %H:%M")
+    end_time_unix = time.mktime(end_time_dt.timetuple()) - TIME_OFFSET
 
     # Create dictionary
     new_entry = {
         "candidates": candidate_list,
         "end_time": int(end_time_unix),
+		"prize_pool": INITIAL_POOL,
+		"message_id": None,
         "bets": {}
     }
 
@@ -64,46 +68,47 @@ def create_bet(bracket_id, candidates, end_time):
 
 # Submit a bet for a this-or-that bracket with nominated candidate
 # Argument: discord_id of better, bracket identifer string, 1 chosen candidate, bet amount int
-# Return: None if bet is valid, or error str for invalid bets
+# Return: [message_id, embed] if valid, or error str for invalid bets
 def submit_bet(discord_id, bracket_id, chosen_candidate, bet_amount):
-    bracket_id = bracket_id.lower()
-    discord_id = str(discord_id)
-    data = helper.read_file("bets.json")
-    bracket_entry = data.get(bracket_id, None)
-    user_entry = helper.get_user_entry(discord_id)
-    chosen_candidate = chosen_candidate.replace("‘", "'")
+	bracket_id = bracket_id.lower()
+	discord_id = str(discord_id)
+	data = helper.read_file("bets.json")
+	bracket_entry = data.get(bracket_id, None)
+	user_entry = helper.get_user_entry(discord_id)
+	chosen_candidate = chosen_candidate.replace("‘", "'")
+	
+	if bracket_entry == None:
+			# Invalid bracket id
+			return "Invalid bracket id."
+	
+	if time.time() > bracket_entry["end_time"]:
+			# Bet is no longer active
+			return "Betting has already ended."
+	
+	if chosen_candidate.lower() not in bracket_entry["candidates"]:
+			# Invalid candidate
+			return "Invalid candidate."
+	
+	if bracket_entry["bets"].get(discord_id) != None:
+			# Already betted
+			return "You have already betted in this bracket."
+	
+	if bet_amount < 0 or bet_amount > BET_LIMIT or bet_amount > user_entry["currency"]:
+			# Invalid bet amount
+			return "Invalid bet. Bet is over the " + str(BET_LIMIT) + " limit or you have insufficient currency."
+	
+	# Add bet to bracket entry
+	bracket_entry["bets"][discord_id] = [bet_amount, chosen_candidate.lower()]
+	bracket_entry["prize_pool"] += bet_amount + PRIZE_POOL
+	helper.write_file("bets.json", data)
+	update_user_currency(discord_id, -1 * bet_amount)
 
-    if bracket_entry == None:
-        # Invalid bracket id
-        return "Invalid bracket id."
-
-    if time.time() > bracket_entry["end_time"]:
-        # Bet is no longer active
-        return "Betting has already ended."
-
-    if chosen_candidate.lower() not in bracket_entry["candidates"]:
-        # Invalid candidate
-        return "Invalid candidate."
-
-    if bracket_entry["bets"].get(discord_id) != None:
-        # Already betted
-        return "You have already betted in this bracket."
-
-    if bet_amount < 0 or bet_amount > BET_LIMIT or bet_amount > user_entry[
-            "currency"]:
-        # Invalid bet amount
-        return "Invalid bet. Bet is over the " + str(
-            BET_LIMIT) + " limit or you have insufficient currency."
-
-    # Add bet to bracket entry
-    bracket_entry["bets"][discord_id] = [bet_amount, chosen_candidate.lower()]
-    helper.write_file("bets.json", data)
-    update_user_currency(discord_id, -1 * bet_amount)
+	return create_bet_message(bracket_id)
 
 
 # Give currency to all winning bets of a bracket
 # Argument: bracket identifier string, winning candidate string
-# Return: List of winner's discord id + earning or None if invalid bracket id
+# Return: [total reward distributed, winner amount] or None if invalid bracket id
 def give_bet_rewards(bracket_id, winning_candidate):
     bracket_id = bracket_id.lower()
     data = helper.read_file("bets.json")
@@ -121,7 +126,7 @@ def give_bet_rewards(bracket_id, winning_candidate):
 
     if total_winner_bets == 0:
         # Make sure division by 0 error does not occur if no winning bets
-        return []
+        return [total_bets, len(winners)]
 
     # Reward winners by the fraction they contributed to bets out of the winners
     for user in bracket_entry["bets"]:
@@ -131,7 +136,7 @@ def give_bet_rewards(bracket_id, winning_candidate):
             update_user_currency(user, earning)
             winners.append([user, earning])
 
-    return winners
+    return [total_bets, len(winners)]
 
 
 # See which brackets you have betted on
@@ -155,23 +160,60 @@ def view_own_bets(discord_id):
 # See bets that are ongoing (end time not passed)
 # Return: List of (bracket id, candidate list as string, end time as date string, current prize pool)
 def view_ongoing_bets():
-    data = helper.read_file("bets.json")
+	data = helper.read_file("bets.json")
+	
+	ongoing_bets = []
+	for bracket in data:
+		if time.time() < data[bracket]["end_time"]:
+			end_datetime = datetime.datetime.utcfromtimestamp(
+				data[bracket]["end_time"] + TIME_OFFSET).strftime('%d/%m/%Y')
+			candidates = ", ".join(data[bracket]["candidates"])
+	
+			# all_bets = [x[0] for x in list(data[bracket]["bets"].values())]
+			# current_prize = sum(all_bets) + PRIZE_POOL * len(all_bets)
+			current_prize = data[bracket]["prize_pool"]
+	
+			ongoing_bets.append(
+				[bracket, candidates.title(), end_datetime, current_prize])
+	
+	return ongoing_bets
 
-    ongoing_bets = []
-    for bracket in data:
-        if time.time() < data[bracket]["end_time"]:
-            end_datetime = datetime.datetime.utcfromtimestamp(
-                data[bracket]["end_time"] + TIME_OFFSET).strftime('%d/%m/%Y')
-            candidates = ", ".join(data[bracket]["candidates"])
+# Set message to keep track of a bet progress live
+# Argument: bracket id, message id
+def set_bet_message(bracket_id, message_id):
+	data = helper.read_file("bets.json")
+	
+	data[bracket_id]["message_id"] = message_id
+	helper.write_file("bets.json", data)
 
-            all_bets = [x[0] for x in list(data[bracket]["bets"].values())]
-            current_prize = sum(all_bets) + PRIZE_POOL * len(all_bets)
+# Create an embed for bet progress (to be called everytime bracket is updated)
+# Argument: bracket id
+# Return: [message id, bet embed]
+def create_bet_message(bracket_id):
+	data = helper.read_file("bets.json")
 
-            ongoing_bets.append(
-                [bracket,
-                 candidates.title(), end_datetime, current_prize])
+	embed = discord.Embed(title="Bracket ID: " + bracket_id, 
+						description=str(data[bracket_id]["prize_pool"]) + helper.PRIMOJEM_EMOTE + " prize pool",
+						color=0x61dfff)
+	
+	# Count number of bets and bet amount for each candidate
+	for candidate in data[bracket_id]["candidates"]:
+		bet_count = 0
+		bet_amount = 0
+		
+		for bet in data[bracket_id]["bets"]:
+			if data[bracket_id]["bets"][bet][1] == candidate:
+				bet_count += 1
+				bet_amount += data[bracket_id]["bets"][bet][0]
 
-    return ongoing_bets
+		# Count and amount finalised, create embed field
+		embed.add_field(name=candidate.title(),
+						value= helper.BETTER_EMOTE + " " + str(bet_count) + 
+						" | " + helper.PRIMOJEM_EMOTE + " " + str(bet_amount),
+						inline=False)
+				
+	return [data[bracket_id]["message_id"], embed]
+
 
 
 ################## Functions that deal with user currency #############################################

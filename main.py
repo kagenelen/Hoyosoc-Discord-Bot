@@ -19,11 +19,11 @@ import minigame
 ############################ CONSTANTS ###################################
 VERIFICATION_CHANNEL = 822423063697948693
 GENSOC_SERVER = 822411164846653490 # Actual gensoc server
-# GENSOC_SERVER = 962970271545982986 # Test server
+GENSOC_SERVER = 962970271545982986 # Test server
 WELCOME_CHANNEL = 822411164846653492
 WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265>."
-PRIMOJEM_EMOTE = "<:Primojem:1108620629902626816>"
-JEMDUST_EMOTE = "<:Jemdust:1108591111649362043>"
+THIS_OR_THAT_CHANNEL = 1064462494753620010
+THIS_OR_THAT_CHANNEL = 1122138125368569868 # for testing only
 
 # Read json file for channel
 absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
@@ -110,7 +110,7 @@ async def make_backup():
 ########################## COMMANDS ########################################
 
 @tree.command(name="send_welcome",
-				description="Send first welcome message",
+				description="Send first welcome message. Admin only.",
 				guild=discord.Object(id=GENSOC_SERVER))
 async def send_welcome(interaction):
 	if not helper.is_team(interaction):
@@ -125,7 +125,7 @@ async def send_welcome(interaction):
 	helper.write_file("config.json", data)
 
 @tree.command(name="set_verification",
-				description="Set verification channel",
+				description="Set verification channel. Admin only.",
 				guild=discord.Object(id=GENSOC_SERVER))
 async def set_verification(interaction, verify_channel: str):
 	if not helper.is_team(interaction):
@@ -233,7 +233,7 @@ async def reverse_find_uid(interaction, game:app_commands.Choice[str], uid: str)
 			owner.display_name + " owns the uid " + uid)
 
 @tree.command(name="scrape_uid",
-				description="Add all uids from a channel",
+				description="Add all uids from a channel. Admin only.",
 				guild=discord.Object(id=GENSOC_SERVER))
 async def scrape_uid_message(interaction, channel_id: str, game: str):
 	if not helper.is_team(interaction):
@@ -254,16 +254,14 @@ async def scrape_uid_message(interaction, channel_id: str, game: str):
 @tree.command(name="create_bet",
 				description="Create a betting bracket. Admin only.",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def start_bet(interaction, bracket_id: str, candidates: str,
-					end_time: str):
+async def start_bet(interaction, bracket_id: str, candidates: str, end_time: str):
 	if not helper.is_team(interaction):
 		await interaction.response.send_message("Insuffient permission.",
 												ephemeral=True)
 		return
 
 	gambling.create_bet(bracket_id, candidates, end_time)
-	await interaction.response.send_message(bracket_id +
-											" has been created.")
+	await interaction.response.send_message(bracket_id + " has been created.", ephemeral=True)
 
 @tree.command(name="payout_bet",
 				description="Give earning to bet winners. Admin only.",
@@ -274,24 +272,28 @@ async def payout_bet(interaction, bracket_id: str, winning_candidate: str):
 												ephemeral=True)
 		return
 
-	gambling.give_bet_rewards(bracket_id, winning_candidate)
-	await interaction.response.send_message("Earnings for " + winning_candidate +
-											" bets in bracket " + bracket_id + " has been sent.")
+	res = gambling.give_bet_rewards(bracket_id, winning_candidate)
+	await interaction.response.send_message(str(res[0]) + helper.PRIMOJEM_EMOTE + 
+											" has been distributed amongst " + str(res[1]) + 
+										   	" betters who chose **" + winning_candidate + 
+											"** for **" + bracket_id + "**.")
 
 @tree.command(name="bet",
 				description="Bet on a candidate for a bracket.",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def make_bet(interaction, bracket_id: str, candidate: str,
-					 amount: int):
+async def make_bet(interaction, bracket_id: str, candidate: str, amount: int):
 	res = gambling.submit_bet(interaction.user.id, bracket_id, candidate,
 								amount)
-	if res != None:
+	if isinstance(res, str):
 		await interaction.response.send_message(res, ephemeral=True)
 	else:
+		channel = client.get_channel(THIS_OR_THAT_CHANNEL)
+		bet_message = await channel.fetch_message(int(res[0]))
+		await bet_message.edit(embed=res[1])
+		
 		await interaction.response.send_message(
-			"Successfully made a bet of " + str(amount) + " for " +
-			candidate.lower(),
-			ephemeral=True)
+			"Successfully made a bet of " + str(amount) + " for " + candidate.lower(), ephemeral=True)
+		
 
 @tree.command(name="my_bets",
 				description="Check your 5 most recent bets.",
@@ -333,6 +335,22 @@ async def ongoing_bets(interaction):
 
 	await interaction.response.send_message(embed=embed)
 
+@tree.command(name="send_bet_info",
+				description="Create a bet live update message. Admin only.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def send_bet_message(interaction, bracket_id: str):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+	
+	res = gambling.create_bet_message(bracket_id)
+	await interaction.response.send_message(embed=res[1])
+	message = await interaction.original_response()
+	gambling.set_bet_message(bracket_id, message.id)
+	
+	
+
 ################################ CURRENCY ###########################################
 
 @tree.command(name="checkin",
@@ -357,8 +375,8 @@ async def inventory(interaction):
 	res = gambling.get_inventory(interaction.user.id)
 
 	embed = discord.Embed(title=interaction.user.display_name + "\'s inventory",
-							description=str(res[0]) + " " + PRIMOJEM_EMOTE + "  |  " + 
-						  		str(res[1]) + " " + JEMDUST_EMOTE,
+							description=str(res[0]) + " " + helper.PRIMOJEM_EMOTE + "  |  " + 
+						  		str(res[1]) + " " + helper.JEMDUST_EMOTE,
 							color=0x61dfff)
 
 	# Add embed field for each roles
@@ -391,15 +409,15 @@ async def view_shop(interaction, shop: app_commands.Choice[str]):
 
 	description = ""
 	if shop.value == "primojem":
-		description = ("7 days: " + str(price[0]) + " " + PRIMOJEM_EMOTE + "  |  " +
-			"30 day: " + str(price[1]) + " " + PRIMOJEM_EMOTE + "  |  " +
-			"Permanent: " + str(price[2]) + " " + PRIMOJEM_EMOTE + "\n" +
-			"1 pull: " + str(price[3]) + " " + PRIMOJEM_EMOTE + "\n" + 
+		description = ("7 days: " + str(price[0]) + " " + helper.PRIMOJEM_EMOTE + "  |  " +
+			"30 day: " + str(price[1]) + " " + helper.PRIMOJEM_EMOTE + "  |  " +
+			"Permanent: " + str(price[2]) + " " + helper.PRIMOJEM_EMOTE + "\n" +
+			"1 pull: " + str(price[3]) + " " + helper.PRIMOJEM_EMOTE + "\n" + 
 			"Use **/shop jemdust** to see the role icons shop.\n" + 
 			"Use **/gacha** to pull for role icons.\n\n")
 	elif shop.value == "jemdust":
-		description = ("5 star role icon: 180 " + JEMDUST_EMOTE + "  |  " +
-			"4 star role icon: 34 " + JEMDUST_EMOTE + "\n")
+		description = ("5 star role icon: 180 " + helper.JEMDUST_EMOTE + "  |  " +
+			"4 star role icon: 34 " + helper.JEMDUST_EMOTE + "\n")
 
 	embed = discord.Embed(title="Shop",
 							description=description,
@@ -497,10 +515,10 @@ async def leaderboard(interaction):
 	await interaction.response.send_message(embed=embed)
 
 @tree.command(
-	name="payout_attendance",
-	description="Give primojems to list of attendees. Admin only.",
+	name="give_primojems",
+	description="Give primojems to list of people. Admin only.",
 	guild=discord.Object(id=GENSOC_SERVER))
-async def payout_attendance(interaction, attendee_list: str, amount: int):
+async def give_primojem(interaction, attendee_list: str, amount: int):
 	if not helper.is_team(interaction):
 		await interaction.response.send_message("Insuffient permission.",
 												ephemeral=True)

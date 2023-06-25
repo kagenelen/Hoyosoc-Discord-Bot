@@ -9,6 +9,9 @@ import pytz
 
 SUBCOM_ROLE = "Subcommittee"
 EXEC_ROLE = "2023 Gensoc Team"
+PRIMOJEM_EMOTE = "<:Primojem:1108620629902626816>"
+JEMDUST_EMOTE = "<:Jemdust:1108591111649362043>"
+BETTER_EMOTE = "<:Betters:1122383400418934846>"
 
 def write_file(file, data):
   absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
