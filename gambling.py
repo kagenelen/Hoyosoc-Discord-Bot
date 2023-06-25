@@ -93,7 +93,7 @@ def submit_bet(discord_id, bracket_id, chosen_candidate, bet_amount):
 			# Already betted
 			return "You have already betted in this bracket."
 	
-	if bet_amount < 0 or bet_amount > BET_LIMIT or bet_amount > user_entry["currency"]:
+	if bet_amount <= 0 or bet_amount > BET_LIMIT or bet_amount > user_entry["currency"]:
 			# Invalid bet amount
 			return "Invalid bet. Bet is over the " + str(BET_LIMIT) + " limit or you have insufficient currency."
 	
