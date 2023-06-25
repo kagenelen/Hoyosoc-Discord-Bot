@@ -19,11 +19,10 @@ import minigame
 ############################ CONSTANTS ###################################
 VERIFICATION_CHANNEL = 822423063697948693
 GENSOC_SERVER = 822411164846653490 # Actual gensoc server
-GENSOC_SERVER = 962970271545982986 # Test server
+# GENSOC_SERVER = 962970271545982986 # Test server
 WELCOME_CHANNEL = 822411164846653492
 WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265>."
 THIS_OR_THAT_CHANNEL = 1064462494753620010
-THIS_OR_THAT_CHANNEL = 1122138125368569868 # for testing only
 
 # Read json file for channel
 absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
