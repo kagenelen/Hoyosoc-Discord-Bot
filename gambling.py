@@ -4,7 +4,6 @@ import datetime
 import time
 import discord
 import random
-import discord
 from operator import getitem
 
 # ISSUE: Sometimes data doesn't get written because another function that uses write is called. This would overwrite the data.
@@ -14,15 +13,16 @@ from operator import getitem
 
 '''
 
-TIME_OFFSET = 36000  # Don't use, it causes issues
+TIME_OFFSET = 36000
 ME = 318337790708547588
-BET_LIMIT = 2000
+BET_LIMIT = 5000
 ONE_WEEK_ROLE = 1500
 ONE_MONTH_ROLE = 4500
 PERMANENT_ROLE = 30000
 CHECKIN = 150
 INITIAL_POOL = 2000
 PRIZE_POOL = 500
+PRIZE_POOL_PERCENT = 1.25
 EVENT_ATTENDANCE = 1000
 BOOSTER_DISCOUNT = 0.5
 STREAK_MULTIPLIER = 5
@@ -99,7 +99,7 @@ def submit_bet(discord_id, bracket_id, chosen_candidate, bet_amount):
 	
 	# Add bet to bracket entry
 	bracket_entry["bets"][discord_id] = [bet_amount, chosen_candidate.lower()]
-	bracket_entry["prize_pool"] += bet_amount + PRIZE_POOL
+	bracket_entry["prize_pool"] += int(max(bet_amount + PRIZE_POOL, bet_amount * PRIZE_POOL_PERCENT))
 	helper.write_file("bets.json", data)
 	update_user_currency(discord_id, -1 * bet_amount)
 
@@ -110,33 +110,34 @@ def submit_bet(discord_id, bracket_id, chosen_candidate, bet_amount):
 # Argument: bracket identifier string, winning candidate string
 # Return: [total reward distributed, winner amount] or None if invalid bracket id
 def give_bet_rewards(bracket_id, winning_candidate):
-    bracket_id = bracket_id.lower()
-    data = helper.read_file("bets.json")
-    bracket_entry = data.get(bracket_id, None)
-
-    if bracket_entry == None:
-        # Invalid bracket id
-        return None
-
-    all_bets = [x[0] for x in list(bracket_entry["bets"].values())]
-    total_bets = sum(all_bets) + PRIZE_POOL * len(all_bets)
-    total_winner_bets = sum(x[0] for x in list(bracket_entry["bets"].values())
-                            if x[1] == winning_candidate)
-    winners = []
-
-    if total_winner_bets == 0:
-        # Make sure division by 0 error does not occur if no winning bets
-        return [total_bets, len(winners)]
-
-    # Reward winners by the fraction they contributed to bets out of the winners
-    for user in bracket_entry["bets"]:
-        if bracket_entry["bets"][user][1] == winning_candidate:
-            earning = total_bets * (bracket_entry["bets"][user][0] /
-                                    total_winner_bets)
-            update_user_currency(user, earning)
-            winners.append([user, earning])
-
-    return [total_bets, len(winners)]
+	bracket_id = bracket_id.lower()
+	data = helper.read_file("bets.json")
+	bracket_entry = data.get(bracket_id, None)
+	
+	if bracket_entry == None:
+		# Invalid bracket id
+		return None
+	
+	# all_bets = [x[0] for x in list(bracket_entry["bets"].values())]
+	# total_bets = sum(all_bets) + PRIZE_POOL * len(all_bets)
+	total_bets = bracket_entry["prize_pool"]
+	total_winner_bets = sum(x[0] for x in list(bracket_entry["bets"].values())
+							if x[1] == winning_candidate)
+	winners = []
+	
+	if total_winner_bets == 0:
+		# Make sure division by 0 error does not occur if no winning bets
+		return [total_bets, len(winners)]
+	
+	# Reward winners by the fraction they contributed to bets out of the winners
+	for user in bracket_entry["bets"]:
+		if bracket_entry["bets"][user][1] == winning_candidate:
+			earning = total_bets * (bracket_entry["bets"][user][0] /
+									total_winner_bets)
+			update_user_currency(user, earning)
+			winners.append([user, earning])
+	
+	return [total_bets, len(winners)]
 
 
 # See which brackets you have betted on
@@ -191,20 +192,21 @@ def set_bet_message(bracket_id, message_id):
 # Return: [message id, bet embed]
 def create_bet_message(bracket_id):
 	data = helper.read_file("bets.json")
+	bracket_entry = data.get(bracket_id, None)
 
 	embed = discord.Embed(title="Bracket ID: " + bracket_id, 
-						description=str(data[bracket_id]["prize_pool"]) + helper.PRIMOJEM_EMOTE + " prize pool",
+						description=str(bracket_entry["prize_pool"]) + helper.PRIMOJEM_EMOTE + " prize pool",
 						color=0x61dfff)
 	
 	# Count number of bets and bet amount for each candidate
-	for candidate in data[bracket_id]["candidates"]:
+	for candidate in bracket_entry["candidates"]:
 		bet_count = 0
 		bet_amount = 0
 		
-		for bet in data[bracket_id]["bets"]:
-			if data[bracket_id]["bets"][bet][1] == candidate:
+		for bet in bracket_entry["bets"]:
+			if bracket_entry["bets"][bet][1] == candidate:
 				bet_count += 1
-				bet_amount += data[bracket_id]["bets"][bet][0]
+				bet_amount += bracket_entry["bets"][bet][0]
 
 		# Count and amount finalised, create embed field
 		embed.add_field(name=candidate.title(),
@@ -212,7 +214,7 @@ def create_bet_message(bracket_id):
 						" | " + helper.PRIMOJEM_EMOTE + " " + str(bet_amount),
 						inline=False)
 				
-	return [data[bracket_id]["message_id"], embed]
+	return [bracket_entry["message_id"], embed]
 
 
 

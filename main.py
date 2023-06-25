@@ -286,9 +286,10 @@ async def make_bet(interaction, bracket_id: str, candidate: str, amount: int):
 	if isinstance(res, str):
 		await interaction.response.send_message(res, ephemeral=True)
 	else:
-		channel = client.get_channel(THIS_OR_THAT_CHANNEL)
-		bet_message = await channel.fetch_message(int(res[0]))
-		await bet_message.edit(embed=res[1])
+		if res[0] != None:
+			channel = client.get_channel(THIS_OR_THAT_CHANNEL)
+			bet_message = await channel.fetch_message(int(res[0]))
+			await bet_message.edit(embed=res[1])
 		
 		await interaction.response.send_message(
 			"Successfully made a bet of " + str(amount) + " for " + candidate.lower(), ephemeral=True)
