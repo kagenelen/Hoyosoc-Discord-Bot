@@ -23,6 +23,7 @@ GENSOC_SERVER = 822411164846653490 # Actual gensoc server
 WELCOME_CHANNEL = 822411164846653492
 WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265>."
 THIS_OR_THAT_CHANNEL = 1064462494753620010
+# THIS_OR_THAT_CHANNEL = 1122138125368569868 # Test server channel
 
 # Read json file for channel
 absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
@@ -47,6 +48,7 @@ async def on_ready():
 	await tree.sync(guild=discord.Object(id=GENSOC_SERVER))
 	daily_role_expiry_check.start()
 	make_backup.start()
+	run_scheduled_tasks.start()
 
 @client.event
 async def on_message(message):
@@ -105,6 +107,29 @@ async def daily_role_expiry_check():
 @tasks.loop(hours=24)
 async def make_backup():
 	helper.backup_file("users.json")
+
+@tasks.loop(minutes=5)
+async def run_scheduled_tasks():
+	data = helper.read_file("tasks.json")
+
+	# Run any task that is past the time and delete it after
+	task_copy = list(data)
+	for task in task_copy:
+		if task["time"] <= time.time():
+			if task["type"] == "vote":
+				# Auto payout task
+				channel = client.get_channel(THIS_OR_THAT_CHANNEL)
+				vote_message = await channel.fetch_message(task["message_id"])
+				res = gambling.auto_payout_bet(task["bracket_id"], vote_message.reactions)
+				if res != None:
+					await channel.send(str(res[0]) + helper.PRIMOJEM_EMOTE + 
+								" has been distributed amongst " + str(res[1]) + 
+								" betters who chose **" + res[3] + 
+								"** for **" + res[2] + "**.")
+				data.remove(task)
+
+	helper.write_file("tasks.json", data)
+				
 
 ########################## COMMANDS ########################################
 
@@ -322,7 +347,7 @@ async def my_bets(interaction):
 async def ongoing_bets(interaction):
 	res = gambling.view_ongoing_bets()
 
-	embed = discord.Embed(title="Ongoing bets", color=0x61dfff)
+	embed = discord.Embed(title="Ongoing Bets", color=0x61dfff)
 
 	# Add embed field for each ongoing bet
 	# Format:
@@ -348,6 +373,21 @@ async def send_bet_message(interaction, bracket_id: str):
 	await interaction.response.send_message(embed=res[1])
 	message = await interaction.original_response()
 	gambling.set_bet_message(bracket_id, message.id)
+
+@tree.command(name="auto_payout",
+				description="Schedule auto bet payout based on vote. Admin only.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def schedule_payout(interaction, message_id: str, bracket_id: str, end_time: str):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.", ephemeral=True)
+		return
+
+	res = gambling.add_auto_payout_bet(message_id, bracket_id, end_time)
+	if res != None:
+		await interaction.response.send_message(res, ephemeral=True)
+	else:
+		await interaction.response.send_message("Successfully scheduled auto payout for " + bracket_id,
+											   ephemeral=True)
 	
 	
 
