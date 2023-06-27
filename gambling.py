@@ -216,7 +216,49 @@ def create_bet_message(bracket_id):
 				
 	return [bracket_entry["message_id"], embed]
 
+# Automatically give payout after bracket vote time ends
+# Argument: message id, bracket id, vote end time string
+# Return: error string or None if successful
+def add_auto_payout_bet(message_id, bracket_id, end_time):
+	data = helper.read_file("bets.json")
+	bracket_entry = data.get(bracket_id, None)
 
+	if bracket_entry == None:
+		return "Invalid bracket id."
+	
+	# Convert end_time string to unix. Expected format e.g. 4/12/23 17:15
+	end_time_dt = datetime.datetime.strptime(end_time, "%d/%m/%y %H:%M")
+	end_time_unix = time.mktime(end_time_dt.timetuple()) - TIME_OFFSET
+
+	task_dict = {
+		"bracket_id": bracket_id,
+		"message_id": message_id
+	}
+
+	helper.create_task("vote", end_time_unix, task_dict)
+
+# Function called when vote task is scheduled, auto payout bet from reacts
+# Argument: bracket id, list of reactions
+# Return: [give_bet_reward response, bracket id, winning candidate] or error string
+def auto_payout_bet(bracket_id, reactions):
+	data = helper.read_file("bets.json")
+	bracket_entry = data.get(bracket_id, None)
+
+	count_list = [x.count for x in reactions]
+
+	# Check for vote ties
+	if count_list.count(max(count_list)) > 1:
+		print("Unable to payout " + bracket_id + " due to a tie.")
+		return
+
+	# Find which option has highest vote (assumes reaction list is in order)
+	candidate_num = count_list.index(max(count_list))
+	winning_candidate = bracket_entry["candidates"][candidate_num]
+
+	print("Auto payout done for " + bracket_id + " " + winning_candidate)
+
+	return give_bet_rewards(bracket_id, winning_candidate) + [bracket_id, winning_candidate]
+	
 
 ################## Functions that deal with user currency #############################################
 

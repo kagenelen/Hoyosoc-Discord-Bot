@@ -110,7 +110,22 @@ def is_booster(user):
     return True
   return False
 
-
+# Create scheduled task
+# Argument: task type, scheduled time to run task, dictionary containing other info
+def create_task(task_type, task_time, task_info):
+	# Create dictionary
+	new_entry = {
+		"type": task_type,
+		"time": task_time
+	}
+	
+	new_entry.update(task_info)
+	
+	# Add entry to tasks.json
+	data = read_file("tasks.json")
+	data.append(new_entry)
+	write_file("tasks.json", data)
+	
 # Verifies user from moderator message
 # Arg: Message (class)
 # Return: User (member class) or None if user not found
