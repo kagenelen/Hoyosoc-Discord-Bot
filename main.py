@@ -108,7 +108,7 @@ async def daily_role_expiry_check():
 async def make_backup():
 	helper.backup_file("users.json")
 
-@tasks.loop(minutes=5)
+@tasks.loop(minutes=1)
 async def run_scheduled_tasks():
 	data = helper.read_file("tasks.json")
 
