@@ -165,18 +165,23 @@ def give_bet_rewards(bracket_id, winning_candidate):
 # Argument: discord id string
 # Return: List of (bracket id, amount, candidate) in order of most recent, max 5
 def view_own_bets(discord_id):
-    discord_id = str(discord_id)
-    data = helper.read_file("bets.json")
-
-    recent_bets = []
-    for bracket in data:
-        betters = list(data[bracket]["bets"].keys())
-        if discord_id in betters:
-            this_bet = data[bracket]["bets"].get(discord_id)
-            recent_bets.append([bracket] + this_bet)
-
-    recent_bets.reverse()
-    return recent_bets
+	discord_id = str(discord_id)
+	data = helper.read_file("bets.json")
+	
+	recent_bets = []
+	curr = 1
+	for bracket in data:
+		betters = list(data[bracket]["bets"].keys())
+		if curr > 5:
+			break
+			
+		if discord_id in betters:
+			this_bet = data[bracket]["bets"].get(discord_id)
+			recent_bets.append([bracket] + this_bet)
+			curr+=1
+	
+	recent_bets.reverse()
+	return recent_bets
 
 
 # See bets that are ongoing (end time not passed)
@@ -321,8 +326,8 @@ def get_leaderboard():
     leaderboard = []
     for user in sorted_data:
         # Prevent myself from appearing on the leaderboard
-        if int(user[0]) != ME:
-            leaderboard.append([user[0], user[1]["currency"]])
+		# if int(user[0]) != ME:
+        leaderboard.append([user[0], user[1]["currency"]])
 
     return leaderboard
 
