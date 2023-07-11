@@ -2717,15 +2717,5 @@
         "hsr_uids": [
             "800044319"
         ]
-    },
-    "962959061912018955": {
-        "currency": 100,
-        "next_checkin": 1689032857,
-        "role": {},
-        "checkin_streak": 0,
-        "genshin_uids": [],
-        "role_icon": [],
-        "jemdust": 0,
-        "hsr_uids": []
     }
 }
