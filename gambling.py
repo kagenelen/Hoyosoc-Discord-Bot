@@ -88,11 +88,32 @@ def submit_bet(discord_id, bracket_id, chosen_candidate, bet_amount):
 	if chosen_candidate.lower() not in bracket_entry["candidates"]:
 			# Invalid candidate
 			return "Invalid candidate."
-	
-	if bracket_entry["bets"].get(discord_id) != None:
-			# Already betted
-			return "You have already betted in this bracket."
-	
+
+	user_bet_entry = bracket_entry["bets"].get(discord_id)
+	if user_bet_entry != None:
+			# Already betted, update bet if bet is higher
+		
+			if user_bet_entry[0] < bet_amount and user_bet_entry[1] == chosen_candidate.lower():
+				# Update bet to higher amount
+				deduct_amount = bet_amount - user_bet_entry[0]
+				user_bet_entry[0] = bet_amount
+				bracket_entry["prize_pool"] += int(bet_amount * PRIZE_POOL_PERCENT)
+
+				if bet_amount <= 0 or bet_amount > BET_LIMIT or deduct_amount > user_entry["currency"]:
+				# Invalid bet amount
+					return "Invalid bet. Bet is over the " + str(BET_LIMIT) + " limit or you have insufficient currency."
+		
+				helper.write_file("bets.json", data)
+				update_user_currency(discord_id, -1 * deduct_amount)
+				return create_bet_message(bracket_id)
+				
+			elif user_bet_entry[0] >= bet_amount and user_bet_entry[1] == chosen_candidate.lower():
+				# New bet is lower than previous
+				return "To update your bet, you must bet higher than your previous bet of " + str(user_bet_entry[0])
+				
+			else:
+				return "You may only update your previous bet on " + user_bet_entry[1]
+
 	if bet_amount <= 0 or bet_amount > BET_LIMIT or bet_amount > user_entry["currency"]:
 			# Invalid bet amount
 			return "Invalid bet. Bet is over the " + str(BET_LIMIT) + " limit or you have insufficient currency."
