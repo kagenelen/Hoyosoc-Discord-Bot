@@ -169,19 +169,14 @@ def view_own_bets(discord_id):
 	data = helper.read_file("bets.json")
 	
 	recent_bets = []
-	curr = 1
 	for bracket in data:
 		betters = list(data[bracket]["bets"].keys())
-		if curr > 5:
-			break
-			
 		if discord_id in betters:
 			this_bet = data[bracket]["bets"].get(discord_id)
 			recent_bets.append([bracket] + this_bet)
-			curr+=1
 	
 	recent_bets.reverse()
-	return recent_bets
+	return recent_bets[0:5:]
 
 
 # See bets that are ongoing (end time not passed)
