@@ -97,7 +97,7 @@ def submit_bet(discord_id, bracket_id, chosen_candidate, bet_amount):
 				# Update bet to higher amount
 				deduct_amount = bet_amount - user_bet_entry[0]
 				user_bet_entry[0] = bet_amount
-				bracket_entry["prize_pool"] += int(bet_amount * PRIZE_POOL_PERCENT)
+				bracket_entry["prize_pool"] += int(deduct_amount * PRIZE_POOL_PERCENT)
 
 				if bet_amount <= 0 or bet_amount > BET_LIMIT or deduct_amount > user_entry["currency"]:
 				# Invalid bet amount
