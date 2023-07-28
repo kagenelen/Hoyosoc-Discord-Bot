@@ -148,7 +148,7 @@ async def verify_user(message):
 
 	for index, word1 in enumerate(message_words):
 		if "What is your Discord ID?" in word1: # Discord new username format
-			username = message_words[index + 1]
+			username = message_words[index + 1].lower()
 
 	role = discord.utils.get(message.guild.roles, name="Traveller")
 	if role == None:
