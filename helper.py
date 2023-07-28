@@ -116,7 +116,7 @@ def create_task(task_type, task_time, task_info):
 	# Create dictionary
 	new_entry = {
 		"type": task_type,
-		"time": task_time
+		"time": int(task_time)
 	}
 	
 	new_entry.update(task_info)
@@ -125,6 +125,17 @@ def create_task(task_type, task_time, task_info):
 	data = read_file("tasks.json")
 	data.append(new_entry)
 	write_file("tasks.json", data)
+
+# List scheduled tasks
+# Return list of [task_type, task_time]
+def list_tasks():
+	data = read_file("tasks.json")
+
+	task_list = []
+	for task in data:
+		task_list.append([task["type"].title(), unix_to_syd(task["time"])])
+
+	return task_list
 	
 # Verifies user from moderator message
 # Arg: Message (class)

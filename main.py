@@ -7,6 +7,7 @@ import os
 import json
 import random
 import time
+import DiscordUtils
 
 import helper
 import uid_finder
@@ -17,13 +18,19 @@ import minigame
 # IMPORTANT: Replit code is using a test bot on the test server. Before committing please change GENSOC_SERVER back to actual server's id
 
 ############################ CONSTANTS ###################################
-VERIFICATION_CHANNEL = 822423063697948693
 GENSOC_SERVER = 822411164846653490 # Actual gensoc server
 # GENSOC_SERVER = 962970271545982986 # Test server
+
 WELCOME_CHANNEL = 822411164846653492
 WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265>."
+
+VERIFICATION_CHANNEL = 822423063697948693
 THIS_OR_THAT_CHANNEL = 1064462494753620010
 # THIS_OR_THAT_CHANNEL = 1122138125368569868 # Test server channel
+THIS_OR_THAT_CHANNEL = 1064462494753620010
+# THIS_OR_THAT_CHANNEL = 1122138125368569868 # Test server channel
+COUNTING_CHANNEL = 1134336873628696638
+AUCTION_CHANNEL = 1134351976738603058 # Still test server channel
 
 # Read json file for channel
 absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
@@ -85,6 +92,14 @@ async def on_message(message):
 		channel = client.get_channel(WELCOME_CHANNEL)
 		await channel.send(character_message)
 
+	##### This section deals with the counting game #######################
+	if (message.channel.id == COUNTING_CHANNEL and not message.author.bot):
+			res = minigame.number_validity(message)
+			if res != True:
+				channel = client.get_channel(COUNTING_CHANNEL)
+				await channel.send(res)
+
+
 ########################## LOOPS ###########################################
 
 @tasks.loop(hours=12)
@@ -113,7 +128,9 @@ async def run_scheduled_tasks():
 	data = helper.read_file("tasks.json")
 
 	# Run any task that is past the time and delete it after
+	update_task_file = False
 	task_copy = list(data)
+	
 	for task in task_copy:
 		if task["time"] <= time.time():
 			if task["type"] == "vote":
@@ -127,8 +144,10 @@ async def run_scheduled_tasks():
 								" betters who chose **" + res[3] + 
 								"** for **" + res[2] + "**.")
 				data.remove(task)
+				update_task_file = True
 
-	helper.write_file("tasks.json", data)
+	if update_task_file:
+		helper.write_file("tasks.json", data)
 				
 
 ########################## COMMANDS ########################################
@@ -140,6 +159,7 @@ async def send_welcome(interaction):
 	if not helper.is_team(interaction):
 		await interaction.response.send_message("Insuffient permission.",
 												ephemeral=True)
+		return
 
 	# Send message and store id
 	welcome = await client.get_channel(int(WELCOME_CHANNEL)
@@ -155,6 +175,7 @@ async def set_verification(interaction, verify_channel: str):
 	if not helper.is_team(interaction):
 		await interaction.response.send_message("Insuffient permission.",
 												ephemeral=True)
+		return
 
 	# Set verification channel
 	await interaction.response.send_message(
@@ -164,32 +185,59 @@ async def set_verification(interaction, verify_channel: str):
 	data['channel'] = int(verify_channel)
 	helper.write_file("config.json", data)
 
+@tree.command(name="view_tasks",
+				description="View all scheduled tasks.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def view_tasks(interaction):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+
+	embed = discord.Embed(title="Scheduled Tasks", color=0x61dff)
+	tasks = helper.list_tasks()
+	for t in tasks:
+		embed.add_field(name=t[0], value=t[1], inline=False)
+
+	await interaction.response.send_message(embed=embed, ephemeral=True)
+	
+
 @tree.command(name="help",
 				description="View all available bot commands.",
 				guild=discord.Object(id=GENSOC_SERVER))
 async def help_commands(interaction):
-	embed = discord.Embed(title="Bot Commands",
-							color=0x61dfff)
+	embed_general = discord.Embed(title="General Commands", color=0x61dff)
+	embed_primojem = discord.Embed(title="Primojem Commands", color=0x61dff)
+	embed_minigame = discord.Embed(title="Minigame Commands", color=0x61dff)
+	embed_poll = discord.Embed(title="Betting Commands", color=0x61dff)
+	paginator = DiscordUtils.Pagination.AutoEmbedPaginator(interaction)
 	
-	embed.add_field(name="**/checkin**", value="Daily free primojems.", inline=False)
-	embed.add_field(name="**/leaderboard**", value="See top 10 primojem earners and your own rank.", inline=False)
-	embed.add_field(name="**/shop**", value="See which roles and role icons you can buy.", inline=False)
-	embed.add_field(name="**/buy**", value="Buy a role from the shop.", inline=False)
-	embed.add_field(name="**/equip**", value="Equip or unequip a role.", inline=False)
-	embed.add_field(name="**/inventory**", value="Check primojem, jemdust and owned roles.", inline=False)
-	embed.add_field(name="**/blackjack**", value="Play blackjack.", inline=False)
-	embed.add_field(name="**/hangman**", value="Play hangman.", inline=False)
-	embed.add_field(name="**/coinflip**", value="Play heads or tails.", inline=False)
-	embed.add_field(name="**/gacha**", value="Gacha for role icons.", inline=False)
-	embed.add_field(name="**/bet**", value="Make a bet on this-or-that bracket.", inline=False)
-	embed.add_field(name="**/ongoing_bets**", value="See the bracket id of ongoing bets.", inline=False)
-	embed.add_field(name="**/my_bets**", value="See which brackets you have betted on.", inline=False)
-	embed.add_field(name="**/add_uid**", value="Add UID to bot database.", inline=False)
-	embed.add_field(name="**/remove_uid**", value="Remove UID from bot database.", inline=False)
-	embed.add_field(name="**/find_uid**", value="List all UIDs of an user.", inline=False)
-	embed.add_field(name="**/whose_uid**", value="Find the owner of an UID.", inline=False)
+	embed_primojem.add_field(name="**/checkin**", value="Daily free primojems.", inline=False)
+	embed_primojem.add_field(name="**/leaderboard**", value="See top 10 primojem earners and your own rank.", inline=False)
+	embed_primojem.add_field(name="**/shop**", value="See which roles and role icons you can buy.", inline=False)
+	embed_primojem.add_field(name="**/buy**", value="Buy a role from the shop.", inline=False)
+	embed_primojem.add_field(name="**/equip**", value="Equip or unequip a role.", inline=False)
+	embed_primojem.add_field(name="**/inventory**", value="Check primojem, jemdust and owned roles.", inline=False)
+	
+	embed_minigame.add_field(name="**/blackjack**", value="Play blackjack.", inline=False)
+	embed_minigame.add_field(name="**/hangman**", value="Play hangman.", inline=False)
+	embed_minigame.add_field(name="**/coinflip**", value="Play heads or tails.", inline=False)
+	embed_minigame.add_field(name="**/gacha**", value="Gacha for role icons.", inline=False)
+	
+	embed_poll.add_field(name="**/bet**", value="Make a bet on this-or-that bracket.", inline=False)
+	embed_poll.add_field(name="**/ongoing_bets**", value="See the bracket id of ongoing bets.", inline=False)
+	embed_poll.add_field(name="**/my_bets**", value="See which brackets you have betted on.", inline=False)
+	embed_poll.add_field(name="**/bid**", value="Bid on an auction.", inline=False)
+	embed_poll.add_field(name="**/auction_info**", value="Get info about an auction.", inline=False)
+	
+	embed_general.add_field(name="**/add_uid**", value="Add UID to bot database.", inline=False)
+	embed_general.add_field(name="**/remove_uid**", value="Remove UID from bot database.", inline=False)
+	embed_general.add_field(name="**/find_uid**", value="List all UIDs of an user.", inline=False)
+	embed_general.add_field(name="**/whose_uid**", value="Find the owner of an UID.", inline=False)
 
-	await interaction.response.send_message(embed=embed)
+	# await interaction.response.defer()
+	embeds = [embed_general, embed_primojem, embed_minigame, embed_poll]
+	await paginator.run(embeds)
 	
 
 ################################ UID #################################
@@ -388,8 +436,55 @@ async def schedule_payout(interaction, message_id: str, bracket_id: str, end_tim
 	else:
 		await interaction.response.send_message("Successfully scheduled auto payout for " + bracket_id,
 											   ephemeral=True)
+
+
+
+#################################### AUCTION ###################################
+
+@tree.command(name="create_auction",
+				description="Start an auction. Admin only.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def start_auction(interaction, auction_name: str, end_time: str):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+
+	gambling.create_auction(auction_name, end_time)
+	await interaction.response.send_message(auction_name + " has been created.", ephemeral=True)
+
+@tree.command(name="bid",
+				description="Bid on an auction.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def make_bid(interaction, auction_name: str, amount: int):
+	res = gambling.submit_bid(interaction.user, auction_name, amount)
+	if isinstance(res, str):
+		await interaction.response.send_message(res, ephemeral=True)
+	else:
+		if res[0] != None:
+			channel = client.get_channel(AUCTION_CHANNEL)
+			auction_message = await channel.fetch_message(int(res[0]))
+			await auction_message.edit(embed=res[1])
+
+		response_message = "Successfully made a bid of " + str(amount) + " for " + auction_name + "."
+		if res[2] != str(interaction.user.id):
+			# Ping previous bidder that they have been outbid
+			response_message += "\n\n<@" + res[2] + ">" + " you have been outbid by " + interaction.user.display_name
+		
+		await interaction.response.send_message(response_message)
+
+@tree.command(name="auction_info",
+				description="Get info about an auction.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def send_auction_info(interaction, auction_name: str):
+	res = gambling.create_auction_message(auction_name)
+	await interaction.response.send_message(embed=res[1])
 	
-	
+	if helper.is_team(interaction):
+		# Only update auction message id if gensoc team uses this command
+		message = await interaction.original_response()
+		gambling.set_auction_message(auction_name, message.id)
+
 
 ################################ CURRENCY ###########################################
 

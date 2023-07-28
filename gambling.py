@@ -9,13 +9,16 @@ from operator import getitem
 # ISSUE: Sometimes data doesn't get written because another function that uses write is called. This would overwrite the data.
 # FIX: Call update user currency (or something similar) after write data
 '''
-▢ (Maybe) Role icon trading
+▢ Create auction
+▢ Add auction bid (allowing for self updates)
+▢ (maybe) Shop items that doubles primojem earnt from this-or-that 
 
 '''
 
 TIME_OFFSET = 36000
 ME = 318337790708547588
 BET_LIMIT = 5000
+AUCTION_INCREMENT = 1.05
 ONE_WEEK_ROLE = 1500
 ONE_MONTH_ROLE = 4500
 PERMANENT_ROLE = 30000
@@ -582,4 +585,117 @@ def scrap_role_icon(discord_id, role):
 	user_entry["jemdust"] += jemdust_amount
 	helper.write_file("users.json", data)
 	return jemdust_amount
+
+############## Auction ################################
+
+# Create auction
+# Argument: auction_id, end_time as date string
+def create_auction(auction_id, end_time):
+    auction_id = auction_id.lower()
+
+    # Convert end_time string to unix. Expected format e.g. 4/12/23 17:15
+    end_time_dt = datetime.datetime.strptime(end_time, "%d/%m/%y %H:%M")
+    end_time_unix = time.mktime(end_time_dt.timetuple()) - TIME_OFFSET
+
+    # Create dictionary
+    new_entry = {
+        "highest_bid": 0,
+		"highest_bidder": "986446621468405852",
+		"bidder_name": "Noone Yet",
+        "end_time": int(end_time_unix),
+		"message_id": None
+    }
+
+    # Add entry to auction.json
+    data = helper.read_file("auction.json")
+    data[auction_id] = new_entry
+    helper.write_file("auction.json", data)
+
+# Submit a bid for an auction
+# Argument: bidder user object, auction_id, bid_amount int
+# Return: [message_id, embed, previous_bidder/None] if valid, or error str for invalid bids
+def submit_bid(bidder, auction_id, bid_amount):
+	auction_id = auction_id.lower()
+	discord_id = str(bidder.id)
+	data = helper.read_file("auction.json")
+	auction_entry = data.get(auction_id, None)
+	user_entry = helper.get_user_entry(discord_id)
 	
+	previous_bidder = auction_entry["highest_bidder"]
+	minimum_next_bid = int(auction_entry["highest_bid"] * AUCTION_INCREMENT)
+	
+	if auction_entry == None:
+		# Invalid auction id
+		return "Invalid auction id."
+	
+	if time.time() > auction_entry["end_time"]:
+		# Auction is no longer active
+		return "This auction has already ended."
+	
+	if time.time() + 3600 > auction_entry["end_time"]:
+		# Extend time by 1 hour if there is sniping in the last hour
+		auction_entry["end_time"] += 3600
+
+	if auction_entry["highest_bid"] < bid_amount:
+		if discord_id == auction_entry["highest_bidder"]:
+			# Already the highest bidder, only deduct the difference
+			deduct_amount = bid_amount - auction_entry["highest_bid"]
+			auction_entry["highest_bid"] = bid_amount
+
+			if deduct_amount > user_entry["currency"]:
+			# Insufficient currency
+				return "You have insufficient currency to make this bid."
+	
+			update_user_currency(discord_id, -1 * deduct_amount)
+			
+		else:
+			# New highest bidder
+			if bid_amount > user_entry["currency"]:
+				# Insufficient currency
+				return "You have insufficient currency to make this bid."
+
+			# Anti-snipe measures. Different bidder must bid AUCTION_INCREMENT times more than highest
+			if minimum_next_bid > bid_amount:
+				return "Valid bids must be higher than " + str(minimum_next_bid) + " to prevent sniping."
+			
+			# Refund previous bidder
+			update_user_currency(auction_entry["highest_bidder"], 1 * auction_entry["highest_bid"])
+
+			# Update highest bid and bidder
+			auction_entry["highest_bidder"] = discord_id
+			auction_entry["highest_bid"] = bid_amount
+			auction_entry["bidder_name"] = bidder.display_name
+			update_user_currency(discord_id, -1 * bid_amount)
+		
+	else:
+		return "Valid bids must be higher than current highest bid of " + str(auction_entry["highest_bid"])
+	
+	# Update auction json and auction message
+	helper.write_file("auction.json", data)
+	return create_auction_message(auction_id) + [previous_bidder]
+
+# Set message to keep track of an auction
+# Argument: auction id, message id
+def set_auction_message(auction_id, message_id):
+	data = helper.read_file("auction.json")
+	
+	data[auction_id]["message_id"] = message_id
+	helper.write_file("auction.json", data)
+
+# Create an embed for auction progress (to be called everytime auction is updated)
+# Argument: auction id
+# Return: [message id, bet embed]
+def create_auction_message(auction_id):
+	data = helper.read_file("auction.json")
+	auction_entry = data.get(auction_id, None)
+	
+	embed = discord.Embed(title=auction_id.title(), 
+						description="Ending <t:" + str(auction_entry["end_time"]) + ":R>",
+						color=0x61dfff)
+
+	# Embed field for highest bid and bid amount
+	embed.add_field(name="Highest bidder: " + auction_entry["bidder_name"],
+						value= str(auction_entry["highest_bid"]) + " " + helper.PRIMOJEM_EMOTE,
+						inline=False)
+				
+	return [auction_entry["message_id"], embed]

@@ -10,12 +10,12 @@ Guess the number
 Blackjack
 Coinflip
 Hangman
+Counting game
 
 Hangman TODO:
 talent name
-character dish
-more terminology: darshan, inazuma commissions etc.
 furniture name (evil)
+
 
 
 '''
@@ -24,7 +24,10 @@ CARDS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"]
 HM_NORMAL = 10
 HM_HARD = 30
 HM_EXTREME = 150
+COUNT_MULTIPLER = 0.05
+COUNT_MAX = 10
 
+################### Guess Number ############################
 
 # Make new guess session. Where the number range is 0 - bet.
 # Argument: discord id string, bet amount, self given attempts
@@ -102,6 +105,7 @@ def make_guess(discord_id, guess):
   helper.write_file("minigame_session.json", data)
   return res
 
+################### Blackjack ############################
 
 # Make new blackjack session.
 # Argument: discord id string, bet amount
@@ -245,6 +249,7 @@ def blackjack_get_value(hand):
   else:
     return hand1_value
 
+################### Coinflip ############################
 
 # Flip a certain amount of coins and guess amount of heads
 # Argument: discord id string, coin amount, head amount, bet
@@ -276,7 +281,7 @@ def coinflip(discord_id, coin_amount, head_amount, bet):
     return [flip_result, 0]
 
 
-#Hangman #################################################################
+################### Hangman ############################
 ''' 
 Returns: [
     status,
@@ -427,3 +432,33 @@ def hangman_guess(discord_id, guess):
         user_session["lives"], "You got " + str(primojem) + " primojems."
       ]
     ]
+
+################### Counting game ############################
+# Check whether number is valid
+# Argument: message object
+# Return: true or error message
+def number_validity(message):
+	data = helper.read_file("minigame_session.json")
+
+	# Invalid number
+	if data["1"]["next_valid_number"] != int(message.content.strip()):
+		data["1"]["next_valid_number"] = 1
+		data["1"]["last_user"] = 1
+		helper.write_file("minigame_session.json", data)
+		return "Incorrect! Resetting counting game..."
+
+	# Double counting user
+	if data["1"]["last_user"] == message.author.id:
+		data["1"]["next_valid_number"] = 1
+		data["1"]["last_user"] = 1
+		helper.write_file("minigame_session.json", data)
+		return "You cannot make consecutive counts. Resetting counting game..."
+
+	# Correct submission, increment count and reward primojem
+	primojem_reward = min(int(math.ceil(data["1"]["next_valid_number"] * COUNT_MULTIPLER)), COUNT_MAX)
+	gambling.update_user_currency(message.author.id, primojem_reward)
+	data["1"]["next_valid_number"] += 1
+	data["1"]["last_user"] = message.author.id
+	
+	helper.write_file("minigame_session.json", data)
+	return True
