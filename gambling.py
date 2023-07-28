@@ -632,8 +632,8 @@ def submit_bid(bidder, auction_id, bid_amount):
 		# Auction is no longer active
 		return "This auction has already ended."
 	
-	if time.time() + 60 > auction_entry["end_time"]:
-		# Extend time by 1 hour if there is sniping in the last minute
+	if time.time() + 3600 > auction_entry["end_time"]:
+		# Extend time by 1 hour if there is sniping in the last hour
 		auction_entry["end_time"] += 3600
 
 	if auction_entry["highest_bid"] < bid_amount:
