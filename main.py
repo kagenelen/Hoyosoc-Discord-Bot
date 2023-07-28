@@ -114,7 +114,9 @@ async def run_scheduled_tasks():
 	data = helper.read_file("tasks.json")
 
 	# Run any task that is past the time and delete it after
+	update_task_file = False
 	task_copy = list(data)
+	
 	for task in task_copy:
 		if task["time"] <= time.time():
 			if task["type"] == "vote":
@@ -128,8 +130,10 @@ async def run_scheduled_tasks():
 								" betters who chose **" + res[3] + 
 								"** for **" + res[2] + "**.")
 				data.remove(task)
+				update_task_file = True
 
-	helper.write_file("tasks.json", data)
+	if update_task_file:
+		helper.write_file("tasks.json", data)
 				
 
 ########################## COMMANDS ########################################
@@ -141,6 +145,7 @@ async def send_welcome(interaction):
 	if not helper.is_team(interaction):
 		await interaction.response.send_message("Insuffient permission.",
 												ephemeral=True)
+		return
 
 	# Send message and store id
 	welcome = await client.get_channel(int(WELCOME_CHANNEL)
@@ -156,6 +161,7 @@ async def set_verification(interaction, verify_channel: str):
 	if not helper.is_team(interaction):
 		await interaction.response.send_message("Insuffient permission.",
 												ephemeral=True)
+		return
 
 	# Set verification channel
 	await interaction.response.send_message(
@@ -164,6 +170,23 @@ async def set_verification(interaction, verify_channel: str):
 	data = helper.read_file("config.json")
 	data['channel'] = int(verify_channel)
 	helper.write_file("config.json", data)
+
+@tree.command(name="view_tasks",
+				description="View all scheduled tasks.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def view_tasks(interaction):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+
+	embed = discord.Embed(title="Scheduled Tasks", color=0x61dff)
+	tasks = helper.list_tasks()
+	for t in tasks:
+		embed.add_field(name=t[0], value=t[1], inline=False)
+
+	await interaction.response.send_message(embed=embed, ephemeral=True)
+	
 
 @tree.command(name="help",
 				description="View all available bot commands.",

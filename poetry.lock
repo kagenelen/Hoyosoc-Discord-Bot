@@ -134,6 +134,20 @@ speed = ["cchardet (==2.1.7)", "brotli", "aiodns (>=1.1)", "orjson (>=3.5.4)"]
 docs = ["typing-extensions (>=4.3,<5)", "sphinxcontrib-websupport", "sphinxcontrib-trio (==1.1.2)", "sphinx (==4.4.0)"]
 
 [[package]]
+name = "discordutils"
+version = "1.3.4"
+description = "DiscordUtils is a very useful library made to be used with discord.py"
+category = "main"
+optional = false
+python-versions = ">= 3.6"
+
+[package.dependencies]
+"discord.py" = "*"
+
+[package.extras]
+voice = ["discord.py", "youtube-dl"]
+
+[[package]]
 name = "flask"
 version = "2.2.2"
 description = "A simple framework for building complex web applications."
@@ -533,7 +547,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8.0,<3.9"
-content-hash = "883489eedbc68fd81f0a91adb333f6c9093d7f5b802a021e5e9b623d343fdd84"
+content-hash = "f42477a1fa98a70dfdd64becfc0d9a65b81297a31d3b23a6dc5a62b77f652279"
 
 [metadata.files]
 aiohttp = []
@@ -548,6 +562,7 @@ colorama = []
 debugpy = []
 discord = []
 "discord.py" = []
+discordutils = []
 flask = []
 frozenlist = []
 idna = []
