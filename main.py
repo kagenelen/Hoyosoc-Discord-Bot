@@ -207,9 +207,14 @@ async def view_tasks(interaction):
 				guild=discord.Object(id=GENSOC_SERVER))
 async def help_commands(interaction):
 	embed_general = discord.Embed(title="General Commands", color=0x61dff)
+	embed_general.set_footer(text="Page 1/4")
 	embed_primojem = discord.Embed(title="Primojem Commands", color=0x61dff)
+	embed_primojem.set_footer(text="Page 2/4")
 	embed_minigame = discord.Embed(title="Minigame Commands", color=0x61dff)
+	embed_minigame.set_footer(text="Page 3/4")
 	embed_poll = discord.Embed(title="Betting Commands", color=0x61dff)
+	embed_poll.set_footer(text="Page 4/4")
+	
 	paginator = DiscordUtils.Pagination.AutoEmbedPaginator(interaction)
 	
 	embed_primojem.add_field(name="**/checkin**", value="Daily free primojems.", inline=False)
@@ -237,6 +242,10 @@ async def help_commands(interaction):
 
 	# await interaction.response.defer()
 	embeds = [embed_general, embed_primojem, embed_minigame, embed_poll]
+	paginator.add_reaction('⏮️', "first")
+	paginator.add_reaction('⬅️', "back")
+	paginator.add_reaction('➡️', "next")
+	paginator.add_reaction('⏭️', "last")
 	await paginator.run(embeds)
 	
 
