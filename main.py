@@ -18,13 +18,18 @@ import minigame
 # IMPORTANT: Replit code is using a test bot on the test server. Before committing please change GENSOC_SERVER back to actual server's id
 
 ############################ CONSTANTS ###################################
-VERIFICATION_CHANNEL = 822423063697948693
 GENSOC_SERVER = 822411164846653490 # Actual gensoc server
 # GENSOC_SERVER = 962970271545982986 # Test server
+
 WELCOME_CHANNEL = 822411164846653492
 WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265>."
+
+VERIFICATION_CHANNEL = 822423063697948693
 THIS_OR_THAT_CHANNEL = 1064462494753620010
 # THIS_OR_THAT_CHANNEL = 1122138125368569868 # Test server channel
+THIS_OR_THAT_CHANNEL = 1064462494753620010
+# THIS_OR_THAT_CHANNEL = 1122138125368569868 # Test server channel
+COUNTING_CHANNEL = 1134336873628696638
 
 # Read json file for channel
 absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
@@ -85,6 +90,14 @@ async def on_message(message):
 			"author", user.mention)
 		channel = client.get_channel(WELCOME_CHANNEL)
 		await channel.send(character_message)
+
+	##### This section deals with the counting game #######################
+	if (message.channel.id == COUNTING_CHANNEL and not message.author.bot):
+			res = minigame.number_validity(message)
+			if res != True:
+				channel = client.get_channel(COUNTING_CHANNEL)
+				await channel.send(res)
+
 
 ########################## LOOPS ###########################################
 

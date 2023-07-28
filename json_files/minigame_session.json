@@ -1,3 +1,7 @@
 {
-    
+    "1": {
+        "minigame": "counting_game",
+        "next_valid_number": 1,
+        "last_user": 1
+    }
 }

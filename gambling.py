@@ -9,7 +9,9 @@ from operator import getitem
 # ISSUE: Sometimes data doesn't get written because another function that uses write is called. This would overwrite the data.
 # FIX: Call update user currency (or something similar) after write data
 '''
-▢ (Maybe) Role icon trading
+▢ Create auction
+▢ Add auction bid (allowing for self updates)
+▢ (maybe) Shop items that doubles primojem earnt from this-or-that 
 
 '''
 
@@ -582,4 +584,8 @@ def scrap_role_icon(discord_id, role):
 	user_entry["jemdust"] += jemdust_amount
 	helper.write_file("users.json", data)
 	return jemdust_amount
-	
+
+############## Auction ################################
+
+# Create auction
+# Argument: auction_name, end_time as date string
