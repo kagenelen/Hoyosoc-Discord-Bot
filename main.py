@@ -30,6 +30,7 @@ THIS_OR_THAT_CHANNEL = 1064462494753620010
 THIS_OR_THAT_CHANNEL = 1064462494753620010
 # THIS_OR_THAT_CHANNEL = 1122138125368569868 # Test server channel
 COUNTING_CHANNEL = 1134336873628696638
+AUCTION_CHANNEL = 1134351976738603058 # Still test server channel
 
 # Read json file for channel
 absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
@@ -433,8 +434,55 @@ async def schedule_payout(interaction, message_id: str, bracket_id: str, end_tim
 	else:
 		await interaction.response.send_message("Successfully scheduled auto payout for " + bracket_id,
 											   ephemeral=True)
+
+
+
+#################################### AUCTION ###################################
+
+@tree.command(name="create_auction",
+				description="Start an auction. Admin only.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def start_auction(interaction, auction_name: str, end_time: str):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+
+	gambling.create_auction(auction_name, end_time)
+	await interaction.response.send_message(auction_name + " has been created.", ephemeral=True)
+
+@tree.command(name="bid",
+				description="Bid on an auction.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def make_bid(interaction, auction_name: str, amount: int):
+	res = gambling.submit_bid(interaction.user, auction_name, amount)
+	if isinstance(res, str):
+		await interaction.response.send_message(res, ephemeral=True)
+	else:
+		if res[0] != None:
+			channel = client.get_channel(AUCTION_CHANNEL)
+			auction_message = await channel.fetch_message(int(res[0]))
+			await auction_message.edit(embed=res[1])
+
+		response_message = "Successfully made a bid of " + str(amount) + " for " + auction_name + "."
+		if res[2] != str(interaction.user.id):
+			# Ping previous bidder that they have been outbid
+			response_message += "\n\n<@" + res[2] + ">" + " you have been outbid by " + interaction.user.display_name
+		
+		await interaction.response.send_message(response_message)
+
+@tree.command(name="auction_info",
+				description="Get auction update.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def send_auction_info(interaction, auction_name: str):
+	res = gambling.create_auction_message(auction_name)
+	await interaction.response.send_message(embed=res[1])
 	
-	
+	if helper.is_team(interaction):
+		# Only update auction message id if gensoc team uses this command
+		message = await interaction.original_response()
+		gambling.set_auction_message(auction_name, message.id)
+
 
 ################################ CURRENCY ###########################################
 
