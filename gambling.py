@@ -625,12 +625,16 @@ def submit_bid(bidder, auction_id, bid_amount):
 	minimum_next_bid = int(auction_entry["highest_bid"] * AUCTION_INCREMENT)
 	
 	if auction_entry == None:
-			# Invalid auction id
-			return "Invalid auction id."
+		# Invalid auction id
+		return "Invalid auction id."
 	
 	if time.time() > auction_entry["end_time"]:
-			# Auction is no longer active
-			return "This auction has already ended."
+		# Auction is no longer active
+		return "This auction has already ended."
+	
+	if time.time() + 60 > auction_entry["end_time"]:
+		# Extend time by 1 hour if there is sniping in the last minute
+		auction_entry["end_time"] += 3600
 
 	if auction_entry["highest_bid"] < bid_amount:
 		if discord_id == auction_entry["highest_bidder"]:
