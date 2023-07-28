@@ -7,6 +7,7 @@ import os
 import json
 import random
 import time
+import DiscordUtils
 
 import helper
 import uid_finder
@@ -19,7 +20,7 @@ import minigame
 ############################ CONSTANTS ###################################
 VERIFICATION_CHANNEL = 822423063697948693
 GENSOC_SERVER = 822411164846653490 # Actual gensoc server
-# GENSOC_SERVER = 962970271545982986 # Test server
+GENSOC_SERVER = 962970271545982986 # Test server
 WELCOME_CHANNEL = 822411164846653492
 WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265>."
 THIS_OR_THAT_CHANNEL = 1064462494753620010
@@ -168,28 +169,36 @@ async def set_verification(interaction, verify_channel: str):
 				description="View all available bot commands.",
 				guild=discord.Object(id=GENSOC_SERVER))
 async def help_commands(interaction):
-	embed = discord.Embed(title="Bot Commands",
-							color=0x61dfff)
+	embed_general = discord.Embed(title="General Commands", color=0x61dff)
+	embed_primojem = discord.Embed(title="Primojem Commands", color=0x61dff)
+	embed_minigame = discord.Embed(title="Minigame Commands", color=0x61dff)
+	embed_poll = discord.Embed(title="Betting Commands", color=0x61dff)
+	paginator = DiscordUtils.Pagination.AutoEmbedPaginator(interaction)
 	
-	embed.add_field(name="**/checkin**", value="Daily free primojems.", inline=False)
-	embed.add_field(name="**/leaderboard**", value="See top 10 primojem earners and your own rank.", inline=False)
-	embed.add_field(name="**/shop**", value="See which roles and role icons you can buy.", inline=False)
-	embed.add_field(name="**/buy**", value="Buy a role from the shop.", inline=False)
-	embed.add_field(name="**/equip**", value="Equip or unequip a role.", inline=False)
-	embed.add_field(name="**/inventory**", value="Check primojem, jemdust and owned roles.", inline=False)
-	embed.add_field(name="**/blackjack**", value="Play blackjack.", inline=False)
-	embed.add_field(name="**/hangman**", value="Play hangman.", inline=False)
-	embed.add_field(name="**/coinflip**", value="Play heads or tails.", inline=False)
-	embed.add_field(name="**/gacha**", value="Gacha for role icons.", inline=False)
-	embed.add_field(name="**/bet**", value="Make a bet on this-or-that bracket.", inline=False)
-	embed.add_field(name="**/ongoing_bets**", value="See the bracket id of ongoing bets.", inline=False)
-	embed.add_field(name="**/my_bets**", value="See which brackets you have betted on.", inline=False)
-	embed.add_field(name="**/add_uid**", value="Add UID to bot database.", inline=False)
-	embed.add_field(name="**/remove_uid**", value="Remove UID from bot database.", inline=False)
-	embed.add_field(name="**/find_uid**", value="List all UIDs of an user.", inline=False)
-	embed.add_field(name="**/whose_uid**", value="Find the owner of an UID.", inline=False)
+	embed_primojem.add_field(name="**/checkin**", value="Daily free primojems.", inline=False)
+	embed_primojem.add_field(name="**/leaderboard**", value="See top 10 primojem earners and your own rank.", inline=False)
+	embed_primojem.add_field(name="**/shop**", value="See which roles and role icons you can buy.", inline=False)
+	embed_primojem.add_field(name="**/buy**", value="Buy a role from the shop.", inline=False)
+	embed_primojem.add_field(name="**/equip**", value="Equip or unequip a role.", inline=False)
+	embed_primojem.add_field(name="**/inventory**", value="Check primojem, jemdust and owned roles.", inline=False)
+	
+	embed_minigame.add_field(name="**/blackjack**", value="Play blackjack.", inline=False)
+	embed_minigame.add_field(name="**/hangman**", value="Play hangman.", inline=False)
+	embed_minigame.add_field(name="**/coinflip**", value="Play heads or tails.", inline=False)
+	embed_minigame.add_field(name="**/gacha**", value="Gacha for role icons.", inline=False)
+	
+	embed_poll.add_field(name="**/bet**", value="Make a bet on this-or-that bracket.", inline=False)
+	embed_poll.add_field(name="**/ongoing_bets**", value="See the bracket id of ongoing bets.", inline=False)
+	embed_poll.add_field(name="**/my_bets**", value="See which brackets you have betted on.", inline=False)
+	
+	embed_general.add_field(name="**/add_uid**", value="Add UID to bot database.", inline=False)
+	embed_general.add_field(name="**/remove_uid**", value="Remove UID from bot database.", inline=False)
+	embed_general.add_field(name="**/find_uid**", value="List all UIDs of an user.", inline=False)
+	embed_general.add_field(name="**/whose_uid**", value="Find the owner of an UID.", inline=False)
 
-	await interaction.response.send_message(embed=embed)
+	# await interaction.response.defer()
+	embeds = [embed_general, embed_primojem, embed_minigame, embed_poll]
+	await paginator.run(embeds)
 	
 
 ################################ UID #################################
