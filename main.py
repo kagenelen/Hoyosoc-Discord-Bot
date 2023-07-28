@@ -227,6 +227,8 @@ async def help_commands(interaction):
 	embed_poll.add_field(name="**/bet**", value="Make a bet on this-or-that bracket.", inline=False)
 	embed_poll.add_field(name="**/ongoing_bets**", value="See the bracket id of ongoing bets.", inline=False)
 	embed_poll.add_field(name="**/my_bets**", value="See which brackets you have betted on.", inline=False)
+	embed_poll.add_field(name="**/bid**", value="Bid on an auction.", inline=False)
+	embed_poll.add_field(name="**/auction_info**", value="Get info about an auction.", inline=False)
 	
 	embed_general.add_field(name="**/add_uid**", value="Add UID to bot database.", inline=False)
 	embed_general.add_field(name="**/remove_uid**", value="Remove UID from bot database.", inline=False)
@@ -472,7 +474,7 @@ async def make_bid(interaction, auction_name: str, amount: int):
 		await interaction.response.send_message(response_message)
 
 @tree.command(name="auction_info",
-				description="Get auction update.",
+				description="Get info about an auction.",
 				guild=discord.Object(id=GENSOC_SERVER))
 async def send_auction_info(interaction, auction_name: str):
 	res = gambling.create_auction_message(auction_name)
