@@ -242,10 +242,6 @@ async def help_commands(interaction):
 
 	# await interaction.response.defer()
 	embeds = [embed_general, embed_primojem, embed_minigame, embed_poll]
-	paginator.add_reaction('⏮️', "first")
-	paginator.add_reaction('⬅️', "back")
-	paginator.add_reaction('➡️', "next")
-	paginator.add_reaction('⏭️', "last")
 	await paginator.run(embeds)
 	
 
