@@ -95,7 +95,9 @@ async def on_message(message):
 	##### This section deals with the counting game #######################
 	if (message.channel.id == COUNTING_CHANNEL and not message.author.bot):
 			res = minigame.number_validity(message)
-			if res != True:
+			if res == True:
+				await message.add_reaction(helper.PRIMOJEM_EMOTE)
+			else:
 				channel = client.get_channel(COUNTING_CHANNEL)
 				await channel.send(res)
 
