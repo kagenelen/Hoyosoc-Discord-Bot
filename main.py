@@ -13,6 +13,7 @@ import helper
 import uid_finder
 import gambling
 import minigame
+import followup
 # from keep_alive import keep_alive
 
 # IMPORTANT: Replit code is using a test bot on the test server. Before committing please change GENSOC_SERVER back to actual server's id
@@ -733,7 +734,28 @@ async def blackjack(interaction, bet: str):
 					value=", ".join(res[2]),
 					inline=False)
 
-	await interaction.response.send_message(embed=embed)
+	# Buttons
+	view = View(timeout=60)
+
+	# Hit button
+	hit_button = Button(label="Hit", style=discord.ButtonStyle.blurple)
+	async def hit_callback(b_interaction):
+		if b_interaction.user.id == interaction.user.id:
+			await b_interaction.response.defer()
+			await followup.hit_followup(interaction)
+	hit_button.callback = hit_callback
+	view.add_item(hit_button)
+
+	# Stand button
+	stand_button = Button(label="Stand", style=discord.ButtonStyle.red)
+	async def stand_callback(b_interaction):
+		if b_interaction.user.id == interaction.user.id:
+			await b_interaction.response.defer()
+			await followup.stand_followup(interaction)
+	stand_button.callback = stand_callback
+	view.add_item(stand_button)
+
+	await interaction.response.send_message(embed=embed, view=view)
 
 @tree.command(name="hit",
 				description="Hit in blackjack.",
