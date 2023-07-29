@@ -442,7 +442,7 @@ def number_validity(message):
 	num = message.content.strip()
 
 	# Ignore non-numbers
-	if not isdigit(num):
+	if not num.isdigit():
 		return False
 
 	# Invalid number
