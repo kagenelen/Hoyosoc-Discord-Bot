@@ -25,7 +25,7 @@ HM_NORMAL = 10
 HM_HARD = 30
 HM_EXTREME = 150
 COUNT_MULTIPLER = 0.1
-COUNT_MAX = 20
+COUNT_MAX = 10
 
 ################### Guess Number ############################
 
