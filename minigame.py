@@ -24,7 +24,7 @@ CARDS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"]
 HM_NORMAL = 10
 HM_HARD = 30
 HM_EXTREME = 150
-COUNT_MULTIPLER = 0.05
+COUNT_MULTIPLER = 0.1
 COUNT_MAX = 10
 
 ################### Guess Number ############################
@@ -442,7 +442,7 @@ def number_validity(message):
 	num = message.content.strip()
 
 	# Ignore non-numbers
-	if not isdigit(num):
+	if not num.isdigit():
 		return False
 
 	# Invalid number
