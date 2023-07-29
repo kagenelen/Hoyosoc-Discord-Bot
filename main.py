@@ -97,7 +97,8 @@ async def on_message(message):
 			res = minigame.number_validity(message)
 			if res == True:
 				await message.add_reaction(helper.PRIMOJEM_EMOTE)
-			else:
+			
+			if isinstance(res, str):
 				channel = client.get_channel(COUNTING_CHANNEL)
 				await channel.send(res)
 
