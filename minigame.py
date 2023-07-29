@@ -24,8 +24,8 @@ CARDS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"]
 HM_NORMAL = 10
 HM_HARD = 30
 HM_EXTREME = 150
-COUNT_MULTIPLER = 0.05
-COUNT_MAX = 10
+COUNT_MULTIPLER = 0.1
+COUNT_MAX = 20
 
 ################### Guess Number ############################
 
@@ -463,8 +463,8 @@ def number_validity(message):
 	if int(num) != 1:
 		primojem_reward = min(int(math.ceil(data["1"]["next_valid_number"] * COUNT_MULTIPLER)), COUNT_MAX)
 		gambling.update_user_currency(message.author.id, primojem_reward)
-		data["1"]["next_valid_number"] += 1
-		data["1"]["last_user"] = message.author.id
+	data["1"]["next_valid_number"] += 1
+	data["1"]["last_user"] = message.author.id
 	
 	helper.write_file("minigame_session.json", data)
 	return True
