@@ -185,5 +185,455 @@
                 "paimon"
             ]
         }
+    },
+    "Weapon 1.1": {
+        "candidates": [
+            "freedom sworn",
+            "elegy for the end",
+            "engulfing lightning",
+            "a thousand floating dreams"
+        ],
+        "end_time": 1687773600,
+        "prize_pool": 18685,
+        "message_id": 1122462551121334302,
+        "bets": {
+            "318337790708547588": [
+                5000,
+                "engulfing lightning"
+            ],
+            "852095686932824087": [
+                1500,
+                "elegy for the end"
+            ],
+            "300937279197806604": [
+                5000,
+                "elegy for the end"
+            ],
+            "217933338407731200": [
+                0,
+                "freedom sworn"
+            ],
+            "962959061912018955": [
+                155,
+                "a thousand floating dreams"
+            ],
+            "937000926835773460": [
+                30,
+                "engulfing lightning"
+            ]
+        }
+    },
+    "Weapon 1.2": {
+        "candidates": [
+            "staff of homa",
+            "aqua simulacra",
+            "thundering pulse",
+            "primordial jade cutter",
+            "mistsplitter reforged"
+        ],
+        "end_time": 1687860000,
+        "prize_pool": 11835,
+        "message_id": 1122828506959728691,
+        "bets": {
+            "318337790708547588": [
+                1000,
+                "aqua simulacra"
+            ],
+            "852095686932824087": [
+                1500,
+                "primordial jade cutter"
+            ],
+            "308020379744600064": [
+                3000,
+                "primordial jade cutter"
+            ],
+            "495781159431700481": [
+                585,
+                "thundering pulse"
+            ],
+            "300937279197806604": [
+                1000,
+                "aqua simulacra"
+            ]
+        }
+    },
+    "Weapon 1.3": {
+        "candidates": [
+            "beacon of the reed sea",
+            "calamity queller",
+            "staff of the scarlet sands",
+            "key of khaj nisut"
+        ],
+        "end_time": 1687946400,
+        "prize_pool": 5568,
+        "message_id": 1123191624688742441,
+        "bets": {
+            "318337790708547588": [
+                1000,
+                "beacon of the reed sea"
+            ],
+            "962959061912018955": [
+                150,
+                "staff of the scarlet sands"
+            ],
+            "300937279197806604": [
+                918,
+                "calamity queller"
+            ]
+        }
+    },
+    "Weapon 1.4": {
+        "candidates": [
+            "vortex vanquisher",
+            "summit shaper",
+            "the unforged",
+            "jadefalls splendor",
+            "everlasting moonglow"
+        ],
+        "end_time": 1688032800,
+        "prize_pool": 14750,
+        "message_id": 1123554018136952833,
+        "bets": {
+            "318337790708547588": [
+                2000,
+                "jadefalls splendor"
+            ],
+            "962959061912018955": [
+                5000,
+                "everlasting moonglow"
+            ],
+            "495781159431700481": [
+                1000,
+                "summit shaper"
+            ],
+            "300937279197806604": [
+                2000,
+                "everlasting moonglow"
+            ]
+        }
+    },
+    "Weapon 1.5": {
+        "candidates": [
+            "polar star",
+            "tulaytullahs remembrance",
+            "light of foliar incision",
+            "song of broken pines"
+        ],
+        "end_time": 1688119200,
+        "prize_pool": 4673,
+        "message_id": 1123919575629709392,
+        "bets": {
+            "318337790708547588": [
+                1000,
+                "song of broken pines"
+            ],
+            "962959061912018955": [
+                150,
+                "light of foliar incision"
+            ],
+            "300937279197806604": [
+                23,
+                "tulaytullahs remembrance"
+            ]
+        }
+    },
+    "Weapon 1.6": {
+        "candidates": [
+            "hunters path",
+            "wolfs gravestone",
+            "haran geppaku futsu",
+            "redhorn stonethresher",
+            "kaguras verity"
+        ],
+        "end_time": 1688292000,
+        "prize_pool": 6500,
+        "message_id": 1124278915628806145,
+        "bets": {
+            "495781159431700481": [
+                1000,
+                "wolfs gravestone"
+            ],
+            "318337790708547588": [
+                1000,
+                "wolfs gravestone"
+            ],
+            "300937279197806604": [
+                1000,
+                "kaguras verity"
+            ]
+        }
+    },
+    "Weapon 1.7": {
+        "candidates": [
+            "aquila favonia",
+            "skyward atlas",
+            "memory of dust",
+            "skyward spine",
+            "skyward pride"
+        ],
+        "end_time": 1688378400,
+        "prize_pool": 3650,
+        "message_id": 1125006397881462814,
+        "bets": {
+            "962959061912018955": [
+                150,
+                "skyward atlas"
+            ],
+            "318337790708547588": [
+                500,
+                "memory of dust"
+            ]
+        }
+    },
+    "Weapon 1.8": {
+        "candidates": [
+            "skyward harp",
+            "amos bow",
+            "primordial jade winged spear",
+            "skyward blade",
+            "lost prayer to the sacred winds"
+        ],
+        "end_time": 1688464800,
+        "prize_pool": 10787,
+        "message_id": 1125366627370795050,
+        "bets": {
+            "318337790708547588": [
+                1000,
+                "amos bow"
+            ],
+            "962959061912018955": [
+                100,
+                "skyward blade"
+            ],
+            "308020379744600064": [
+                1000,
+                "skyward blade"
+            ],
+            "300937279197806604": [
+                4150,
+                "skyward blade"
+            ]
+        }
+    },
+    "Weapon 2.1": {
+        "candidates": [
+            "elegy for the end",
+            "thundering pulse"
+        ],
+        "end_time": 1688551200,
+        "prize_pool": 5150,
+        "message_id": 1125728100999766016,
+        "bets": {
+            "318337790708547588": [
+                500,
+                "thundering pulse"
+            ],
+            "962959061912018955": [
+                150,
+                "elegy for the end"
+            ],
+            "495781159431700481": [
+                1000,
+                "thundering pulse"
+            ]
+        }
+    },
+    "Weapon 2.2": {
+        "candidates": [
+            "calamity queller",
+            "vortex vanquisher"
+        ],
+        "end_time": 1688724000,
+        "prize_pool": 19650,
+        "message_id": 1126092712022659162,
+        "bets": {
+            "495781159431700481": [
+                1500,
+                "vortex vanquisher"
+            ],
+            "308020379744600064": [
+                2000,
+                "vortex vanquisher"
+            ],
+            "318337790708547588": [
+                5000,
+                "vortex vanquisher"
+            ],
+            "962959061912018955": [
+                150,
+                "calamity queller"
+            ],
+            "300937279197806604": [
+                5000,
+                "vortex vanquisher"
+            ]
+        }
+    },
+    "Weapon 2.3": {
+        "candidates": [
+            "song of broken pines",
+            "wolfs gravestone"
+        ],
+        "end_time": 1688896800,
+        "prize_pool": 7221,
+        "message_id": 1127539701771944066,
+        "bets": {
+            "308020379744600064": [
+                1000,
+                "wolfs gravestone"
+            ],
+            "318337790708547588": [
+                500,
+                "song of broken pines"
+            ],
+            "495781159431700481": [
+                1000,
+                "song of broken pines"
+            ],
+            "962959061912018955": [
+                150,
+                "song of broken pines"
+            ],
+            "300937279197806604": [
+                71,
+                "song of broken pines"
+            ]
+        }
+    },
+    "Weapon 2.4": {
+        "candidates": [
+            "memory of dust",
+            "skyward blade"
+        ],
+        "end_time": 1,
+        "prize_pool": 18923,
+        "message_id": 1127539736362356816,
+        "bets": {
+            "318337790708547588": [
+                5000,
+                "memory of dust"
+            ],
+            "495781159431700481": [
+                1000,
+                "memory of dust"
+            ],
+            "962959061912018955": [
+                1121,
+                "skyward blade"
+            ],
+            "300937279197806604": [
+                1277,
+                "memory of dust"
+            ],
+            "308020379744600064": [
+                2000,
+                "memory of dust"
+            ],
+            "348414134636904452": [
+                4000,
+                "memory of dust"
+            ]
+        }
+    },
+    "Weapon 3.1": {
+        "candidates": [
+            "elegy for the end",
+            "vortex vanquisher"
+        ],
+        "end_time": 1689242400,
+        "prize_pool": 28996,
+        "message_id": 1128264688770232330,
+        "bets": {
+            "318337790708547588": [
+                5000,
+                "vortex vanquisher"
+            ],
+            "962959061912018955": [
+                2500,
+                "vortex vanquisher"
+            ],
+            "495781159431700481": [
+                5000,
+                "vortex vanquisher"
+            ],
+            "852095686932824087": [
+                1500,
+                "vortex vanquisher"
+            ],
+            "300937279197806604": [
+                4297,
+                "vortex vanquisher"
+            ],
+            "308020379744600064": [
+                3000,
+                "vortex vanquisher"
+            ]
+        }
+    },
+    "Weapon 3.2": {
+        "candidates": [
+            "song of broken pines",
+            "memory of dust"
+        ],
+        "end_time": 1689415200,
+        "prize_pool": 22250,
+        "message_id": 1128989492376784954,
+        "bets": {
+            "318337790708547588": [
+                5000,
+                "memory of dust"
+            ],
+            "962959061912018955": [
+                2000,
+                "song of broken pines"
+            ],
+            "495781159431700481": [
+                3200,
+                "memory of dust"
+            ],
+            "308020379744600064": [
+                3000,
+                "memory of dust"
+            ],
+            "852095686932824087": [
+                3000,
+                "memory of dust"
+            ]
+        }
+    },
+    "Weapon 4.1": {
+        "candidates": [
+            "vortex vanquisher",
+            "memory of dust"
+        ],
+        "end_time": 1689674400,
+        "prize_pool": 44005,
+        "message_id": 1130440152850907156,
+        "bets": {
+            "318337790708547588": [
+                5000,
+                "vortex vanquisher"
+            ],
+            "962959061912018955": [
+                4000,
+                "memory of dust"
+            ],
+            "300937279197806604": [
+                4670,
+                "memory of dust"
+            ],
+            "348414134636904452": [
+                5000,
+                "vortex vanquisher"
+            ],
+            "495781159431700481": [
+                3000,
+                "memory of dust"
+            ],
+            "308020379744600064": [
+                1000,
+                "vortex vanquisher"
+            ]
+        }
     }
 }
