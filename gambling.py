@@ -442,7 +442,7 @@ def buy_role(discord_id, role, duration, is_booster):
 	# Determine whether it is role or role icon and the price
 	primojem_price = 0
 	jemdust_price = 0
-	if role in ["geo", "anemo", "electro", "pyro", "hydro", "cryo", "abyss", "dendro"]:
+	if role in ["geo", "anemo", "electro", "pyro", "hydro", "cryo", "physical", "dendro", "imaginary", "quantum"]:
 		if duration == 7:
 			primojem_price = ONE_WEEK_ROLE
 		elif duration == 5000:
