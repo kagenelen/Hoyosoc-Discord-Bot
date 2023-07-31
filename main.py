@@ -554,7 +554,6 @@ async def view_shop(interaction, shop: app_commands.Choice[str]):
 	description = ""
 	if shop.value == "primojem":
 		description = ("7 days: " + str(price[0]) + " " + helper.PRIMOJEM_EMOTE + "  |  " +
-			"30 day: " + str(price[1]) + " " + helper.PRIMOJEM_EMOTE + "  |  " +
 			"Permanent: " + str(price[2]) + " " + helper.PRIMOJEM_EMOTE + "\n" +
 			"1 pull: " + str(price[3]) + " " + helper.PRIMOJEM_EMOTE + "\n" + 
 			"Use **/shop jemdust** to see the role icons shop.\n" + 
@@ -589,7 +588,6 @@ async def view_shop(interaction, shop: app_commands.Choice[str]):
 				guild=discord.Object(id=GENSOC_SERVER))
 @app_commands.choices(duration=[
 	discord.app_commands.Choice(name="7 days", value=7),
-	discord.app_commands.Choice(name="30 days", value=30),
 	discord.app_commands.Choice(name="Permanent role", value=5000)
 ])
 async def buy_item(interaction, item_name: str, duration: app_commands.Choice[int]):
@@ -612,7 +610,7 @@ async def buy_item(interaction, item_name: str, duration: app_commands.Choice[in
 async def equip_role(interaction, role_name: str):
 	if gambling.is_role_owned(interaction.user.id, role_name):
 		role = discord.utils.get(interaction.guild.roles,
-								 name=role_name.capitalize())
+								 name=role_name.title())
 
 		# Check if role is equipped already
 		if role in interaction.user.roles:
