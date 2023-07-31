@@ -554,8 +554,8 @@ async def view_shop(interaction, shop: app_commands.Choice[str]):
 	description = ""
 	if shop.value == "primojem":
 		description = ("7 days: " + str(price[0]) + " " + helper.PRIMOJEM_EMOTE + "  |  " +
-			"Permanent: " + str(price[2]) + " " + helper.PRIMOJEM_EMOTE + "\n" +
-			"1 pull: " + str(price[3]) + " " + helper.PRIMOJEM_EMOTE + "\n" + 
+			"Permanent: " + str(price[1]) + " " + helper.PRIMOJEM_EMOTE + "\n" +
+			"1 pull: " + str(price[2]) + " " + helper.PRIMOJEM_EMOTE + "\n" + 
 			"Use **/shop jemdust** to see the role icons shop.\n" + 
 			"Use **/gacha** to pull for role icons.\n\n")
 	elif shop.value == "jemdust":
