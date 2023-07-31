@@ -20,7 +20,6 @@ ME = 318337790708547588
 BET_LIMIT = 5000
 AUCTION_INCREMENT = 1.05
 ONE_WEEK_ROLE = 1500
-ONE_MONTH_ROLE = 4500
 PERMANENT_ROLE = 30000
 CHECKIN = 150
 INITIAL_POOL = 2000
@@ -427,7 +426,7 @@ def get_inventory(discord_id):
 
 
 # Adds role to inventory or renew duration
-# Argument: discord id string, role string, duration (7 or 30), server booster boolean
+# Argument: discord id string, role string, duration (7 or permanent), server booster boolean
 # Return: None if successful or error string
 def buy_role(discord_id, role, duration, is_booster):
 	discord_id = str(discord_id)
@@ -444,9 +443,7 @@ def buy_role(discord_id, role, duration, is_booster):
 	primojem_price = 0
 	jemdust_price = 0
 	if role in ["geo", "anemo", "electro", "pyro", "hydro", "cryo", "abyss", "dendro"]:
-		if duration == 30:
-			primojem_price = ONE_MONTH_ROLE
-		elif duration == 7:
+		if duration == 7:
 			primojem_price = ONE_WEEK_ROLE
 		elif duration == 5000:
 			primojem_price = PERMANENT_ROLE
@@ -480,8 +477,6 @@ def buy_role(discord_id, role, duration, is_booster):
 		user_entry["role_icon"].append(role.title())
 	elif duration == 7:
 		user_entry["role"][role] = current_end_time + 604800
-	elif duration == 30:
-		user_entry["role"][role] = current_end_time + 2592000
 	elif duration == 5000:
 		user_entry["role"][role] = 2145919483
 		

@@ -1,15 +1,16 @@
 {
-	"5": ["Ganyu", "Ayaka", "Shenhe",
-		"Hutao", "Yoimiya", "Diluc",
-		"Kazuha", "Venti", "Wanderer",
-		"Zhongli", "Albedo", "Itto",
-		"Raiden", "Yae", "Keqing",
+	"5": ["Ganyu", "Ayaka", "Yanqing",
+		"Hu Tao", "Yoimiya", "Diluc",
+		"Kazuha", "Blade", "Wanderer",
+		"Zhongli", "Itto",
+		"Raiden", "Kafka", "Keqing",
 		"Nahida", "Alhaitham", "Tighnari",
-		"Kokomi", "Ayato", "Yelan"
+		"Kokomi", "Ayato", "Yelan",
+		"Silver Wolf"
 	],
-	"4": ["Mika", 
-		"Xiangling", "Bennett",
-		"Heizou", "Faruzan",
+	"4": ["Mika", "March 7",
+		"Xiangling",
+		"Heizou", "Faruzan", "Dan Heng",
 		"Noelle",
 		"Fischl",
 		"Kaveh"
