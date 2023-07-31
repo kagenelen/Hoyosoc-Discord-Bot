@@ -547,7 +547,7 @@ async def view_shop(interaction, shop: app_commands.Choice[str]):
 	res = gambling.get_inventory(interaction.user.id)
 	gacha_pool = helper.read_file("role_icon.json")
 
-	price = [gambling.ONE_WEEK_ROLE, gambling.ONE_MONTH_ROLE, gambling.PERMANENT_ROLE, gambling.ONE_PULL]
+	price = [gambling.ONE_WEEK_ROLE, gambling.PERMANENT_ROLE, gambling.ONE_PULL]
 	if helper.is_booster(interaction.user):
 		price = [int(x / 2) for x in price]
 
