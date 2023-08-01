@@ -569,16 +569,18 @@ async def view_shop(interaction, shop: app_commands.Choice[str]):
 	
 	# Add embed field for each role
 	if shop.value == "primojem":
-		embed.add_field(name="Anemo", value="(teal)", inline=False)
-		embed.add_field(name="Cryo", value="(whitish blue)", inline=False)
-		embed.add_field(name="Dendro", value="(green)", inline=False)
-		embed.add_field(name="Electro", value="(magenta)", inline=False)
-		embed.add_field(name="Geo", value="(orange)", inline=False)
-		embed.add_field(name="Hydro", value="(blue)", inline=False)
-		embed.add_field(name="Pyro", value="(red)", inline=False)
-		embed.add_field(name="Physical", value="(gray)", inline=False)
-		embed.add_field(name="Imaginary", value="(yellow)", inline=False)
-		embed.add_field(name="Quantum", value="(indigo)", inline=False)
+		embed.add_field(name="Anemo", value="(teal)", inline=True)
+		embed.add_field(name="Cryo", value="(whitish blue)", inline=True)
+		embed.add_field(name="Dendro", value="(green)", inline=True)
+		embed.add_field(name="Electro", value="(magenta)", inline=True)
+		embed.add_field(name="Geo", value="(orange)", inline=True)
+		embed.add_field(name="Hydro", value="(blue)", inline=True)
+		embed.add_field(name="Pyro", value="(red)", inline=True)
+		embed.add_field(name="Physical", value="(gray)", inline=True)
+		embed.add_field(name="Imaginary", value="(yellow)", inline=True)
+		embed.add_field(name="Quantum", value="(indigo)", inline=True)
+		embed.set_image(url="https://unswgensoc.com/wp-content/uploads/2023/08/Colour-Role-Shop-Preview.png")
+		
 	elif shop.value == "jemdust":
 		embed.add_field(name="5 Star Role Icons", value=", ".join(gacha_pool["5"]), inline=False)
 		embed.add_field(name="4 Star Role Icons", value=", ".join(gacha_pool["4"]), inline=False)
