@@ -101,7 +101,14 @@
 	"Beisht",
 	"Osial",
 	"Apep",
-
+	"Idyia",
+	"Xudong",
+	"Rana",
+	"Master Zhang",
+	"Kid Kujirai",
+	"Hanachirusato",
+	"Dunyarzad",
+	
 	"Akademiya",
 	"Amurta",
 	"Rtawahist",
@@ -115,6 +122,10 @@
 	"Forest Ranger",
 	"Favonius Knights",
 	"Four Winds",
+	"Lawrence Clan",
+	"Gunnhildr Clan",
+	"Ragnvindr Clan",
+	"Katzlein Bloodline",
 	"Grand Master",
 	"Outrider",
 	"Alchemist",
@@ -192,6 +203,7 @@
 	"La Signora",
 	"Andrius",
 	"Scaramouche",
+	"Iniquitous Baptist",
 	
 	"Adeptus Temptation",
 	"Almond Tofu",
@@ -269,6 +281,9 @@
 	"Vegetarian Abalone",
 	"Wakatakeni",
 	"Wolfhook Juice",
+	"Fatteh",
+	"The Endeavor",
+	
 
 	"My Way",
 	"Sweet Dream",
@@ -301,6 +316,7 @@
 	"Victorious Legend",
 	"Woodland Dream",
 	"Yearning",
+	"Energizing Bento",
 
 	"Violetgrass",
 	"Calla Lily",
@@ -332,6 +348,8 @@
 	"Padisarah",
 	"Rukkhashava Mushroom",
 	"Scarab",
+	"Mourning Flower",
+	"Trishiraite",
 
 	"Brilliant Diamond",
 	"Agnidus Agate",
@@ -349,6 +367,7 @@
 	"Cleansing Heart",
 	"Juvenile Jade",
 	"Crystalline Bloom",
+	"Evergloom Ring",
 	"Marionette Core",
 	"Perpetual Heart",
 	"Smoldering Pearl",
@@ -422,8 +441,10 @@
 	"Damaged Prism",
 	"Turbid Prism",
 	"Radiant Prism",
+	"Desiccated Shell",
 	"Sturdy Shell",
 	"Marked Shell",
+	"Treasured Flower",
 	
 	"Mora",
 	"Primogem",
@@ -492,6 +513,7 @@
 	"Floral Zither",
 	"Shiki Koshou",
 	"Launch Tube",
+	"Sorush",
 
 	"Iridescence Tour",
 	"Irodori Festival",
@@ -639,6 +661,7 @@
 	"Morepesok",
 	"Abyss",
 	"Mare Jivari",
+	"Veluriyam Mirage",
 
 	"Amos Bow",
 	"Aquila Favonia",
@@ -865,6 +888,10 @@
 	"Carassius Auratus",
 	"Opera Grandis",
 	"Lapis Dei",
+	"Felis Alba",
+	"Felis Fuscus",
+	"Automaton",
+	"Arcella",
 
 	"Ajilenakh Nut",
 	"Bamboo Shoot",
@@ -987,5 +1014,14 @@
 	"Baizhu",
 	"Kirara",
 	"Kaveh",
-	"Charlotte"
+	"Charlotte",
+	"Freminet",
+	"Lyney",
+	"Lynette",
+	"Clorinde",
+	"Furina",
+	"Navia",
+	"Neuvillette",
+	"Sigewinne",
+	"Wriothesley"
 ]
