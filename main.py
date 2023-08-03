@@ -24,6 +24,9 @@ GENSOC_SERVER = 822411164846653490 # Actual gensoc server
 
 WELCOME_CHANNEL = 822411164846653492
 WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265>."
+ROLE_ICON_PREVIEW = "https://unswgensoc.com/wp-content/uploads/2023/08/Role-Icon-Shop-Preview.png"
+COLOUR_ROLE_PREVIEW = "https://unswgensoc.com/wp-content/uploads/2023/08/Colour-Role-Shop-Preview.png"
+
 
 VERIFICATION_CHANNEL = 822423063697948693
 THIS_OR_THAT_CHANNEL = 1064462494753620010
@@ -579,12 +582,12 @@ async def view_shop(interaction, shop: app_commands.Choice[str]):
 		embed.add_field(name="Physical", value="(gray)", inline=True)
 		embed.add_field(name="Imaginary", value="(yellow)", inline=True)
 		embed.add_field(name="Quantum", value="(indigo)", inline=True)
-		embed.set_image(url="https://unswgensoc.com/wp-content/uploads/2023/08/Colour-Role-Shop-Preview.png")
+		embed.set_image(url=COLOUR_ROLE_PREVIEW)
 		
 	elif shop.value == "jemdust":
 		embed.add_field(name="5 Star Role Icons", value=", ".join(gacha_pool["5"]), inline=False)
 		embed.add_field(name="4 Star Role Icons", value=", ".join(gacha_pool["4"]), inline=False)
-		embed.set_image(url="https://unswgensoc.com/wp-content/uploads/2023/07/Role-Icon-Shop-Preview.png")
+		embed.set_image(url=ROLE_ICON_PREVIEW)
 
 	await interaction.response.send_message(embed=embed)
 
