@@ -273,8 +273,8 @@ def coinflip(discord_id, coin_amount, head_amount, bet):
 
   # Payout correct guess
   if flip_result.count("H") == head_amount:
-    payout = int(
-      bet * (1 / (math.comb(coin_amount, head_amount) / pow(2, coin_amount))))
+    payout = int(math.ceil(
+      bet * (1 / (math.comb(coin_amount, head_amount) / pow(2, coin_amount)))))
     gambling.update_user_currency(discord_id, payout)
     return [flip_result, payout]
   else:
