@@ -25,7 +25,7 @@ HM_NORMAL = 10
 HM_HARD = 30
 HM_EXTREME = 150
 COUNT_MULTIPLER = 0.1
-COUNT_MAX = 10
+COUNT_MAX = 20
 
 ################### Guess Number ############################
 
@@ -273,8 +273,8 @@ def coinflip(discord_id, coin_amount, head_amount, bet):
 
   # Payout correct guess
   if flip_result.count("H") == head_amount:
-    payout = int(
-      bet * (1 / (math.comb(coin_amount, head_amount) / pow(2, coin_amount))))
+    payout = int(math.ceil(
+      bet * (1 / (math.comb(coin_amount, head_amount) / pow(2, coin_amount)))))
     gambling.update_user_currency(discord_id, payout)
     return [flip_result, payout]
   else:
