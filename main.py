@@ -25,7 +25,7 @@ GENSOC_SERVER = 822411164846653490 # Actual gensoc server
 WELCOME_CHANNEL = 822411164846653492
 WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265>."
 ROLE_ICON_PREVIEW = "https://unswgensoc.com/wp-content/uploads/2023/08/Role-Icon-Shop-Preview.png"
-COLOUR_ROLE_PREVIEW = "https://unswgensoc.com/wp-content/uploads/2023/08/Colour-Role-Shop-Preview.png"
+COLOUR_ROLE_PREVIEW = "https://unswgensoc.com/wp-content/uploads/2023/08/Role-Icon-Shop-Preview-2.png"
 
 
 VERIFICATION_CHANNEL = 822423063697948693
