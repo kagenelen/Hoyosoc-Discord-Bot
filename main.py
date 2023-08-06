@@ -704,7 +704,7 @@ async def flip(interaction, coin_amount: int, head_amount: int, bet: int):
 							color=0x61dfff)
 	embed.set_thumbnail(url=interaction.user.avatar.url)
 	
-	emote_string = [helper.HEADS if item == "H" else helper.TAILS for item in res[0]]
+	emote_string = [helper.HEADS_EMOTE if item == "H" else helper.TAILS_EMOTE for item in res[0]]
 	embed.add_field(name=str(res[0].count("H")) + " Heads", value=" ".join(emote_string), )
 
 	await interaction.response.send_message(embed=embed)
