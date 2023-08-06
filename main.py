@@ -31,8 +31,6 @@ COLOUR_ROLE_PREVIEW = "https://unswgensoc.com/wp-content/uploads/2023/08/Colour-
 VERIFICATION_CHANNEL = 822423063697948693
 THIS_OR_THAT_CHANNEL = 1064462494753620010
 # THIS_OR_THAT_CHANNEL = 1122138125368569868 # Test server channel
-THIS_OR_THAT_CHANNEL = 1064462494753620010
-# THIS_OR_THAT_CHANNEL = 1122138125368569868 # Test server channel
 COUNTING_CHANNEL = 1134336873628696638
 AUCTION_CHANNEL = 1134351976738603058 # Still test server channel
 
@@ -695,19 +693,19 @@ async def flip(interaction, coin_amount: int, head_amount: int, bet: int):
 		await interaction.response.send_message(res)
 		return
 
-	description = str(res[0].count("H")) + " heads. "
+	description = ""
 	if res[1] == 0:
 		description += "You have lost the bet.\n\n"
 	else:
 		description += "You have won " + str(res[1]) + " primojems.\n\n"
 
-	flip_string = " ".join(res[0])
-	description += flip_string
-
 	embed = discord.Embed(title=interaction.user.display_name + "\'s Coinflip",
 							description=description,
 							color=0x61dfff)
 	embed.set_thumbnail(url=interaction.user.avatar.url)
+	
+	emote_string = [helper.HEADS if item == "H" else helper.TAILS for item in res[0]]
+	embed.add_field(name=str(res[0].count("H")) + " Heads", value=" ".join(emote_string), )
 
 	await interaction.response.send_message(embed=embed)
 
