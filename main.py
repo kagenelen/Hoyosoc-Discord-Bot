@@ -20,7 +20,7 @@ import followup
 
 ############################ CONSTANTS ###################################
 GENSOC_SERVER = 822411164846653490 # Actual gensoc server
-GENSOC_SERVER = 962970271545982986 # Test server
+# GENSOC_SERVER = 962970271545982986 # Test server
 
 WELCOME_CHANNEL = 822411164846653492
 WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265>."
