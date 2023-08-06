@@ -20,7 +20,7 @@ import followup
 
 ############################ CONSTANTS ###################################
 GENSOC_SERVER = 822411164846653490 # Actual gensoc server
-# GENSOC_SERVER = 962970271545982986 # Test server
+GENSOC_SERVER = 962970271545982986 # Test server
 
 WELCOME_CHANNEL = 822411164846653492
 WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265>."
@@ -29,8 +29,6 @@ COLOUR_ROLE_PREVIEW = "https://unswgensoc.com/wp-content/uploads/2023/08/Colour-
 
 
 VERIFICATION_CHANNEL = 822423063697948693
-THIS_OR_THAT_CHANNEL = 1064462494753620010
-# THIS_OR_THAT_CHANNEL = 1122138125368569868 # Test server channel
 THIS_OR_THAT_CHANNEL = 1064462494753620010
 # THIS_OR_THAT_CHANNEL = 1122138125368569868 # Test server channel
 COUNTING_CHANNEL = 1134336873628696638
@@ -695,19 +693,19 @@ async def flip(interaction, coin_amount: int, head_amount: int, bet: int):
 		await interaction.response.send_message(res)
 		return
 
-	description = str(res[0].count("H")) + " heads. "
+	description = ""
 	if res[1] == 0:
 		description += "You have lost the bet.\n\n"
 	else:
 		description += "You have won " + str(res[1]) + " primojems.\n\n"
 
-	flip_string = " ".join(res[0])
-	description += flip_string
-
 	embed = discord.Embed(title=interaction.user.display_name + "\'s Coinflip",
 							description=description,
 							color=0x61dfff)
 	embed.set_thumbnail(url=interaction.user.avatar.url)
+	
+	emote_string = [helper.HEADS if item == "H" else helper.TAILS for item in res[0]]
+	embed.add_field(name=str(res[0].count("H")) + " Heads", value=" ".join(emote_string), )
 
 	await interaction.response.send_message(embed=embed)
 
