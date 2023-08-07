@@ -841,11 +841,25 @@ async def hangman(interaction, difficulty: app_commands.Choice[str]):
 		embed.add_field(name="Lives: ", value=res[1][2], inline=True)
 		await interaction.response.send_message(embed=embed)
 
+		# Save interaction response message id
+		data = helper.read_file("minigame_session.json")
+		response_message = await interaction.original_response()
+		data[str(interaction.user.id)]["message_id"] = response_message.id
+		helper.write_file("minigame_session.json", data)
+
 @tree.command(name="guess",
 				description="Guess in hangman. Accepts either one character or the whole word.",
 				guild=discord.Object(id=GENSOC_SERVER))
 async def hangman_guess(interaction, guess: str):
+	# Delete previous hangman message
+	data = helper.read_file("minigame_session.json")
+	user_session = data.get(str(interaction.user.id), None)
+	if user_session != None:
+		previous_message = await interaction.channel.fetch_message(user_session["message_id"])
+		await previous_message.delete()
+	
 	res = minigame.hangman_guess(interaction.user.id, guess)
+	
 	if res[0] == -1:
 		await interaction.response.send_message(res[1][0])
 	elif res[0] == -2:
@@ -887,6 +901,14 @@ async def hangman_guess(interaction, guess: str):
 		embed.add_field(name="Lives: ", value=res[1][3], inline=True)
 		embed.add_field(name=res[1][4], value="", inline=True)
 		await interaction.response.send_message(embed=embed)
+
+	# Update interaction response message_id
+	data = helper.read_file("minigame_session.json")
+	response_message = await interaction.original_response()
+	user_session = data.get(str(interaction.user.id), None)
+	if user_session != None:
+		user_session["message_id"] = response_message.id
+		helper.write_file("minigame_session.json", data)
 
 ################### GACHA ####################################################
 

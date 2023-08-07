@@ -311,7 +311,8 @@ def new_hangman(discord_id, difficulty):
     "difficulty": difficulty,
     "lives": lives,
     "guessed_letters": "",
-    "hangman_word": random.choice(helper.read_file("wordbank.json"))
+    "hangman_word": random.choice(helper.read_file("wordbank.json")),
+	"message_id": None
   }
   helper.write_file("minigame_session.json", minigame_session)
 
