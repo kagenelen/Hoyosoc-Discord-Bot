@@ -24,7 +24,7 @@ GENSOC_SERVER = 822411164846653490 # Actual gensoc server
 
 WELCOME_CHANNEL = 822411164846653492
 WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265>."
-ROLE_ICON_PREVIEW = "https://unswgensoc.com/wp-content/uploads/2023/08/Role-Icon-Shop-Preview-2.png"
+ROLE_ICON_PREVIEW = "https://unswgensoc.com/wp-content/uploads/2023/08/Role-Icon-Shop-Preview-3.png"
 COLOUR_ROLE_PREVIEW = "https://unswgensoc.com/wp-content/uploads/2023/08/Colour-Role-Shop-Preview.png"
 
 
@@ -702,7 +702,7 @@ async def flip(interaction, coin_amount: int, head_amount: int, bet: int):
 	embed = discord.Embed(title=interaction.user.display_name + "\'s Coinflip",
 							description=description,
 							color=0x61dfff)
-	embed.set_thumbnail(url=interaction.user.avatar.url)
+	embed.set_thumbnail(url=interaction.user.display_avatar.url)
 	
 	emote_string = [helper.HEADS if item == "H" else helper.TAILS for item in res[0]]
 	embed.add_field(name=str(res[0].count("H")) + " Heads", value=" ".join(emote_string), )
@@ -727,7 +727,7 @@ async def blackjack(interaction, bet: str):
 		title=interaction.user.display_name + "\'s Blackjack Game",
 		description="Use **/hit** or **/stand**\n" + res[0],
 		color=0x61dfff)
-	embed.set_thumbnail(url=interaction.user.avatar.url)
+	embed.set_thumbnail(url=interaction.user.display_avatar.url)
 
 	dealer_value = str(minigame.blackjack_get_value(res[1]))
 	better_value = str(minigame.blackjack_get_value(res[2]))
@@ -775,7 +775,7 @@ async def hit(interaction):
 							"\'s Blackjack Game",
 							description=res[0],
 							color=0x61dfff)
-	embed.set_thumbnail(url=interaction.user.avatar.url)
+	embed.set_thumbnail(url=interaction.user.display_avatar.url)
 
 	dealer_value = str(minigame.blackjack_get_value(res[1]))
 	better_value = str(minigame.blackjack_get_value(res[2]))
@@ -802,7 +802,7 @@ async def stand(interaction):
 							"\'s Blackjack Game",
 							description=res[0],
 							color=0x61dfff)
-	embed.set_thumbnail(url=interaction.user.avatar.url)
+	embed.set_thumbnail(url=interaction.user.display_avatar.url)
 
 	dealer_value = str(minigame.blackjack_get_value(res[1]))
 	better_value = str(minigame.blackjack_get_value(res[2]))
@@ -834,7 +834,7 @@ async def hangman(interaction, difficulty: app_commands.Choice[str]):
 			title=interaction.user.display_name + "\'s Hangman Game",
 			description="Use **/guess [letter]**\n",
 			color=0x61dfff)
-		embed.set_thumbnail(url=interaction.user.avatar.url)
+		embed.set_thumbnail(url=interaction.user.display_avatar.url)
 		embed.add_field(name="Hint: ", value=res[1][0], inline=True)
 		embed.add_field(name="Difficulty: ", value=res[1][1], inline=True)
 		embed.add_field(name="Lives: ", value=res[1][2], inline=True)
@@ -855,7 +855,7 @@ async def hangman_guess(interaction, guess: str):
 								"\'s Hangman Game",
 								description=res[1][0],
 								color=0x61dfff)
-		embed.set_thumbnail(url=interaction.user.avatar.url)
+		embed.set_thumbnail(url=interaction.user.display_avatar.url)
 		embed.add_field(name="Your word was: ",
 						value=res[1][1],
 						inline=True)
@@ -865,7 +865,7 @@ async def hangman_guess(interaction, guess: str):
 								"\'s Hangman Game",
 								description=res[1][0],
 								color=0x61dfff)
-		embed.set_thumbnail(url=interaction.user.avatar.url)
+		embed.set_thumbnail(url=interaction.user.display_avatar.url)
 		embed.add_field(name="Hint: ",
 						value=res[1][1],
 						inline=True)
@@ -879,7 +879,7 @@ async def hangman_guess(interaction, guess: str):
 								"\'s Hangman Game",
 								description=res[1][0],
 								color=0x61dfff)
-		embed.set_thumbnail(url=interaction.user.avatar.url)
+		embed.set_thumbnail(url=interaction.user.display_avatar.url)
 		embed.add_field(name="Your word was: ",
 						value=res[1][1],
 						inline=True)
@@ -902,7 +902,7 @@ async def role_icon_gacha(interaction, pull_amount: int):
 
 	embed = discord.Embed(title=interaction.user.display_name + "'s Gacha",
 							color=0x61dfff)
-	embed.set_thumbnail(url=interaction.user.avatar.url)
+	embed.set_thumbnail(url=interaction.user.display_avatar.url)
 	
 	# Add embed field for each gacha result item
 	for item in res:
