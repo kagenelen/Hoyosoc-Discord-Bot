@@ -228,6 +228,7 @@ async def help_commands(interaction):
 	embed_primojem.add_field(name="**/buy**", value="Buy a role from the shop.", inline=False)
 	embed_primojem.add_field(name="**/equip**", value="Equip or unequip a role.", inline=False)
 	embed_primojem.add_field(name="**/inventory**", value="Check primojem, jemdust and owned roles.", inline=False)
+	embed_primojem.add_field(name="**/salvage**", value="Sell a role icon for jemdust.", inline=False)
 	
 	embed_minigame.add_field(name="**/blackjack**", value="Play blackjack.", inline=False)
 	embed_minigame.add_field(name="**/hangman**", value="Play hangman.", inline=False)
@@ -910,6 +911,22 @@ async def role_icon_gacha(interaction, pull_amount: int):
 
 	await interaction.response.send_message(embed=embed)
 
+@tree.command(name="salvage",
+				description="Sell a role icon for jemdust",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def salvage_role(interaction, role: str):
+	res = gambling.scrap_role_icon(interaction.user.id, role)
+
+	if res == None:
+		await interaction.response.send_message("Invalid or you do not own this role.", ephemeral=True)
+	else:
+		# Unequip the salvaged role
+		role_obj = discord.utils.get(interaction.guild.roles, name=role.title())
+		if role_obj in interaction.user.roles:
+			await interaction.user.remove_roles(role_obj, reason="Salvaged role.")
+		
+		await interaction.response.send_message("Successfully salvaged " + role.title() + " role for " + 
+													str(res) + " " + helper.JEMDUST_EMOTE)
 
 # keep_alive()
 # token = os.environ.get("TOKEN")
