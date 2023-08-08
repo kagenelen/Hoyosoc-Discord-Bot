@@ -27,7 +27,7 @@ HM_EXTREME = 150
 TWO_WORD_PENALTY = 0.8
 THREE_WORD_PENALTY = 0.67
 COUNT_MULTIPLER = 0.1
-COUNT_MAX = 20
+COUNT_MAX = 30
 
 ################### Guess Number ############################
 
