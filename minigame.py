@@ -24,8 +24,10 @@ CARDS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"]
 HM_NORMAL = 10
 HM_HARD = 30
 HM_EXTREME = 150
+TWO_WORD_PENALTY = 0.8
+THREE_WORD_PENALTY = 0.67
 COUNT_MULTIPLER = 0.1
-COUNT_MAX = 20
+COUNT_MAX = 30
 
 ################### Guess Number ############################
 
@@ -420,7 +422,13 @@ def hangman_guess(discord_id, guess):
     elif user_session["difficulty"] == "hard":
       primojem = HM_HARD
     else:
-      primojem = HM_EXTREME
+      word_length = len(user_session["hangman_word"].split())
+      penalty = 1
+      if word_length == 2:
+        penalty = TWO_WORD_PENALTY
+      if word_length == 3:
+        penalty = THREE_WORD_PENALTY
+      primojem = int(HM_EXTREME * penalty)
 
     primojem = primojem * user_session["lives"]
     gambling.update_user_currency(discord_id, primojem)
