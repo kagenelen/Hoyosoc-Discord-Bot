@@ -855,9 +855,12 @@ async def hangman_guess(interaction, guess: str):
 	data = helper.read_file("minigame_session.json")
 	user_session = data.get(str(interaction.user.id), None)
 	if user_session != None:
-		previous_message = await interaction.channel.fetch_message(user_session["message_id"])
-		await previous_message.delete()
-	
+		try:
+			previous_message = await interaction.channel.fetch_message(user_session["message_id"])
+			await previous_message.delete()
+		except: 
+			print("Previous message " + str(user_session["message_id"]) + " not found.")
+		
 	res = minigame.hangman_guess(interaction.user.id, guess)
 	
 	if res[0] == -1:
