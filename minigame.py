@@ -23,10 +23,10 @@ furniture name (evil)
 CARDS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"]
 HM_NORMAL = 10
 HM_HARD = 30
-HM_EXTREME = 150
-TWO_WORD_PENALTY = 0.8
-THREE_WORD_PENALTY = 0.67
-COUNT_MULTIPLER = 0.1
+HM_EXTREME = 160
+TWO_WORD_PENALTY = 0.75
+THREE_WORD_PENALTY = 0.625
+COUNT_MULTIPLER = 0.2
 COUNT_MAX = 30
 
 ################### Guess Number ############################
