@@ -22,6 +22,7 @@ AUCTION_INCREMENT = 1.05
 ONE_WEEK_ROLE = 1500
 PERMANENT_ROLE = 30000
 CHECKIN = 150
+CHECKIN_CAP = 1000
 INITIAL_POOL = 2000
 PRIZE_POOL = 500
 PRIZE_POOL_PERCENT = 1.50
@@ -384,7 +385,7 @@ def currency_checkin(discord_id):
         user_entry["checkin_streak"] = 0
     else:
         user_entry["checkin_streak"] += 1
-    amount_earned = CHECKIN + user_entry["checkin_streak"] * STREAK_MULTIPLIER
+    amount_earned = min(CHECKIN + user_entry["checkin_streak"] * STREAK_MULTIPLIER, CHECKIN_CAP)
 
     # Set next checkin to tomorrow 12am
     today_date = datetime.datetime.now()
