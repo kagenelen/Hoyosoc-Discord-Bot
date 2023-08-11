@@ -472,8 +472,8 @@ def number_validity(message):
 	if int(num) != 1:
 		primojem_reward = min(int(math.ceil(data["1"]["next_valid_number"] * COUNT_MULTIPLER)), COUNT_MAX)
 		gambling.update_user_currency(message.author.id, primojem_reward)
-		data["1"]["next_valid_number"] += 1
-		data["1"]["last_user"] = message.author.id
+	data["1"]["next_valid_number"] += 1
+	data["1"]["last_user"] = message.author.id
 	
 	helper.write_file("minigame_session.json", data)
 	return True
