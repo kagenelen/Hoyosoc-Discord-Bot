@@ -12,22 +12,16 @@ Coinflip
 Hangman
 Counting game
 
-Hangman TODO:
-talent name
-furniture name (evil)
-
-
-
 '''
 
 CARDS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"]
 HM_NORMAL = 10
 HM_HARD = 30
 HM_EXTREME = 160
-TWO_WORD_PENALTY = 0.8125
+TWO_WORD_PENALTY = 0.875
 THREE_WORD_PENALTY = 0.75
 COUNT_MULTIPLER = 0.2
-COUNT_MAX = 30
+COUNT_MAX = 40
 
 ################### Guess Number ############################
 
