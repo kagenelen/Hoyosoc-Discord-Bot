@@ -458,21 +458,22 @@ def hangman_guess(discord_id, guess):
 # Return: true/false or error message
 def number_validity(message):
 	data = helper.read_file("minigame_session.json")
-	num = message.content.strip()
+	num = message.content.lower().strip()
 
 	# Parse any word form number to int or solve math equation
 	math_eq_res = None
 	num_word_res = None
-	try:
-		nsp = minigame_helper.NumericStringParser()
-		math_eq_res = nsp.eval(num)
-	except:
-		pass
-
-	try:
-		num_word_res = minigame_helper.word_to_int(num)
-	except:
-		pass
+	if not num.isdigit():
+		try:
+			nsp = minigame_helper.NumericStringParser()
+			math_eq_res = nsp.eval(num)
+		except:
+			pass
+	
+		try:
+			num_word_res = minigame_helper.word_to_int(num)
+		except:
+			pass
 
 	# Ignore any non-equation, non word-number and non number
 	if math_eq_res == None and num_word_res == None and not num.isdigit():
