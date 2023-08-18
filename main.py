@@ -19,30 +19,28 @@ import followup
 # IMPORTANT: Replit code is using a test bot on the test server. Before committing please change GENSOC_SERVER back to actual server's id
 
 ############################ CONSTANTS ###################################
-GENSOC_SERVER = 822411164846653490 # Actual gensoc server
-# GENSOC_SERVER = 962970271545982986 # Test server
-
-WELCOME_CHANNEL = 822411164846653492
 WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265>."
-ROLE_ICON_PREVIEW = "https://unswgensoc.com/wp-content/uploads/2023/08/Role-Icon-Shop-Preview-4.png"
-COLOUR_ROLE_PREVIEW = "https://unswgensoc.com/wp-content/uploads/2023/08/Colour-Role-Shop-Preview.png"
 
-
-VERIFICATION_CHANNEL = 822423063697948693
-THIS_OR_THAT_CHANNEL = 1064462494753620010
-# THIS_OR_THAT_CHANNEL = 1122138125368569868 # Test server channel
-COUNTING_CHANNEL = 1134336873628696638
-AUCTION_CHANNEL = 1134351976738603058 # Still test server channel
-
-# Read json file for channel
+# Read json file for config
 absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
 with open(absolute_path + 'config.json', 'r') as f:
-    data = json.load(f)
-    VERIFICATION_CHANNEL = data['channel']
-    f.close()
+	data = json.load(f)
+	GENSOC_SERVER = data['gensoc_server']
+	VERIFICATION_CHANNEL = data['verification_channel']
+	THIS_OR_THAT_CHANNEL = data['this_or_that_channel']
+	COUNTING_CHANNEL = data['counting_channel']
+	AUCTION_CHANNEL = data['auction_channel']
+	WELCOME_CHANNEL = data['welcome_channel']
+	ROLE_ICON_PREVIEW = data['role_icon_shop']
+	COLOUR_ROLE_PREVIEW = data['role_colour_shop']
+	
+	f.close()
+
+# NOTICE: Uncomment these two if testing on the test server
+# GENSOC_SERVER = 962970271545982986 # Test server
+# THIS_OR_THAT_CHANNEL = 1122138125368569868 # Test server channel
 
 ############################# CODE STARTS HERE ############################
-
 
 # member intent has to be on, otherwise guild.members doesn't work
 intents = discord.Intents.default()
@@ -71,10 +69,10 @@ async def on_message(message):
 
 		data = helper.read_file("config.json")
 		channel = client.get_channel(WELCOME_CHANNEL)
-		old_welcome = await channel.fetch_message(data["prev_message"])
+		old_welcome = await channel.fetch_message(data["prev_welcome_message"])
 		await old_welcome.delete()
 
-		data["prev_message"] = welcome.id
+		data["prev_welcome_message"] = welcome.id
 		helper.write_file("config.json", data)
 		return
 
@@ -170,7 +168,7 @@ async def send_welcome(interaction):
 	welcome = await client.get_channel(int(WELCOME_CHANNEL)
 										 ).send(WELCOME_MESSAGE)
 	data = helper.read_file("config.json")
-	data["prev_message"] = welcome.id
+	data["prev_welcome_message"] = welcome.id
 	helper.write_file("config.json", data)
 
 @tree.command(name="set_verification",
@@ -859,7 +857,7 @@ async def hangman_guess(interaction, guess: str):
 			previous_message = await interaction.channel.fetch_message(user_session["message_id"])
 			await previous_message.delete()
 		except: 
-			print("Previous message " + str(user_session["message_id"]) + " not found.")
+			pass
 		
 	res = minigame.hangman_guess(interaction.user.id, guess)
 	

@@ -1,4 +1,11 @@
 {
-    "channel": 822423063697948693,
-    "prev_message": 1105146752882966590
+	"gensoc_server": 822411164846653490,
+    "verification_channel": 822423063697948693,
+	"this_or_that_channel": 1064462494753620010,
+	"counting_channel": 1134336873628696638,
+	"auction_channel": 1142007829478252554,
+	"welcome_channel": 822411164846653492,
+    "prev_welcome_message": 1141933723923783690,
+	"role_colour_shop": "https://unswgensoc.com/wp-content/uploads/2023/08/Colour-Role-Shop-Preview.png",
+	"role_icon_shop": "https://unswgensoc.com/wp-content/uploads/2023/08/Role-Icon-Shop-Preview-4.png"
 }
