@@ -651,7 +651,7 @@ async def leaderboard(interaction):
 		if user == None:
 			continue
 		if r < 10:
-			embed.add_field(name=str(r + 1) + ". " + user.nick,
+			embed.add_field(name=str(r + 1) + ". " + user.display_name,
 							value=str(res[r][1]),
 							inline=False)
 		if user.id == interaction.user.id:
