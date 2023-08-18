@@ -1,9 +1,11 @@
 import helper
 import gambling
+import minigame_helper
 
 import math
 import time
 import random
+
 '''
 Minigames:
 Guess the number
@@ -11,6 +13,20 @@ Blackjack
 Coinflip
 Hangman
 Counting game
+
+TODO:
+Connect 4
+- /connect4 [opponent] [wager] 
+	- wager must be equal or more than 0 (free play is allowed)
+ 	- check both players have sufficient primojem (don't deduct yet)
+- opponent gets pinged to accept or decline (button)
+- accept then start game
+- random person goes first, alternating turns
+	- check whether the column is overflowing
+- use buttons to select which column to drop token
+- after dropping token check if there is four in a row horizontally, vertically or diagonally
+- also check if whole grid is filled
+- winner gets gains wagered primojem off the loser, if tie then no primojem is taken
 
 '''
 
@@ -444,9 +460,27 @@ def number_validity(message):
 	data = helper.read_file("minigame_session.json")
 	num = message.content.strip()
 
-	# Ignore non-numbers
-	if not num.isdigit():
+	# Parse any word form number to int or solve math equation
+	math_eq_res = None
+	num_word_res = None
+	try:
+		nsp = minigame_helper.NumericStringParser()
+		math_eq_res = nsp.eval(num)
+	except:
+		pass
+
+	try:
+		num_word_res = minigame_helper.word_to_int(num)
+	except:
+		pass
+
+	# Ignore any non-equation, non word-number and non number
+	if math_eq_res == None and num_word_res == None and not num.isdigit():
 		return False
+	elif num_word_res != None and isinstance(num_word_res, int):
+		num = num_word_res
+	elif math_eq_res != None and isinstance(math_eq_res, int):
+		num = math_eq_res
 
 	# Invalid number
 	if data["1"]["next_valid_number"] != int(num):
