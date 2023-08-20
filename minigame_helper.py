@@ -96,11 +96,7 @@ class NumericStringParser(object):
                 "cos" : math.cos,
                 "tan" : math.tan,
                 "abs" : abs,
-                "trunc" : lambda a: int(a),
-                "round" : round,
-                # For Python3 compatibility, cmp replaced by ((a > 0) - (a < 0)). See
-                # https://docs.python.org/3.0/whatsnew/3.0.html#ordering-comparisons
-                "sgn" : lambda a: abs(a)>epsilon and ((a > 0) - (a < 0)) or 0}
+                "sqrt": math.sqrt}
         self.exprStack = []
     def evaluateStack(self, s ):
         op = s.pop()
