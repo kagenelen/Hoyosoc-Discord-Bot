@@ -120,4 +120,4 @@ class NumericStringParser(object):
         self.exprStack = []
         results = self.bnf.parseString(num_string, parseAll)
         val = self.evaluateStack( self.exprStack[:] )
-        return int(val)
+        return int(math.round(val, 0))
