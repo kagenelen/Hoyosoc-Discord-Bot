@@ -62,7 +62,7 @@ class NumericStringParser(object):
 		ident = pyp.Word(pyp.alphas, pyp.alphas+pyp.nums+"_$")       
 		plus  = pyp.Literal( "+" )
 		minus = pyp.Literal( "-" )
-		mult  = pyp.Literal( "*" )
+		mult  = pyp.Literal( "x" )
 		div   = pyp.Literal( "/" )
 		lpar  = pyp.Literal( "(" ).suppress()
 		rpar  = pyp.Literal( ")" ).suppress()
