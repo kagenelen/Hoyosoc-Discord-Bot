@@ -203,6 +203,23 @@ async def view_tasks(interaction):
 		embed.add_field(name=t[0], value=t[1], inline=False)
 
 	await interaction.response.send_message(embed=embed, ephemeral=True)
+
+@tree.command(name="set_count",
+				description="Set counting game current number.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def set_count(interaction, number: int):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+
+	data = helper.read_file("minigame_session.json")
+	session = data.get("1", None)
+	session["next_valid_number"] = number + 1
+	session["last_user"] = 1
+	helper.write_file("minigame_session.json", data)
+
+	await interaction.response.send_message("Count has been set to " + str(number))
 	
 
 @tree.command(name="help",
@@ -231,6 +248,7 @@ async def help_commands(interaction):
 	embed_minigame.add_field(name="**/blackjack**", value="Play blackjack.", inline=False)
 	embed_minigame.add_field(name="**/hangman**", value="Play hangman.", inline=False)
 	embed_minigame.add_field(name="**/coinflip**", value="Play heads or tails.", inline=False)
+	embed_minigame.add_field(name="**/connect4**", value="Play connect 4.", inline=False)
 	embed_minigame.add_field(name="**/gacha**", value="Gacha for role icons.", inline=False)
 	
 	embed_poll.add_field(name="**/bet**", value="Make a bet on this-or-that bracket.", inline=False)
@@ -684,9 +702,11 @@ async def give_primojem(interaction, attendee_list: str, amount: int):
 	description=
 	"Flip a number of coins and guess how many will land on head.",
 	guild=discord.Object(id=GENSOC_SERVER))
-async def flip(interaction, coin_amount: int, head_amount: int, bet: int):
-	res = minigame.coinflip(interaction.user.id, coin_amount, head_amount,
-							bet)
+async def flip(interaction, coin_amount: int, head_amount: int, bet: str):
+	if "all" in bet:
+		bet = helper.get_user_entry(interaction.user.id)["currency"]
+		
+	res = minigame.coinflip(interaction.user.id, coin_amount, head_amount, int(bet))
 
 	if isinstance(res, str):
 		await interaction.response.send_message(res)
@@ -910,6 +930,36 @@ async def hangman_guess(interaction, guess: str):
 	if user_session != None:
 		user_session["message_id"] = response_message.id
 		helper.write_file("minigame_session.json", data)
+
+@tree.command(
+	name="connect4",
+	description="Play connect 4 against another person.",
+	guild=discord.Object(id=GENSOC_SERVER))
+async def connect4(interaction, invited_user: discord.Member, wager: int):
+	res = minigame.new_connect(interaction.user, invited_user, wager)
+
+	if isinstance(res, str):
+		await interaction.response.send_message(res)
+		return
+	
+	# Buttons
+	view = View(timeout=60)
+
+	# Accept button
+	accept_button = Button(label="Accept", style=discord.ButtonStyle.blurple)
+	async def accept_callback(b_interaction):
+		if b_interaction.user.id == invited_user.id:
+			await b_interaction.response.defer()
+			await followup.start_connect4_followup(interaction, res)
+	accept_button.callback = accept_callback
+	view.add_item(accept_button)
+
+	# Ping the invited user and ask for their response
+	await interaction.response.send_message(
+		"<@" + str(invited_user.id) + ">, " +
+		interaction.user.display_name + " has challenged you to a game of connect 4 for " + 
+		str(wager) + helper.PRIMOJEM_EMOTE + ". Do you accept?", view=view)
+
 
 ################### GACHA ####################################################
 

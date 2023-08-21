@@ -5,6 +5,7 @@ import minigame_helper
 import math
 import time
 import random
+import numpy
 
 '''
 Minigames:
@@ -21,7 +22,7 @@ Connect 4
  	- check both players have sufficient primojem (don't deduct yet)
 - opponent gets pinged to accept or decline (button)
 - accept then start game
-- random person goes first, alternating turns
+- random person goes first (player 1), alternating turns
 	- check whether the column is overflowing
 - use buttons to select which column to drop token
 - after dropping token check if there is four in a row horizontally, vertically or diagonally
@@ -39,6 +40,9 @@ THREE_WORD_PENALTY = 0.75
 COUNT_MULTIPLER = 0.2
 COUNT_MAX = 40
 COUNT_BONUS = 5
+ROW_COUNT = 6
+COLUMN_COUNT = 7
+
 
 ################### Guess Number ############################
 
@@ -463,7 +467,6 @@ def number_validity(message):
 
 	# Parse any word form number to int or solve math equation
 	math_eq_res = None
-	num_word_res = None
 	fun_bonus = 0
 	if not num.isdigit():
 		try:
@@ -471,18 +474,10 @@ def number_validity(message):
 			math_eq_res = nsp.eval(num)
 		except:
 			pass
-	
-		try:
-			num_word_res = minigame_helper.word_to_int(num)
-		except:
-			pass
 
 	# Ignore any non-equation, non word-number and non number
-	if math_eq_res == None and num_word_res == None and not num.isdigit():
+	if math_eq_res == None and not num.isdigit():
 		return False
-	elif num_word_res != None and isinstance(num_word_res, int):
-		num = num_word_res
-		fun_bonus += COUNT_BONUS
 	elif math_eq_res != None and isinstance(math_eq_res, int):
 		num = math_eq_res
 		fun_bonus += COUNT_BONUS
@@ -510,3 +505,202 @@ def number_validity(message):
 	
 	helper.write_file("minigame_session.json", data)
 	return True
+
+################### Connect 4  ############################
+
+# Start a new game of connect 4
+# Arguments: inviter player user object, invited player user object, wager
+# Return: error string or [current turn player's id, board]
+def new_connect(inviter_player, invited_player, wager):
+	inviter_player_id = str(inviter_player.id)
+	invited_player_id = str(invited_player.id)
+	helper.get_user_entry(inviter_player_id)
+	helper.get_user_entry(invited_player_id)
+	data = helper.read_file("minigame_session.json")
+	users = helper.read_file("users.json")
+	
+	if wager < 0:
+		return "Wager have to be higher or equal to 0."
+
+	if (users.get(inviter_player_id, None)["currency"] - wager < 0 or 
+		users.get(invited_player_id, None)["currency"] - wager < 0):
+		return "One or both players does not have sufficient primojem."
+
+	# Assign who is player 1 (going first) and player 2 (going second)
+	player_order = random.sample([inviter_player, invited_player], 2)
+	player1 = player_order[0]
+	player2 = player_order[1]
+
+	# Create board, 0 = no token, 1 = player 1 token, 2 = player 2 token
+	board = numpy.zeros((6,7))
+	
+	data[inviter_player_id] = {
+		"minigame": "connect",
+		"wager": wager,
+		"game_title": player1.display_name + " and " + player2.display_name + "\'s Connect 4 Game",
+		"player1": player1.id,
+		"player2": player2.id,
+		"player1_name": player1.display_name,
+		"player2_name": player2.display_name,
+		"turn": 0,
+		"board": board.tolist()
+	}
+	
+	helper.write_file("minigame_session.json", data)
+	return [player1.id, board]
+
+# Drop token down a certain column
+# Arguments: token dropper's user object, column number
+# Return: [next turn player's id, numpy board, game status message, next turn player's name, session object]
+def drop_token(token_dropper, col):
+	game_id = find_connect4_game(token_dropper.id)
+	if game_id == None:
+		return
+		
+	data = helper.read_file("minigame_session.json")
+	session = data.get(game_id, None)
+
+	board = numpy.array(session["board"])
+	status_message = ""
+
+	piece = None
+	if session["turn"] % 2 == 0 and token_dropper.id == session["player1"]:
+		# Player 1's turn
+		piece = 1
+	elif session["turn"] % 2 == 1 and token_dropper.id == session["player2"]:
+		# Player 2's turn
+		piece = 2
+
+	# Drop the token
+	if is_valid_location(board, col) and piece != None:
+		row = get_next_open_row(board,col)
+		if row == -1:
+			status_message = "This column is full. Please choose another column."
+		else:
+			board[row][col]= piece
+			session["board"] = board.tolist()
+			session["turn"] += 1
+			helper.write_file("minigame_session.json", data)
+		
+		if winning_move(board, piece):
+			# There is 4 in a row
+			reward = session["wager"]
+			status_message = (token_dropper.display_name + " wins! " + 
+				str(reward) + helper.PRIMOJEM_EMOTE + " has been added to your inventory.")
+			gambling.update_user_currency(token_dropper.id, 2 * reward)
+			gambling.update_user_currency(session["player1"], -reward)
+			gambling.update_user_currency(session["player2"], -reward)
+			data.pop(game_id)
+			
+		elif (session["turn"] == 42):
+			# Board is full
+			status_message = "The board is full. It's a tie."
+			data.pop(game_id)
+			
+	elif piece == None:
+		# Not their turn
+		status_message = token_dropper.display_name + ", it is not your turn."
+		
+	else:
+		# Invalid location
+		status_message = "Invalid column."
+			
+	if session["turn"] % 2 == 0:
+		# Player 1's turn
+		next_turn = session["player1"]
+		next_turn_name = session["player1_name"]
+	else:
+		# Player 2's turn
+		next_turn = session["player2"]
+		next_turn_name = session["player2_name"]
+	
+	helper.write_file("minigame_session.json", data)
+	return [next_turn, board, status_message, next_turn_name, session]
+ 
+def is_valid_location(board,col):
+    #if this condition is true we will let the use drop piece here.
+    #if not true that means the col is not vacant
+	if col >= COLUMN_COUNT or col < 0:
+		return False
+	else:
+		return True
+
+# Check next empty row in a column
+# Argument: numpy board, column number
+# Return: empty row's number, -1 if column is full
+def get_next_open_row(board,col):
+	for r in range(ROW_COUNT):
+		if board[r][col]==0:
+			return r
+	return -1
+
+# Check connect 4 win condition
+# Argument: numpy board, player number
+# Return: True for win, False for no win
+def winning_move(board, piece):
+	# Check horizontal locations for win
+	for c in range(COLUMN_COUNT-3):
+		for r in range(ROW_COUNT):
+			if board[r][c] == piece and board[r][c+1] == piece and board[r][c+2] == piece and board[r][c+3] == piece:
+				return True
+	
+	# Check vertical locations for win
+	for c in range(COLUMN_COUNT):
+		for r in range(ROW_COUNT-3):
+			if board[r][c] == piece and board[r+1][c] == piece and board[r+2][c] == piece and board[r+3][c] == piece:
+				return True
+	
+	# Check positively sloped diaganols
+	for c in range(COLUMN_COUNT-3):
+		for r in range(ROW_COUNT-3):
+			if board[r][c] == piece and board[r+1][c+1] == piece and board[r+2][c+2] == piece and board[r+3][c+3] == piece:
+				return True
+	
+	# Check negatively sloped diaganols
+	for c in range(COLUMN_COUNT-3):
+		for r in range(3, ROW_COUNT):
+			if board[r][c] == piece and board[r-1][c+1] == piece and board[r-2][c+2] == piece and board[r-3][c+3] == piece:
+				return True
+
+	return False
+
+# Render the numpy 2d array to string and emotes
+# Argument: numpy board
+# Return: rendered board string
+def render_board(board):
+	flipped_board = numpy.flip(board,0) #Flip the board so that tokens are at the bottom
+	rendered_board = ""
+	
+	for row in flipped_board:
+		for col_num, col in enumerate(row):
+			if col == 0:
+				rendered_board += "⚫"
+			if col == 1:
+				rendered_board += "🔴"
+			if col == 2:
+				rendered_board += "🔵"
+			if col_num == COLUMN_COUNT - 1:
+				# End column, add newline
+				rendered_board += "\n"
+
+	rendered_board += "1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣\n"
+
+	return rendered_board
+
+# Find id of the connect 4 game a player is in
+# Argument: Player discord id
+# Return: game id or None if not in any game
+def find_connect4_game(discord_id):
+	data = helper.read_file("minigame_session.json")
+	
+	for session in data:
+		if data[session]["minigame"] == "connect":
+			if data[session]["player1"] == discord_id:
+				return session
+
+			if data[session]["player2"] == discord_id:
+				return session
+
+	return None
+
+	
