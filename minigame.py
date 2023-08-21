@@ -681,7 +681,7 @@ def find_connect4_game(discord_id):
 
 	# Loop seperately incase there is an abandoned game
 	for session in data:
-		if data[session]["minigame"] == "connect" and data[session]["player1"] == discord_id:
+		if session == str(discord_id):
 				return session
 
 	for session in data:
