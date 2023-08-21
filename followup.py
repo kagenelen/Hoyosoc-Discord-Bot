@@ -146,8 +146,7 @@ async def drop_followup(interaction, column):
 # Connect 4 game declined.
 async def decline_connect4_followup(interaction):
 	data = helper.read_file("minigame_session.json")
-	session = data.get(str(interaction.user.id), None)
-	data.pop(session)
+	data.pop(str(interaction.user.id))
 	helper.write_file("minigame_session.json")
 	await interaction.edit_original_response(content="Challenge declined.", view=None)
 	
