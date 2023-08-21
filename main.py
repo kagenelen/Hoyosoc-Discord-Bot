@@ -954,6 +954,15 @@ async def connect4(interaction, invited_user: discord.Member, wager: int):
 	accept_button.callback = accept_callback
 	view.add_item(accept_button)
 
+	# Decline button
+	decline_button = Button(label="Decline", style=discord.ButtonStyle.red)
+	async def decline_callback(b_interaction):
+		if b_interaction.user.id == invited_user.id:
+			await b_interaction.response.defer()
+			await followup.decline_connect4_followup(interaction)
+	decline_button.callback = decline_callback
+	view.add_item(decline_button)
+
 	# Ping the invited user and ask for their response
 	await interaction.response.send_message(
 		"<@" + str(invited_user.id) + ">, " +
