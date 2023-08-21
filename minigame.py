@@ -514,6 +514,8 @@ def number_validity(message):
 def new_connect(inviter_player, invited_player, wager):
 	inviter_player_id = str(inviter_player.id)
 	invited_player_id = str(invited_player.id)
+	helper.get_user_entry(inviter_player_id)
+	helper.get_user_entry(invited_player_id)
 	data = helper.read_file("minigame_session.json")
 	users = helper.read_file("users.json")
 	
