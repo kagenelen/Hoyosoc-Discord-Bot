@@ -14,21 +14,7 @@ Blackjack
 Coinflip
 Hangman
 Counting game
-
-TODO:
 Connect 4
-- /connect4 [opponent] [wager] 
-	- wager must be equal or more than 0 (free play is allowed)
- 	- check both players have sufficient primojem (don't deduct yet)
-- opponent gets pinged to accept or decline (button)
-- accept then start game
-- random person goes first (player 1), alternating turns
-	- check whether the column is overflowing
-- use buttons to select which column to drop token
-- after dropping token check if there is four in a row horizontally, vertically or diagonally
-- also check if whole grid is filled
-- winner gets gains wagered primojem off the loser, if tie then no primojem is taken
-
 '''
 
 CARDS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"]
@@ -692,13 +678,14 @@ def render_board(board):
 # Return: game id or None if not in any game
 def find_connect4_game(discord_id):
 	data = helper.read_file("minigame_session.json")
-	
+
+	# Loop seperately incase there is an abandoned game
 	for session in data:
-		if data[session]["minigame"] == "connect":
-			if data[session]["player1"] == discord_id:
+		if data[session]["minigame"] == "connect" and data[session]["player1"] == discord_id:
 				return session
 
-			if data[session]["player2"] == discord_id:
+	for session in data:
+		if data[session]["minigame"] == "connect" and data[session]["player2"] == discord_id:
 				return session
 
 	return None
