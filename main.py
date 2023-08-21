@@ -702,9 +702,11 @@ async def give_primojem(interaction, attendee_list: str, amount: int):
 	description=
 	"Flip a number of coins and guess how many will land on head.",
 	guild=discord.Object(id=GENSOC_SERVER))
-async def flip(interaction, coin_amount: int, head_amount: int, bet: int):
-	res = minigame.coinflip(interaction.user.id, coin_amount, head_amount,
-							bet)
+async def flip(interaction, coin_amount: int, head_amount: int, bet: str):
+	if "all" in bet:
+		bet = helper.get_user_entry(interaction.user.id)["currency"]
+		
+	res = minigame.coinflip(interaction.user.id, coin_amount, head_amount, int(bet))
 
 	if isinstance(res, str):
 		await interaction.response.send_message(res)
