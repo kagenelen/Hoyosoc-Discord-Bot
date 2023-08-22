@@ -590,7 +590,7 @@ async def view_shop(interaction, shop: app_commands.Choice[str]):
 		embed.add_field(name="Anemo", value="(teal)", inline=True)
 		embed.add_field(name="Cryo", value="(whitish blue)", inline=True)
 		embed.add_field(name="Dendro", value="(green)", inline=True)
-		embed.add_field(name="Electro", value="(magenta)", inline=True)
+		embed.add_field(name="Electro", value="(dark pink)", inline=True)
 		embed.add_field(name="Geo", value="(orange)", inline=True)
 		embed.add_field(name="Hydro", value="(blue)", inline=True)
 		embed.add_field(name="Pyro", value="(red)", inline=True)
