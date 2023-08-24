@@ -585,8 +585,8 @@ def scrap_role_icon(discord_id, role):
 ############## Auction ################################
 
 # Create auction
-# Argument: auction_id, end_time as date string
-def create_auction(auction_id, end_time):
+# Argument: auction_id, end_time as date string, auction description string
+def create_auction(auction_id, end_time, auction_description):
     auction_id = auction_id.lower()
 
     # Convert end_time string to unix. Expected format e.g. 4/12/23 17:15
@@ -595,9 +595,10 @@ def create_auction(auction_id, end_time):
 
     # Create dictionary
     new_entry = {
+		"auction_description": auction_description,
         "highest_bid": 0,
 		"highest_bidder": "986446621468405852",
-		"bidder_name": "Noone Yet",
+		"bidder_name": "None",
         "end_time": int(end_time_unix),
 		"message_id": None
     }
@@ -628,8 +629,8 @@ def submit_bid(bidder, auction_id, bid_amount):
 		# Auction is no longer active
 		return "This auction has already ended."
 	
-	if time.time() + 3600 > auction_entry["end_time"]:
-		# Extend time by 1 hour if there is sniping in the last hour
+	if time.time() + 600 > auction_entry["end_time"]:
+		# Extend time by 1 hour if there is sniping in the last 10 minutes
 		auction_entry["end_time"] += 3600
 
 	if auction_entry["highest_bid"] < bid_amount:
@@ -680,18 +681,20 @@ def set_auction_message(auction_id, message_id):
 
 # Create an embed for auction progress (to be called everytime auction is updated)
 # Argument: auction id
-# Return: [message id, bet embed]
+# Return: [message id, bet embed, highest bidder id]
 def create_auction_message(auction_id):
 	data = helper.read_file("auction.json")
 	auction_entry = data.get(auction_id, None)
+
+	highest_bidder = auction_entry["highest_bidder"]
 	
 	embed = discord.Embed(title=auction_id.title(), 
-						description="Ending <t:" + str(auction_entry["end_time"]) + ":R>",
-						color=0x61dfff)
+						description=auction_entry["auction_description"] + "\n\n" + "Ending <t:" + str(auction_entry["end_time"]) + ":R>",
+						color=0xccccff)
 
 	# Embed field for highest bid and bid amount
 	embed.add_field(name="Highest bidder: " + auction_entry["bidder_name"],
 						value= str(auction_entry["highest_bid"]) + " " + helper.PRIMOJEM_EMOTE,
 						inline=False)
 				
-	return [auction_entry["message_id"], embed]
+	return [auction_entry["message_id"], embed, highest_bidder]

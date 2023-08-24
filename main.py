@@ -39,6 +39,7 @@ with open(absolute_path + 'config.json', 'r') as f:
 # NOTICE: Uncomment these two if testing on the test server
 # GENSOC_SERVER = 962970271545982986 # Test server
 # THIS_OR_THAT_CHANNEL = 1122138125368569868 # Test server channel
+# AUCTION_CHANNEL = 1134351976738603058
 
 ############################# CODE STARTS HERE ############################
 
@@ -471,13 +472,13 @@ async def schedule_payout(interaction, message_id: str, bracket_id: str, end_tim
 @tree.command(name="create_auction",
 				description="Start an auction. Admin only.",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def start_auction(interaction, auction_name: str, end_time: str):
+async def start_auction(interaction, auction_name: str, end_time: str, auction_description: str):
 	if not helper.is_team(interaction):
 		await interaction.response.send_message("Insuffient permission.",
 												ephemeral=True)
 		return
 
-	gambling.create_auction(auction_name, end_time)
+	gambling.create_auction(auction_name, end_time, auction_description)
 	await interaction.response.send_message(auction_name + " has been created.", ephemeral=True)
 
 @tree.command(name="bid",
@@ -505,6 +506,8 @@ async def make_bid(interaction, auction_name: str, amount: int):
 				guild=discord.Object(id=GENSOC_SERVER))
 async def send_auction_info(interaction, auction_name: str):
 	res = gambling.create_auction_message(auction_name)
+	user = client.get_user(int(res[2]))
+	res[1].set_thumbnail(url=user.display_avatar.url)
 	await interaction.response.send_message(embed=res[1])
 	
 	if helper.is_team(interaction):
