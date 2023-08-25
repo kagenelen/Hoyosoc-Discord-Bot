@@ -25,7 +25,7 @@ TWO_WORD_PENALTY = 0.875
 THREE_WORD_PENALTY = 0.75
 COUNT_MULTIPLER = 0.2
 COUNT_MAX = 40
-COUNT_BONUS = 5
+COUNT_BONUS = 2
 ROW_COUNT = 6
 COLUMN_COUNT = 7
 
@@ -453,7 +453,7 @@ def number_validity(message):
 
 	# Parse any word form number to int or solve math equation
 	math_eq_res = None
-	fun_bonus = 0
+	fun_bonus = 1
 	if not num.isdigit():
 		try:
 			nsp = minigame_helper.NumericStringParser()
@@ -466,7 +466,7 @@ def number_validity(message):
 		return False
 	elif math_eq_res != None and isinstance(math_eq_res, int):
 		num = math_eq_res
-		fun_bonus += COUNT_BONUS
+		fun_bonus = COUNT_BONUS
 
 	# Invalid number
 	if data["1"]["next_valid_number"] != int(num):
@@ -484,7 +484,7 @@ def number_validity(message):
 
 	# Correct submission (except 1), increment count and reward primojem
 	if int(num) != 1:
-		primojem_reward = min(int(math.ceil(data["1"]["next_valid_number"] * COUNT_MULTIPLER)), COUNT_MAX) + fun_bonus
+		primojem_reward = min(int(math.ceil(data["1"]["next_valid_number"] * COUNT_MULTIPLER)), COUNT_MAX) * fun_bonus
 		gambling.update_user_currency(message.author.id, primojem_reward)
 	data["1"]["next_valid_number"] += 1
 	data["1"]["last_user"] = message.author.id
