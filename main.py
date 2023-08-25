@@ -492,12 +492,13 @@ async def make_bid(interaction, auction_name: str, amount: int):
 		if res[0] != None:
 			channel = client.get_channel(AUCTION_CHANNEL)
 			auction_message = await channel.fetch_message(int(res[0]))
+			res[1].set_thumbnail(url=interaction.user.display_avatar.url)
 			await auction_message.edit(embed=res[1])
 
 		response_message = "Successfully made a bid of " + str(amount) + " for " + auction_name + "."
-		if res[2] != str(interaction.user.id):
+		if res[3] != str(interaction.user.id):
 			# Ping previous bidder that they have been outbid
-			response_message += "\n\n<@" + res[2] + ">" + " you have been outbid by " + interaction.user.display_name
+			response_message += "\n\n<@" + res[3] + ">" + " you have been outbid by " + interaction.user.display_name
 		
 		await interaction.response.send_message(response_message)
 

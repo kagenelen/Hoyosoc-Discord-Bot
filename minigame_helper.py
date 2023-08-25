@@ -96,7 +96,8 @@ class NumericStringParser(object):
 				"cos" : math.cos,
 				"tan" : math.tan,
 				"abs" : abs,
-				"sqrt": math.sqrt}
+				"sqrt": math.sqrt,
+				"ln"  : math.log}
 		self.exprStack = []
 	def evaluateStack(self, s ):
 		op = s.pop()
