@@ -610,7 +610,7 @@ def create_auction(auction_id, end_time, auction_description):
 
 # Submit a bid for an auction
 # Argument: bidder user object, auction_id, bid_amount int
-# Return: [message_id, embed, previous_bidder/None] if valid, or error str for invalid bids
+# Return: [message_id, embed, highest_bidder, previous_bidder/None] if valid, or error str for invalid bids
 def submit_bid(bidder, auction_id, bid_amount):
 	auction_id = auction_id.lower()
 	discord_id = str(bidder.id)
@@ -618,7 +618,7 @@ def submit_bid(bidder, auction_id, bid_amount):
 	auction_entry = data.get(auction_id, None)
 	user_entry = helper.get_user_entry(discord_id)
 	
-	previous_bidder = auction_entry["highest_bidder"]
+	previous_bidder = auction_entry.copy()["highest_bidder"]
 	minimum_next_bid = int(auction_entry["highest_bid"] * AUCTION_INCREMENT)
 	
 	if auction_entry == None:
