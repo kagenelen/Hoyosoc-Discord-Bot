@@ -37,9 +37,9 @@ with open(absolute_path + 'config.json', 'r') as f:
 	f.close()
 
 # NOTICE: Uncomment these two if testing on the test server
-GENSOC_SERVER = 962970271545982986 # Test server
+# GENSOC_SERVER = 962970271545982986 # Test server
 # THIS_OR_THAT_CHANNEL = 1122138125368569868 # Test server channel
-AUCTION_CHANNEL = 1134351976738603058
+# AUCTION_CHANNEL = 1134351976738603058
 
 ############################# CODE STARTS HERE ############################
 
