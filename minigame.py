@@ -448,7 +448,7 @@ def hangman_guess(discord_id, guess):
 # Argument: message object
 # Return: true/false or error message
 def number_validity(message):
-	data = helper.read_file("minigame_session.json")
+	data = helper.read_file("count.json")
 	num = message.content.lower().strip()
 
 	# Parse any word form number to int or solve math equation
@@ -469,27 +469,27 @@ def number_validity(message):
 		fun_bonus = COUNT_BONUS
 
 	# Invalid number
-	if data["1"]["next_valid_number"] != int(num):
-		data["1"]["next_valid_number"] = 1
-		data["1"]["last_user"] = 1
-		helper.write_file("minigame_session.json", data)
+	if data["next_valid_number"] != int(num):
+		data["next_valid_number"] = 1
+		data["last_user"] = 1
+		helper.write_file("count.json", data)
 		return "Incorrect! Resetting counting game..."
 
 	# Double counting user
-	if data["1"]["last_user"] == message.author.id:
-		data["1"]["next_valid_number"] = 1
-		data["1"]["last_user"] = 1
-		helper.write_file("minigame_session.json", data)
+	if data["last_user"] == message.author.id:
+		data["next_valid_number"] = 1
+		data["last_user"] = 1
+		helper.write_file("count.json", data)
 		return "You cannot make consecutive counts. Resetting counting game..."
 
 	# Correct submission (except 1), increment count and reward primojem
 	if int(num) != 1:
-		primojem_reward = min(int(math.ceil(data["1"]["next_valid_number"] * COUNT_MULTIPLER)), COUNT_MAX) * fun_bonus
+		primojem_reward = min(int(math.ceil(data["next_valid_number"] * COUNT_MULTIPLER)), COUNT_MAX) * fun_bonus
 		gambling.update_user_currency(message.author.id, primojem_reward)
-	data["1"]["next_valid_number"] += 1
-	data["1"]["last_user"] = message.author.id
+	data["next_valid_number"] += 1
+	data["last_user"] = message.author.id
 	
-	helper.write_file("minigame_session.json", data)
+	helper.write_file("count.json", data)
 	return True
 
 ################### Connect 4  ############################
