@@ -1,21 +1,21 @@
 {
-	"5": ["Ganyu", "Ayaka", "Yanqing", "Jingliu",
-		"Hu Tao", "Yoimiya", "Diluc", "Arlecchino",
+	"5": ["Ganyu", "Ayaka", "Jingliu",
+		"Hu Tao", "Yoimiya", "Lyney", "Arlecchino",
 		"Kazuha", "Blade", "Wanderer",
 		"Zhongli", "Itto",
 		"Raiden", "Kafka", "Keqing",
 		"Nahida", "Alhaitham", "Tighnari",
-		"Kokomi", "Yelan", "Nilou",
+		"Kokomi", "Nilou", "Furina",
 		"Silver Wolf",
 		"Imbibitor Lunae"
 	],
 	"4": ["March 7",
 		"Xiangling",
-		"Heizou", "Dan Heng",
+		"Heizou", 
 		"Noelle",
 		"Fischl",
 		"Kaveh", "Yaoyao",
 		"Qingque"
 	],
-	"3": ["Debate Club", "Black Tassel", "Bloodtainted Greatsword", "Cool Steel", "Harbinger of Dawn", "Magic Guide", "Raven Bow", "Slingshot", "Thrilling Tales of Dragon Slayers"]
+	"3": ["Debate Club", "Black Tassel", "Bloodtainted Greatsword", "Ferrous Shadow", "Cool Steel", "Harbinger of Dawn", "Skyrider Sword", "Raven Bow", "Slingshot", "Sharpshooter's Oath", "Thrilling Tales of Dragon Slayers", "Magic Guide", "Emerald Orb"]
 }
