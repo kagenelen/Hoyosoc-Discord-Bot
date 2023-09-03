@@ -117,7 +117,7 @@ def new_blackjack(discord_id, bet):
   discord_id = str(discord_id)
   data = helper.read_file("minigame_session.json")
   dealer_hand = random.choices(CARDS, k=1)
-  your_hand = random.choices(CARDS, k=1)
+  your_hand = random.choices(CARDS, k=2)
 
   if bet <= 0:
     return "Bets have to be higher than 0."
@@ -187,21 +187,24 @@ def blackjack_action(discord_id, action):
 # Argument: discord id string
 # Return: 0 no one won, 1 better won, -1 dealer won
 def blackjack_hit(discord_id):
-  discord_id = str(discord_id)
-  data = helper.read_file("minigame_session.json")
-  session = data.get(discord_id, None)
-
-  # Better draw 1 card
-  session["your_hand"].append(random.choice(CARDS))
-  helper.write_file("minigame_session.json", data)
-
-  # Check if better has won or lost
-  if blackjack_get_value(session["your_hand"]) == 21:
-    return 1
-  elif blackjack_get_value(session["your_hand"]) > 21:
-    return -1
-
-  return 0
+	discord_id = str(discord_id)
+	data = helper.read_file("minigame_session.json")
+	session = data.get(discord_id, None)
+	
+	# Better draw 1 card
+	session["your_hand"].append(random.choice(CARDS))
+	helper.write_file("minigame_session.json", data)
+	
+	# Check if better has won or lost
+	if blackjack_get_value(session["your_hand"]) == 21:
+		return 1
+	elif len(session["your_hand"]) == 5:
+		# 5 card charlie rule
+		return 1
+	elif blackjack_get_value(session["your_hand"]) > 21:
+		return -1
+	
+	return 0
 
 
 # Blackjack stand action
