@@ -19,7 +19,7 @@ import followup
 # IMPORTANT: Replit code is using a test bot on the test server. Before committing please change GENSOC_SERVER back to actual server's id
 
 ############################ CONSTANTS ###################################
-WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265>."
+WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. \n Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265> and grab your roles from <#827393050299858965>."
 
 # Read json file for config
 absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
