@@ -16,7 +16,7 @@ async def hit_followup(interaction):
 							"\'s Blackjack Game",
 							description=res[0],
 							color=0x61dfff)
-	embed.set_thumbnail(url=interaction.user.avatar.url)
+	embed.set_thumbnail(url=interaction.user.display_avatar.url)
 
 	dealer_value = str(minigame.blackjack_get_value(res[1]))
 	better_value = str(minigame.blackjack_get_value(res[2]))
@@ -40,7 +40,7 @@ async def stand_followup(interaction):
 							"\'s Blackjack Game",
 							description=res[0],
 							color=0x61dfff)
-	embed.set_thumbnail(url=interaction.user.avatar.url)
+	embed.set_thumbnail(url=interaction.user.display_avatar.url)
 
 	dealer_value = str(minigame.blackjack_get_value(res[1]))
 	better_value = str(minigame.blackjack_get_value(res[2]))
