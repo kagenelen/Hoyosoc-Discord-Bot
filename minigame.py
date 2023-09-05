@@ -474,8 +474,9 @@ def number_validity(message):
 	if math_eq_res == None and not num.isdigit():
 		return False
 	elif math_eq_res != None and isinstance(math_eq_res, int):
+		no_space = str(num)
 		num = math_eq_res
-		no_space = num.replace(" ", "")
+		no_space = no_space.replace(" ", "")
 		if "+0" not in no_space and "x1" not in no_space and "/1" not in no_space and "-0" not in no_space and "+1" not in no_space and "-1" not in no_space and "x0" not in no_space and ".0" not in no_space:
 			fun_bonus = COUNT_BONUS
 
