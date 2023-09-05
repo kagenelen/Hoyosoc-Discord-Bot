@@ -57,7 +57,6 @@ tree = app_commands.CommandTree(client)
 async def on_ready():
 	print("*****Bot has connected*****")
 	await tree.sync(guild=discord.Object(id=GENSOC_SERVER))
-	helper.rewrite_structure()
 	daily_role_expiry_check.start()
 	make_backup.start()
 	run_scheduled_tasks.start()

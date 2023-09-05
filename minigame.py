@@ -474,12 +474,10 @@ def number_validity(message):
 	if math_eq_res == None and not num.isdigit():
 		return False
 	elif math_eq_res != None and isinstance(math_eq_res, int):
-		no_space = str(num)
-		num = math_eq_res
-		no_space = no_space.replace(" ", "")
-		if "+0" not in no_space and "x1" not in no_space and "/1" not in no_space and "-0" not in no_space and "+1" not in no_space and "-1" not in no_space and "x0" not in no_space and ".0" not in no_space:
+		if str(math_eq_res) not in num and str(math_eq_res + 1) not in num and str(math_eq_res - 1) not in num:
 			fun_bonus = COUNT_BONUS
-
+		num = math_eq_res
+			
 	# Invalid number
 	if data["next_valid_number"] != int(num):
 		data["next_valid_number"] = 1
