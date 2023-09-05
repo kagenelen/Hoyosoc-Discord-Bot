@@ -676,13 +676,19 @@ async def equip_role(interaction, role_name: str):
 		await interaction.response.send_message(
 			"Invalid role or you do not own the role.")
 
+
 @tree.command(name="leaderboard",
 				description="Primojem leaderboard.",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def leaderboard(interaction):
-	res = gambling.get_leaderboard()
+@app_commands.choices(category=[
+	discord.app_commands.Choice(name="Primojem", value="currency"),
+	discord.app_commands.Choice(name="Gambling Profit", value="gambling_profit"),
+	discord.app_commands.Choice(name="Gambling Loss", value="gambling_loss"),
+])
+async def leaderboard(interaction, category: app_commands.Choice[str]):
+	res = gambling.get_leaderboard(category.value)
 	
-	embed = discord.Embed(title="Leaderboard", color=0x61dfff)
+	embed = discord.Embed(title=category.name + " Leaderboard", color=0x61dfff)
 	
 	# Add embed field for each person in top 10
 	rank = 0
@@ -690,6 +696,7 @@ async def leaderboard(interaction):
 		user = client.get_user(int(res[r][0]))
 		if user == None:
 			continue
+			
 		if r < 10:
 			embed.add_field(name=str(r + 1) + ". " + user.display_name,
 							value=str(res[r][1]),

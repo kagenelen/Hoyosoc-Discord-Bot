@@ -14,7 +14,6 @@ from operator import getitem
 '''
 
 TIME_OFFSET = 36000
-ME = 318337790708547588
 BET_LIMIT = 5000
 AUCTION_INCREMENT = 1.05
 ONE_WEEK_ROLE = 800
@@ -312,20 +311,23 @@ def check_user_currency(discord_id):
 
 
 # Get leaderboard for currency
-# Return: List of (discord id, currency) in order
-def get_leaderboard():
-    data = helper.read_file("users.json")
-    sorted_data = sorted(data.items(),
-                         key=lambda x: getitem(x[1], "currency"),
-                         reverse=True)
-
-    leaderboard = []
-    for user in sorted_data:
-        # Prevent myself from appearing on the leaderboard
-		# if int(user[0]) != ME:
-        leaderboard.append([user[0], user[1]["currency"]])
-
-    return leaderboard
+# Argument: leaderboard category
+# Return: List of (discord id, currency) in order or error string
+def get_leaderboard(category):
+	category = category.lower()
+	if category not in ["currency", "gambling_profit", "gambling_loss"]:
+		return "Invalid category"
+	
+	data = helper.read_file("users.json")
+	sorted_data = sorted(data.items(),
+						 key=lambda x: getitem(x[1], category),
+						 reverse=True)
+	
+	leaderboard = []
+	for user in sorted_data:
+		leaderboard.append([user[0], user[1][category]])
+	
+	return leaderboard
 
 
 # Change multiple user's currency by amount
@@ -360,6 +362,21 @@ def update_all_currency(change, server):
             update_user_currency(u, change)
 
     print("Compensation given.")
+
+# Update user gambling profit/loss value
+# Arguments: discord_id, primojem change by x amount
+def update_user_gambling(discord_id, change):
+	discord_id = str(discord_id)
+	helper.get_user_entry(discord_id)
+	data = helper.read_file("users.json")
+	user_entry = data.get(discord_id, None)
+
+	if change < 0:
+		user_entry["gambling_loss"] = int(user_entry["gambling_loss"] - change)
+	elif change > 0:
+		user_entry["gambling_profit"] = int(user_entry["gambling_profit"] + change)
+	
+	helper.write_file("users.json", data)
 
 
 ########### Shop, checkin, roles, inventory ##############################################
