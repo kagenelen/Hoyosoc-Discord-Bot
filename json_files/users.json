@@ -1,21 +1,24 @@
 {
     "318337790708547588": {
-        "currency": 42902,
-        "next_checkin": 1686441610,
+        "currency": 134373,
+        "next_checkin": 1693958406,
         "role": {},
-        "checkin_streak": 75,
+        "checkin_streak": 162,
         "genshin_uids": [],
         "role_icon": [
             "Heizou",
-            "Mika",
-            "Xiangling",
-            "Bennett"
+            "Keqing",
+            "Wanderer",
+            "Imbibitor Lunae"
         ],
-        "jemdust": 54,
-        "hsr_uids": []
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "280905494091005954": {
-        "currency": 145,
+        "currency": 2202,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 1,
@@ -27,10 +30,15 @@
             "Xiangling"
         ],
         "jemdust": 65,
-        "hsr_uids": []
+        "hsr_uids": [
+            "800083016"
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "302346316959449088": {
-        "currency": 2000,
+        "currency": 43,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
@@ -41,13 +49,16 @@
         "jemdust": 0,
         "hsr_uids": [
             "800157827"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "501628004620042241": {
-        "currency": 28627,
-        "next_checkin": 1686355253,
+        "currency": 32147,
+        "next_checkin": 1690329633,
         "role": {},
-        "checkin_streak": 4,
+        "checkin_streak": 1,
         "genshin_uids": [
             "608604687"
         ],
@@ -55,19 +66,25 @@
         "jemdust": 0,
         "hsr_uids": [
             "800302730"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "305564624227401728": {
-        "currency": 3135,
-        "next_checkin": 1686182439,
+        "currency": 3900,
+        "next_checkin": 1688515209,
         "role": {},
-        "checkin_streak": 1,
+        "checkin_streak": 2,
         "genshin_uids": [],
         "role_icon": [],
         "jemdust": 0,
         "hsr_uids": [
             "800196443"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "530215840780648448": {
         "currency": 3780,
@@ -81,7 +98,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "800031375"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "437834249744285708": {
         "currency": 2875,
@@ -91,20 +111,26 @@
         "genshin_uids": [],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "318723992905056259": {
-        "currency": 10610,
+        "currency": 11610,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "368630963330220032": {
-        "currency": 6723,
+        "currency": 8723,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
@@ -115,17 +141,20 @@
         "jemdust": 0,
         "hsr_uids": [
             "800252728"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "1074318389708861460": {
-        "currency": 5137,
-        "next_checkin": 1686182409,
+        "currency": 8172,
+        "next_checkin": 1693785631,
         "role": {
             "hydro": 2145919483,
             "geo": 2145919483,
             "anemo": 2145919483
         },
-        "checkin_streak": 0,
+        "checkin_streak": 2,
         "genshin_uids": [
             "811233287",
             "111032240"
@@ -134,47 +163,60 @@
             "Kaveh",
             "Raiden",
             "Heizou",
-            "Mika",
             "Xiangling",
             "Fischl",
             "Noelle",
             "Alhaitham"
         ],
-        "jemdust": 39,
+        "jemdust": 44,
         "hsr_uids": [
             "807857512"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "348414134636904452": {
-        "currency": 6408,
-        "next_checkin": 1686441615,
+        "currency": 2742,
+        "next_checkin": 1693699204,
         "role": {
             "hydro": 2145919483,
-            "abyss": 2145919483
+            "physical": 2145919483,
+            "imaginary": 2145919483,
+            "quantum": 2145919483,
+            "cryo": 2145919483,
+            "anemo": 2145919483
         },
-        "checkin_streak": 0,
+        "checkin_streak": 4,
         "genshin_uids": [
             "613636035",
-            "823913674"
+            "823913674",
+            "815686207"
         ],
         "role_icon": [
-            "Mika",
             "Heizou",
-            "Bennett",
             "Noelle",
             "Xiangling",
             "Tighnari",
             "Wanderer",
             "Fischl",
-            "Hutao"
+            "Hu Tao",
+            "Qingque",
+            "Kaveh",
+            "Blade",
+            "March 7",
+            "Yaoyao"
         ],
-        "jemdust": 21,
+        "jemdust": 480,
         "hsr_uids": [
             "802980664"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "294049450882629632": {
-        "currency": 2305,
+        "currency": 4350,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 1,
@@ -185,43 +227,61 @@
         "jemdust": 0,
         "hsr_uids": [
             "800355382"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "937000926835773460": {
-        "currency": 300,
-        "next_checkin": 1685232007,
+        "currency": 2097,
+        "next_checkin": 1693699244,
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
         "role_icon": [],
-        "jemdust": 0,
-        "hsr_uids": []
+        "jemdust": 2,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "384949403452047362": {
-        "currency": 5738,
-        "next_checkin": 1686355234,
+        "currency": 8435,
+        "next_checkin": 1693699201,
         "role": {
-            "pyro": 2145919483
+            "pyro": 2145919483,
+            "quantum": 2145919483,
+            "imaginary": 2145919483
         },
-        "checkin_streak": 17,
+        "checkin_streak": 1,
         "genshin_uids": [],
         "role_icon": [
             "Xiangling",
-            "Bennett",
             "Kaveh",
-            "Ayato"
+            "Ayato",
+            "Fischl",
+            "Hu Tao",
+            "Heizou",
+            "Noelle",
+            "Qingque",
+            "Zhongli",
+            "Imbibitor Lunae",
+            "Keqing"
         ],
-        "jemdust": 123,
+        "jemdust": 616,
         "hsr_uids": [
             "602961067",
             "803420870"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "308020379744600064": {
-        "currency": 34531,
-        "next_checkin": 1686355204,
+        "currency": 143939,
+        "next_checkin": 1693958437,
         "role": {
-            "abyss": 2145919483,
+            "physical": 2145919483,
             "anemo": 2145919483,
             "cryo": 2145919483,
             "dendro": 2145919483,
@@ -230,33 +290,44 @@
             "hydro": 2145919483,
             "pyro": 2145919483
         },
-        "checkin_streak": 2,
+        "checkin_streak": 53,
         "genshin_uids": [
             "826275883",
             "653145544"
         ],
         "role_icon": [
             "Xiangling",
-            "Kokomi"
+            "Kokomi",
+            "Yaoyao"
         ],
-        "jemdust": 18,
+        "jemdust": 0,
         "hsr_uids": [
             "802993364"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "852095686932824087": {
-        "currency": 9810,
-        "next_checkin": 1686441619,
-        "role": {},
-        "checkin_streak": 8,
+        "currency": 18342,
+        "next_checkin": 1693958422,
+        "role": {
+            "geo": 2145919483
+        },
+        "checkin_streak": 95,
         "genshin_uids": [
             "629106473"
         ],
-        "role_icon": [],
-        "jemdust": 0,
+        "role_icon": [
+            "Zhongli"
+        ],
+        "jemdust": 14,
         "hsr_uids": [
             "805648503"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "512531622558564362": {
         "currency": 2650,
@@ -270,7 +341,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "800277721"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "437944593992908800": {
         "currency": 2800,
@@ -280,7 +354,10 @@
         "genshin_uids": [],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "620206680956731392": {
         "currency": 2650,
@@ -290,10 +367,13 @@
         "genshin_uids": [],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "838329161474506782": {
-        "currency": 2800,
+        "currency": 2808,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
@@ -302,33 +382,39 @@
         "jemdust": 0,
         "hsr_uids": [
             "800313699"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "269324017436065795": {
-        "currency": 1445,
-        "next_checkin": 1685836838,
+        "currency": 1745,
+        "next_checkin": 1688515253,
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [
             "804899527",
             "603433178"
         ],
-        "role_icon": [
-            "Albedo",
-            "Faruzan"
-        ],
-        "jemdust": 38,
-        "hsr_uids": []
+        "role_icon": [],
+        "jemdust": 223,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "166807404716097537": {
-        "currency": 5500,
-        "next_checkin": 1682985630,
+        "currency": 0,
+        "next_checkin": 1692144026,
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "414263860103610369": {
         "currency": 2650,
@@ -340,10 +426,13 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "611856491506434068": {
-        "currency": 6778,
+        "currency": 7822,
         "next_checkin": 1683072050,
         "role": {},
         "checkin_streak": 1,
@@ -352,7 +441,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "153435291355447296": {
         "currency": 0,
@@ -364,7 +456,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "986446621468405852": {
         "currency": 0,
@@ -376,7 +471,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "345546240949354496": {
         "currency": 0,
@@ -388,7 +486,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "324446494285496322": {
         "currency": 0,
@@ -400,7 +501,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "247608057079529473": {
         "currency": 0,
@@ -412,7 +516,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "487183699360612353": {
         "currency": 0,
@@ -424,7 +531,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "494069211568799774": {
         "currency": 0,
@@ -436,7 +546,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "698055404873187478": {
         "currency": 0,
@@ -448,7 +561,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "626677030641205259": {
         "currency": 0,
@@ -460,10 +576,13 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "529608818556928001": {
-        "currency": 0,
+        "currency": 3,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
@@ -474,7 +593,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "800303622"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "273650598845349888": {
         "currency": 0,
@@ -486,7 +608,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "485407753607577600": {
         "currency": 0,
@@ -499,7 +624,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "308533285472960513": {
         "currency": 0,
@@ -511,7 +639,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "331604660039188481": {
         "currency": 0,
@@ -523,7 +654,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "487012233705160764": {
         "currency": 0,
@@ -537,10 +671,13 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "336774405986451457": {
-        "currency": 0,
+        "currency": 1,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
@@ -551,11 +688,14 @@
         "jemdust": 0,
         "hsr_uids": [
             "801280064"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "508860948929314816": {
-        "currency": 0,
-        "next_checkin": 1682985630,
+        "currency": 150,
+        "next_checkin": 1689120021,
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [
@@ -563,7 +703,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "538697533556391946": {
         "currency": 0,
@@ -575,7 +718,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "375872817197088769": {
         "currency": 0,
@@ -587,7 +733,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "248074461868326913": {
         "currency": 0,
@@ -599,10 +748,13 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "771899922370265118": {
-        "currency": 3500,
+        "currency": 4546,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
@@ -611,7 +763,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "450611984371810319": {
         "currency": 0,
@@ -623,7 +778,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "273376678598934528": {
         "currency": 0,
@@ -635,7 +793,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "437177952598491136": {
         "currency": 0,
@@ -647,7 +808,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "309127419720105985": {
         "currency": 0,
@@ -659,7 +823,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "294797591231594497": {
         "currency": 0,
@@ -671,7 +838,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "202753491708542976": {
         "currency": 0,
@@ -683,10 +853,13 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "861905983085609021": {
-        "currency": 7500,
+        "currency": 8500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
@@ -697,7 +870,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "800021602"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "374113453184647169": {
         "currency": 0,
@@ -711,7 +887,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "802448503"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "726126702677458967": {
         "currency": 0,
@@ -723,7 +902,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "653982566214402058": {
         "currency": 0,
@@ -735,7 +917,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "355597627150041089": {
         "currency": 0,
@@ -747,7 +932,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "340069159226310656": {
         "currency": 0,
@@ -759,7 +947,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "438896487812825098": {
         "currency": 0,
@@ -771,7 +962,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "392883103502434304": {
         "currency": 0,
@@ -783,7 +977,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "263627234227650561": {
         "currency": 0,
@@ -795,7 +992,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "218671529905356803": {
         "currency": 0,
@@ -807,7 +1007,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "377468166386876417": {
         "currency": 2650,
@@ -819,7 +1022,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "760794317542785044": {
         "currency": 0,
@@ -831,7 +1037,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "141910518314041344": {
         "currency": 0,
@@ -843,7 +1052,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "296575022200389632": {
         "currency": 0,
@@ -855,7 +1067,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "706155929929908295": {
         "currency": 0,
@@ -867,7 +1082,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "202414892454641666": {
         "currency": 0,
@@ -879,7 +1097,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "554939269756616705": {
         "currency": 0,
@@ -891,7 +1112,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "586422043969454124": {
         "currency": 0,
@@ -903,7 +1127,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "159886926248280064": {
         "currency": 0,
@@ -915,7 +1142,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "548015866155892746": {
         "currency": 0,
@@ -927,7 +1157,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "306017902207696898": {
         "currency": 0,
@@ -939,7 +1172,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "204908621719535616": {
         "currency": 0,
@@ -951,7 +1187,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "252334506210492417": {
         "currency": 0,
@@ -963,7 +1202,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "650345469175660559": {
         "currency": 0,
@@ -975,7 +1217,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "940795297129447455": {
         "currency": 0,
@@ -987,11 +1232,14 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "303058183222591488": {
-        "currency": 0,
-        "next_checkin": 1682985630,
+        "currency": 1073,
+        "next_checkin": 1693353655,
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [
@@ -1003,7 +1251,10 @@
         "hsr_uids": [
             "703837239",
             "803507443"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "561139034311753738": {
         "currency": 0,
@@ -1015,7 +1266,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "427629098349625354": {
         "currency": 0,
@@ -1027,7 +1281,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "199802136840634368": {
         "currency": 0,
@@ -1039,7 +1296,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "466462045018259476": {
         "currency": 0,
@@ -1053,7 +1313,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "802964545"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "448384664315363330": {
         "currency": 0,
@@ -1065,7 +1328,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "221501979317239808": {
         "currency": 0,
@@ -1077,7 +1343,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "901065077715796028": {
         "currency": 0,
@@ -1089,7 +1358,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "778065743807119361": {
         "currency": 0,
@@ -1101,7 +1373,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "759964941439467544": {
         "currency": 0,
@@ -1113,7 +1388,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "690032584281161730": {
         "currency": 0,
@@ -1125,7 +1403,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "759618068355088445": {
         "currency": 0,
@@ -1137,7 +1418,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "762445557960146997": {
         "currency": 0,
@@ -1149,7 +1433,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "314739379618709506": {
         "currency": 0,
@@ -1161,7 +1448,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "425266752474185738": {
         "currency": 0,
@@ -1173,7 +1463,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "371740104126889995": {
         "currency": 0,
@@ -1185,7 +1478,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "524334947885121551": {
         "currency": 0,
@@ -1198,7 +1494,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "209915926886219788": {
         "currency": 0,
@@ -1210,7 +1509,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "795213735203307520": {
         "currency": 0,
@@ -1222,7 +1524,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "410325825683193866": {
         "currency": 3500,
@@ -1236,7 +1541,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "800292853"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "330876154246594610": {
         "currency": 0,
@@ -1248,7 +1556,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "388167280334471168": {
         "currency": 0,
@@ -1260,7 +1571,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "212853542409601024": {
         "currency": 0,
@@ -1273,7 +1587,12 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [
+            "802938435"
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "889127621730906173": {
         "currency": 0,
@@ -1285,7 +1604,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "712987369820913685": {
         "currency": 0,
@@ -1297,7 +1619,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "257071274512220175": {
         "currency": 0,
@@ -1310,10 +1635,13 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "491070418497830924": {
-        "currency": 0,
+        "currency": 2000,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
@@ -1322,7 +1650,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "533201972556333067": {
         "currency": 0,
@@ -1335,7 +1666,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "302610719403278336": {
         "currency": 0,
@@ -1347,7 +1681,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "310399907561340930": {
         "currency": 0,
@@ -1359,7 +1696,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "209898273811595274": {
         "currency": 0,
@@ -1371,7 +1711,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "612219832233885706": {
         "currency": 0,
@@ -1383,7 +1726,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "81431674457436160": {
         "currency": 0,
@@ -1395,7 +1741,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "314927201243889674": {
         "currency": 0,
@@ -1407,7 +1756,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "436448411563196416": {
         "currency": 0,
@@ -1420,7 +1772,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "198326789120983041": {
         "currency": 0,
@@ -1432,7 +1787,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "611887355069988865": {
         "currency": 0,
@@ -1444,7 +1802,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "525652777775529994": {
         "currency": 0,
@@ -1456,7 +1817,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "702396989417193482": {
         "currency": 3500,
@@ -1468,7 +1832,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "120490489811173376": {
         "currency": 0,
@@ -1480,7 +1847,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "322702816873283584": {
         "currency": 0,
@@ -1492,7 +1862,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "290103035085062144": {
         "currency": 0,
@@ -1504,7 +1877,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "293549117953540097": {
         "currency": 0,
@@ -1516,7 +1892,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "344031878652624897": {
         "currency": 0,
@@ -1528,7 +1907,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "318262928245522432": {
         "currency": 0,
@@ -1540,7 +1922,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "691460238615904348": {
         "currency": 0,
@@ -1552,7 +1937,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "297903628084314144": {
         "currency": 0,
@@ -1564,7 +1952,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "129566212181983232": {
         "currency": 0,
@@ -1576,7 +1967,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "603535090966069257": {
         "currency": 0,
@@ -1589,7 +1983,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "338319217143316480": {
         "currency": 0,
@@ -1601,7 +1998,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "181163176191197184": {
         "currency": 0,
@@ -1615,7 +2015,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "800040340"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "461782690321006602": {
         "currency": 0,
@@ -1627,7 +2030,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "630578256470474763": {
         "currency": 0,
@@ -1639,7 +2045,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "810708376508956742": {
         "currency": 0,
@@ -1651,7 +2060,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "419454258098995202": {
         "currency": 0,
@@ -1665,7 +2077,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "801154593"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "144705466025508864": {
         "currency": 0,
@@ -1677,7 +2092,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "162691613179510785": {
         "currency": 0,
@@ -1689,10 +2107,13 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "287041936248930305": {
-        "currency": 0,
+        "currency": 1,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
@@ -1701,7 +2122,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "234649449727655937": {
         "currency": 0,
@@ -1713,7 +2137,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "304237385196240896": {
         "currency": 0,
@@ -1725,7 +2152,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "250147040284246016": {
         "currency": 0,
@@ -1737,7 +2167,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "154497707912724480": {
         "currency": 0,
@@ -1749,7 +2182,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "814332543535939614": {
         "currency": 0,
@@ -1761,7 +2197,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "172909657860341760": {
         "currency": 0,
@@ -1773,7 +2212,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "228913322076930049": {
         "currency": 0,
@@ -1785,7 +2227,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "266065004929875978": {
         "currency": 0,
@@ -1797,7 +2242,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "202673851094663168": {
         "currency": 0,
@@ -1809,7 +2257,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "344984109833256961": {
         "currency": 0,
@@ -1821,7 +2272,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "397392336868343812": {
         "currency": 0,
@@ -1833,7 +2287,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "210596276310376449": {
         "currency": 0,
@@ -1845,7 +2302,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "192189955643015168": {
         "currency": 0,
@@ -1858,7 +2318,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "213924329019277312": {
         "currency": 0,
@@ -1870,7 +2333,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "283165051051835392": {
         "currency": 0,
@@ -1882,7 +2348,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "267224583302676480": {
         "currency": 0,
@@ -1896,7 +2365,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "803371779"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "401168410701987845": {
         "currency": 0,
@@ -1908,7 +2380,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "155903967057018880": {
         "currency": 0,
@@ -1920,7 +2395,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "239298105495912449": {
         "currency": 0,
@@ -1932,7 +2410,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "183458242070839296": {
         "currency": 0,
@@ -1944,7 +2425,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "316212624813588482": {
         "currency": 0,
@@ -1956,7 +2440,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "354949163659689984": {
         "currency": 0,
@@ -1968,7 +2455,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "173745227180277760": {
         "currency": 0,
@@ -1980,7 +2470,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "542623017306554369": {
         "currency": 0,
@@ -1992,7 +2485,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "248965165645692929": {
         "currency": 0,
@@ -2004,7 +2500,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "426954265626673153": {
         "currency": 0,
@@ -2016,7 +2515,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "440797636308762624": {
         "currency": 0,
@@ -2028,7 +2530,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "811060982456909834": {
         "currency": 0,
@@ -2040,7 +2545,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "704691482442858498": {
         "currency": 0,
@@ -2052,7 +2560,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "255217990633652224": {
         "currency": 0,
@@ -2064,7 +2575,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "1071965717357936682": {
         "currency": 0,
@@ -2076,7 +2590,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "381397051906326530": {
         "currency": 0,
@@ -2088,7 +2605,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "156589794124759040": {
         "currency": 0,
@@ -2100,7 +2620,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "726383897067388965": {
         "currency": 0,
@@ -2112,7 +2635,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "691496445081026590": {
         "currency": 0,
@@ -2124,7 +2650,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "282528299924717571": {
         "currency": 0,
@@ -2136,7 +2665,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "933894084924411914": {
         "currency": 0,
@@ -2150,7 +2682,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "808415168"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "443302520618745866": {
         "currency": 0,
@@ -2162,10 +2697,13 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "224476045821214720": {
-        "currency": 3500,
+        "currency": 4500,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
@@ -2174,7 +2712,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "713663683896541217": {
         "currency": 0,
@@ -2186,7 +2727,10 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "772985526105276426": {
         "currency": 0,
@@ -2198,17 +2742,23 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "217933338407731200": {
-        "currency": 0,
-        "next_checkin": 1684368047,
+        "currency": 18475,
+        "next_checkin": 1691712009,
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "601421722784366603": {
         "currency": 3500,
@@ -2218,7 +2768,10 @@
         "genshin_uids": [],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "1076313620385898629": {
         "currency": 3500,
@@ -2228,7 +2781,10 @@
         "genshin_uids": [],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "266068819858948097": {
         "currency": 5500,
@@ -2238,10 +2794,13 @@
         "genshin_uids": [],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "474462937499697152": {
-        "currency": 4500,
+        "currency": 5777,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
@@ -2250,7 +2809,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "800821630"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "861981307704573962": {
         "currency": 3500,
@@ -2260,20 +2822,28 @@
         "genshin_uids": [],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "300937279197806604": {
-        "currency": 17272,
-        "next_checkin": 1682985630,
+        "currency": 82229,
+        "next_checkin": 1688515214,
         "role": {},
-        "checkin_streak": 2,
+        "checkin_streak": 0,
         "genshin_uids": [],
         "role_icon": [
             "Keqing",
-            "Kaveh"
+            "Noelle",
+            "Fischl",
+            "March 7"
         ],
-        "jemdust": 9,
-        "hsr_uids": []
+        "jemdust": 17,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "864213503848873994": {
         "currency": 0,
@@ -2285,10 +2855,15 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [
+            "800257438"
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "334604190598823936": {
-        "currency": 2580,
+        "currency": 2664,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
@@ -2297,17 +2872,28 @@
         "jemdust": 0,
         "hsr_uids": [
             "800005840"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "435701153230094336": {
-        "currency": 2655,
-        "next_checkin": 1682985630,
+        "currency": 14485,
+        "next_checkin": 1693872007,
         "role": {},
-        "checkin_streak": 1,
-        "genshin_uids": [],
-        "role_icon": [],
-        "jemdust": 0,
-        "hsr_uids": []
+        "checkin_streak": 47,
+        "genshin_uids": [
+            "646080760"
+        ],
+        "role_icon": [
+            "Kokomi",
+            "Nahida"
+        ],
+        "jemdust": 47,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "253777866980982795": {
         "currency": 4500,
@@ -2319,65 +2905,49 @@
         ],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "312172066482814979": {
-        "currency": 1090,
-        "next_checkin": 1684454428,
+        "currency": 131,
+        "next_checkin": 1691452849,
         "role": {},
-        "checkin_streak": 0,
+        "checkin_streak": 14,
         "genshin_uids": [],
         "role_icon": [
-            "Heizou"
+            "Heizou",
+            "Xiangling",
+            "Fischl",
+            "Noelle",
+            "March 7",
+            "Yoimiya"
         ],
-        "jemdust": 20,
-        "hsr_uids": []
+        "jemdust": 5,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "306912349120364547": {
-        "currency": 19455,
-        "next_checkin": 1682985630,
+        "currency": 23368,
+        "next_checkin": 1693008054,
         "role": {},
         "checkin_streak": 0,
-        "genshin_uids": [],
+        "genshin_uids": [
+            "800596464"
+        ],
         "role_icon": [],
         "jemdust": 0,
         "hsr_uids": [
             "804756102"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "282040152099127296": {
-        "currency": 5500,
-        "next_checkin": 1682985630,
-        "role": {},
-        "checkin_streak": 0,
-        "genshin_uids": [],
-        "role_icon": [],
-        "jemdust": 0,
-        "hsr_uids": []
-    },
-    "271620639524126720": {
-        "currency": 5500,
-        "next_checkin": 1682985630,
-        "role": {},
-        "checkin_streak": 0,
-        "genshin_uids": [],
-        "role_icon": [],
-        "jemdust": 0,
-        "hsr_uids": [
-            "801681112"
-        ]
-    },
-    "422660666373963787": {
-        "currency": 3500,
-        "next_checkin": 1682985630,
-        "role": {},
-        "checkin_streak": 0,
-        "genshin_uids": [],
-        "role_icon": [],
-        "jemdust": 0,
-        "hsr_uids": []
-    },
-    "379548095924666368": {
         "currency": 6500,
         "next_checkin": 1682985630,
         "role": {},
@@ -2385,7 +2955,51 @@
         "genshin_uids": [],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "271620639524126720": {
+        "currency": 5665,
+        "next_checkin": 1686787252,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [
+            "801681112"
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "422660666373963787": {
+        "currency": 1140,
+        "next_checkin": 1691625617,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 20,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "379548095924666368": {
+        "currency": 8500,
+        "next_checkin": 1682985630,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "878202494747033650": {
         "currency": 3500,
@@ -2395,7 +3009,10 @@
         "genshin_uids": [],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "361660958843863040": {
         "currency": 3140,
@@ -2405,17 +3022,23 @@
         "genshin_uids": [],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "740472796580151377": {
-        "currency": 11710,
+        "currency": 12230,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 1,
         "genshin_uids": [],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "691223441356881971": {
         "currency": 3000,
@@ -2425,54 +3048,77 @@
         "genshin_uids": [],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "573019300328243200": {
-        "currency": 215,
-        "next_checkin": 1685404848,
+        "currency": 365,
+        "next_checkin": 1690588853,
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
         "role_icon": [
             "Kaveh"
         ],
-        "jemdust": 1,
+        "jemdust": 5,
         "hsr_uids": [
             "800000000",
             "800239085"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "212876268146917376": {
-        "currency": 1000,
+        "currency": 2000,
         "next_checkin": 1684320052,
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
         "role_icon": [],
         "jemdust": 0,
-        "hsr_uids": []
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "438647958079143938": {
-        "currency": 1154,
-        "next_checkin": 1684454455,
+        "currency": 1304,
+        "next_checkin": 1693872052,
         "role": {},
-        "checkin_streak": 1,
+        "checkin_streak": 0,
         "genshin_uids": [],
         "hsr_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "495781159431700481": {
-        "currency": 1650,
-        "next_checkin": 1686355251,
-        "role": {},
-        "checkin_streak": 4,
+        "currency": 4218,
+        "next_checkin": 1693958425,
+        "role": {
+            "electro": 2145919483
+        },
+        "checkin_streak": 13,
         "genshin_uids": [],
         "hsr_uids": [
             "800870870"
         ],
-        "role_icon": [],
-        "jemdust": 0
+        "role_icon": [
+            "Fischl",
+            "Xiangling",
+            "Heizou",
+            "Noelle",
+            "Ganyu"
+        ],
+        "jemdust": 210,
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "369318622520147988": {
         "currency": 1000,
@@ -2482,7 +3128,10 @@
         "genshin_uids": [],
         "hsr_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "405599855952658434": {
         "currency": 1000,
@@ -2492,7 +3141,10 @@
         "genshin_uids": [],
         "hsr_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "259147833666437120": {
         "currency": 1000,
@@ -2502,17 +3154,23 @@
         "genshin_uids": [],
         "hsr_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "279119312072081408": {
-        "currency": 1000,
+        "currency": 2001,
         "next_checkin": 1686124584,
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
         "hsr_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "460720745597763594": {
         "currency": 1000,
@@ -2522,19 +3180,29 @@
         "genshin_uids": [],
         "hsr_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "184547402705797120": {
-        "currency": 1000,
-        "next_checkin": 1686124584,
-        "role": {},
+        "currency": 13513,
+        "next_checkin": 1693872036,
+        "role": {
+            "quantum": 2145919483
+        },
         "checkin_streak": 0,
         "genshin_uids": [],
         "hsr_uids": [
             "801071740"
         ],
-        "role_icon": [],
-        "jemdust": 0
+        "role_icon": [
+            "Noelle"
+        ],
+        "jemdust": 49,
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "240433856031883264": {
         "currency": 1000,
@@ -2546,7 +3214,10 @@
             "800036801"
         ],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "478091090625560576": {
         "currency": 1000,
@@ -2556,7 +3227,10 @@
         "genshin_uids": [],
         "hsr_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "253448557518913536": {
         "currency": 1000,
@@ -2566,37 +3240,49 @@
         "genshin_uids": [],
         "hsr_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "249134139146502145": {
-        "currency": 1000,
+        "currency": 2000,
         "next_checkin": 1686124584,
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
         "hsr_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "772683659785535488": {
-        "currency": 1000,
-        "next_checkin": 1686124584,
+        "currency": 2750,
+        "next_checkin": 1693699215,
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
         "hsr_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "395159253264105473": {
-        "currency": 1000,
+        "currency": 2000,
         "next_checkin": 1686124584,
         "role": {},
         "checkin_streak": 0,
         "genshin_uids": [],
         "hsr_uids": [],
         "role_icon": [],
-        "jemdust": 0
+        "jemdust": 0,
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "567501472091340811": {
         "currency": 0,
@@ -2608,7 +3294,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "801341554"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "199769776279650304": {
         "currency": 0,
@@ -2620,7 +3309,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "811487948"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "679629618332041290": {
         "currency": 0,
@@ -2632,7 +3324,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "800252954"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "386844748838862858": {
         "currency": 0,
@@ -2644,7 +3339,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "801859105"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "330522687485116418": {
         "currency": 0,
@@ -2656,7 +3354,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "803512097"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "174760334769389580": {
         "currency": 0,
@@ -2668,7 +3369,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "802811689"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "500072682893606943": {
         "currency": 0,
@@ -2680,7 +3384,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "800385758"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "234905705012789248": {
         "currency": 0,
@@ -2692,7 +3399,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "800087883"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "336761438959960068": {
         "currency": 0,
@@ -2704,7 +3414,10 @@
         "jemdust": 0,
         "hsr_uids": [
             "800070253"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     },
     "377012792018075648": {
         "currency": 0,
@@ -2716,6 +3429,374 @@
         "jemdust": 0,
         "hsr_uids": [
             "800044319"
-        ]
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "1026060328498372608": {
+        "currency": 0,
+        "next_checkin": 1686822536,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "526029918752997377": {
+        "currency": 0,
+        "next_checkin": 1687168644,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [
+            "802077568"
+        ],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "402270265993854979": {
+        "currency": 1000,
+        "next_checkin": 1687337471,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "497773880883019777": {
+        "currency": 2000,
+        "next_checkin": 1687337471,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "606755548548956171": {
+        "currency": 2000,
+        "next_checkin": 1687337863,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "962959061912018955": {
+        "currency": 5859,
+        "next_checkin": 1693094445,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "637414522029867018": {
+        "currency": 0,
+        "next_checkin": 1687851801,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "670892377241813013": {
+        "currency": 1000,
+        "next_checkin": 1688020402,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "281312514594177025": {
+        "currency": 1000,
+        "next_checkin": 1688020513,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "484124451831676930": {
+        "currency": 0,
+        "next_checkin": 1688054488,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "415763406310866953": {
+        "currency": 8,
+        "next_checkin": 1688551098,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "260008156564815873": {
+        "currency": 0,
+        "next_checkin": 1688817941,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [
+            "810772095"
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "818379054033010709": {
+        "currency": 6002,
+        "next_checkin": 1693872055,
+        "role": {},
+        "checkin_streak": 1,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "922022873957302283": {
+        "currency": 157,
+        "next_checkin": 1693872016,
+        "role": {},
+        "checkin_streak": 23,
+        "genshin_uids": [],
+        "role_icon": [
+            "Yaoyao",
+            "Nahida"
+        ],
+        "jemdust": 4,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "1107897505225658428": {
+        "currency": 10,
+        "next_checkin": 1690565899,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "222967529679749120": {
+        "currency": 0,
+        "next_checkin": 1693785651,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "735018830488666162": {
+        "currency": 797,
+        "next_checkin": 1693872056,
+        "role": {},
+        "checkin_streak": 36,
+        "genshin_uids": [],
+        "role_icon": [
+            "Heizou",
+            "Fischl",
+            "Xiangling",
+            "Yaoyao"
+        ],
+        "jemdust": 86,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "233395388638298112": {
+        "currency": 2,
+        "next_checkin": 1690812979,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "580338601171091456": {
+        "currency": 17,
+        "next_checkin": 1691139922,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "877179750228054026": {
+        "currency": 0,
+        "next_checkin": 1692161088,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [
+            "824676378"
+        ],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "759432869390450728": {
+        "currency": 1229,
+        "next_checkin": 1692177267,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "952881946256613387": {
+        "currency": 4,
+        "next_checkin": 1692508813,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "959658368354644008": {
+        "currency": 0,
+        "next_checkin": 1692611493,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "578432734733795329": {
+        "currency": 914,
+        "next_checkin": 1693180833,
+        "role": {},
+        "checkin_streak": 2,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "480967644246310933": {
+        "currency": 22497,
+        "next_checkin": 1693315905,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "844840070175129620": {
+        "currency": 184,
+        "next_checkin": 1693699210,
+        "role": {},
+        "checkin_streak": 1,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
+    },
+    "618758233342869526": {
+        "currency": 15,
+        "next_checkin": 1693783561,
+        "role": {},
+        "checkin_streak": 0,
+        "genshin_uids": [],
+        "role_icon": [],
+        "jemdust": 0,
+        "hsr_uids": [],
+        "chat_cooldown": 0,
+        "gambling_profit": 0,
+        "gambling_loss": 0
     }
 }

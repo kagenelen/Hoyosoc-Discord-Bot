@@ -66,7 +66,9 @@ def get_user_entry(discord_id):
 			"role_icon": [],
 			"jemdust": 0,
 			"hsr_uids": [],
-			"chat_cooldown": 0
+			"chat_cooldown": 0,
+			"gambling_profit": 0,
+			"gambling_loss": 0
 		}
 		data[discord_id] = user_entry
 	
@@ -81,6 +83,8 @@ def rewrite_structure():
 	for user in data:
 		if data[user].get("chat_cooldown", None) == None:
 			data[user]["chat_cooldown"] = 0
+			data[user]["gambling_profit"] = 0
+			data[user]["gambling_loss"] = 0
 		
 	write_file("users.json", data)
 
