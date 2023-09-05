@@ -9,17 +9,14 @@ from operator import getitem
 # ISSUE: Sometimes data doesn't get written because another function that uses write is called. This would overwrite the data.
 # FIX: Call update user currency (or something similar) after write data
 '''
-▢ Create auction
-▢ Add auction bid (allowing for self updates)
 ▢ (maybe) Shop items that doubles primojem earnt from this-or-that 
 
 '''
 
 TIME_OFFSET = 36000
-ME = 318337790708547588
 BET_LIMIT = 5000
 AUCTION_INCREMENT = 1.05
-ONE_WEEK_ROLE = 1500
+ONE_WEEK_ROLE = 800
 PERMANENT_ROLE = 30000
 CHECKIN = 150
 CHECKIN_CAP = 1000
@@ -314,20 +311,23 @@ def check_user_currency(discord_id):
 
 
 # Get leaderboard for currency
-# Return: List of (discord id, currency) in order
-def get_leaderboard():
-    data = helper.read_file("users.json")
-    sorted_data = sorted(data.items(),
-                         key=lambda x: getitem(x[1], "currency"),
-                         reverse=True)
-
-    leaderboard = []
-    for user in sorted_data:
-        # Prevent myself from appearing on the leaderboard
-		# if int(user[0]) != ME:
-        leaderboard.append([user[0], user[1]["currency"]])
-
-    return leaderboard
+# Argument: leaderboard category
+# Return: List of (discord id, currency) in order or error string
+def get_leaderboard(category):
+	category = category.lower()
+	if category not in ["currency", "gambling_profit", "gambling_loss"]:
+		return "Invalid category"
+	
+	data = helper.read_file("users.json")
+	sorted_data = sorted(data.items(),
+						 key=lambda x: getitem(x[1], category),
+						 reverse=True)
+	
+	leaderboard = []
+	for user in sorted_data:
+		leaderboard.append([user[0], user[1][category]])
+	
+	return leaderboard
 
 
 # Change multiple user's currency by amount
@@ -362,6 +362,21 @@ def update_all_currency(change, server):
             update_user_currency(u, change)
 
     print("Compensation given.")
+
+# Update user gambling profit/loss value
+# Arguments: discord_id, primojem change by x amount
+def update_user_gambling(discord_id, change):
+	discord_id = str(discord_id)
+	helper.get_user_entry(discord_id)
+	data = helper.read_file("users.json")
+	user_entry = data.get(discord_id, None)
+
+	if change < 0:
+		user_entry["gambling_loss"] = int(user_entry["gambling_loss"] - change)
+	elif change > 0:
+		user_entry["gambling_profit"] = int(user_entry["gambling_profit"] + change)
+	
+	helper.write_file("users.json", data)
 
 
 ########### Shop, checkin, roles, inventory ##############################################
@@ -429,7 +444,7 @@ def get_inventory(discord_id):
 # Adds role to inventory or renew duration
 # Argument: discord id string, role string, duration (7 or permanent), server booster boolean
 # Return: None if successful or error string
-def buy_role(discord_id, role, duration, is_booster):
+def buy_role(discord_id, role, duration, is_booster, recipient):
 	discord_id = str(discord_id)
 	role = role.lower()
 	helper.get_user_entry(discord_id)
@@ -453,7 +468,7 @@ def buy_role(discord_id, role, duration, is_booster):
 		else:
 			return "Invalid duration."
 
-		if is_booster:
+		if is_booster and recipient == None:
 			primojem_price = int(BOOSTER_DISCOUNT * primojem_price)
 			
 	elif role.title() in gacha_pool["5"]:
@@ -470,18 +485,33 @@ def buy_role(discord_id, role, duration, is_booster):
 		return "Insufficent primojem or jemdust."
 	
 	# Update role duration
-	current_end_time = user_entry["role"].get(role, int(time.time()))
-	if user_entry["role"].get(role, 0) == 2145919483:
-		return "You already have this permanent role."
+	if recipient == None:
+		current_end_time = user_entry["role"].get(role, int(time.time()))
+		if user_entry["role"].get(role, 0) == 2145919483:
+			return "You already have this permanent role."
 
-	if jemdust_price != 0:
-		user_entry["role_icon"].append(role.title())
-	elif duration == 7:
-		user_entry["role"][role] = current_end_time + 604800
-	elif duration == 5000:
-		user_entry["role"][role] = 2145919483
+		if jemdust_price != 0:
+			user_entry["role_icon"].append(role.title())
+		elif duration == 7:
+			user_entry["role"][role] = current_end_time + 604800
+		elif duration == 5000:
+			user_entry["role"][role] = 2145919483
 		
-		
+	else:
+		# Gifting the role
+		helper.get_user_entry(str(recipient.id))
+		recipient_entry = data.get(str(recipient.id))
+		current_end_time = recipient_entry["role"].get(role, int(time.time()))
+		if recipient_entry["role"].get(role, 0) == 2145919483:
+			return "The recipient already have this permanent role."
+
+		if jemdust_price != 0:
+			recipient_entry["role_icon"].append(role.title())
+		elif duration == 7:
+			recipient_entry["role"][role] = current_end_time + 604800
+		elif duration == 5000:
+			recipient_entry["role"][role] = 2145919483
+
 	user_entry["jemdust"] += -1 * jemdust_price
 	helper.write_file("users.json", data)
 	update_user_currency(discord_id, -1 * primojem_price)

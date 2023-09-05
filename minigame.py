@@ -114,73 +114,77 @@ def make_guess(discord_id, guess):
 # Argument: discord id string, bet amount
 # Return: [outcome string, [dealer cards], [your cards]] or error string
 def new_blackjack(discord_id, bet):
-  discord_id = str(discord_id)
-  data = helper.read_file("minigame_session.json")
-  dealer_hand = random.choices(CARDS, k=1)
-  your_hand = random.choices(CARDS, k=2)
-
-  if bet <= 0:
-    return "Bets have to be higher than 0."
-
-  data[discord_id] = {
-    "minigame": "blackjack",
-    "bet": bet,
-    "dealer_hand": dealer_hand,
-    "your_hand": your_hand
-  }
-
-  if gambling.update_user_currency(discord_id, -1 * bet) == None:
-    return "Insufficient primojems to make this bet."
-
-  outcome_string = ""
-  if blackjack_get_value(your_hand) == 21:
-    gambling.update_user_currency(discord_id, bet * 2)
-    outcome_string = "You have won."
-    data.pop(discord_id)
-  elif blackjack_get_value(dealer_hand) == 21:
-    outcome_string = "You have lost."
-    data.pop(discord_id)
-
-  helper.write_file("minigame_session.json", data)
-  return [outcome_string, dealer_hand, your_hand]
+	discord_id = str(discord_id)
+	data = helper.read_file("minigame_session.json")
+	dealer_hand = random.choices(CARDS, k=1)
+	your_hand = random.choices(CARDS, k=2)
+	
+	if bet <= 0:
+		return "Bets have to be higher than 0."
+	
+	data[discord_id] = {
+		"minigame": "blackjack",
+		"bet": bet,
+		"dealer_hand": dealer_hand,
+		"your_hand": your_hand
+	}
+	
+	if gambling.update_user_currency(discord_id, -1 * bet) == None:
+		return "Insufficient primojems to make this bet."
+	
+	outcome_string = ""
+	if blackjack_get_value(your_hand) == 21:
+		gambling.update_user_currency(discord_id, bet * 2)
+		gambling.update_user_gambling(discord_id, bet)
+		outcome_string = "You have won."
+		data.pop(discord_id)
+	elif blackjack_get_value(dealer_hand) == 21:
+		gambling.update_user_gambling(discord_id, -1 * bet)
+		outcome_string = "You have lost."
+		data.pop(discord_id)
+	
+	helper.write_file("minigame_session.json", data)
+	return [outcome_string, dealer_hand, your_hand]
 
 
 # Do an action in blackjack
 # Argument: discord id string, action string
 # Return: [outcome string, [dealer cards], [your cards]] or error string
 def blackjack_action(discord_id, action):
-  discord_id = str(discord_id)
-  data = helper.read_file("minigame_session.json")
-  session = data.get(discord_id, None)
+	discord_id = str(discord_id)
+	data = helper.read_file("minigame_session.json")
+	session = data.get(discord_id, None)
 
-  if session == None or session["minigame"] != "blackjack":
-    return "No active session."
+	if session == None or session["minigame"] != "blackjack":
+		return "No active session."
 
-  res = 0
-  if action == "hit":
-    res = blackjack_hit(discord_id)
-  elif action == "stand":
-    res = blackjack_stand(discord_id)
+	res = 0
+	if action == "hit":
+		res = blackjack_hit(discord_id)
+	elif action == "stand":
+		res = blackjack_stand(discord_id)
 
-  # Re-read the session file after hit and stand action
-  data = helper.read_file("minigame_session.json")
-  session = data.get(discord_id)
+	# Re-read the session file after hit and stand action
+	data = helper.read_file("minigame_session.json")
+	session = data.get(discord_id)
 
-  outcome_string = ""
-  if res == 1:
-    gambling.update_user_currency(discord_id, session["bet"] * 2)
-    outcome_string = "You have won " + str(session["bet"] * 2) + "."
-    data.pop(discord_id)
-  elif res == 2:
-    gambling.update_user_currency(discord_id, session["bet"])
-    outcome_string = "It\'s a tie, you get back " + str(session["bet"]) + "."
-    data.pop(discord_id)
-  elif res == -1:
-    outcome_string = "You have lost."
-    data.pop(discord_id)
+	outcome_string = ""
+	if res == 1:
+		gambling.update_user_currency(discord_id, session["bet"] * 2)
+		gambling.update_user_gambling(discord_id, session["bet"])
+		outcome_string = "You have won " + str(session["bet"] * 2) + "."
+		data.pop(discord_id)
+	elif res == 2:
+		gambling.update_user_currency(discord_id, session["bet"])
+		outcome_string = "It\'s a tie, you get back " + str(session["bet"]) + "."
+		data.pop(discord_id)
+	elif res == -1:
+		outcome_string = "You have lost."
+		gambling.update_user_gambling(discord_id, -1 * session["bet"])
+		data.pop(discord_id)
 
-  helper.write_file("minigame_session.json", data)
-  return [outcome_string, session["dealer_hand"], session["your_hand"]]
+	helper.write_file("minigame_session.json", data)
+	return [outcome_string, session["dealer_hand"], session["your_hand"]]
 
 
 # Blackjack hit action
@@ -261,30 +265,32 @@ def blackjack_get_value(hand):
 # Argument: discord id string, coin amount, head amount, bet
 # Return: [coin flip result as list, payout] or error string
 def coinflip(discord_id, coin_amount, head_amount, bet):
-  discord_id = str(discord_id)
-
-  if bet <= 0:
-    return "Bets have to be higher than 0."
-
-  if coin_amount > 10:
-    return "Coin amount has to be below or equal to 10."
-
-  if coin_amount <= 0 or head_amount > coin_amount or head_amount < 0:
-    return "Invalid coin or head amount."
-
-  if gambling.update_user_currency(discord_id, -1 * bet) == None:
-    return "Insufficient primojems to make this bet."
-
-  flip_result = random.choices(["H", "T"], k=coin_amount)
-
-  # Payout correct guess
-  if flip_result.count("H") == head_amount:
-    payout = int(math.ceil(
-      bet * (1 / (math.comb(coin_amount, head_amount) / pow(2, coin_amount)))))
-    gambling.update_user_currency(discord_id, payout)
-    return [flip_result, payout]
-  else:
-    return [flip_result, 0]
+	discord_id = str(discord_id)
+	
+	if bet <= 0:
+		return "Bets have to be higher than 0."
+	
+	if coin_amount > 10:
+		return "Coin amount has to be below or equal to 10."
+	
+	if coin_amount <= 0 or head_amount > coin_amount or head_amount < 0:
+		return "Invalid coin or head amount."
+	
+	if gambling.update_user_currency(discord_id, -1 * bet) == None:
+		return "Insufficient primojems to make this bet."
+	
+	flip_result = random.choices(["H", "T"], k=coin_amount)
+	
+	# Payout correct guess
+	if flip_result.count("H") == head_amount:
+		payout = int(math.ceil(
+		  bet * (1 / (math.comb(coin_amount, head_amount) / pow(2, coin_amount)))))
+		gambling.update_user_currency(discord_id, payout)
+		gambling.update_user_gambling(discord_id, payout - bet)
+		return [flip_result, payout]
+	else:
+		gambling.update_user_gambling(discord_id, -1 * bet)
+		return [flip_result, 0]
 
 
 ################### Hangman ############################
