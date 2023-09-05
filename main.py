@@ -40,6 +40,7 @@ with open(absolute_path + 'config.json', 'r') as f:
 # GENSOC_SERVER = 962970271545982986 # Test server
 # THIS_OR_THAT_CHANNEL = 1122138125368569868 # Test server channel
 # AUCTION_CHANNEL = 1134351976738603058
+
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
 CHAT_PRIMOJEM = 50
 
@@ -70,13 +71,13 @@ async def on_message(message):
 	####### This section deals with chat primojems ########################
 	if not message.author.bot:
 		data = helper.read_file("users.json")
-		helper.get_user_entry(message.author.id)
-		user_entry = data.get(message.author.id, None)
+		helper.get_user_entry(str(message.author.id))
+		user_entry = data.get(str(message.author.id), None)
 
 		if time.time() > user_entry["chat_cooldown"]:
-			user_entry["chat_cooldown"] = time.time() + CHAT_INTERVAL
+			user_entry["chat_cooldown"] = int(time.time() + CHAT_INTERVAL)
 			helper.write_file("users.json", data)
-			gambling.update_user_currency(message.author.id, CHAT_PRIMOJEM)
+			gambling.update_user_currency(str(message.author.id), CHAT_PRIMOJEM)
 			
 	####### This section deals with sticky note ###########################
 	if (message.channel.id == WELCOME_CHANNEL and not message.author.bot):
@@ -639,7 +640,7 @@ async def buy_item(interaction, item_name: str, duration: app_commands.Choice[in
 		await interaction.response.send_message(res, ephemeral=True)
 	elif gift_recipient != None:
 		await interaction.response.send_message(
-			"<@" + gift_recipient.id + "> has been gifted the " + item_name.title() + " role.")
+			"<@" + str(gift_recipient.id) + "> has been gifted the " + item_name.title() + " role.")
 	elif duration.value == 5000:
 		await interaction.response.send_message(
 			"Successfully bought " + item_name.title() + " role. Use **/equip** to use the role.")
