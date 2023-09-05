@@ -51,26 +51,27 @@ def unix_to_syd(unix_time):
 # Argument: discord id string
 # Return: user entry
 def get_user_entry(discord_id):
-  discord_id = str(discord_id)
-  data = read_file("users.json")
-  user_entry = data.get(discord_id, None)
-
-  if user_entry == None:
-    # Create entry for new user
-    user_entry = {
-      "currency": 0,
-      "next_checkin": int(time.time()),
-      "role": {},
-      "checkin_streak": 0,
-      "genshin_uids": [],
-	"role_icon": [],
-	"jemdust": 0,
-	"hsr_uids": []
-    }
-    data[discord_id] = user_entry
-
-  write_file("users.json", data)
-  return user_entry
+	discord_id = str(discord_id)
+	data = read_file("users.json")
+	user_entry = data.get(discord_id, None)
+	
+	if user_entry == None:
+		# Create entry for new user
+		user_entry = {
+			"currency": 0,
+			"next_checkin": int(time.time()),
+			"role": {},
+			"checkin_streak": 0,
+			"genshin_uids": [],
+			"role_icon": [],
+			"jemdust": 0,
+			"hsr_uids": [],
+			"chat_cooldown": 0
+		}
+		data[discord_id] = user_entry
+	
+	write_file("users.json", data)
+	return user_entry
 
 
 # One time function for modifying database structure
@@ -78,10 +79,8 @@ def get_user_entry(discord_id):
 def rewrite_structure():
 	data = read_file("users.json")
 	for user in data:
-		if data[user].get("hsr_uids", None) == None or data[user].get("jemdust", None) == None:
-			data[user]["role_icon"] = []
-			data[user]["jemdust"] = 0
-			data[user]["hsr_uids"] = []
+		if data[user].get("chat_cooldown", None) == None:
+			data[user]["chat_cooldown"] = 0
 		
 	write_file("users.json", data)
 

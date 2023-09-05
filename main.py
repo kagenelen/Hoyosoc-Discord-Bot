@@ -40,6 +40,8 @@ with open(absolute_path + 'config.json', 'r') as f:
 # GENSOC_SERVER = 962970271545982986 # Test server
 # THIS_OR_THAT_CHANNEL = 1122138125368569868 # Test server channel
 # AUCTION_CHANNEL = 1134351976738603058
+CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
+CHAT_PRIMOJEM = 50
 
 ############################# CODE STARTS HERE ############################
 
@@ -54,6 +56,7 @@ tree = app_commands.CommandTree(client)
 async def on_ready():
 	print("*****Bot has connected*****")
 	await tree.sync(guild=discord.Object(id=GENSOC_SERVER))
+	helper.rewrite_structure()
 	daily_role_expiry_check.start()
 	make_backup.start()
 	run_scheduled_tasks.start()
@@ -64,6 +67,17 @@ async def on_message(message):
 	global WELCOME_CHANNEL
 	global WELCOME_MESSAGE
 
+	####### This section deals with chat primojems ########################
+	if not message.author.bot:
+		data = helper.read_file("users.json")
+		helper.get_user_entry(message.author.id)
+		user_entry = data.get(message.author.id, None)
+
+		if time.time() > user_entry["chat_cooldown"]:
+			user_entry["chat_cooldown"] = time.time() + CHAT_INTERVAL
+			helper.write_file("users.json", data)
+			gambling.update_user_currency(message.author.id, CHAT_PRIMOJEM)
+			
 	####### This section deals with sticky note ###########################
 	if (message.channel.id == WELCOME_CHANNEL and not message.author.bot):
 		welcome = await message.channel.send(WELCOME_MESSAGE)
@@ -617,12 +631,15 @@ async def view_shop(interaction, shop: app_commands.Choice[str]):
 	discord.app_commands.Choice(name="7 days", value=7),
 	discord.app_commands.Choice(name="Permanent role", value=5000)
 ])
-async def buy_item(interaction, item_name: str, duration: app_commands.Choice[int]):
+async def buy_item(interaction, item_name: str, duration: app_commands.Choice[int], gift_recipient: discord.Member = None):
 	booster = helper.is_booster(interaction.user)
-	res = gambling.buy_role(interaction.user.id, item_name, duration.value, booster)
+	res = gambling.buy_role(interaction.user.id, item_name, duration.value, booster, gift_recipient)
 
 	if res != None:
 		await interaction.response.send_message(res, ephemeral=True)
+	elif gift_recipient != None:
+		await interaction.response.send_message(
+			"<@" + gift_recipient.id + "> has been gifted the " + item_name.title() + " role.")
 	elif duration.value == 5000:
 		await interaction.response.send_message(
 			"Successfully bought " + item_name.title() + " role. Use **/equip** to use the role.")
