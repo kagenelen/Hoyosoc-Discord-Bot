@@ -69,8 +69,8 @@ async def on_message(message):
 
 	####### This section deals with chat primojems ########################
 	if not message.author.bot:
-		data = helper.read_file("users.json")
 		helper.get_user_entry(str(message.author.id))
+		data = helper.read_file("users.json")
 		user_entry = data.get(str(message.author.id), None)
 
 		if time.time() > user_entry["chat_cooldown"]:
