@@ -534,18 +534,18 @@ async def send_auction_info(interaction, auction_name: str):
 ################################ CURRENCY ###########################################
 
 @tree.command(name="checkin",
-				description="Obtain primojem for daily check in.",
+				description="Obtain primojem for daily check-in.",
 				guild=discord.Object(id=GENSOC_SERVER))
 async def checkin(interaction):
 	res = gambling.currency_checkin(interaction.user.id)
 	if res == None:
 		await interaction.response.send_message(
-			"Check in is still in cooldown. Try again tomorrow at 12am (UTC 0).",
+			"Check-in is still in cooldown. Try again tomorrow at 12am (UTC +10).",
 			ephemeral=True)
 	else:
 		await interaction.response.send_message(
 			"You got " + str(res[0]) +
-			" primojems from the check in. Current streak: " +
+			" primojems from the check-in. Current streak: " +
 			str(res[1]) + ".")
 
 @tree.command(name="inventory",
@@ -865,7 +865,7 @@ async def stand(interaction):
 @tree.command(
 	name="hangman",
 	description=
-	"Play hangman at Normal (9 lives), Hard (6 lives), or Extreme (3 lives) difficulty.",
+	"Play hangman at normal (9 lives), hard (6 lives), or extreme (3 lives) difficulty.",
 	guild=discord.Object(id=GENSOC_SERVER))
 @app_commands.choices(difficulty=[
 	discord.app_commands.Choice(name="Normal", value="normal"),

@@ -4,6 +4,7 @@ import datetime
 import time
 import discord
 import random
+import pytz
 from operator import getitem
 
 # ISSUE: Sometimes data doesn't get written because another function that uses write is called. This would overwrite the data.
@@ -386,31 +387,32 @@ def update_user_gambling(discord_id, change):
 # Argument: discord id string
 # Return: [amount gained, streak], or None if checkin is still in cooldown
 def currency_checkin(discord_id):
-    discord_id = str(discord_id)
-    helper.get_user_entry(discord_id)
-    data = helper.read_file("users.json")
-    user_entry = data.get(discord_id)
-
-    # Check whether user checkin cooldown is over
-    if time.time() < user_entry["next_checkin"]:
-        return None
-
-    # Check login streak still remains, and increment streak
-    if user_entry["next_checkin"] + 86400 < time.time():
-        user_entry["checkin_streak"] = 0
-    else:
-        user_entry["checkin_streak"] += 1
-    amount_earned = min(CHECKIN + user_entry["checkin_streak"] * STREAK_MULTIPLIER, CHECKIN_CAP)
-
-    # Set next checkin to tomorrow 12am
-    today_date = datetime.datetime.now()
-    tomorrow_date = today_date + datetime.timedelta(
-        hours=-today_date.hour, minutes=-today_date.minute, days=1)
-    user_entry["next_checkin"] = int(time.mktime(tomorrow_date.timetuple()))
-
-    helper.write_file("users.json", data)
-    update_user_currency(discord_id, amount_earned)
-    return [amount_earned, user_entry["checkin_streak"]]
+	discord_id = str(discord_id)
+	helper.get_user_entry(discord_id)
+	data = helper.read_file("users.json")
+	user_entry = data.get(discord_id)
+	
+	# Check whether user checkin cooldown is over
+	if time.time() < user_entry["next_checkin"]:
+		return None
+	
+	# Check login streak still remains, and increment streak
+	if user_entry["next_checkin"] + 86400 < time.time():
+		user_entry["checkin_streak"] = 0
+	else:
+		user_entry["checkin_streak"] += 1
+	amount_earned = min(CHECKIN + user_entry["checkin_streak"] * STREAK_MULTIPLIER, CHECKIN_CAP)
+	
+	# Set next checkin to tomorrow 12am AEST
+	syd = pytz.timezone('Australia/Sydney')
+	tomorrow_date = datetime.datetime.now(syd) \
+				.replace(hour=14, minute=0, second=0, microsecond=0) \
+				.astimezone(syd)	
+	user_entry["next_checkin"] = int(time.mktime(tomorrow_date.timetuple()))
+	
+	helper.write_file("users.json", data)
+	update_user_currency(discord_id, amount_earned)
+	return [amount_earned, user_entry["checkin_streak"]]
 
 
 # Check whether a user owns a role
