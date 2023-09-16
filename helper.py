@@ -146,11 +146,13 @@ def list_tasks():
 # Arg: Message (class)
 # Return: User (member class) or None if user not found
 async def verify_user(message):
+	manual = False
 	# Deals message type: either embed or not embed
 	message_words = []
 	if (len(message.embeds) > 0):
 		message_words = message.embeds[0].description.split('\n')
 	else:
+		manual = True
 		message_words = message.content.split('\n')
 
 	old_username = False
@@ -163,7 +165,7 @@ async def verify_user(message):
 			username_list = username.split("#")
 
 	for index, word1 in enumerate(message_words):
-		if "What is your Discord ID?" in word1: # Discord new username format
+		if "discord id" in word1.lower(): # Discord new username format
 			username = message_words[index + 1].lower()
 
 	role = discord.utils.get(message.guild.roles, name="Traveller")
@@ -181,10 +183,20 @@ async def verify_user(message):
 	if user == None:
 		await message.add_reaction("❌")
 		print(username + " does not exist in the server")
-	else:
-		await user.add_roles(role)
-		await message.add_reaction("✅")
-		print(username + " has been given a role")
+		return None
+
+	# Security check
+	if time.mktime(user.created_at.timetuple()) > time.time() - 2592000:
+		# Account is less than 1 month old
+		await message.reply("WARNING: <@" + str(user.id) + "> account is less than 1 month old. Please manually verify this user.")
+
+		if not manual:
+			# Do not verify these automatically
+			return None
+	
+	await user.add_roles(role)
+	await message.add_reaction("✅")
+	print(username + " has been given a role")
 	
 	return user
 
