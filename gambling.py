@@ -335,14 +335,17 @@ def get_leaderboard(category):
 # Argument: Discord tag (Bob#1234) list as string, change by x amount, server object
 # Return: Successful usernames
 def update_user_list_currency(discord_list, change, server):
-		usernames = [d.strip() for d in discord_list.split(",")]
+		if "\n" in discord_list:
+			usernames = [d.strip() for d in discord_list.split("\n")]
+		else:
+			usernames = [d.strip() for d in discord_list.split(",")]
 	
 		successful = []
 		for u in usernames:
 				username_parts = u.split("#")
 				if len(username_parts) == 1: # New username format
 					user = discord.utils.get(server.members,
-																	 name=username_parts[0])
+																	 name=username_parts[0].lower())
 				else: # Old username format
 					user = discord.utils.get(server.members,
 																	 name=username_parts[0],
