@@ -551,10 +551,15 @@ async def checkin(interaction):
 @tree.command(name="inventory",
 				description="Check your primojem, jemdust and owned roles.",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def inventory(interaction):
-	res = gambling.get_inventory(interaction.user.id)
+async def inventory(interaction, target_user: discord.Member = None):
+	if target_user != None:
+		username = target_user.display_name
+		res = gambling.get_inventory(target_user.id)
+	else:
+		username = interaction.user.display_name
+		res = gambling.get_inventory(interaction.user.id)
 
-	embed = discord.Embed(title=interaction.user.display_name + "\'s inventory",
+	embed = discord.Embed(title=username + "\'s inventory",
 							description=str(res[0]) + " " + helper.PRIMOJEM_EMOTE + "  |  " + 
 						  		str(res[1]) + " " + helper.JEMDUST_EMOTE,
 							color=0x61dfff)
