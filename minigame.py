@@ -18,8 +18,8 @@ Connect 4
 '''
 
 CARDS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"]
-HM_NORMAL = 20
-HM_HARD = 40
+HM_NORMAL = 25
+HM_HARD = 50
 HM_EXTREME = 150
 TWO_WORD_PENALTY = 0.93333
 THREE_WORD_PENALTY = 0.8
