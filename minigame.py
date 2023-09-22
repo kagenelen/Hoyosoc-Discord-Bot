@@ -309,11 +309,11 @@ def new_hangman(discord_id, difficulty):
   difficulty = difficulty.lower()
 
   if difficulty == "normal":
-    lives = 9
+    lives = 10
   elif difficulty == "hard":
-    lives = 6
+    lives = 7
   elif difficulty == "extreme":
-    lives = 3
+    lives = 4
   else:
     return [-1, ["Invalid difficulty..."]]
 
