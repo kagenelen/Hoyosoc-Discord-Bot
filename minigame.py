@@ -483,14 +483,14 @@ def number_validity(message):
 		data["next_valid_number"] = 1
 		data["last_user"] = 1
 		helper.write_file("count.json", data)
-		return "Incorrect! Resetting counting game..."
+		return "<@" + str(message.author.id) + "> incorrect! Resetting counting game..."
 
 	# Double counting user
 	if data["last_user"] == message.author.id:
 		data["next_valid_number"] = 1
 		data["last_user"] = 1
 		helper.write_file("count.json", data)
-		return "You cannot make consecutive counts. Resetting counting game..."
+		return "<@" + str(message.author.id) + "> You cannot make consecutive counts. Resetting counting game..."
 
 	# Correct submission (except 1), increment count and reward primojem
 	if int(num) != 1:
