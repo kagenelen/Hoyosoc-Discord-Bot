@@ -18,14 +18,14 @@ Connect 4
 '''
 
 CARDS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"]
-HM_NORMAL = 10
-HM_HARD = 30
-HM_EXTREME = 160
-TWO_WORD_PENALTY = 0.875
-THREE_WORD_PENALTY = 0.75
+HM_NORMAL = 25
+HM_HARD = 50
+HM_EXTREME = 150
+TWO_WORD_PENALTY = 0.9334
+THREE_WORD_PENALTY = 0.8
 COUNT_MULTIPLER = 0.2
 COUNT_MAX = 40
-COUNT_BONUS = 2 # Normally +5, currently x2
+COUNT_BONUS = 2 
 ROW_COUNT = 6
 COLUMN_COUNT = 7
 
@@ -309,11 +309,11 @@ def new_hangman(discord_id, difficulty):
   difficulty = difficulty.lower()
 
   if difficulty == "normal":
-    lives = 9
+    lives = 12
   elif difficulty == "hard":
-    lives = 6
+    lives = 8
   elif difficulty == "extreme":
-    lives = 3
+    lives = 4
   else:
     return [-1, ["Invalid difficulty..."]]
 
