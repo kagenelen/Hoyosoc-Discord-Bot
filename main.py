@@ -870,7 +870,7 @@ async def stand(interaction):
 @tree.command(
 	name="hangman",
 	description=
-	"Play hangman at normal (9 lives), hard (6 lives), or extreme (3 lives) difficulty.",
+	"Play hangman at normal (12 lives), hard (8 lives), or extreme (4 lives) difficulty.",
 	guild=discord.Object(id=GENSOC_SERVER))
 @app_commands.choices(difficulty=[
 	discord.app_commands.Choice(name="Normal", value="normal"),
@@ -963,6 +963,44 @@ async def hangman_guess(interaction, guess: str):
 	if user_session != None:
 		user_session["message_id"] = response_message.id
 		helper.write_file("minigame_session.json", data)
+
+@tree.command(
+	name="connect4",
+	description="Play connect 4 against another person.",
+	guild=discord.Object(id=GENSOC_SERVER))
+async def connect4(interaction, invited_user: discord.Member, wager: int):
+	res = minigame.new_connect(interaction.user, invited_user, wager)
+
+	if isinstance(res, str):
+		await interaction.response.send_message(res)
+		return
+	
+	# Buttons
+	view = View(timeout=60)
+
+	# Accept button
+	accept_button = Button(label="Accept", style=discord.ButtonStyle.blurple)
+	async def accept_callback(b_interaction):
+		if b_interaction.user.id == invited_user.id:
+			await b_interaction.response.defer()
+			await followup.start_connect4_followup(interaction, res)
+	accept_button.callback = accept_callback
+	view.add_item(accept_button)
+
+	# Decline button
+	decline_button = Button(label="Decline", style=discord.ButtonStyle.red)
+	async def decline_callback(b_interaction):
+		if b_interaction.user.id == invited_user.id:
+			await b_interaction.response.defer()
+			await followup.decline_connect4_followup(interaction)
+	decline_button.callback = decline_callback
+	view.add_item(decline_button)
+
+	# Ping the invited user and ask for their response
+	await interaction.response.send_message(
+		"<@" + str(invited_user.id) + ">, " +
+		interaction.user.display_name + " has challenged you to a game of connect 4 for " + 
+		str(wager) + helper.PRIMOJEM_EMOTE + ". Do you accept?", view=view)
 
 
 ################### GACHA ####################################################
