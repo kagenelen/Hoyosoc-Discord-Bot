@@ -14,7 +14,6 @@ JEMDUST_EMOTE = "<:Jemdust:1108591111649362043>"
 BETTER_EMOTE = "<:Betters:1122383400418934846>"
 HEADS_EMOTE = "<:Heads:1137589987962015815>"
 TAILS_EMOTE = "<:Tails:1137589996916850760>"
-DOMAIN_WHITELIST = ["gmail", "student.unsw", "ad.unsw", "hotmail", "126", "163", "qq", "yahoo", "outlook"]
 
 def write_file(file, data):
   absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
@@ -201,13 +200,6 @@ async def verify_user(message):
 		if not manual:
 			# Do not verify these automatically
 			return None
-
-	# Security check: whitelisted email domains
-	email_domain = re.search("(?<=@)[^.]*.[^.]*(?=\.)", message.embeds[0].description)
-	if email_domain != None:
-		if email_domain.group().lower() not in DOMAIN_WHITELIST:
-			await message.reply("WARNING: " + email_domain.group().lower() + " is not a whitelisted domain.")
-	
 	
 	await user.add_roles(role)
 	await message.add_reaction("✅")
