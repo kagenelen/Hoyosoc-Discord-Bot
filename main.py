@@ -189,7 +189,7 @@ async def send_welcome(interaction):
 @tree.command(name="set_verification",
 				description="Set verification channel. Admin only.",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def set_verification(interaction, verify_channel: str):
+async def set_verification(interaction, verify_channel: discord.TextChannel):
 	if not helper.is_team(interaction):
 		await interaction.response.send_message("Insuffient permission.",
 												ephemeral=True)
@@ -197,11 +197,82 @@ async def set_verification(interaction, verify_channel: str):
 
 	# Set verification channel
 	await interaction.response.send_message(
-		"Verification channel has been set to " + verify_channel,
+		"Verification channel has been set to " + verify_channel.name,
 		ephemeral=True)
 	data = helper.read_file("config.json")
-	data['channel'] = int(verify_channel)
+	data['channel'] = verify_channel.id
 	helper.write_file("config.json", data)
+
+@tree.command(name="blacklist_user",
+				description="Blacklist user from verification. Admin only.",
+				guild=discord.Object(id=GENSOC_SERVER))
+@app_commands.choices(action=[
+	discord.app_commands.Choice(name="Add", value=1),
+	discord.app_commands.Choice(name="Remove", value=2),
+])
+async def blacklist_user(interaction, target_user: discord.Member, action: app_commands.Choice[int]):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+
+	data = helper.read_file("config.json")
+	if action.value == 1:
+		data["user_blacklist"].append(target_user.id)
+		await interaction.response.send_message(target_user.display_name + " has been blacklisted.")
+	else:
+		data["user_blacklist"] = [j for i,j in enumerate(data["user_blacklist"]) if j != target_user.id]
+		await interaction.response.send_message(target_user.display_name + " has been removed from the blacklist.")
+
+	helper.write_file("config.json", data)
+
+@tree.command(name="edit_shop",
+				description="Add/remove role icon to shop. Admin only.",
+				guild=discord.Object(id=GENSOC_SERVER))
+@app_commands.choices(action=[
+	discord.app_commands.Choice(name="Add", value=1),
+	discord.app_commands.Choice(name="Remove", value=2),
+])
+async def edit_shop(interaction, role_name: str, rarity: int, action: app_commands.Choice[int], shop_image: str = None):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.", ephemeral=True)
+		return
+
+	if rarity != 4 and rarity != 5:
+		await interaction.response.send_message("Rarity can only be 4 or 5", ephemeral=True)
+		return
+
+	data = helper.read_file("role_icon.json")
+	if action.value == 1:
+		data[str(rarity)].append(role_name.title())
+		await interaction.response.send_message(role_name.title() + " has been added to the shop.")
+	else:
+		data[str(rarity)].remove(role_name.title())
+		await interaction.response.send_message(role_name.title() + " has been removed from the shop.")
+
+	if shop_image != None:
+		config = helper.read_file("config.json")
+		config["role_icon_shop"] = shop_image
+		helper.write_file("config.json", config)
+
+	helper.write_file("role_icon.json", data)
+
+@tree.command(name="delete_messages",
+				description="Delete last x messages from a channel, optionally from a specific user. Admin only.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def delete_messages(interaction, channel: discord.TextChannel, message_number: int, target_user: discord.Member = None):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.", ephemeral=True)
+		return
+	
+	if target_user != None:
+		def from_user(m):
+			return m.author == target_user
+		deleted = await channel.purge(limit=message_number, check=from_user)
+	else:
+		deleted = await channel.purge(limit=message_number)
+	
+	await channel.send("Deleted " + str(len(deleted)) + " messages.")
 
 @tree.command(name="view_tasks",
 				description="View all scheduled tasks.",
@@ -242,13 +313,15 @@ async def set_count(interaction, number: int):
 				guild=discord.Object(id=GENSOC_SERVER))
 async def help_commands(interaction):
 	embed_general = discord.Embed(title="General Commands", color=0x61dff)
-	embed_general.set_footer(text="Page 1/4")
+	embed_general.set_footer(text="Page 1/5")
 	embed_primojem = discord.Embed(title="Primojem Commands", color=0x61dff)
-	embed_primojem.set_footer(text="Page 2/4")
+	embed_primojem.set_footer(text="Page 2/5")
 	embed_minigame = discord.Embed(title="Minigame Commands", color=0x61dff)
-	embed_minigame.set_footer(text="Page 3/4")
+	embed_minigame.set_footer(text="Page 3/5")
 	embed_poll = discord.Embed(title="Betting Commands", color=0x61dff)
-	embed_poll.set_footer(text="Page 4/4")
+	embed_poll.set_footer(text="Page 4/5")
+	embed_admin = discord.Embed(title="Admin Commands", color=0x61dff)
+	embed_admin.set_footer(text="Page 5/5")
 	
 	paginator = DiscordUtils.Pagination.AutoEmbedPaginator(interaction)
 	
@@ -277,8 +350,22 @@ async def help_commands(interaction):
 	embed_general.add_field(name="**/find_uid**", value="List all UIDs of an user.", inline=False)
 	embed_general.add_field(name="**/whose_uid**", value="Find the owner of an UID.", inline=False)
 
+	embed_general.add_field(name="**/send_welcome**", value="Send welcome sticky message.", inline=False)
+	embed_general.add_field(name="**/set_verification**", value="Set verification channel.", inline=False)
+	embed_general.add_field(name="**/blacklist_user**", value="Blacklist user.", inline=False)
+	embed_general.add_field(name="**/edit_shop**", value="Add or remove role icon from shop.", inline=False)
+	embed_general.add_field(name="**/delete_messages**", value="Purge x messages from channel, optionally from a specific user.", inline=False)
+	embed_general.add_field(name="**/view_tasks**", value="View scheduled tasks.", inline=False)
+	embed_general.add_field(name="**/set_count**", value="Set counting game current number.", inline=False)
+	embed_general.add_field(name="**/scrape_uid**", value="Add all uids from a channel.", inline=False)
+	embed_general.add_field(name="**/create_bet**", value="Start bet.", inline=False)
+	embed_general.add_field(name="**/payout_bet**", value="Give earning to bet winners.", inline=False)
+	embed_general.add_field(name="**/auto_payout**", value="Schedule payout based on vote.", inline=False)
+	embed_general.add_field(name="**/create_auction**", value="Start auction.", inline=False)
+	embed_general.add_field(name="**/give_primojems**", value="Give primojem to a list of users.", inline=False)
+
 	# await interaction.response.defer()
-	embeds = [embed_general, embed_primojem, embed_minigame, embed_poll]
+	embeds = [embed_general, embed_primojem, embed_minigame, embed_poll, embed_admin]
 	await paginator.run(embeds)
 	
 
