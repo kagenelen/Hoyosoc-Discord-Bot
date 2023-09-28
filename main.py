@@ -300,9 +300,8 @@ async def set_count(interaction, number: int):
 		return
 
 	data = helper.read_file("count.json")
-	session = data.get("1", None)
-	session["next_valid_number"] = number + 1
-	session["last_user"] = 1
+	data["next_valid_number"] = number + 1
+	data["last_user"] = 1
 	helper.write_file("count.json", data)
 
 	await interaction.response.send_message("Count has been set to " + str(number))
