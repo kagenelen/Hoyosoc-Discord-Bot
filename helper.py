@@ -195,10 +195,9 @@ async def verify_user(message):
 	# Security check: account age
 	if time.mktime(user.created_at.timetuple()) > time.time() - 2592000:
 		# Account is less than 1 month old
-		await message.reply("WARNING: <@" + str(user.id) + "> account is less than 1 month old. Please manually verify this user.")
-
 		if not manual:
 			# Do not verify these automatically
+			await message.reply("WARNING: <@" + str(user.id) + "> account is less than 1 month old. Please manually verify this user.")
 			return None
 	
 	await user.add_roles(role)
