@@ -18,14 +18,14 @@ Connect 4
 '''
 
 CARDS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"]
-HM_NORMAL = 10
-HM_HARD = 30
-HM_EXTREME = 160
-TWO_WORD_PENALTY = 0.875
-THREE_WORD_PENALTY = 0.75
+HM_NORMAL = 25 # 300 at max
+HM_HARD = 50 # 400 at max
+HM_EXTREME = 130 # 520 at max
+TWO_WORD_PENALTY = 0.9615484 # 500 at max
+THREE_WORD_PENALTY = 0.923086 # 480 at max
 COUNT_MULTIPLER = 0.2
 COUNT_MAX = 40
-COUNT_BONUS = 2 # Normally +5, currently x2
+COUNT_BONUS = 2 
 ROW_COUNT = 6
 COLUMN_COUNT = 7
 
@@ -309,11 +309,11 @@ def new_hangman(discord_id, difficulty):
   difficulty = difficulty.lower()
 
   if difficulty == "normal":
-    lives = 9
+    lives = 12
   elif difficulty == "hard":
-    lives = 6
+    lives = 8
   elif difficulty == "extreme":
-    lives = 3
+    lives = 4
   else:
     return [-1, ["Invalid difficulty..."]]
 
@@ -483,14 +483,14 @@ def number_validity(message):
 		data["next_valid_number"] = 1
 		data["last_user"] = 1
 		helper.write_file("count.json", data)
-		return "Incorrect! Resetting counting game..."
+		return "<@" + str(message.author.id) + "> incorrect! Resetting counting game..."
 
 	# Double counting user
 	if data["last_user"] == message.author.id:
 		data["next_valid_number"] = 1
 		data["last_user"] = 1
 		helper.write_file("count.json", data)
-		return "You cannot make consecutive counts. Resetting counting game..."
+		return "<@" + str(message.author.id) + "> You cannot make consecutive counts. Resetting counting game..."
 
 	# Correct submission (except 1), increment count and reward primojem
 	if int(num) != 1:

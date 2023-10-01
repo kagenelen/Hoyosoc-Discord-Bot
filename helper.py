@@ -185,13 +185,19 @@ async def verify_user(message):
 		print(username + " does not exist in the server")
 		return None
 
-	# Security check
+	# Security check: blacklisted users
+	config = read_file("config.json")
+	if user.id in config["user_blacklist"]:
+		# Blacklisted user
+		await message.reply("WARNING: <@" + str(user.id) + "> is on the blacklist.")
+		return None
+	
+	# Security check: account age
 	if time.mktime(user.created_at.timetuple()) > time.time() - 2592000:
 		# Account is less than 1 month old
-		await message.reply("WARNING: <@" + str(user.id) + "> account is less than 1 month old. Please manually verify this user.")
-
 		if not manual:
 			# Do not verify these automatically
+			await message.reply("WARNING: <@" + str(user.id) + "> account is less than 1 month old. Please manually verify this user.")
 			return None
 	
 	await user.add_roles(role)
