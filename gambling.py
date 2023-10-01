@@ -409,7 +409,7 @@ def currency_checkin(discord_id):
 	# Set next checkin to tomorrow 12am AEST
 	syd = pytz.timezone('Australia/Sydney')
 	tomorrow_date = datetime.datetime.now(syd) \
-				.replace(hour=14, minute=0, second=0, microsecond=0) \
+				.replace(hour=13, minute=0, second=0, microsecond=0) \
 				.astimezone(syd)	
 	user_entry["next_checkin"] = int(time.mktime(tomorrow_date.timetuple()))
 	
