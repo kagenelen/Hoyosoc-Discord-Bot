@@ -157,7 +157,7 @@ async def channel_substring_counter(channel):
 # Argument: channel object
 # Return: number of appearance of a substring
 async def card_update(channel):
-	total_card = channel_substring_counter(channel)
+	total_card = await channel_substring_counter(channel)
 	topic_card = re.search(" [0-9]+ ", channel.topic)
 	if total_card != topic_card:
 		await channel.edit(reason="Card count update", 
