@@ -154,18 +154,17 @@ async def channel_substring_counter(channel):
 	return counter
 
 # Count number of times a card emote appears in a message and update card spam description
-# Argument: message object
+# Argument: channel object
 # Return: number of appearance of a substring
-async def card_update(message):
-	all_matches = re.findall(":[A-Za-z0-9~]*[Cc][Aa][Rr][Dd][A-Za-z0-9~]*:", message.content)
-	message_card = len(all_matches)
-	if message_card > 0:
-		topic_card = re.search(" [0-9]+ ", message.channel.topic)
-		total_card = int(topic_card.group()) + message_card
-		await message.channel.edit(reason="Card count update", 
-							 topic="If only I had " + str(total_card) + " nickels for all these card emotes.")
+async def card_update(channel):
+	total_card = channel_substring_counter(channel)
+	topic_card = re.search(" [0-9]+ ", channel.topic)
+	if total_card != topic_card:
+		await channel.edit(reason="Card count update", 
+								 topic="If only I had " + str(total_card) + " nickels for all these card emotes.")
+		print("Card spam description updated from " + str(topic_card) + " to " + str(total_card))
 	
-	return message_card
+	return total_card
 
 
 # Verifies user from moderator message
