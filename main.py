@@ -59,6 +59,7 @@ async def on_ready():
 	daily_role_expiry_check.start()
 	make_backup.start()
 	run_scheduled_tasks.start()
+	card_spam_description_update.start()
 
 @client.event
 async def on_message(message):
@@ -115,7 +116,6 @@ async def on_message(message):
 		if isinstance(res, str):
 			channel = client.get_channel(COUNTING_CHANNEL)
 			await channel.send(res)
-
 
 ########################## LOOPS ###########################################
 
@@ -309,19 +309,6 @@ async def set_count(interaction, number: int):
 	helper.write_file("count.json", data)
 
 	await interaction.response.send_message("Count has been set to " + str(number))
-
-@tree.command(name="card_count",
-				description="Count card emotes. Admin only due to execution time.",
-				guild=discord.Object(id=GENSOC_SERVER))
-async def card_count(interaction):
-	if not helper.is_team(interaction):
-		await interaction.response.send_message("Insuffient permission.",
-												ephemeral=True)
-		return
-	
-	await interaction.response.defer()
-	num = await helper.channel_substring_counter(interaction.channel)
-	await interaction.followup.send("There are " + str(num) + " card emotes in this channel.")
 
 @tree.command(name="help",
 				description="View all available bot commands.",

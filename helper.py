@@ -148,7 +148,7 @@ def list_tasks():
 async def channel_substring_counter(channel):
 	counter = 0
 	async for message in channel.history(limit=None):
-		all_matches = re.findall(":[A-Za-z0-9~]*[Cc][Aa][Rr][Dd][A-Za-z0-9~]*:", message.content) # Change regex to suit needs
+		all_matches = re.findall("<:\w+[Cc][Aa][Rr][Dd]\w+:[0-9]+>", message.content) # Change regex to suit needs
 		counter += len(all_matches)
 
 	return counter
@@ -157,8 +157,8 @@ async def channel_substring_counter(channel):
 # Argument: channel object
 # Return: number of appearance of a substring
 async def card_update(channel):
-	total_card = channel_substring_counter(channel)
-	topic_card = re.search(" [0-9]+ ", channel.topic)
+	total_card = await channel_substring_counter(channel)
+	topic_card = re.search("[0-9]+", channel.topic).group()
 	if total_card != topic_card:
 		await channel.edit(reason="Card count update", 
 								 topic="If only I had " + str(total_card) + " nickels for all these card emotes.")
