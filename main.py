@@ -324,7 +324,7 @@ async def card_count(interaction):
 	data = helper.read_file("config.json")
 	data["card_spam_counter"] = num
 	helper.write_file("config.json", data)
-	await interaction.followup.send("There are " + str(num) + " card emotes in this channel.")
+	await interaction.followup.send("There are " + str(num) + " card emotes in this channel.", ephemeral=True)
 
 @tree.command(name="help",
 				description="View all available bot commands.",
