@@ -148,7 +148,7 @@ def list_tasks():
 async def channel_substring_counter(channel):
 	counter = 0
 	async for message in channel.history(limit=None):
-		all_matches = re.findall("<:\w+[Cc][Aa][Rr][Dd]\w+:[0-9]+>", message.content) # Change regex to suit needs
+		all_matches = re.findall("<:\w*[Cc][Aa][Rr][Dd]\w*:[0-9]+>", message.content) # Change regex to suit needs
 		counter += len(all_matches)
 
 	return counter
