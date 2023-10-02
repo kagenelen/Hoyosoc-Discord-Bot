@@ -8,6 +8,7 @@ import json
 import random
 import time
 import DiscordUtils
+import re
 
 import helper
 import uid_finder
@@ -116,6 +117,15 @@ async def on_message(message):
 		if isinstance(res, str):
 			channel = client.get_channel(COUNTING_CHANNEL)
 			await channel.send(res)
+
+	##### This section deals with card spam #######################
+	if (message.channel.id == CARD_SPAM_CHANNEL and not message.author.bot):
+		all_matches = re.findall("<:\w*[Cc][Aa][Rr][Dd]\w*:[0-9]+>", message.content) # Change regex to suit needs
+		if len(all_matches) != 0:
+			data = helper.read_file("config.json")
+			data["card_spam_counter"] += len(all_matches)
+			helper.write_file("config.json", data)
+	
 
 ########################## LOOPS ###########################################
 
@@ -311,7 +321,7 @@ async def set_count(interaction, number: int):
 	await interaction.response.send_message("Count has been set to " + str(number))
 
 @tree.command(name="card_count",
-				description="Count card emotes.",
+				description="Count card emotes in current channel. Long execution time.",
 				guild=discord.Object(id=GENSOC_SERVER))
 async def card_count(interaction):
 	if not helper.is_team(interaction):
