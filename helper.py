@@ -92,7 +92,7 @@ def rewrite_structure():
 
 
 # Determines whether user is subcom or exec
-# Arg: Interaction (class)
+# Argument: Interaction (class)
 # Return: True if user is part of team, False otherwise
 def is_team(interaction):
   subcom = discord.utils.find(lambda r: r.name == SUBCOM_ROLE,
@@ -107,7 +107,7 @@ def is_team(interaction):
 
 
 # Determines whether user is a server booster
-# Arg: Member (class)
+# Argument: Member (class)
 # Return: True if user is booster, False otherwise
 def is_booster(user):
   role_names = [role.name for role in user.roles]
@@ -141,9 +141,35 @@ def list_tasks():
 		task_list.append([task["type"].title(), unix_to_syd(task["time"])])
 
 	return task_list
+
+# Count number of times a substring appears in channel
+# Argument: channel object
+# Return: number of appearance of a substring
+def channel_substring_counter(channel):
+	counter = 0
+	async for message in channel.history(limit=None):
+		all_matches = re.findall(":[A-Za-z]*card[A-Za-z]*:", message.content) # Change regex to suit needs
+		counter += len(all_matches)
+
+	return counter
+
+# Count number of times a card emote appears in a message and update card spam description
+# Argument: message object
+# Return: number of appearance of a substring
+def card_update(message):
+	all_matches = re.findall(":[A-Za-z]*card[A-Za-z]*:", message.content)
+	message_card = len(all_matches)
+	if message_card > 0:
+		topic_card = re.search(" [0-9]+ ", message.channel.topic)
+		total_card = int(topic_card.group()) + message_card
+		message.channel.edit(reason="Card count update", 
+							 topic="If only I had " + str(total_card) + " nickels for all these card emotes.")
 	
+	return message_card
+
+
 # Verifies user from moderator message
-# Arg: Message (class)
+# Argument: Message (class)
 # Return: User (member class) or None if user not found
 async def verify_user(message):
 	manual = False

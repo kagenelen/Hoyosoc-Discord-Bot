@@ -8,6 +8,7 @@ import json
 import random
 import time
 import DiscordUtils
+import re
 
 import helper
 import uid_finder
@@ -31,6 +32,7 @@ with open(absolute_path + 'config.json', 'r') as f:
 	COUNTING_CHANNEL = data['counting_channel']
 	AUCTION_CHANNEL = data['auction_channel']
 	WELCOME_CHANNEL = data['welcome_channel']
+	CARD_SPAM_CHANNEL = data['card_spam_channel']
 	ROLE_ICON_PREVIEW = data['role_icon_shop']
 	COLOUR_ROLE_PREVIEW = data['role_colour_shop']
 	
@@ -109,13 +111,17 @@ async def on_message(message):
 
 	##### This section deals with the counting game #######################
 	if (message.channel.id == COUNTING_CHANNEL and not message.author.bot):
-			res = minigame.number_validity(message)
-			if res == True:
-				await message.add_reaction(helper.PRIMOJEM_EMOTE)
-			
-			if isinstance(res, str):
-				channel = client.get_channel(COUNTING_CHANNEL)
-				await channel.send(res)
+		res = minigame.number_validity(message)
+		if res == True:
+			await message.add_reaction(helper.PRIMOJEM_EMOTE)
+		
+		if isinstance(res, str):
+			channel = client.get_channel(COUNTING_CHANNEL)
+			await channel.send(res)
+
+	##### This section deals with card spam #######################
+	if (message.channel.id == CARD_SPAM_CHANNEL and not message.author.bot):
+		helper.card_update()
 
 
 ########################## LOOPS ###########################################
@@ -305,7 +311,18 @@ async def set_count(interaction, number: int):
 	helper.write_file("count.json", data)
 
 	await interaction.response.send_message("Count has been set to " + str(number))
-	
+
+@tree.command(name="emote_count",
+				description="Count card emotes.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def emote_count(interaction):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+
+	num = helper.substring_counter(interaction.channel)
+	await interaction.response.send_message("There are " + str(num) + " card emotes in this channel.")
 
 @tree.command(name="help",
 				description="View all available bot commands.",
@@ -626,7 +643,7 @@ async def checkin(interaction):
 	res = gambling.currency_checkin(interaction.user.id)
 	if res == None:
 		await interaction.response.send_message(
-			"Check-in is still in cooldown. Try again tomorrow at 12am (UTC +10).",
+			"Check-in is still in cooldown. Try again tomorrow at 12am (UTC +11).",
 			ephemeral=True)
 	else:
 		await interaction.response.send_message(
