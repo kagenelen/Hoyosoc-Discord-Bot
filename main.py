@@ -116,10 +116,6 @@ async def on_message(message):
 			channel = client.get_channel(COUNTING_CHANNEL)
 			await channel.send(res)
 
-	##### This section deals with card spam #######################
-	if (message.channel.id == CARD_SPAM_CHANNEL and not message.author.bot):
-		await helper.card_update(message)
-
 
 ########################## LOOPS ###########################################
 
@@ -143,6 +139,11 @@ async def daily_role_expiry_check():
 @tasks.loop(hours=24)
 async def make_backup():
 	helper.backup_file("users.json")
+
+@tasks.loop(minutes=30)
+async def card_spam_description_update():
+	channel = client.get_channel(CARD_SPAM_CHANNEL)
+	await helper.card_update(channel)
 
 @tasks.loop(minutes=1)
 async def run_scheduled_tasks():
@@ -310,7 +311,7 @@ async def set_count(interaction, number: int):
 	await interaction.response.send_message("Count has been set to " + str(number))
 
 @tree.command(name="card_count",
-				description="Count card emotes.",
+				description="Count card emotes. Admin only due to execution time.",
 				guild=discord.Object(id=GENSOC_SERVER))
 async def card_count(interaction):
 	if not helper.is_team(interaction):
