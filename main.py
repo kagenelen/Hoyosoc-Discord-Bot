@@ -59,6 +59,7 @@ async def on_ready():
 	daily_role_expiry_check.start()
 	make_backup.start()
 	run_scheduled_tasks.start()
+	card_spam_description_update.start()
 
 @client.event
 async def on_message(message):
