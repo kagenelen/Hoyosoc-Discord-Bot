@@ -160,10 +160,10 @@ async def card_update(channel):
 	topic_card = re.search("[0-9]+", channel.topic).group()
 	data = read_file("config.json")
 	
-	if data["card_spam_counter"] != topic_card:
+	if data["card_spam_counter"] != int(topic_card):
 		await channel.edit(reason="Card count update", 
 								 topic="If only I had " + str(data["card_spam_counter"]) + " nickels for all these card emotes.")
-		print("Card spam description updated from " + str(topic_card) + " to " + str(data["card_spam_counter"]))
+		print("Card spam description updated from " + topic_card + " to " + str(data["card_spam_counter"]))
 	
 	return data["card_spam_counter"]
 
