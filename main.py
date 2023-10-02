@@ -313,13 +313,9 @@ async def set_count(interaction, number: int):
 				description="Count card emotes.",
 				guild=discord.Object(id=GENSOC_SERVER))
 async def card_count(interaction):
-	if not helper.is_team(interaction):
-		await interaction.response.send_message("Insuffient permission.",
-												ephemeral=True)
-		return
-
+	await interaction.response.defer()
 	num = await helper.channel_substring_counter(interaction.channel)
-	await interaction.response.send_message("There are " + str(num) + " card emotes in this channel.")
+	await interaction.followup.send("There are " + str(num) + " card emotes in this channel.")
 
 @tree.command(name="help",
 				description="View all available bot commands.",
