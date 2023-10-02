@@ -157,14 +157,15 @@ async def channel_substring_counter(channel):
 # Argument: channel object
 # Return: number of appearance of a substring
 async def card_update(channel):
-	total_card = await channel_substring_counter(channel)
 	topic_card = re.search("[0-9]+", channel.topic).group()
-	if total_card != topic_card:
-		await channel.edit(reason="Card count update", 
-								 topic="If only I had " + str(total_card) + " nickels for all these card emotes.")
-		print("Card spam description updated from " + str(topic_card) + " to " + str(total_card))
+	data = read_file("config.json")
 	
-	return total_card
+	if data["card_spam_counter"] != topic_card:
+		await channel.edit(reason="Card count update", 
+								 topic="If only I had " + str(data["card_spam_counter"]) + " nickels for all these card emotes.")
+		print("Card spam description updated from " + str(topic_card) + " to " + str(data["card_spam_counter"]))
+	
+	return data["card_spam_counter"]
 
 
 # Verifies user from moderator message
