@@ -331,9 +331,10 @@ async def card_count(interaction):
 	
 	await interaction.response.defer()
 	num = await helper.channel_substring_counter(interaction.channel)
-	data = helper.read_file("config.json")
-	data["card_spam_counter"] = num
-	helper.write_file("config.json", data)
+	if interaction.channel.id == CARD_SPAM_CHANNEL:
+		data = helper.read_file("config.json")
+		data["card_spam_counter"] = num
+		helper.write_file("config.json", data)
 	await interaction.followup.send("There are " + str(num) + " card emotes in this channel.", ephemeral=True)
 
 @tree.command(name="help",
@@ -354,7 +355,7 @@ async def help_commands(interaction):
 	paginator = DiscordUtils.Pagination.AutoEmbedPaginator(interaction)
 	
 	embed_primojem.add_field(name="**/checkin**", value="Daily free primojems.", inline=False)
-	embed_primojem.add_field(name="**/leaderboard**", value="See top 10 primojem earners and your own rank.", inline=False)
+	embed_primojem.add_field(name="**/leaderboard**", value="See top 10 of a category and your own rank.", inline=False)
 	embed_primojem.add_field(name="**/shop**", value="See which roles and role icons you can buy.", inline=False)
 	embed_primojem.add_field(name="**/buy**", value="Buy a role from the shop.", inline=False)
 	embed_primojem.add_field(name="**/equip**", value="Equip or unequip a role.", inline=False)
@@ -378,19 +379,20 @@ async def help_commands(interaction):
 	embed_general.add_field(name="**/find_uid**", value="List all UIDs of an user.", inline=False)
 	embed_general.add_field(name="**/whose_uid**", value="Find the owner of an UID.", inline=False)
 
-	embed_general.add_field(name="**/send_welcome**", value="Send welcome sticky message.", inline=False)
-	embed_general.add_field(name="**/set_verification**", value="Set verification channel.", inline=False)
-	embed_general.add_field(name="**/blacklist_user**", value="Blacklist user.", inline=False)
-	embed_general.add_field(name="**/edit_shop**", value="Add or remove role icon from shop.", inline=False)
-	embed_general.add_field(name="**/delete_messages**", value="Purge x messages from channel, optionally from a specific user.", inline=False)
-	embed_general.add_field(name="**/view_tasks**", value="View scheduled tasks.", inline=False)
-	embed_general.add_field(name="**/set_count**", value="Set counting game current number.", inline=False)
-	embed_general.add_field(name="**/scrape_uid**", value="Add all uids from a channel.", inline=False)
-	embed_general.add_field(name="**/create_bet**", value="Start bet.", inline=False)
-	embed_general.add_field(name="**/payout_bet**", value="Give earning to bet winners.", inline=False)
-	embed_general.add_field(name="**/auto_payout**", value="Schedule payout based on vote.", inline=False)
-	embed_general.add_field(name="**/create_auction**", value="Start auction.", inline=False)
-	embed_general.add_field(name="**/give_primojems**", value="Give primojem to a list of users.", inline=False)
+	embed_admin.add_field(name="**/send_welcome**", value="Send welcome sticky message.", inline=False)
+	embed_admin.add_field(name="**/set_verification**", value="Set verification channel.", inline=False)
+	embed_admin.add_field(name="**/blacklist_user**", value="Blacklist user.", inline=False)
+	embed_admin.add_field(name="**/edit_shop**", value="Add or remove role icon from shop.", inline=False)
+	embed_admin.add_field(name="**/delete_messages**", value="Purge x messages from channel, optionally from a specific user.", inline=False)
+	embed_admin.add_field(name="**/view_tasks**", value="View scheduled tasks.", inline=False)
+	embed_admin.add_field(name="**/set_count**", value="Set counting game current number.", inline=False)
+	embed_admin.add_field(name="**/card_count**", value="Count card emotes in a channel.", inline=False)
+	embed_admin.add_field(name="**/scrape_uid**", value="Add all uids from a channel.", inline=False)
+	embed_admin.add_field(name="**/create_bet**", value="Start bet.", inline=False)
+	embed_admin.add_field(name="**/payout_bet**", value="Give earning to bet winners.", inline=False)
+	embed_admin.add_field(name="**/auto_payout**", value="Schedule payout based on vote.", inline=False)
+	embed_admin.add_field(name="**/create_auction**", value="Start auction.", inline=False)
+	embed_admin.add_field(name="**/give_primojems**", value="Give primojem to a list of users.", inline=False)
 
 	# await interaction.response.defer()
 	embeds = [embed_general, embed_primojem, embed_minigame, embed_poll, embed_admin]
@@ -716,7 +718,8 @@ async def view_shop(interaction, shop: app_commands.Choice[str]):
 			"Use **/gacha** to pull for role icons.\n\n")
 	elif shop.value == "jemdust":
 		description = ("5 star role icon: 180 " + helper.JEMDUST_EMOTE + "  |  " +
-			"4 star role icon: 34 " + helper.JEMDUST_EMOTE + "\n")
+			"4 star role icon: 34 " + helper.JEMDUST_EMOTE + "\n" + 
+			"Please message an exec if you would like a character to be added to the role icon shop.")
 
 	embed = discord.Embed(title="Shop",
 							description=description,
@@ -797,7 +800,7 @@ async def equip_role(interaction, role_name: str):
 
 
 @tree.command(name="leaderboard",
-				description="Primojem leaderboard.",
+				description="Primojem/gambling leaderboard.",
 				guild=discord.Object(id=GENSOC_SERVER))
 @app_commands.choices(category=[
 	discord.app_commands.Choice(name="Primojem", value="currency"),

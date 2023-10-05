@@ -431,19 +431,22 @@ def is_role_owned(discord_id, role):
 # Argument: discord id string
 # Return: list[currency, jemdust, [(role1, duration1), ...], role_icons]
 def get_inventory(discord_id):
-    discord_id = str(discord_id)
-    user_entry = helper.get_user_entry(discord_id)
-
-    # Convert unix to datetime string for each role
-    role_items = list(user_entry["role"].items())
-    roles = []
-    for r in role_items:
-        r_datetime = datetime.datetime.utcfromtimestamp(int(
-            r[1])).strftime('%d/%m/%Y')
-        roles.append([r[0], r_datetime])
-
-    inventory = [user_entry["currency"], user_entry["jemdust"], roles, ", ".join(user_entry["role_icon"])]
-    return inventory
+	discord_id = str(discord_id)
+	user_entry = helper.get_user_entry(discord_id)
+	
+	# Convert unix to datetime string for each role
+	role_items = list(user_entry["role"].items())
+	roles = []
+	for r in role_items:
+		if r[1] == 2145919483:
+			r_datetime = "Permanent"
+		else:
+			r_datetime = datetime.datetime.utcfromtimestamp(int(
+				r[1])).strftime('%d/%m/%Y')
+		roles.append([r[0], r_datetime])
+	
+	inventory = [user_entry["currency"], user_entry["jemdust"], roles, ", ".join(user_entry["role_icon"])]
+	return inventory
 
 
 # Adds role to inventory or renew duration
