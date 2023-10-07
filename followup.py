@@ -55,13 +55,14 @@ async def stand_followup(interaction):
 
 async def drop_followup(interaction, column):
 	res = minigame.drop_token(interaction.user, column)
+	session = minigame.find_connect4_game(interaction.user.id)
 
-	embed = discord.Embed(title=res[4]["game_title"],
+	embed = discord.Embed(title=session["game_title"],
 							description=res[2] + "\n\n" + minigame.render_board(res[1]),
 							color=0x61dfff)
 
 	token = "🔵"
-	if res[4]["turn"] % 2 == 0:
+	if session["turn"] % 2 == 0:
 		# Player 1
 		token = "🔴"
 	
