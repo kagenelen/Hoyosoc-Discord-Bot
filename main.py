@@ -826,7 +826,7 @@ async def leaderboard(interaction, category: app_commands.Choice[str]):
 			embed.add_field(name=str(r + 1) + ". " + user.display_name,
 							value=str(round(len(res[r][1]) / role_num * 100)) + "%",
 							inline=False)
-		else:
+		elif r < 10:
 			embed.add_field(name=str(r + 1) + ". " + user.display_name,
 							value=str(res[r][1]),
 							inline=False)
