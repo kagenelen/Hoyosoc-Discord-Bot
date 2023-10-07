@@ -459,6 +459,8 @@ def hangman_guess(discord_id, guess):
 def number_validity(message):
 	data = helper.read_file("count.json")
 	num = message.content.lower().strip()
+	num = num.replace("\*", "x")
+	num = num.replace("*", "x")
 
 	# Parse any word form number to int or solve math equation
 	math_eq_res = None
