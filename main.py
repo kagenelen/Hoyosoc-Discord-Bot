@@ -800,10 +800,11 @@ async def equip_role(interaction, role_name: str):
 
 
 @tree.command(name="leaderboard",
-				description="Primojem/gambling leaderboard.",
+				description="Primojem/collection rate/gambling leaderboard.",
 				guild=discord.Object(id=GENSOC_SERVER))
 @app_commands.choices(category=[
 	discord.app_commands.Choice(name="Primojem", value="currency"),
+	discord.app_commands.Choice(name="Role Icon Collection Rate", value="role_icon"),
 	discord.app_commands.Choice(name="Gambling Profit", value="gambling_profit"),
 	discord.app_commands.Choice(name="Gambling Loss", value="gambling_loss"),
 ])
@@ -819,10 +820,17 @@ async def leaderboard(interaction, category: app_commands.Choice[str]):
 		if user == None:
 			continue
 			
-		if r < 10:
+		if r < 10 and category.value == "role_icon":
+			role_list = helper.read_file("role_icon.json")
+			role_num = len(role_list["5"]) + len(role_list["4"])
+			embed.add_field(name=str(r + 1) + ". " + user.display_name,
+							value=str(round(len(res[r][1]) / role_num * 100)) + "%",
+							inline=False)
+		else:
 			embed.add_field(name=str(r + 1) + ". " + user.display_name,
 							value=str(res[r][1]),
 							inline=False)
+		
 		if user.id == interaction.user.id:
 			rank = r + 1
 	
