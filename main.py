@@ -40,6 +40,7 @@ with open(absolute_path + 'config.json', 'r') as f:
 
 # NOTICE: Uncomment these two if testing on the test server
 # GENSOC_SERVER = 962970271545982986 # Test server
+# CARD_SPAM_CHANNEL = 1158232410299846747
 
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
 CHAT_PRIMOJEM = 50
@@ -1102,7 +1103,7 @@ async def connect4(interaction, invited_user: discord.Member, wager: int):
 		return
 	
 	# Buttons
-	view = View(timeout=60)
+	view = View(timeout=120)
 
 	# Accept button
 	accept_button = Button(label="Accept", style=discord.ButtonStyle.blurple)
