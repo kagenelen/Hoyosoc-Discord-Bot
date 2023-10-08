@@ -541,6 +541,7 @@ def new_connect(inviter_player, invited_player, wager):
 		"player1_name": player1.display_name,
 		"player2_name": player2.display_name,
 		"turn": 0,
+		"timeout": int(time.time()) + 60,
 		"board": board.tolist()
 	}
 	
@@ -569,6 +570,27 @@ def drop_token(token_dropper, col):
 		# Player 2's turn
 		piece = 2
 
+	# Early return if player turn has timed out
+	if time.time() > session["timeout"]:
+		reward = session["wager"]
+		
+		if session["turn"] % 2 == 0:
+			# Player 1 timeout, player 2 wins			
+			status_message = (session["player1_name"] + " has timed out. " + session["player2_name"] + " wins! " + 
+				str(reward) + helper.PRIMOJEM_EMOTE + " has been added to your inventory.")
+			gambling.update_user_currency(session["player2"], 2 * reward)
+		else:
+			# Player 2 timeout, player 1 wins
+			status_message = (session["player2_name"] + " has timed out. " + session["player1_name"] + " wins! " + 
+				str(reward) + helper.PRIMOJEM_EMOTE + " has been added to your inventory.")
+			gambling.update_user_currency(session["player1"], 2 * reward)
+			
+		gambling.update_user_currency(session["player1"], -reward)
+		gambling.update_user_currency(session["player2"], -reward)
+		data.pop(game_id)
+		helper.write_file("minigame_session.json", data)
+		return [None, board, status_message, None, session]
+
 	# Drop the token
 	if is_valid_location(board, col) and piece != None:
 		row = get_next_open_row(board,col)
@@ -578,6 +600,7 @@ def drop_token(token_dropper, col):
 			board[row][col]= piece
 			session["board"] = board.tolist()
 			session["turn"] += 1
+			session["timeout"] = int(time.time()) + 60
 			helper.write_file("minigame_session.json", data)
 		
 		if winning_move(board, piece):
@@ -611,6 +634,8 @@ def drop_token(token_dropper, col):
 		# Player 2's turn
 		next_turn = session["player2"]
 		next_turn_name = session["player2_name"]
+
+	
 	
 	helper.write_file("minigame_session.json", data)
 	return [next_turn, board, status_message, next_turn_name, session]
@@ -693,12 +718,8 @@ def find_connect4_game(discord_id):
 
 	# Loop seperately incase there is an abandoned game
 	for session in data:
-		if session == str(discord_id):
-				return session
-
-	for session in data:
-		if data[session]["minigame"] == "connect" and data[session]["player2"] == discord_id:
-				return session
+		if data[session]["minigame"] == "connect" and (data[session]["player2"] == discord_id or data[session]["player1"] == discord_id):
+			return session
 
 	return None
 
