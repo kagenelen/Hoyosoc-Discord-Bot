@@ -322,21 +322,31 @@ async def set_count(interaction, number: int):
 	await interaction.response.send_message("Count has been set to " + str(number))
 
 @tree.command(name="card_count",
-				description="Count card emotes in current channel. Long execution time.",
+				description="Count card emotes in current channel.",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def card_count(interaction):
+@app_commands.choices(output=[
+	discord.app_commands.Choice(name="True", value=1),
+	discord.app_commands.Choice(name="False", value=0),
+])
+async def card_count(interaction, channel: discord.TextChannel, output: app_commands.Choice[int]):
 	if not helper.is_team(interaction):
-		await interaction.response.send_message("Insuffient permission.",
-												ephemeral=True)
+		await interaction.response.send_message(
+			"Insuffient permission. Command only available to admins due to long execution time.",
+			ephemeral=True)
 		return
 	
 	await interaction.response.defer()
-	num = await helper.channel_substring_counter(interaction.channel)
-	if interaction.channel.id == CARD_SPAM_CHANNEL:
+	if output.value == 1:
+		await interaction.followup.send("Check console for the result.", ephemeral=True)
+		
+	num = await helper.channel_substring_counter(channel, output.value)
+	if channel.id == CARD_SPAM_CHANNEL:
 		data = helper.read_file("config.json")
 		data["card_spam_counter"] = num
 		helper.write_file("config.json", data)
-	await interaction.followup.send("There are " + str(num) + " card emotes in this channel.", ephemeral=True)
+
+	if output.value == 0:
+		await interaction.followup.send("There are " + str(num) + " card emotes in " + channel.name, ephemeral=True)
 
 @tree.command(name="help",
 				description="View all available bot commands.",
