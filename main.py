@@ -465,7 +465,7 @@ async def reverse_find_uid(interaction, game:app_commands.Choice[str], uid: str)
 		await interaction.response.send_message("Invalid uid.", ephemeral=True)
 		return
 		
-	result = uid_finder.whose_uid(uid, game)
+	result = uid_finder.whose_uid(uid, game.value)
 	if result == False:
 		await interaction.response.send_message(
 			uid + " does not belong to anyone in this server.")
