@@ -14,7 +14,8 @@ from operator import getitem
 
 '''
 
-TIME_OFFSET = 36000
+TIME_OFFSET = 36000 # not daylight saving
+HOUR_OFFSET = 13 # daylight saving 13, not daylight saving 14
 BET_LIMIT = 5000
 AUCTION_INCREMENT = 1.05
 ONE_WEEK_ROLE = 800
@@ -393,7 +394,7 @@ def update_user_gambling(discord_id, change):
 
 # Give currency for user weekly checkin
 # Argument: discord id string
-# Return: [amount gained, streak], or None if checkin is still in cooldown
+# Return: [amount gained, streak, next checkin string], or next checkin date str if error
 def currency_checkin(discord_id):
 	discord_id = str(discord_id)
 	helper.get_user_entry(discord_id)
@@ -402,7 +403,8 @@ def currency_checkin(discord_id):
 	
 	# Check whether user checkin cooldown is over
 	if time.time() < user_entry["next_checkin"]:
-		return None
+		syd = pytz.timezone('Australia/Sydney')
+		return datetime.datetime.utcfromtimestamp(user_entry["next_checkin"]).astimezone(syd).strftime('%d/%m/%y %H:%M')
 	
 	# Check login streak still remains, and increment streak
 	if user_entry["next_checkin"] + 86400 < time.time():
@@ -412,15 +414,47 @@ def currency_checkin(discord_id):
 	amount_earned = min(CHECKIN + user_entry["checkin_streak"] * STREAK_MULTIPLIER, CHECKIN_CAP)
 	
 	# Set next checkin to tomorrow 12am AEST
-	syd = pytz.timezone('Australia/Sydney')
-	tomorrow_date = datetime.datetime.now(syd) \
-				.replace(hour=13, minute=0, second=0, microsecond=0) \
-				.astimezone(syd)	
+	tomorrow_date = datetime.datetime.now() \
+				.replace(hour=HOUR_OFFSET, minute=0, second=0, microsecond=0)
 	user_entry["next_checkin"] = int(time.mktime(tomorrow_date.timetuple()))
 	
 	helper.write_file("users.json", data)
 	update_user_currency(discord_id, amount_earned)
 	return [amount_earned, user_entry["checkin_streak"]]
+
+# Freeze checkin until a certain date
+# Argument: discord id string, resume date string (format 4/12/23)
+# Return: next checkin time str, or error string
+def freeze_checkin(discord_id, resume_time):
+	discord_id = str(discord_id)
+	helper.get_user_entry(discord_id)
+	data = helper.read_file("users.json")
+	user_entry = data.get(discord_id)
+
+	# Check whether user checkin is broken to prevent people from restoring forgotten checkin
+	if user_entry["next_checkin"] + 86400 < time.time():
+		return "Check-in cannot be frozen until you have checked in today."
+		
+	# Convert resume_time string to unix. Expected format e.g. 4/12/23 17:15
+	try:
+		resume_time_dt = datetime.datetime.strptime(resume_time, "%d/%m/%y")
+	except:
+		return "Invalid format. Please use the format d/m/y. Example: 4/6/23 for June 4 2023."
+
+	# Set next checkin to resume time at 12am
+	syd = pytz.timezone('Australia/Sydney')
+	resume_time_dt = resume_time_dt \
+				.replace(hour=HOUR_OFFSET, minute=0, second=0, microsecond=0)
+	next_checkin_unix = int(time.mktime(resume_time_dt.timetuple())) - 86400
+
+	if next_checkin_unix < user_entry["next_checkin"]:
+		checkin_str = datetime.datetime.utcfromtimestamp(user_entry["next_checkin"]).astimezone(syd).strftime('%d/%m/%y')
+		return "Resuming date cannot be before " + checkin_str + "."
+	
+	user_entry["next_checkin"] = next_checkin_unix
+
+	helper.write_file("users.json", data)
+	return datetime.datetime.utcfromtimestamp(user_entry["next_checkin"]).astimezone(syd).strftime('%d/%m/%y %H:%M')
 
 
 # Check whether a user owns a role

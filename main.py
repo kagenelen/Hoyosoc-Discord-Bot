@@ -366,6 +366,7 @@ async def help_commands(interaction):
 	paginator = DiscordUtils.Pagination.AutoEmbedPaginator(interaction)
 	
 	embed_primojem.add_field(name="**/checkin**", value="Daily free primojems.", inline=False)
+	embed_primojem.add_field(name="**/freeze_checkin**", value="Freeze check-in till a certain date to preserve streak.", inline=False)
 	embed_primojem.add_field(name="**/leaderboard**", value="See top 10 of a category and your own rank.", inline=False)
 	embed_primojem.add_field(name="**/shop**", value="See which roles and role icons you can buy.", inline=False)
 	embed_primojem.add_field(name="**/buy**", value="Buy a role from the shop.", inline=False)
@@ -666,15 +667,27 @@ async def send_auction_info(interaction, auction_name: str):
 				guild=discord.Object(id=GENSOC_SERVER))
 async def checkin(interaction):
 	res = gambling.currency_checkin(interaction.user.id)
-	if res == None:
+	if isinstance(res, str):
 		await interaction.response.send_message(
-			"Check-in is still in cooldown. Try again tomorrow at 12am (UTC +11).",
+			"Check-in is still in cooldown until " + res + " UTC +11.",
 			ephemeral=True)
 	else:
 		await interaction.response.send_message(
 			"You got " + str(res[0]) +
 			" primojems from the check-in. Current streak: " +
 			str(res[1]) + ".")
+
+@tree.command(name="freeze_checkin",
+	description="Freeze check-in till a certain date to preserve streak. Cannot check-in before that date.",
+	guild=discord.Object(id=GENSOC_SERVER))
+async def checkin_freeze(interaction, date: str):
+	res = gambling.freeze_checkin(interaction.user.id, date)
+	
+	if "cannot" in res or "format" in res:
+		await interaction.response.send_message(res, ephemeral=True)
+	else:
+		await interaction.response.send_message(
+			"<@" + str(interaction.user.id) + ">'s checkin has been frozen till " + res + " UTC +11.")
 
 @tree.command(name="inventory",
 				description="Check your primojem, jemdust and owned roles.",
