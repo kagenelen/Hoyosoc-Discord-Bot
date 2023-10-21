@@ -669,7 +669,7 @@ async def checkin(interaction):
 	res = gambling.currency_checkin(interaction.user.id)
 	if isinstance(res, str):
 		await interaction.response.send_message(
-			"Check-in is still in cooldown until " + res + " UTC +11.",
+			"Check-in cooldown finishes " + res + ".",
 			ephemeral=True)
 	else:
 		await interaction.response.send_message(
