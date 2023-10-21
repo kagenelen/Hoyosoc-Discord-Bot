@@ -418,6 +418,9 @@ def currency_checkin(discord_id):
 				.replace(hour=HOUR_OFFSET, minute=0, second=0, microsecond=0)
 	user_entry["next_checkin"] = int(time.mktime(tomorrow_date.timetuple()))
 	
+	if user_entry["next_checkin"] < time.time():
+		user_entry["next_checkin"] = user_entry["next_checkin"] + 86400
+	
 	helper.write_file("users.json", data)
 	update_user_currency(discord_id, amount_earned)
 	return [amount_earned, user_entry["checkin_streak"]]
