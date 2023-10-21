@@ -394,7 +394,7 @@ def update_user_gambling(discord_id, change):
 
 # Give currency for user weekly checkin
 # Argument: discord id string
-# Return: [amount gained, streak, next checkin string], or next checkin date str if error
+# Return: [amount gained, streak, next checkin string], or next checkin countdown str if error
 def currency_checkin(discord_id):
 	discord_id = str(discord_id)
 	helper.get_user_entry(discord_id)
@@ -403,8 +403,7 @@ def currency_checkin(discord_id):
 	
 	# Check whether user checkin cooldown is over
 	if time.time() < user_entry["next_checkin"]:
-		syd = pytz.timezone('Australia/Sydney')
-		return datetime.datetime.utcfromtimestamp(user_entry["next_checkin"]).astimezone(syd).strftime('%d/%m/%y %H:%M')
+		return "<t:" + str(user_entry["next_checkin"]) + ":R>"
 	
 	# Check login streak still remains, and increment streak
 	if user_entry["next_checkin"] + 86400 < time.time():
