@@ -9,6 +9,7 @@ import random
 import time
 import DiscordUtils
 import re
+import asyncio
 
 import helper
 import uid_finder
@@ -409,6 +410,46 @@ async def help_commands(interaction):
 	# await interaction.response.defer()
 	embeds = [embed_general, embed_primojem, embed_minigame, embed_poll, embed_admin]
 	await paginator.run(embeds)
+
+@tree.command(name="bulk_roles",
+				description="Bulk assign roles to all verified members.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def bulk_roles(interaction):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+
+	await interaction.response.send_message("Assigning roles in progress...", ephemeral=True)
+
+	traveller_role = discord.utils.get(interaction.guild.roles, name="Traveller")
+	role2 = discord.utils.get(interaction.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀ Cosmetic Roles ⠀⠀⠀⠀⠀⠀⠀")
+	role3 = discord.utils.get(interaction.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ About ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+	role4 = discord.utils.get(interaction.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Misc ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+
+	try:
+		counter = 0
+		for member in traveller_role.members:
+			if role2 not in member.roles:
+				await member.add_roles(role2)
+				counter += 1
+
+			if role3 not in member.roles:
+				await member.add_roles(role3)
+				counter += 1
+
+			if role4 not in member.roles:
+				await member.add_roles(role4)
+				counter += 1
+
+			if counter % 90 == 0:
+				await asyncio.sleep(60)
+				
+	except discord.errors.HTTPException:
+		print("Role assignment rate limited on " + member.name + ". " + str(counter) + " roles has been assigned.")
+		return
+
+	print("Role assignment finished.")
 	
 
 ################################ UID #################################
