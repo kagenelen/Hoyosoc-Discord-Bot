@@ -34,6 +34,7 @@ with open(absolute_path + 'config.json', 'r') as f:
 	AUCTION_CHANNEL = data['auction_channel']
 	WELCOME_CHANNEL = data['welcome_channel']
 	CARD_SPAM_CHANNEL = data['card_spam_channel']
+	MODERATION_CHANNEL = data['moderation_channel']
 	ROLE_ICON_PREVIEW = data['role_icon_shop']
 	COLOUR_ROLE_PREVIEW = data['role_colour_shop']
 	
@@ -66,9 +67,15 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-	global VERIFICATION_CHANNEL
-	global WELCOME_CHANNEL
 	global WELCOME_MESSAGE
+
+	####### This section deals with antispam ########################
+	if not message.author.bot:
+		match_obj = re.search("^(.)\\1*$", message.content)
+		if match_obj != None and "­" in message.content:
+			await message.delete()
+			mod_channel = client.get_channel(MODERATION_CHANNEL)
+			await mod_channel.send("Message deleted from " + message.author.name + ". Reason: Invisible character spam.")
 
 	####### This section deals with chat primojems ########################
 	if not message.author.bot:
