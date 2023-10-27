@@ -8,7 +8,11 @@
     "prev_welcome_message": 1141933723923783690,
 	"card_spam_channel": 882497725394989058,
 	"card_spam_counter": 6364,
-	"user_blacklist": [],
+	"user_blacklist": [
+	        1137757648071184444,
+	        1149315540351983658,
+	        1154774176515760210
+    	],
 	"role_colour_shop": "https://unswgensoc.com/wp-content/uploads/2023/08/Colour-Role-Preview-1.png",
 	"role_icon_shop": "https://unswgensoc.com/wp-content/uploads/2023/08/Role-Icon-Shop-Preview-5.png"
 }
