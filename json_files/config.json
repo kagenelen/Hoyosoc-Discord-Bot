@@ -5,10 +5,10 @@
 	"counting_channel": 1134336873628696638,
 	"auction_channel": 1142007829478252554,
 	"welcome_channel": 822411164846653492,
-	"moderation_channel": 1167298366439428126,
-    "prev_welcome_message": 1141933723923783690,
+    "moderation_channel": 1167298366439428126,
+    "prev_welcome_message": 1164658878013776033,
 	"card_spam_channel": 882497725394989058,
-	"card_spam_counter": 6364,
+	"card_spam_counter": 6482,
 	"user_blacklist": [
 	        1137757648071184444,
 	        1149315540351983658,
