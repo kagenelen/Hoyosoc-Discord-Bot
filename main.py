@@ -50,7 +50,7 @@ CHAT_PRIMOJEM = 50
 ############################# CODE STARTS HERE ############################
 
 # member intent has to be on, otherwise guild.members doesn't work
-intents = discord.Intents.default()
+intents = discord.Intents.all()
 intents.members = True
 intents.message_content = True
 client = discord.Client(intents=intents)
@@ -375,7 +375,7 @@ async def help_commands(interaction):
 	
 	embed_primojem.add_field(name="**/checkin**", value="Daily free primojems.", inline=False)
 	embed_primojem.add_field(name="**/freeze_checkin**", value="Freeze check-in till a certain date to preserve streak.", inline=False)
-	embed_primojem.add_field(name="**/leaderboard**", value="See top 10 of a category and your own rank.", inline=False)
+	embed_primojem.add_field(name="**/leaderboard**", value="Top 30 of a category and your own rank.", inline=False)
 	embed_primojem.add_field(name="**/shop**", value="See which roles and role icons you can buy.", inline=False)
 	embed_primojem.add_field(name="**/buy**", value="Buy a role from the shop.", inline=False)
 	embed_primojem.add_field(name="**/equip**", value="Equip or unequip a role.", inline=False)
@@ -414,7 +414,6 @@ async def help_commands(interaction):
 	embed_admin.add_field(name="**/create_auction**", value="Start auction.", inline=False)
 	embed_admin.add_field(name="**/give_primojems**", value="Give primojem to a list of users.", inline=False)
 
-	# await interaction.response.defer()
 	embeds = [embed_general, embed_primojem, embed_minigame, embed_poll, embed_admin]
 	await paginator.run(embeds)
 
@@ -872,43 +871,64 @@ async def equip_role(interaction, role_name: str):
 
 
 @tree.command(name="leaderboard",
-				description="Primojem/collection rate/gambling leaderboard.",
+				description="Primojem/collection rate/gambling/check-in leaderboard.",
 				guild=discord.Object(id=GENSOC_SERVER))
 @app_commands.choices(category=[
 	discord.app_commands.Choice(name="Primojem", value="currency"),
 	discord.app_commands.Choice(name="Role Icon Collection Rate", value="role_icon"),
 	discord.app_commands.Choice(name="Gambling Profit", value="gambling_profit"),
 	discord.app_commands.Choice(name="Gambling Loss", value="gambling_loss"),
+	discord.app_commands.Choice(name="Check-in Streak", value="checkin_streak"),
 ])
 async def leaderboard(interaction, category: app_commands.Choice[str]):
 	res = gambling.get_leaderboard(category.value)
 	
-	embed = discord.Embed(title=category.name + " Leaderboard", color=0x61dfff)
+	embed_1 = discord.Embed(title=category.name + " Leaderboard", color=0x61dfff)
+	embed_2 = discord.Embed(title=category.name + " Leaderboard", color=0x61dfff)
+	embed_3 = discord.Embed(title=category.name + " Leaderboard", color=0x61dfff)
+	embed_unused = discord.Embed(title=category.name + " Leaderboard", color=0x61dfff)
+
+	paginator = DiscordUtils.Pagination.AutoEmbedPaginator(interaction)
 	
-	# Add embed field for each person in top 10
-	rank = 0
+	# Add embed field for each person in top 30
+	rank = 1
+	your_rank = 0
 	for r in range(0, len(res)):
-		user = client.get_user(int(res[r][0]))
+		user = interaction.guild.get_member(int(res[r][0]))
 		if user == None:
 			continue
+
+		if rank <= 10:
+			target_embed = embed_1
+		elif rank <= 20:
+			target_embed = embed_2
+		elif rank <= 30:
+			target_embed = embed_3
+		else:
+			target_embed = embed_unused
 			
-		if r < 10 and category.value == "role_icon":
+		if category.value == "role_icon":
 			role_list = helper.read_file("role_icon.json")
 			role_num = len(role_list["5"]) + len(role_list["4"])
-			embed.add_field(name=str(r + 1) + ". " + user.display_name,
+			target_embed.add_field(name=str(rank) + ". " + user.display_name,
 							value=str(round(len(res[r][1]) / role_num * 100)) + "%",
 							inline=False)
-		elif r < 10:
-			embed.add_field(name=str(r + 1) + ". " + user.display_name,
+		else:
+			target_embed.add_field(name=str(rank) + ". " + user.display_name,
 							value=str(res[r][1]),
 							inline=False)
-		
+
 		if user.id == interaction.user.id:
-			rank = r + 1
+			your_rank = rank
+			
+		rank += 1
 	
-	embed.set_footer(text="Your rank: " + str(rank))
+	embed_1.set_footer(text="Your rank: " + str(your_rank))
+	embed_2.set_footer(text="Your rank: " + str(your_rank))
+	embed_3.set_footer(text="Your rank: " + str(your_rank))
+	embeds = [embed_1, embed_2, embed_3]
 	
-	await interaction.response.send_message(embed=embed)
+	await paginator.run(embeds)
 
 @tree.command(
 	name="give_primojems",

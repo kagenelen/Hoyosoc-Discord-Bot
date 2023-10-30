@@ -1,19 +1,19 @@
 {
 	"gensoc_server": 822411164846653490,
-    "verification_channel": 822423063697948693,
+	"verification_channel": 822423063697948693,
 	"this_or_that_channel": 1064462494753620010,
 	"counting_channel": 1134336873628696638,
 	"auction_channel": 1142007829478252554,
 	"welcome_channel": 822411164846653492,
-    "moderation_channel": 1167298366439428126,
-    "prev_welcome_message": 1164658878013776033,
+	"moderation_channel": 1167298366439428126,
+	"prev_welcome_message": 1164658878013776033,
 	"card_spam_channel": 882497725394989058,
 	"card_spam_counter": 6482,
 	"user_blacklist": [
-	        1137757648071184444,
-	        1149315540351983658,
-	        1154774176515760210
-    	],
+			1137757648071184444,
+			1149315540351983658,
+			1154774176515760210
+		],
 	"role_colour_shop": "https://unswgensoc.com/wp-content/uploads/2023/08/Colour-Role-Preview-1.png",
-	"role_icon_shop": "https://unswgensoc.com/wp-content/uploads/2023/08/Role-Icon-Shop-Preview-5.png"
+	"role_icon_shop": "https://unswgensoc.com/wp-content/uploads/2023/10/Role-Icon-Shop-Preview-9.png"
 }
