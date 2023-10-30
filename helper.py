@@ -6,6 +6,7 @@ import time
 import datetime
 import shutil
 import pytz
+import random
 
 SUBCOM_ROLE = "Subcommittee"
 EXEC_ROLE = "2023 Gensoc Team"
@@ -14,6 +15,12 @@ JEMDUST_EMOTE = "<:Jemdust:1108591111649362043>"
 BETTER_EMOTE = "<:Betters:1122383400418934846>"
 HEADS_EMOTE = "<:Heads:1137589987962015815>"
 TAILS_EMOTE = "<:Tails:1137589996916850760>"
+YATTA_EMOTE = ["<:YattaNoText:1168444235620569160>",
+			  "<:Yatta:1168443429869592606>",
+			  "<:YattaBoom:1168443375645622282>",
+			  "<:YattaRed:1168443412912025601>",
+			  "<a:YattaDance:1168443447036887060>",
+			  "<:yatta:1025653835596824687>"]
 
 def write_file(file, data):
   absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
@@ -174,6 +181,16 @@ async def card_update(channel):
 	
 	return data["card_spam_counter"]
 
+# Generate a string of random number of yatta emotes
+# Return: Yatta string
+def yatta_random():
+	emote_amount = random.randint(1, 10)
+	yatta_str = ""
+	for x in range(emote_amount):
+		yatta_str += random.choice(YATTA_EMOTE) + " "
+
+	return yatta_str
+	
 
 # Verifies user from moderator message
 # Argument: Message (class)
