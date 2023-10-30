@@ -317,7 +317,7 @@ def check_user_currency(discord_id):
 # Return: List of (discord id, currency) in order or error string
 def get_leaderboard(category):
 	category = category.lower()
-	if category not in ["currency", "gambling_profit", "gambling_loss","role_icon"]:
+	if category not in ["currency", "gambling_profit", "gambling_loss","role_icon", "checkin_streak"]:
 		return "Invalid category"
 	
 	data = helper.read_file("users.json")
