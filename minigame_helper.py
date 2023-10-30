@@ -46,7 +46,7 @@ class NumericStringParser(object):
 	def __init__(self):
 		"""
 		expop   :: '^'
-		multop  :: '*' | '/'
+		multop  :: 'x' | '/'
 		addop   :: '+' | '-'
 		integer :: ['+' | '-'] '0'..'9'+
 		atom    :: PI | E | real | fn '(' expr ')' | '(' expr ')'
