@@ -743,15 +743,17 @@ async def inventory(interaction, target_user: discord.Member = None):
 	if target_user != None:
 		username = target_user.display_name
 		res = gambling.get_inventory(target_user.id)
+		thumbnail = target_user.display_avatar.url
 	else:
 		username = interaction.user.display_name
 		res = gambling.get_inventory(interaction.user.id)
+		thumbnail = interaction.user.display_avatar.url
 
 	embed = discord.Embed(title=username + "\'s inventory",
 							description=str(res[0]) + " " + helper.PRIMOJEM_EMOTE + "  |  " + 
 						  		str(res[1]) + " " + helper.JEMDUST_EMOTE,
 							color=0x61dfff)
-	embed.set_thumbnail(url=interaction.user.display_avatar.url)
+	embed.set_thumbnail(url=thumbnail)
 
 	# Add embed field for each roles
 	permanent_roles = []
