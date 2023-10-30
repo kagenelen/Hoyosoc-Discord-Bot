@@ -50,7 +50,7 @@ CHAT_PRIMOJEM = 50
 ############################# CODE STARTS HERE ############################
 
 # member intent has to be on, otherwise guild.members doesn't work
-intents = discord.Intents.all()
+intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 client = discord.Client(intents=intents)
@@ -751,12 +751,23 @@ async def inventory(interaction, target_user: discord.Member = None):
 							description=str(res[0]) + " " + helper.PRIMOJEM_EMOTE + "  |  " + 
 						  		str(res[1]) + " " + helper.JEMDUST_EMOTE,
 							color=0x61dfff)
+	embed.set_thumbnail(url=interaction.user.display_avatar.url)
 
 	# Add embed field for each roles
+	permanent_roles = []
 	for r in res[2]:
-		embed.add_field(name=r[0].capitalize(),
+		if r[1] == "Permanent":
+			permanent_roles.append(r[0])
+		else:
+			embed.add_field(name=r[0].capitalize(),
 						value=r[1],
 						inline=False)
+	
+	if len(permanent_roles) != 0:
+		permanent_roles_str = ", ".join(permanent_roles)
+		embed.add_field(name="Permanent Roles",
+							value=permanent_roles_str.title(),
+							inline=False)
 	
 	if len(res[3]) != 0:
 		embed.add_field(name="Role Icons",
