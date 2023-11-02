@@ -362,6 +362,12 @@ async def card_count(interaction, channel: discord.TextChannel, output: app_comm
 async def yatta(interaction):
 	res = helper.yatta_random()
 	await interaction.response.send_message(res)
+
+@tree.command(name="unyatta",
+	description="Send unyatta emotes.",
+	guild=discord.Object(id=GENSOC_SERVER))
+async def unyatta(interaction):
+	await interaction.response.send_message(helper.UNYATTA_EMOTE)
 	
 
 @tree.command(name="help",
