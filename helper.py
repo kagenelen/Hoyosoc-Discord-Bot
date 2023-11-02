@@ -20,7 +20,13 @@ YATTA_EMOTE = ["<:YattaNoText:1168444235620569160>",
 			  "<:YattaBoom:1168443375645622282>",
 			  "<:YattaRed:1168443412912025601>",
 			  "<a:YattaDance:1168443447036887060>",
-			  "<:yatta:1025653835596824687>"]
+			  "<:yatta:1025653835596824687>",
+			  "<:ShenheYatta:1169519511582552115>",
+			  "<:NahidaYatta:1169519517425217626>"]
+UNYATTA_EMOTE = \
+	"<:Unyatta_01:1169516502576279552><:Unyatta_02:1169516506317590528><:Unyatta_03:1169516508523806741>\n" + \
+	"<:Unyatta_04:1169516512214777896><:Unyatta_05:1169516516237127690><:Unyatta_06:1169516519001169952>\n" + \
+	"<:Unyatta_07:1169516523082235934><:Unyatta_08:1169516527016476732><:Unyatta_09:1169516528757133352>"
 
 def write_file(file, data):
   absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
