@@ -746,8 +746,13 @@ async def inventory(interaction, target_user: discord.Member = None):
 							inline=False)
 	
 	if len(res[3]) != 0:
-		embed.add_field(name="Role Icons",
+		embed.add_field(name="5 Star Role Icons",
 							value=res[3],
+							inline=False)
+
+	if len(res[4]) != 0:
+		embed.add_field(name="4 Star Role Icons",
+							value=res[4],
 							inline=False)
 
 	await interaction.response.send_message(embed=embed)
