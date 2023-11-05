@@ -470,10 +470,11 @@ def is_role_owned(discord_id, role):
 
 # Get user's currency, roles, role duration
 # Argument: discord id string
-# Return: list[currency, jemdust, [(role1, duration1), ...], role_icons]
+# Return: list[currency, jemdust, [(role1, duration1), ...], 5_star_role_icons, 4_star_role_icons]
 def get_inventory(discord_id):
 	discord_id = str(discord_id)
 	user_entry = helper.get_user_entry(discord_id)
+	role_icon_file = helper.read_file("role_icon.json")
 	
 	# Convert unix to datetime string for each role
 	role_items = list(user_entry["role"].items())
@@ -485,8 +486,18 @@ def get_inventory(discord_id):
 			r_datetime = datetime.datetime.utcfromtimestamp(int(
 				r[1])).strftime('%d/%m/%Y')
 		roles.append([r[0], r_datetime])
-	
-	inventory = [user_entry["currency"], user_entry["jemdust"], roles, ", ".join(user_entry["role_icon"])]
+
+	five_star_roles = []
+	four_star_roles = []
+	for role_icon in user_entry["role_icon"]:
+		if role_icon in role_icon_file["5"]:
+			five_star_roles.append(role_icon)
+
+		if role_icon in role_icon_file["4"]:
+			four_star_roles.append(role_icon)
+		
+	inventory = [user_entry["currency"], user_entry["jemdust"], 
+				 roles, ", ".join(five_star_roles), ", ".join(four_star_roles)]
 	return inventory
 
 
