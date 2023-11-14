@@ -71,8 +71,7 @@ async def on_message(message):
 	####### This section deals with antispam ########################
 	if not message.author.bot:
 		match_obj = re.search("^(.)\\1*$", message.content)
-		# if match_obj != None and "­" in message.content:
-		if "­" in message.content:
+		if match_obj != None and "­" in message.content:
 			await message.delete()
 			mod_channel = client.get_channel(MODERATION_CHANNEL)
 			await mod_channel.send("Message deleted from " + message.author.name + ". Reason: Invisible character spam.")
