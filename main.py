@@ -71,7 +71,8 @@ async def on_message(message):
 	####### This section deals with antispam ########################
 	if not message.author.bot:
 		match_obj = re.search("^(.)\\1*$", message.content)
-		if match_obj != None and "­" in message.content:
+		# if match_obj != None and "­" in message.content:
+		if "­" in message.content:
 			await message.delete()
 			mod_channel = client.get_channel(MODERATION_CHANNEL)
 			await mod_channel.send("Message deleted from " + message.author.name + ". Reason: Invisible character spam.")
@@ -957,9 +958,9 @@ async def flip(interaction, coin_amount: int, head_amount: int, bet: str):
 
 	description = ""
 	if res[1] == 0:
-		description += "You have lost the bet.\n\n"
+		description += "You have lost " + bet + helper.PRIMOJEM_EMOTE + "\n\n"
 	else:
-		description += "You have won " + str(res[1]) + " primojems.\n\n"
+		description += "You have won " + str(res[1]) + helper.PRIMOJEM_EMOTE + "\n\n"
 
 	embed = discord.Embed(title=interaction.user.display_name + "\'s Coinflip",
 							description=description,
