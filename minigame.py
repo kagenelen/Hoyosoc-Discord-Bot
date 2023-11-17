@@ -202,7 +202,7 @@ def blackjack_hit(discord_id):
 	# Check if better has won or lost
 	if blackjack_get_value(session["your_hand"]) == 21:
 		return 1
-	elif len(session["your_hand"]) == 5:
+	elif len(session["your_hand"]) == 5 and blackjack_get_value(session["your_hand"]) < 21:
 		# 5 card charlie rule
 		return 1
 	elif blackjack_get_value(session["your_hand"]) > 21:
