@@ -458,6 +458,76 @@ def freeze_checkin(discord_id, resume_time):
 	helper.write_file("users.json", data)
 	return datetime.datetime.utcfromtimestamp(user_entry["next_checkin"]).astimezone(syd).strftime('%d/%m/%y %H:%M')
 
+# Gets daily fortune
+# Argument: discord id
+# Return: [fortune_level, fortune_message, fortune_colour]
+def daily_fortune(discord_id):
+	discord_id = str(discord_id)
+	helper.get_user_entry(discord_id)
+	data = helper.read_file("users.json")
+	user_entry = data.get(discord_id)
+
+	# Check whether user checkin cooldown is over
+	if time.time() < user_entry["next_fortune"]:
+		return "<t:" + str(user_entry["next_fortune"]) + ":R>"
+
+	# Set next fortune to tomorrow 12am AEST
+	tomorrow_date = datetime.datetime.now() \
+				.replace(hour=HOUR_OFFSET, minute=0, second=0, microsecond=0)
+	user_entry["next_fortune"] = int(time.mktime(tomorrow_date.timetuple()))
+
+	if user_entry["next_fortune"] < time.time():
+		user_entry["next_fortune"] = user_entry["next_fortune"] + 86400
+
+	fortune_value = random.randint(0, 450)
+
+	if fortune_value < 100:
+		# Very unlucky
+		messages = ["Seems you're very unlucky today. If you gamble, you might go bankrupt.",
+						   "Seems you're very unlucky today. Watch out, a piano might fall on you.",
+						   "Seems you're very unlucky today. Did you break a mirror by accident?"]
+		fortune_colour = 0x3b3b3b
+		fortune_level = "Very unlucky. (" + str(fortune_value - 200) + ")"
+	elif fortune_value < 200:
+		# Unlucky
+		messages = ["A bit unlucky. You might pull a Qiqi.",
+					"A bit unlucky. You might pull a Dehya.",
+					"A bit unlucky. You might pull a Jean.",
+					"A bit unlucky. You might pull a Diluc.",
+					"A bit unlucky. You might pull a Mona.",
+					"A bit unlucky. You might pull a Tighnari.",
+					"A bit unlucky. You might pull a Keqing."]
+		fortune_colour = 0xfd4869
+		fortune_level = "Unlucky. (" + str(fortune_value - 200) + ")"
+	elif fortune_value < 250:
+		# Neutral
+		messages = ["Neither good or bad luck. Your fate is in your hands today.",
+					"Neither good or bad luck. But I'm just a bot, so how would I know?",
+					"Error 404: Your fortune is not found."]
+		fortune_colour = 0x4cb6ff
+		fortune_level = "Neutral. (0)"
+	elif fortune_value < 350:
+		# Lucky
+		messages = ["Lucky you! Perhaps you'll get more blue drops today.",
+					"Lucky you! You might get a 5 star!",
+					"Lucky you! You found " + str(fortune_value) + helper.PRIMOJEM_EMOTE + " on the ground."]
+		fortune_colour = 0x2ee518
+		fortune_level = "Lucky. (" + str(fortune_value - 250) + ")"
+	else:
+		# Very lucky
+		messages = ["Wow, you are so lucky! Maybe you'll pull a double 5 star!",
+						   "Wow, you are so lucky! Did you steal someone else's luck?",
+			"Wow, you are so lucky you found " + str(fortune_value) + helper.PRIMOJEM_EMOTE + " on the ground."]
+		fortune_colour = 0xffda67
+		fortune_level = "Very lucky. (" + str(fortune_value - 250) + ")"
+
+	helper.write_file("users.json", data)
+
+	fortune_message = random.choice(messages)
+	if "you found" in fortune_message:
+		update_user_currency(discord_id, fortune_value)
+
+	return [fortune_level, fortune_message, fortune_colour]
 
 # Check whether a user owns a role
 # Argument: discord id string, role string

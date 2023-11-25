@@ -9,8 +9,10 @@ import random
 import time
 import DiscordUtils
 import re
+import asyncio
 
 import helper
+import misc
 import uid_finder
 import gambling
 import minigame
@@ -63,6 +65,7 @@ async def on_ready():
 	make_backup.start()
 	run_scheduled_tasks.start()
 	card_spam_description_update.start()
+	helper.rewrite_structure()
 
 @client.event
 async def on_message(message):
@@ -102,7 +105,7 @@ async def on_message(message):
 
 	####### This section deals with verifying ##############################
 	if (message.channel.id == VERIFICATION_CHANNEL):
-		user = await helper.verify_user(message)
+		user = await misc.verify_user(message)
 		if user == None:
 			return
 
@@ -161,7 +164,7 @@ async def make_backup():
 @tasks.loop(minutes=30)
 async def card_spam_description_update():
 	channel = client.get_channel(CARD_SPAM_CHANNEL)
-	await helper.card_update(channel)
+	await misc.card_update(channel)
 
 @tasks.loop(minutes=1)
 async def run_scheduled_tasks():
@@ -306,7 +309,7 @@ async def view_tasks(interaction):
 		return
 
 	embed = discord.Embed(title="Scheduled Tasks", color=0x61dff)
-	tasks = helper.list_tasks()
+	tasks = misc.list_tasks()
 	for t in tasks:
 		embed.add_field(name=t[0], value=t[1], inline=False)
 
@@ -346,7 +349,7 @@ async def card_count(interaction, channel: discord.TextChannel, output: app_comm
 	if output.value == 1:
 		await interaction.followup.send("Check console for the result.", ephemeral=True)
 		
-	num = await helper.channel_substring_counter(channel, output.value)
+	num = await misc.channel_substring_counter(channel, output.value)
 	if channel.id == CARD_SPAM_CHANNEL:
 		data = helper.read_file("config.json")
 		data["card_spam_counter"] = num
@@ -360,14 +363,14 @@ async def card_count(interaction, channel: discord.TextChannel, output: app_comm
 				description="Send yatta emotes.",
 				guild=discord.Object(id=GENSOC_SERVER))
 async def yatta(interaction):
-	res = helper.yatta_random()
+	res = misc.yatta_random()
 	await interaction.response.send_message(res)
 
 @tree.command(name="unyatta",
 	description="Send unyatta emotes.",
 	guild=discord.Object(id=GENSOC_SERVER))
 async def unyatta(interaction):
-	await interaction.response.send_message(helper.UNYATTA_EMOTE)
+	await interaction.response.send_message(misc.UNYATTA_EMOTE)
 	
 
 @tree.command(name="help",
@@ -412,6 +415,9 @@ async def help_commands(interaction):
 	embed_general.add_field(name="**/remove_uid**", value="Remove UID from bot database.", inline=False)
 	embed_general.add_field(name="**/find_uid**", value="List all UIDs of an user.", inline=False)
 	embed_general.add_field(name="**/whose_uid**", value="Find the owner of an UID.", inline=False)
+	embed_general.add_field(name="**/fortune**", value="Get your daily fortune.", inline=False)
+	embed_general.add_field(name="**/yatta**", value="Bot sends some yatta emotes.", inline=False)
+	embed_general.add_field(name="**/unyatta**", value="Bot sends unyatta emotes.", inline=False)
 
 	embed_admin.add_field(name="**/send_welcome**", value="Send welcome sticky message.", inline=False)
 	embed_admin.add_field(name="**/set_verification**", value="Set verification channel.", inline=False)
@@ -709,6 +715,46 @@ async def checkin_freeze(interaction, date: str):
 	else:
 		await interaction.response.send_message(
 			"<@" + str(interaction.user.id) + ">'s checkin has been frozen till " + res + " UTC +11.")
+
+@tree.command(name="fortune",
+				description="Is it your lucky day today?",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def fortune(interaction):
+	res = gambling.daily_fortune(interaction.user.id)
+	if isinstance(res, str):
+		await interaction.response.send_message(
+			"Fortune cooldown finishes " + res + ".", ephemeral=True)
+		return
+	
+	# Loading screen
+	loading_message = "Getting your fortune ...\n"
+	
+	embed = discord.Embed(title=interaction.user.display_name + "\'s Fortune",
+							description=loading_message,
+							color=0x61dfff)
+	embed.set_thumbnail(url=interaction.user.display_avatar.url)
+	await interaction.response.send_message(embed=embed)
+	ori_response = await interaction.original_response()
+	
+	elements = ["<:Pyro:1177831404608966656>",
+				"<:Hydro:1177831406349594628>",
+				"<:Anemo:1177831416206217236>",
+				"<:Electro:1177831411328241704>",
+				"<:Dendro:1177831409453387837>",
+				"<:Cryo:1177831401308045412>",
+				"<:Geo:1177831414595584131>"]
+	for x in range(7):
+		loading_message += elements[x]
+		embed.description = loading_message
+		await asyncio.sleep(1)
+		await ori_response.edit(embed=embed)
+		
+	# Actual fortune
+	embed.description = res[1]
+	embed.colour = res[2]
+	embed.add_field(name="Fortune Level", value=res[0], inline=False)
+	await asyncio.sleep(1)
+	await ori_response.edit(embed=embed)
 
 @tree.command(name="inventory",
 				description="Check your primojem, jemdust and owned roles.",
