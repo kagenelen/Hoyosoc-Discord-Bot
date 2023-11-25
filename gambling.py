@@ -484,8 +484,8 @@ def daily_fortune(discord_id):
 	if fortune_value < 100:
 		# Very unlucky
 		messages = ["Seems you're very unlucky today. If you gamble, you might go bankrupt.",
-						   "Seems you're very unlucky today. Watch out, a piano might fall on you.",
-						   "Seems you're very unlucky today. Did you break a mirror by accident?"]
+					"Seems you're very unlucky today. Watch out, a piano might fall on you.",
+					"Seems you're very unlucky today. Did you break a mirror by accident?"]
 		fortune_colour = 0x3b3b3b
 		fortune_level = "Very unlucky. (" + str(fortune_value - 200) + ")"
 	elif fortune_value < 200:
@@ -513,6 +513,12 @@ def daily_fortune(discord_id):
 					"Lucky you! You found " + str(fortune_value) + helper.PRIMOJEM_EMOTE + " on the ground."]
 		fortune_colour = 0x2ee518
 		fortune_level = "Lucky. (" + str(fortune_value - 250) + ")"
+	elif fortune_value == 450:
+		# Ultimate luck
+		messages = ["You found 5000" + helper.PRIMOJEM_EMOTE + " on the ground. How did you get so much luck?"]
+		fortune_value = 5000
+		fortune_level = "Extremely lucky. (" + str(fortune_value - 250) + ")"
+		fortune_colour = 0x2ee518
 	else:
 		# Very lucky
 		messages = ["Wow, you are so lucky! Maybe you'll pull a double 5 star!",
