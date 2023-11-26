@@ -1,4 +1,5 @@
 import helper
+import misc
 
 import datetime
 import time
@@ -258,7 +259,7 @@ def add_auto_payout_bet(message_id, bracket_id, end_time):
 		"message_id": message_id
 	}
 
-	helper.create_task("vote", end_time_unix, task_dict)
+	misc.create_task("vote", end_time_unix, task_dict)
 
 # Function called when vote task is scheduled, auto payout bet from reacts
 # Argument: bracket id, list of reactions
@@ -295,7 +296,7 @@ def update_user_currency(discord_id, change):
     data = helper.read_file("users.json")
     user_entry = data.get(discord_id, None)
 
-    if user_entry["currency"] + change < 0:
+    if user_entry["currency"] >= 0 and user_entry["currency"] + change < 0:
         # Insufficient currency
         return None
 
