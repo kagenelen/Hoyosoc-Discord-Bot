@@ -114,13 +114,6 @@ async def verify_user(message):
 		if "discord id" in word1.lower(): # Discord new username format
 			username = message_words[index + 1].lower()
 
-	role1 = discord.utils.get(message.guild.roles, name="Traveller")
-	role2 = discord.utils.get(message.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀ Cosmetic Roles ⠀⠀⠀⠀⠀⠀⠀")
-	role3 = discord.utils.get(message.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ About ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
-	role4 = discord.utils.get(message.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Misc ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
-	if role1 == None or role2 == None or role3 == None or role4 == None:
-		return
-
 	if old_username:
 		user = discord.utils.get(message.guild.members,
 														 name=username_list[0],
@@ -149,12 +142,25 @@ async def verify_user(message):
 			await message.reply("WARNING: <@" + str(user.id) + "> account is less than 1 month old. Please manually verify this user.")
 			return None
 
+	role1 = discord.utils.get(message.guild.roles, name="Traveller")
+	role2 = discord.utils.get(message.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀ Cosmetic Roles ⠀⠀⠀⠀⠀⠀⠀")
+	role3 = discord.utils.get(message.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ About ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+	role4 = discord.utils.get(message.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Misc ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+	role5 = discord.utils.get(message.guild.roles, name="Unverified")
+	if role1 == None or role2 == None or role3 == None or role4 == None or role5 == None:
+		return
+
 	await user.add_roles(role1)
 	await user.add_roles(role2)
 	await user.add_roles(role3)
 	await user.add_roles(role4)
 	await message.add_reaction("✅")
 	print(username + " has been given a role")
+
+	try:
+		await user.remove_roles(role5)
+	except:
+		pass
 
 	return user
 
