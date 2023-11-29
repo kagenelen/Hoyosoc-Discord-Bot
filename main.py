@@ -67,6 +67,11 @@ async def on_ready():
 	card_spam_description_update.start()
 
 @client.event
+async def on_member_join(member):
+	unverified = discord.utils.get(member.guild.roles, name="Unverified")
+	await member.add_roles(unverified)
+
+@client.event
 async def on_message(message):
 	global WELCOME_MESSAGE
 
@@ -396,13 +401,13 @@ async def help_commands(interaction):
 	embed_primojem.add_field(name="**/buy**", value="Buy a role from the shop.", inline=False)
 	embed_primojem.add_field(name="**/equip**", value="Equip or unequip a role.", inline=False)
 	embed_primojem.add_field(name="**/inventory**", value="Check primojem, jemdust and owned roles.", inline=False)
+	embed_primojem.add_field(name="**/gacha**", value="Gacha for role icons.", inline=False)
 	embed_primojem.add_field(name="**/salvage**", value="Sell a role icon for jemdust.", inline=False)
 	
 	embed_minigame.add_field(name="**/blackjack**", value="Play blackjack.", inline=False)
 	embed_minigame.add_field(name="**/hangman**", value="Play hangman.", inline=False)
 	embed_minigame.add_field(name="**/coinflip**", value="Play heads or tails.", inline=False)
 	embed_minigame.add_field(name="**/connect4**", value="Play connect 4.", inline=False)
-	embed_minigame.add_field(name="**/gacha**", value="Gacha for role icons.", inline=False)
 	
 	embed_poll.add_field(name="**/bet**", value="Make a bet on this-or-that bracket.", inline=False)
 	embed_poll.add_field(name="**/ongoing_bets**", value="See the bracket id of ongoing bets.", inline=False)
@@ -827,6 +832,7 @@ async def view_shop(interaction, shop: app_commands.Choice[str]):
 	elif shop.value == "jemdust":
 		description = ("5 star role icon: 180 " + helper.JEMDUST_EMOTE + "  |  " +
 			"4 star role icon: 34 " + helper.JEMDUST_EMOTE + "\n" + 
+			"Use **/gacha** to pull for role icons.\n\n" +
 			"Please message an exec if you would like a character to be added to the role icon shop.")
 
 	embed = discord.Embed(title="Shop",
