@@ -482,7 +482,7 @@ def daily_fortune(discord_id):
 
 	fortune_value = random.randint(0, 420)
 
-	if fortune_value < 100:
+	if fortune_value <= 100:
 		# Very unlucky
 		messages = ["Seems you're very unlucky today. If you gamble, you might go bankrupt.",
 					"Seems you're very unlucky today. Watch out, a piano might fall on you.",
@@ -490,7 +490,7 @@ def daily_fortune(discord_id):
 				   	"Seems you're very unlucky today, like Bennett."]
 		fortune_colour = 0x3b3b3b
 		fortune_level = "Very unlucky. (" + str(fortune_value - 200) + ")"
-	elif fortune_value < 200:
+	elif fortune_value <= 200:
 		# Unlucky
 		messages = ["A bit unlucky. You might pull a Qiqi.",
 					"A bit unlucky. You might pull a Dehya.",
@@ -501,14 +501,14 @@ def daily_fortune(discord_id):
 					"A bit unlucky. You might pull a Keqing."]
 		fortune_colour = 0xfd4869
 		fortune_level = "Unlucky. (" + str(fortune_value - 200) + ")"
-	elif fortune_value < 220:
+	elif fortune_value <= 220:
 		# Neutral
 		messages = ["Neither good or bad luck. Your fate is in your hands today.",
 					"Neither good or bad luck. But I'm just a bot, so how would I know?",
 					"Error 404: Your fortune is not found."]
 		fortune_colour = 0x4cb6ff
 		fortune_level = "Neutral. (0)"
-	elif fortune_value < 320:
+	elif fortune_value <= 320:
 		# Lucky
 		messages = ["Lucky you! Perhaps you'll get more blue drops today.",
 					"Lucky you! You might pull a 5 star!",
@@ -534,7 +534,7 @@ def daily_fortune(discord_id):
 	helper.write_file("users.json", data)
 
 	fortune_message = random.choice(messages)
-	if "you found" in fortune_message:
+	if "ground" in fortune_message:
 		update_user_currency(discord_id, fortune_value)
 
 	return [fortune_level, fortune_message, fortune_colour]
