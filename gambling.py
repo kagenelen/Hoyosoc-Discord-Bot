@@ -480,7 +480,7 @@ def daily_fortune(discord_id):
 	if user_entry["next_fortune"] < time.time():
 		user_entry["next_fortune"] = user_entry["next_fortune"] + 86400
 
-	fortune_value = random.randint(0, 450)
+	fortune_value = random.randint(0, 420)
 
 	if fortune_value < 100:
 		# Very unlucky
@@ -501,25 +501,25 @@ def daily_fortune(discord_id):
 					"A bit unlucky. You might pull a Keqing."]
 		fortune_colour = 0xfd4869
 		fortune_level = "Unlucky. (" + str(fortune_value - 200) + ")"
-	elif fortune_value < 250:
+	elif fortune_value < 220:
 		# Neutral
 		messages = ["Neither good or bad luck. Your fate is in your hands today.",
 					"Neither good or bad luck. But I'm just a bot, so how would I know?",
 					"Error 404: Your fortune is not found."]
 		fortune_colour = 0x4cb6ff
 		fortune_level = "Neutral. (0)"
-	elif fortune_value < 350:
+	elif fortune_value < 320:
 		# Lucky
 		messages = ["Lucky you! Perhaps you'll get more blue drops today.",
 					"Lucky you! You might pull a 5 star!",
 					"Lucky you! You found " + str(fortune_value) + helper.PRIMOJEM_EMOTE + " on the ground."]
 		fortune_colour = 0x2ee518
-		fortune_level = "Lucky. (" + str(fortune_value - 250) + ")"
-	elif fortune_value == 450:
+		fortune_level = "Lucky. (" + str(fortune_value - 220) + ")"
+	elif fortune_value == 420:
 		# Ultimate luck
 		messages = ["You found 5000" + helper.PRIMOJEM_EMOTE + " on the ground. How did you get so much luck?"]
 		fortune_value = 5000
-		fortune_level = "Extremely lucky. (" + str(fortune_value - 250) + ")"
+		fortune_level = "Extremely lucky. (" + str(fortune_value - 220) + ")"
 		fortune_colour = 0x2ee518
 	else:
 		# Very lucky
@@ -527,7 +527,7 @@ def daily_fortune(discord_id):
 					"Wow, you are so lucky! Did you steal someone else's luck?",
 			"Wow, you are so lucky you found " + str(int(fortune_value * 1.5)) + helper.PRIMOJEM_EMOTE + " on the ground."]
 		fortune_colour = 0xffda67
-		fortune_level = "Very lucky. (" + str(fortune_value - 250) + ")"
+		fortune_level = "Very lucky. (" + str(fortune_value - 220) + ")"
 		fortune_value = int(fortune_value * 1.5)
 		
 
