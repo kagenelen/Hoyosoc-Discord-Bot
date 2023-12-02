@@ -487,7 +487,8 @@ def daily_fortune(discord_id):
 		messages = ["Seems you're very unlucky today. If you gamble, you might go bankrupt.",
 					"Seems you're very unlucky today. Watch out, a piano might fall on you.",
 					"Seems you're very unlucky today. Did you break a mirror by accident?",
-				   	"Seems you're very unlucky today, like Bennett."]
+				   	"Seems you're very unlucky today, like Bennett.",
+				   	"Seems you're very unlucky today. Perhaps someone stole your luck."]
 		fortune_colour = 0x3b3b3b
 		fortune_level = "Very unlucky. (" + str(fortune_value - 200) + ")"
 	elif fortune_value <= 200:
