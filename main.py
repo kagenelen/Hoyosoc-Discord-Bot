@@ -773,7 +773,7 @@ async def inventory(interaction, target_user: discord.Member = None):
 		res = gambling.get_inventory(interaction.user.id)
 		thumbnail = interaction.user.display_avatar.url
 
-	embed = discord.Embed(title=username + "\'s inventory",
+	embed = discord.Embed(title=username + "\'s Inventory",
 							description=str(res[0]) + " " + helper.PRIMOJEM_EMOTE + "  |  " + 
 						  		str(res[1]) + " " + helper.JEMDUST_EMOTE,
 							color=0x61dfff)
