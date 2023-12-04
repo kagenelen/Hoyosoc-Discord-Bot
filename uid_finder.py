@@ -29,15 +29,19 @@ def save_uid(discord_id, uid, game):
 # Argument: discord id, uid
 # Return: False if uid not found
 def remove_uid(discord_id, uid):
-  user = helper.get_user_entry(discord_id)
-  data = helper.read_file("users.json")
-
-  if user["genshin_uids"].remove(uid) == False and user["hsr_uids"].remove(uid) == False:
-    return False
-
-  data[discord_id] = user
-  helper.write_file("users.json", data)
-  return True
+	user = helper.get_user_entry(discord_id)
+	data = helper.read_file("users.json")
+	
+	if uid in user["genshin_uids"]:
+		user["genshin_uids"].remove(uid)
+	elif uid in user["hsr_uids"]:
+		user["hsr_uids"].remove(uid)
+	else:
+		return False
+	
+	data[discord_id] = user
+	helper.write_file("users.json", data)
+	return True
 
 
 # Find all uids for a given user
