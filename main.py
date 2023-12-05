@@ -308,6 +308,22 @@ async def view_tasks(interaction):
 
 	await interaction.response.send_message(embed=embed, ephemeral=True)
 
+@tree.command(name="send_code",
+	description="Send verification code. Admin only.",
+	guild=discord.Object(id=GENSOC_SERVER))
+async def send_code(interaction, target_user: discord.Member, email: str, is_unsw: bool):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+
+	code = misc.generate_code(target_user, email, is_unsw)
+	is_sent = misc.send_verify_email(target_user.name, email, code)
+	if is_sent:
+		await interaction.response.send_message("Email  has been sent to " + target_user.name)
+	else:
+		await interaction.response.send_message("Failed to send.")
+
 @tree.command(name="verify_user",
 	description="Manually verify user. Admin only.",
 	guild=discord.Object(id=GENSOC_SERVER))

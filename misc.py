@@ -130,7 +130,7 @@ async def verify_form(message):
 	if username == None and email == None:
 		# Not a verification form, ignore message
 		return
-
+	
 	if old_username:
 		user = discord.utils.get(message.guild.members,
 														 name=username_list[0],
@@ -154,34 +154,40 @@ async def verify_form(message):
 	# Security check: account age
 	if time.mktime(user.created_at.timetuple()) > time.time() - 2592000:
 		# Account is less than 1 month old
-		await message.reply("WARNING: <@" + str(user.id) + "> account is less than 1 month old. Please manually verify this user by typing their email, zid and username in this channel.")
+		await message.reply("WARNING: <@" + str(user.id) + "> account is less than 1 month old. Please manually send verification email with //send_code")
 		return None
 
 	# Send verification email to zid or supplied email
 	if email != None:
-		digits = string.ascii_uppercase + "0123456789"
-		verification_code = ''.join(random.choice(digits) for i in range(8))
-		expiry = time.time() + 600 # 10 minute expiry
-		
-		data = helper.read_file("verification.json")
-		data[str(user.id)] = {
-			"code": verification_code,
-			"expiry": expiry,
-			"unsw": unsw
-		}
-			
-		helper.write_file("verification.json", data)
-
-		is_sent = send_verify_email(user.name, email, verification_code, expiry, unsw)
+		verification_code = generate_code(user, email, unsw)
+		is_sent = send_verify_email(user.name, email, verification_code)
 		if is_sent:
 			await message.add_reaction("✅")
 	
 	return user
 
+# Generate verification code
+# Argument: user object, email, is_unsw  
+def generate_code(user, email, unsw):
+	digits = string.ascii_uppercase + "0123456789"
+	verification_code = ''.join(random.choice(digits) for i in range(8))
+	expiry = time.time() + 600 # 10 minute expiry
+
+	data = helper.read_file("verification.json")
+	data[str(user.id)] = {
+		"code": verification_code,
+		"expiry": expiry,
+		"unsw": unsw
+	}
+
+	helper.write_file("verification.json", data)
+
+	return verification_code
+	
 # Email user the verification code
-# Argument: discord username, email, verification code, expiry unix, is unsw student
-# Return: True if email sent
-def send_verify_email(user, email, code, expiry, unsw):
+# Argument: discord username, email, verification code
+# Return: True if email sent, False if error occurs
+def send_verify_email(discord_username, email, code):
 	from_addr = 'UNSW Hoyoverse Society'
 	to_addr = email
 	text = """
@@ -191,7 +197,7 @@ Your verification code is:
 This code will expire in 10 minutes, and will only work for the discord user %s. Use the code with the command  \\verify_me  to become verified.
 
 The command will immediately verify UNSW students. However non-UNSW member details will need to be manually checked by an society executive after using the command.
-""" % (code, user)
+""" % (code, discord_username)
 	
 	username = 'verify.unswhoyosoc@gmail.com'
 	load_dotenv()
@@ -204,16 +210,20 @@ The command will immediately verify UNSW students. However non-UNSW member detai
 	msg['Subject'] = 'Hoyoverse Society Verification Code'
 	msg.attach(MIMEText(text))
 
+	try:
+		server = smtplib.SMTP('smtp.gmail.com:587')
+		server.ehlo()
+		server.starttls()
+		server.ehlo()
+		server.login(username,password)
+		server.sendmail(from_addr,to_addr,msg.as_string())
+		server.quit()
+		
+	except Exception as error:
+		print("An exception occurred during emailing: ", error)
+		return False
 
-	server = smtplib.SMTP('smtp.gmail.com:587')
-	server.ehlo()
-	server.starttls()
-	server.ehlo()
-	server.login(username,password)
-	server.sendmail(from_addr,to_addr,msg.as_string())
-	server.quit()
-
-	print(user + " has been emailed an verification code at " + email)
+	print(discord_username + " has been emailed an verification code at " + email)
 	return True
 
 # Check if verification code is correct and not expired
