@@ -62,28 +62,40 @@ def get_user_entry(discord_id):
 			"next_checkin": int(time.time()),
 			"role": {},
 			"checkin_streak": 0,
-			"genshin_uids": [],
 			"role_icon": [],
 			"jemdust": 0,
-			"hsr_uids": [],
 			"chat_cooldown": 0,
 			"gambling_profit": 0,
 			"gambling_loss": 0,
-			"next_fortune": 0
+			"next_fortune": 0,
+			"uids": {
+				"genshin": [],
+				"hsr": [],
+				"honkai": [],
+				"tot": [],
+				"zzz": []
+			}
 		}
 		data[discord_id] = user_entry
 	
 	write_file("users.json", data)
 	return user_entry
 
-
 # One time function for modifying database structure
 # Modify this function to suit your need
 def rewrite_structure():
 	data = read_file("users.json")
 	for user in data:
-		if data[user].get("next_fortune", None) == None:
-			data[user]["next_fortune"] = 0
+		if data[user].get("uids", None) == None:
+			data[user]["uids"] = {
+				"genshin": data[user]["genshin_uids"],
+				"hsr": data[user]["hsr_uids"],
+				"honkai": [],
+				"tot": [],
+				"zzz": []
+			}
+			del data[user]["genshin_uids"]
+			del data[user]["hsr_uids"]
 		
 	write_file("users.json", data)
 

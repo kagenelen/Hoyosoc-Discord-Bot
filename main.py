@@ -5,7 +5,6 @@ from discord.ui import Button, View
 from dotenv import load_dotenv
 import os
 import json
-import random
 import time
 import DiscordUtils
 import re
@@ -109,19 +108,9 @@ async def on_message(message):
 
 	####### This section deals with verifying ##############################
 	if (message.channel.id == VERIFICATION_CHANNEL):
-		user = await misc.verify_user(message)
+		user = await misc.verify_form(message)
 		if user == None:
 			return
-
-		# Send the user a character welcome message
-		data = helper.read_file("message.json")
-		welcome_character = random.choices(list(data.keys()), k=1)[0]
-		character_message = "*" + data.get(welcome_character)[
-			1] + "    " + data.get(welcome_character)[0] + "*"
-		character_message = character_message.replace(
-			"author", user.mention)
-		channel = client.get_channel(WELCOME_CHANNEL)
-		await channel.send(character_message)
 
 	##### This section deals with the counting game #######################
 	if (message.channel.id == COUNTING_CHANNEL and not message.author.bot):
@@ -319,6 +308,61 @@ async def view_tasks(interaction):
 
 	await interaction.response.send_message(embed=embed, ephemeral=True)
 
+@tree.command(name="send_code",
+	description="Send verification code. Admin only.",
+	guild=discord.Object(id=GENSOC_SERVER))
+async def send_code(interaction, target_user: discord.Member, email: str, is_unsw: bool):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+
+	code = misc.generate_code(target_user, email, is_unsw)
+	is_sent = misc.send_verify_email(target_user.name, email, code)
+	if is_sent:
+		await interaction.response.send_message("Email  has been sent to " + target_user.name)
+	else:
+		await interaction.response.send_message("Failed to send.")
+
+@tree.command(name="verify_user",
+	description="Manually verify user. Admin only.",
+	guild=discord.Object(id=GENSOC_SERVER))
+async def admin_verify(interaction, verification_target: discord.Member):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+
+	await misc.add_verified(verification_target)
+	await interaction.response.send_message("<@" + str(verification_target.id) + "> has been verified.")
+	
+	channel = client.get_channel(WELCOME_CHANNEL)
+	user_welcome = misc.create_welcome(interaction.user)
+	await channel.send(user_welcome)
+	
+@tree.command(name="verify_me",
+	description="New member self verification.",
+	guild=discord.Object(id=GENSOC_SERVER))
+async def user_self_verify(interaction, verification_code: str):
+	res = misc.is_code_correct(interaction.user.id, verification_code)
+	if isinstance(res, str):
+		await interaction.response.send_message(res, ephemeral=True)
+		return
+
+	if res is True:
+		# Is UNSW student, auto verify
+		await misc.add_verified(interaction.user)
+		await interaction.response.send_message("Congratulations! You have been verified.", ephemeral=True)
+		channel = client.get_channel(WELCOME_CHANNEL)
+		user_welcome = misc.create_welcome(interaction.user)
+		await channel.send(user_welcome)
+		
+	else:
+		# Not UNSW student, need exec to check details and manual verify
+		mod_channel = client.get_channel(MODERATION_CHANNEL)
+		await mod_channel.send("<@" + str(interaction.user.id) + "> has entered the correct verification code. Please verify their details before using \\verify_user.")
+		
+	
 @tree.command(name="set_count",
 				description="Set counting game current number.",
 				guild=discord.Object(id=GENSOC_SERVER))
@@ -450,6 +494,9 @@ async def help_commands(interaction):
 @app_commands.choices(game=[
 	discord.app_commands.Choice(name="Genshin Impact", value="genshin"),
 	discord.app_commands.Choice(name="Honkai Star Rail", value="hsr"),
+	discord.app_commands.Choice(name="Honkai Impact", value="honkai"),
+	discord.app_commands.Choice(name="Tears of Themis", value="tot"),
+	discord.app_commands.Choice(name="Zenless Zone Zero", value="zzz"),
 ])
 async def add_uid(interaction, game: app_commands.Choice[str], uid: str):
 	result = uid_finder.save_uid(str(interaction.user.id), uid, game.value)
@@ -463,8 +510,15 @@ async def add_uid(interaction, game: app_commands.Choice[str], uid: str):
 @tree.command(name="remove_uid",
 				description="Remove a UID from our database",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def remove_uid(interaction, uid: str):
-	result = uid_finder.remove_uid(str(interaction.user.id), uid)
+@app_commands.choices(game=[
+	discord.app_commands.Choice(name="Genshin Impact", value="genshin"),
+	discord.app_commands.Choice(name="Honkai Star Rail", value="hsr"),
+	discord.app_commands.Choice(name="Honkai Impact", value="honkai"),
+	discord.app_commands.Choice(name="Tears of Themis", value="tot"),
+	discord.app_commands.Choice(name="Zenless Zone Zero", value="zzz"),
+])
+async def remove_uid(interaction, game: app_commands.Choice[str], uid: str):
+	result = uid_finder.remove_uid(str(interaction.user.id), uid, game.value)
 	if result == False:
 		await interaction.response.send_message("UID cannot be found.",
 												ephemeral=True)
@@ -491,6 +545,9 @@ async def find_uid(interaction, target_user: discord.Member):
 @app_commands.choices(game=[
 	discord.app_commands.Choice(name="Genshin Impact", value="genshin"),
 	discord.app_commands.Choice(name="Honkai Star Rail", value="hsr"),
+	discord.app_commands.Choice(name="Honkai Impact", value="honkai"),
+	discord.app_commands.Choice(name="Tears of Themis", value="tot"),
+	discord.app_commands.Choice(name="Zenless Zone Zero", value="zzz"),
 ])
 async def reverse_find_uid(interaction, game:app_commands.Choice[str], uid: str):
 	if not uid.isnumeric() or int(uid) >= 999999999 or int(uid) <= 0:

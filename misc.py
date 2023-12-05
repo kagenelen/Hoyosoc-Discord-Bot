@@ -3,7 +3,13 @@ import helper
 import time
 import discord
 import random
+import string
 import re
+from dotenv import load_dotenv
+import os
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 YATTA_EMOTE = ["<:YattaNoText:1168444235620569160>",
 	  "<:Yatta:1168443429869592606>",
@@ -88,32 +94,43 @@ def yatta_random():
 	return yatta_str
 
 
-# Verifies user from moderator message
+# Parses necessary information from verification form
 # Argument: Message (class)
 # Return: User (member class) or None if user not found
-async def verify_user(message):
-	manual = False
+async def verify_form(message):
 	# Deals message type: either embed or not embed
 	message_words = []
 	if (len(message.embeds) > 0):
 		message_words = message.embeds[0].description.split('\n')
 	else:
-		manual = True
 		message_words = message.content.split('\n')
 
 	old_username = False
 	username = None
 	for word in message_words:
 		search_res = re.search(r'(?:!\w+\s+)?([^\n]*#[0-9]*)', word)
-		if search_res != None and "JohnSmith#1234" not in word:  # Discord old username format found
+		if search_res != None:  # Discord old username format found
 			old_username = True
 			username = search_res.group()
 			username_list = username.split("#")
 
+	email = None
+	unsw = False
 	for index, word1 in enumerate(message_words):
-		if "discord id" in word1.lower(): # Discord new username format
+		if "discord username" in word1.lower(): # Discord new username format
 			username = message_words[index + 1].lower()
 
+		if "email:" in word1.lower():
+			email = message_words[index + 1].lower()
+
+		if "your zid" in word1.lower() and message_words[index + 1].lower() != "z0000000":
+			email = message_words[index + 1].lower() + "@ad.unsw.edu.au"
+			unsw = True
+
+	if username == None and email == None:
+		# Not a verification form, ignore message
+		return
+	
 	if old_username:
 		user = discord.utils.get(message.guild.members,
 														 name=username_list[0],
@@ -137,16 +154,112 @@ async def verify_user(message):
 	# Security check: account age
 	if time.mktime(user.created_at.timetuple()) > time.time() - 2592000:
 		# Account is less than 1 month old
-		if not manual:
-			# Do not verify these automatically
-			await message.reply("WARNING: <@" + str(user.id) + "> account is less than 1 month old. Please manually verify this user.")
-			return None
+		await message.reply("WARNING: <@" + str(user.id) + "> account is less than 1 month old. Please manually send verification email with //send_code")
+		return None
 
-	role1 = discord.utils.get(message.guild.roles, name="Traveller")
-	role2 = discord.utils.get(message.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀ Cosmetic Roles ⠀⠀⠀⠀⠀⠀⠀")
-	role3 = discord.utils.get(message.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ About ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
-	role4 = discord.utils.get(message.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Misc ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
-	role5 = discord.utils.get(message.guild.roles, name="Unverified")
+	# Send verification email to zid or supplied email
+	if email != None:
+		verification_code = generate_code(user, email, unsw)
+		is_sent = send_verify_email(user.name, email, verification_code)
+		if is_sent:
+			await message.add_reaction("✅")
+	
+	return user
+
+# Generate verification code
+# Argument: user object, email, is_unsw  
+def generate_code(user, email, unsw):
+	digits = string.ascii_uppercase + "0123456789"
+	verification_code = ''.join(random.choice(digits) for i in range(8))
+	expiry = time.time() + 600 # 10 minute expiry
+
+	data = helper.read_file("verification.json")
+	data[str(user.id)] = {
+		"code": verification_code,
+		"expiry": expiry,
+		"unsw": unsw
+	}
+
+	helper.write_file("verification.json", data)
+
+	return verification_code
+	
+# Email user the verification code
+# Argument: discord username, email, verification code
+# Return: True if email sent, False if error occurs
+def send_verify_email(discord_username, email, code):
+	from_addr = 'UNSW Hoyoverse Society'
+	to_addr = email
+	text = """
+Your verification code is:
+%s
+
+This code will expire in 10 minutes, and will only work for the discord user %s. Use the code with the command  \\verify_me  to become verified.
+
+The command will immediately verify UNSW students. However non-UNSW member details will need to be manually checked by an society executive after using the command.
+""" % (code, discord_username)
+	
+	username = 'verify.unswhoyosoc@gmail.com'
+	load_dotenv()
+	password = os.getenv("EMAIL_PASS")
+
+	msg = MIMEMultipart()
+
+	msg['From'] = from_addr
+	msg['To'] = to_addr
+	msg['Subject'] = 'Hoyoverse Society Verification Code'
+	msg.attach(MIMEText(text))
+
+	try:
+		server = smtplib.SMTP('smtp.gmail.com:587')
+		server.ehlo()
+		server.starttls()
+		server.ehlo()
+		server.login(username,password)
+		server.sendmail(from_addr,to_addr,msg.as_string())
+		server.quit()
+		
+	except Exception as error:
+		print("An exception occurred during emailing: ", error)
+		return False
+
+	print(discord_username + " has been emailed an verification code at " + email)
+	return True
+
+# Check if verification code is correct and not expired
+# Argument: discord_id, code
+# Return: True/False depending on correct code + is unsw or error message
+def is_code_correct(discord_id, code):
+	data = helper.read_file("verification.json")
+	discord_id = str(discord_id)
+	
+	entry = data.get(discord_id, None)
+	if entry == None:
+		return "You do not have an associated verification code, as you may have provided the wrong username."
+
+	if time.time() > entry["expiry"]:
+		return "Your verification code has expired. Please ask an executive to resend a verification email."
+		
+	if entry["code"].upper() == code:
+		data.pop(discord_id)
+		helper.write_file("verification.json", data)
+		if entry["unsw"]:
+			return True
+		else:
+			return False
+			
+	
+	return "The verification code you have provided is incorrect."
+	
+# Add all verified roles and remove unverified status
+# Argument: Member (class)
+# Return: User (member class) or None if user not found
+async def add_verified(user):
+	role1 = discord.utils.get(user.guild.roles, name="Traveller")
+	role2 = discord.utils.get(user.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀ Cosmetic Roles ⠀⠀⠀⠀⠀⠀⠀")
+	role3 = discord.utils.get(user.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ About ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+	role4 = discord.utils.get(user.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Misc ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+	role5 = discord.utils.get(user.guild.roles, name="Unverified")
 	if role1 == None or role2 == None or role3 == None or role4 == None or role5 == None:
 		return
 
@@ -154,8 +267,8 @@ async def verify_user(message):
 	await user.add_roles(role2)
 	await user.add_roles(role3)
 	await user.add_roles(role4)
-	await message.add_reaction("✅")
-	print(username + " has been given a role")
+	
+	print(user.name + " has been given a role.")
 
 	try:
 		await user.remove_roles(role5)
@@ -164,3 +277,13 @@ async def verify_user(message):
 
 	return user
 
+# Generates the user a character welcome message
+# Argument: Member (class)
+# Return: welcome message string
+def create_welcome(user):
+	data = helper.read_file("message.json")
+	welcome_character = random.choices(list(data.keys()), k=1)[0]
+	character_message = "*" + data.get(welcome_character)[
+		1] + "    " + data.get(welcome_character)[0] + "*"
+	character_message = character_message.replace("author", user.mention)
+	return character_message
