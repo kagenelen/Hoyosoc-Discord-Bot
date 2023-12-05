@@ -5,6 +5,8 @@ import discord
 import random
 import string
 import re
+from dotenv import load_dotenv
+import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -190,9 +192,10 @@ This code will expire in 10 minutes, and will only work for the discord user %s.
 
 The command will immediately verify UNSW students. However non-UNSW member details will need to be manually checked by an society executive after using the command.
 """ % (code, user)
-
-	username = 'giswordpress@gmail.com'
-	password = 'bjmr dnsm tkjb zziz'
+	
+	username = 'verify.unswhoyosoc@gmail.com'
+	load_dotenv()
+	password = os.getenv("EMAIL_PASS")
 
 	msg = MIMEMultipart()
 
