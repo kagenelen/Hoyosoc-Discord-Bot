@@ -76,6 +76,11 @@ def get_user_entry(discord_id):
 	write_file("users.json", data)
 	return user_entry
 
+# Extract user object from username strings
+# Argument: message string
+# Return: user (class) or None if invalid username
+def extract_user_from_string(message):
+	return
 
 # One time function for modifying database structure
 # Modify this function to suit your need

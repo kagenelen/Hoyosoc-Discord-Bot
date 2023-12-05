@@ -42,8 +42,11 @@ with open(absolute_path + 'config.json', 'r') as f:
 	f.close()
 
 # NOTICE: Uncomment these two if testing on the test server
-# GENSOC_SERVER = 962970271545982986 # Test server
-# CARD_SPAM_CHANNEL = 1158232410299846747
+GENSOC_SERVER = 962970271545982986 # Test server
+CARD_SPAM_CHANNEL = 1158232410299846747
+VERIFICATION_CHANNEL = 986440303655399454
+WELCOME_CHANNEL = 1071984730960052274
+MODERATION_CHANNEL = 1181463563722833961
 
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
 CHAT_PRIMOJEM = 50
@@ -109,19 +112,9 @@ async def on_message(message):
 
 	####### This section deals with verifying ##############################
 	if (message.channel.id == VERIFICATION_CHANNEL):
-		user = await misc.verify_user(message)
+		user = await misc.verify_form(message)
 		if user == None:
 			return
-
-		# Send the user a character welcome message
-		data = helper.read_file("message.json")
-		welcome_character = random.choices(list(data.keys()), k=1)[0]
-		character_message = "*" + data.get(welcome_character)[
-			1] + "    " + data.get(welcome_character)[0] + "*"
-		character_message = character_message.replace(
-			"author", user.mention)
-		channel = client.get_channel(WELCOME_CHANNEL)
-		await channel.send(character_message)
 
 	##### This section deals with the counting game #######################
 	if (message.channel.id == COUNTING_CHANNEL and not message.author.bot):
@@ -319,6 +312,45 @@ async def view_tasks(interaction):
 
 	await interaction.response.send_message(embed=embed, ephemeral=True)
 
+@tree.command(name="verify_user",
+	description="Manually verify user. Admin only.",
+	guild=discord.Object(id=GENSOC_SERVER))
+async def admin_verify(interaction, verification_target: discord.Member):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+
+	await misc.add_verified(verification_target)
+	await interaction.response.send_message("<@" + str(verification_target.id) + "> has been verified.")
+	
+	channel = client.get_channel(WELCOME_CHANNEL)
+	user_welcome = misc.create_welcome(interaction.user)
+	await channel.send(user_welcome)
+	
+@tree.command(name="verify_me",
+	description="New member self verification.",
+	guild=discord.Object(id=GENSOC_SERVER))
+async def user_self_verify(interaction, verification_code: str):
+	res = misc.is_code_correct(interaction.user.id, verification_code)
+	if isinstance(res, str):
+		await interaction.response.send_message(res, ephemeral=True)
+		return
+
+	if res is True:
+		# Is UNSW student, auto verify
+		await misc.add_verified(interaction.user)
+		await interaction.response.send_message("Congratulations! You have been verified.", ephemeral=True)
+		channel = client.get_channel(WELCOME_CHANNEL)
+		user_welcome = misc.create_welcome(interaction.user)
+		await channel.send(user_welcome)
+		
+	else:
+		# Not UNSW student, need exec to check details and manual verify
+		mod_channel = client.get_channel(MODERATION_CHANNEL)
+		await mod_channel.send("<@" + str(interaction.user.id) + "> has entered the correct verification code. Please verify their details before using \\verify_user.")
+		
+	
 @tree.command(name="set_count",
 				description="Set counting game current number.",
 				guild=discord.Object(id=GENSOC_SERVER))
