@@ -227,7 +227,7 @@ def is_code_correct(discord_id, code):
 	if time.time() > entry["expiry"]:
 		return "Your verification code has expired. Please ask an executive to resend a verification email."
 		
-	if entry["code"] == code:
+	if entry["code"].upper() == code:
 		data.pop(discord_id)
 		helper.write_file("verification.json", data)
 		if entry["unsw"]:
