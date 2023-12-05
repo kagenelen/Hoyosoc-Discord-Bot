@@ -13,12 +13,10 @@ def save_uid(discord_id, uid, game):
 	# Check valid uid
 	if (int(uid) < 100000000 or int(uid) > 999999999):
 		return False
+
 	
-	if uid not in user["genshin_uids"] and game == "genshin":
-		user["genshin_uids"].append(uid)
-	
-	if uid not in user["hsr_uids"] and game == "hsr":
-		user["hsr_uids"].append(uid)
+	if uid not in user["uids"][game]:
+		user["uids"][game].append(uid)
 	
 	data[discord_id] = user
 	helper.write_file("users.json", data)
@@ -26,16 +24,14 @@ def save_uid(discord_id, uid, game):
 
 
 # Remove given uid from user's entry in database
-# Argument: discord id, uid
+# Argument: discord id, uid, game
 # Return: False if uid not found
-def remove_uid(discord_id, uid):
+def remove_uid(discord_id, uid, game):
 	user = helper.get_user_entry(discord_id)
 	data = helper.read_file("users.json")
 	
-	if uid in user["genshin_uids"]:
-		user["genshin_uids"].remove(uid)
-	elif uid in user["hsr_uids"]:
-		user["hsr_uids"].remove(uid)
+	if uid in user["uids"][game]:
+		user["uids"][game].remove(uid)
 	else:
 		return False
 	
@@ -49,17 +45,29 @@ def remove_uid(discord_id, uid):
 # Return: False if not uid found, uid list as string
 def find_uid(discord_id):
 	user = helper.get_user_entry(discord_id)
+
+	merged_uids = user["uids"]["genshin"] + user["uids"]["hsr"] + \
+		user["uids"]["honkai"] + user["uids"]["tot"] + user["uids"]["zzz"]
 	
-	if len(user["genshin_uids"]) == 0 and len(user["hsr_uids"]) == 0:
+	if len(merged_uids) == 0:
 		return False
 	
 	uid_list = ""
 		
-	if len(user["genshin_uids"]) != 0:
-		uid_list += "Genshin Impact: " + ", ".join(user["genshin_uids"]) + "\n"
+	if len(user["uids"]["genshin"]) != 0:
+		uid_list += "Genshin Impact: " + ", ".join(user["uids"]["genshin"]) + "\n"
 		
-	if len(user["hsr_uids"]) != 0:
-		uid_list += "Star Rail: " + ", ".join(user["hsr_uids"]) + "\n"
+	if len(user["uids"]["hsr"]) != 0:
+		uid_list += "Star Rail: " + ", ".join(user["uids"]["hsr"]) + "\n"
+
+	if len(user["uids"]["honkai"]) != 0:
+		uid_list += "Honkai Impact: " + ", ".join(user["uids"]["honkai"]) + "\n"
+
+	if len(user["uids"]["tot"]) != 0:
+		uid_list += "Tears of Themis: " + ", ".join(user["uids"]["tot"]) + "\n"
+
+	if len(user["uids"]["zzz"]) != 0:
+		uid_list += "Zenless Zone Zero: " + ", ".join(user["uids"]["zzz"]) + "\n"
 
 	return uid_list
 
@@ -69,9 +77,7 @@ def find_uid(discord_id):
 def whose_uid(uid, game):
 	data = helper.read_file("users.json")
 	for user in data:
-		if game == "genshin" and uid in data[user]["genshin_uids"]:
-			return user
-		if game == "hsr" and uid in data[user]["hsr_uids"]:
+		if data[user]["uids"][game]:
 			return user
 			
 	return False
