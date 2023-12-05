@@ -5,7 +5,6 @@ from discord.ui import Button, View
 from dotenv import load_dotenv
 import os
 import json
-import random
 import time
 import DiscordUtils
 import re
@@ -42,11 +41,8 @@ with open(absolute_path + 'config.json', 'r') as f:
 	f.close()
 
 # NOTICE: Uncomment these two if testing on the test server
-GENSOC_SERVER = 962970271545982986 # Test server
-CARD_SPAM_CHANNEL = 1158232410299846747
-VERIFICATION_CHANNEL = 986440303655399454
-WELCOME_CHANNEL = 1071984730960052274
-MODERATION_CHANNEL = 1181463563722833961
+# GENSOC_SERVER = 962970271545982986 # Test server
+# CARD_SPAM_CHANNEL = 1158232410299846747
 
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
 CHAT_PRIMOJEM = 50
@@ -482,6 +478,9 @@ async def help_commands(interaction):
 @app_commands.choices(game=[
 	discord.app_commands.Choice(name="Genshin Impact", value="genshin"),
 	discord.app_commands.Choice(name="Honkai Star Rail", value="hsr"),
+	discord.app_commands.Choice(name="Honkai Impact", value="honkai"),
+	discord.app_commands.Choice(name="Tears of Themis", value="tot"),
+	discord.app_commands.Choice(name="Zenless Zone Zero", value="zzz"),
 ])
 async def add_uid(interaction, game: app_commands.Choice[str], uid: str):
 	result = uid_finder.save_uid(str(interaction.user.id), uid, game.value)
@@ -495,8 +494,15 @@ async def add_uid(interaction, game: app_commands.Choice[str], uid: str):
 @tree.command(name="remove_uid",
 				description="Remove a UID from our database",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def remove_uid(interaction, uid: str):
-	result = uid_finder.remove_uid(str(interaction.user.id), uid)
+@app_commands.choices(game=[
+	discord.app_commands.Choice(name="Genshin Impact", value="genshin"),
+	discord.app_commands.Choice(name="Honkai Star Rail", value="hsr"),
+	discord.app_commands.Choice(name="Honkai Impact", value="honkai"),
+	discord.app_commands.Choice(name="Tears of Themis", value="tot"),
+	discord.app_commands.Choice(name="Zenless Zone Zero", value="zzz"),
+])
+async def remove_uid(interaction, game: app_commands.Choice[str], uid: str):
+	result = uid_finder.remove_uid(str(interaction.user.id), uid, game.value)
 	if result == False:
 		await interaction.response.send_message("UID cannot be found.",
 												ephemeral=True)
@@ -523,6 +529,9 @@ async def find_uid(interaction, target_user: discord.Member):
 @app_commands.choices(game=[
 	discord.app_commands.Choice(name="Genshin Impact", value="genshin"),
 	discord.app_commands.Choice(name="Honkai Star Rail", value="hsr"),
+	discord.app_commands.Choice(name="Honkai Impact", value="honkai"),
+	discord.app_commands.Choice(name="Tears of Themis", value="tot"),
+	discord.app_commands.Choice(name="Zenless Zone Zero", value="zzz"),
 ])
 async def reverse_find_uid(interaction, game:app_commands.Choice[str], uid: str):
 	if not uid.isnumeric() or int(uid) >= 999999999 or int(uid) <= 0:
