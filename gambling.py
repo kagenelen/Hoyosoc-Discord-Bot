@@ -365,7 +365,7 @@ def update_user_list_currency(discord_list, change, server):
 
 
 # Change all user's currency by amount
-def update_all_currency(change, server):
+def update_all_currency(change):
     data = helper.read_file("users.json")
 
     for u in data:
