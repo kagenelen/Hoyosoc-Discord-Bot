@@ -41,8 +41,8 @@ with open(absolute_path + 'config.json', 'r') as f:
 	f.close()
 
 # NOTICE: Uncomment these two if testing on the test server
-# GENSOC_SERVER = 962970271545982986 # Test server
-# CARD_SPAM_CHANNEL = 1158232410299846747
+GENSOC_SERVER = 962970271545982986 # Test server
+CARD_SPAM_CHANNEL = 1158232410299846747
 
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
 CHAT_PRIMOJEM = 50
@@ -1040,11 +1040,14 @@ async def give_primojem(interaction, attendee_list: str, amount: int):
 												ephemeral=True)
 		return
 
-	res = gambling.update_user_list_currency(attendee_list, amount,
-											 interaction.guild)
-	await interaction.response.send_message(
-		str(amount) + " given to these users: " + ", ".join(res),
-		ephemeral=True)
+	if attendee_list == "all":
+		gambling.update_all_currency(amount)
+		await interaction.response.send_message(str(amount) + " apologems given to all users",
+												ephemeral=True)
+	else:
+		res = gambling.update_user_list_currency(attendee_list, amount, interaction.guild)
+	await interaction.response.send_message(str(amount) + " given to these users: " + ", ".join(res),
+												ephemeral=True)
 
 ################### MINIGAMES ####################################################
 
