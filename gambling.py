@@ -324,7 +324,7 @@ def get_leaderboard(category):
 	data = helper.read_file("users.json")
 	if category == "role_icon":
 		sorted_data = sorted(data.items(),
-							 key=lambda x: len(getitem(x[1], category)), # Other roles are not separated yet
+							 key=lambda x: len(getitem(x[1], category)),
 							 reverse=True)
 	else:
 		sorted_data = sorted(data.items(),
