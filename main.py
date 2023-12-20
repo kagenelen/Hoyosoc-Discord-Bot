@@ -1353,7 +1353,7 @@ async def role_icon_gacha(interaction, pull_amount: int):
 async def salvage_role(interaction, role: str):
 	res = gambling.scrap_role_icon(interaction.user.id, role)
 
-	if res == None:
+	if res == None or res == False:
 		await interaction.response.send_message("Invalid or you do not own this role.", ephemeral=True)
 	else:
 		# Unequip the salvaged role
