@@ -324,7 +324,7 @@ def get_leaderboard(category):
 	data = helper.read_file("users.json")
 	if category == "role_icon":
 		sorted_data = sorted(data.items(),
-							 key=lambda x: len(getitem(x[1], category)),
+							 key=lambda x: len(getitem(x[1], category)), # Other roles are not separated yet
 							 reverse=True)
 	else:
 		sorted_data = sorted(data.items(),
@@ -545,7 +545,7 @@ def daily_fortune(discord_id):
 def is_role_owned(discord_id, role):
     user_entry = helper.get_user_entry(str(discord_id))
 
-    return role.lower() in user_entry["role"] or role.title() in user_entry["role_icon"]
+    return role.title() in user_entry["role"] or role.title() in user_entry["role_icon"]
 
 
 # Get user's currency, roles, role duration
@@ -586,7 +586,7 @@ def get_inventory(discord_id):
 # Return: None if successful or error string
 def buy_role(discord_id, role, duration, is_booster, recipient):
 	discord_id = str(discord_id)
-	role = role.lower()
+	role = role.title()
 	helper.get_user_entry(discord_id)
 	data = helper.read_file("users.json")
 	gacha_pool = helper.read_file("role_icon.json")
@@ -598,7 +598,7 @@ def buy_role(discord_id, role, duration, is_booster, recipient):
 	# Determine whether it is role or role icon and the price
 	primojem_price = 0
 	jemdust_price = 0
-	if role in ["geo", "anemo", "electro", "pyro", "hydro", "cryo", "physical", "dendro", "imaginary", "quantum"]:
+	if role in gacha_pool["colour"]:
 		if duration == 7:
 			primojem_price = ONE_WEEK_ROLE
 		elif duration == 5000:
@@ -611,10 +611,10 @@ def buy_role(discord_id, role, duration, is_booster, recipient):
 		if is_booster and recipient == None:
 			primojem_price = int(BOOSTER_DISCOUNT * primojem_price)
 			
-	elif role.title() in gacha_pool["5"]:
+	elif role in gacha_pool["5"]:
 		jemdust_price = FIVE_STAR_COST
 	
-	elif role.title() in gacha_pool["4"]:
+	elif role in gacha_pool["4"]:
 		jemdust_price = FOUR_STAR_COST
 		
 	else: 
@@ -631,7 +631,7 @@ def buy_role(discord_id, role, duration, is_booster, recipient):
 			return "You already have this permanent role."
 
 		if jemdust_price != 0:
-			user_entry["role_icon"].append(role.title())
+			user_entry["role_icon"].append(role)
 		elif duration == 7:
 			user_entry["role"][role] = current_end_time + 604800
 		elif duration == 5000:
@@ -646,7 +646,7 @@ def buy_role(discord_id, role, duration, is_booster, recipient):
 			return "The recipient already have this permanent role."
 
 		if jemdust_price != 0:
-			recipient_entry["role_icon"].append(role.title())
+			recipient_entry["role_icon"].append(role)
 		elif duration == 7:
 			recipient_entry["role"][role] = current_end_time + 604800
 		elif duration == 5000:

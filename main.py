@@ -41,8 +41,8 @@ with open(absolute_path + 'config.json', 'r') as f:
 	f.close()
 
 # NOTICE: Uncomment these two if testing on the test server
-GENSOC_SERVER = 962970271545982986 # Test server
-CARD_SPAM_CHANNEL = 1158232410299846747
+# GENSOC_SERVER = 962970271545982986 # Test server
+# CARD_SPAM_CHANNEL = 1158232410299846747
 
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
 CHAT_PRIMOJEM = 50
@@ -1353,7 +1353,7 @@ async def role_icon_gacha(interaction, pull_amount: int):
 async def salvage_role(interaction, role: str):
 	res = gambling.scrap_role_icon(interaction.user.id, role)
 
-	if res == None:
+	if res == None or res == False:
 		await interaction.response.send_message("Invalid or you do not own this role.", ephemeral=True)
 	else:
 		# Unequip the salvaged role
