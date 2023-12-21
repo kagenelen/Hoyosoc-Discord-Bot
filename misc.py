@@ -194,9 +194,9 @@ def send_verify_email(discord_username, email, code):
 Your verification code is:
 %s
 
-This code will expire in 10 minutes, and will only work for the discord user %s. Use the code with the command  \\verify_me  to become verified.
+This code will expire in 10 minutes, and will only work for the discord user: %s. 
 
-The command will immediately verify UNSW students. However non-UNSW member details will need to be manually checked by an society executive after using the command.
+Use the code with the command  \\verify_me  to become verified. The command will immediately verify UNSW students. However non-UNSW verification form details will need to be manually checked by an society executive after using this command.
 """ % (code, discord_username)
 	
 	username = 'verify.unswhoyosoc@gmail.com'

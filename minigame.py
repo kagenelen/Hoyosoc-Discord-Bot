@@ -136,7 +136,7 @@ def new_blackjack(discord_id, bet):
 	if blackjack_get_value(your_hand) == 21:
 		gambling.update_user_currency(discord_id, bet * 2)
 		gambling.update_user_gambling(discord_id, bet)
-		outcome_string = "You have won " + str(bet * 2) + helper.PRIMOJEM_EMOTE
+		outcome_string = "You have won " + str(bet) + helper.PRIMOJEM_EMOTE
 		data.pop(discord_id)
 	elif blackjack_get_value(dealer_hand) == 21:
 		gambling.update_user_gambling(discord_id, -1 * bet)
