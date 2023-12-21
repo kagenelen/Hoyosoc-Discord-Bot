@@ -35,7 +35,6 @@ with open(absolute_path + 'config.json', 'r') as f:
 	WELCOME_CHANNEL = data['welcome_channel']
 	CARD_SPAM_CHANNEL = data['card_spam_channel']
 	MODERATION_CHANNEL = data['moderation_channel']
-	ROLE_ICON_PREVIEW = data['role_icon_shop']
 	COLOUR_ROLE_PREVIEW = data['role_colour_shop']
 	
 	f.close()
@@ -874,6 +873,7 @@ async def inventory(interaction, target_user: discord.Member = None):
 async def view_shop(interaction, shop: app_commands.Choice[str]):
 	res = gambling.get_inventory(interaction.user.id)
 	gacha_pool = helper.read_file("role_icon.json")
+	config_file = helper.read_file("config.json")
 
 	price = [gambling.ONE_WEEK_ROLE, gambling.PERMANENT_ROLE, gambling.ONE_PULL]
 	if helper.is_booster(interaction.user):
@@ -914,7 +914,7 @@ async def view_shop(interaction, shop: app_commands.Choice[str]):
 	elif shop.value == "jemdust":
 		embed.add_field(name="5 Star Role Icons", value=", ".join(gacha_pool["5"]), inline=False)
 		embed.add_field(name="4 Star Role Icons", value=", ".join(gacha_pool["4"]), inline=False)
-		embed.set_image(url=ROLE_ICON_PREVIEW)
+		embed.set_image(url=config_file['role_icon_shop'])
 
 	await interaction.response.send_message(embed=embed)
 
