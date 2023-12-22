@@ -336,7 +336,7 @@ async def admin_verify(interaction, verification_target: discord.Member):
 	await interaction.response.send_message("<@" + str(verification_target.id) + "> has been verified.")
 	
 	channel = client.get_channel(WELCOME_CHANNEL)
-	user_welcome = misc.create_welcome(interaction.user)
+	user_welcome = misc.create_welcome(verification_target)
 	await channel.send(user_welcome)
 	
 @tree.command(name="verify_me",
