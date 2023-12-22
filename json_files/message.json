@@ -19,6 +19,8 @@
 	"hu tao": ["Need a hand, need a hand? I'm here! If author need some assistance, I'm here to give it my all to the very end!", "<:HuTaosWelcome:1072798704010022922>"],
 	"ganyu": ["author is it time to begin work?", "<:GanyusWelcome:1072800582299025470>"],
 	"lyney": ["author, your eyes are like topaz, precious, pure, and lovely. I like them! I've decided — I'm going to put on a show just for you.", "<:LyneysWelcome:1147817387492651068>"],
+	"furina": ["Welcome author! Ah, you must be stunned and at a loss for words... Understandable, it is I after all... Fontaine's most beloved star, Furina.", "<:FurinasWelcome:1187576103376785419>"],
+	"neuvillette": ["Greetings author. If you have any requests or concerns, then — to the extent permissible by law, at least — we can sit down and discuss them together as we partake of some imported water from Qiaoying Village.", "<:NeuvillettesWelcome:1187576098607874148>"],
 	
 	"seele": ["Right on time author — let's start the patrol.", "<:SeelesWelcome:1147825253641355345>"],
 	"dan heng": ["I updated the data bank entries today if you wanted to look anything up author.", "<:DanHengsWelcome:1147833379346198620>"],
@@ -31,5 +33,8 @@
 	"himeko": ["Welcome aboard, author. I'm sure we're about to embark on a fascinating journey together.", "<:HimekosWelcome:1147833383922171954>"],
 	"herta": ["Why not come around today and help me with my research author? You'll be the subject, by the way.", "<:HertasWelcome:1147833355015028846>"],
 	"yukong": ["It's a good day to set sail, isn't it author?", "<:YukongsWelcome:1147835388749156392>"],
-	"clara": ["I'm getting sleepy — time for a nap on Mr. Svarog's arm. Are you coming author?", "<:ClarasWelcome:1147835393534861403>"]
+	"clara": ["I'm getting sleepy — time for a nap on Mr. Svarog's arm. Are you coming author?", "<:ClarasWelcome:1147835393534861403>"],
+	"jingliu": ["author... If you wish to avoid trouble, pretend we never met.", "<:JingliusWelcome:1187576880249962606>"],
+	"argenti": ["Should misfortune befall you author, do not hesitate to call upon me. I will protect you.", "<:ArgentisWelcome:1187577722239733850>"],
+	"huohuo": ["H—Hello author! Uh, I mean... Well, I... I guess I'll take my leave now. B—Bye...", "<:HuohuosWelcome:1187577727272894558>"]
 }
