@@ -160,7 +160,7 @@ async def verify_form(message):
 	# Send verification email to zid or supplied email
 	if email != None:
 		verification_code = generate_code(user, email, unsw)
-		is_sent = send_verify_email(user.name, email, verification_code)
+		is_sent = await send_verify_email(user, email, verification_code, True)
 		if is_sent:
 			await message.add_reaction("✅")
 	
@@ -185,9 +185,9 @@ def generate_code(user, email, unsw):
 	return verification_code
 	
 # Email user the verification code
-# Argument: discord username, email, verification code
+# Argument: discord user (object), email, verification code, send reminder dm true/false
 # Return: True if email sent, False if error occurs
-def send_verify_email(discord_username, email, code):
+async def send_verify_email(discord_user, email, code, send_remind):
 	from_addr = 'UNSW Hoyoverse Society'
 	to_addr = email
 	text = """
@@ -197,7 +197,7 @@ Your verification code is:
 This code will expire in 30 minutes, and will only work for the discord user: %s. 
 
 Use the code with the command  \\verify_me  to become verified. The command will immediately verify UNSW students. However non-UNSW verification form details will need to be manually checked by an society executive after using this command.
-""" % (code, discord_username)
+""" % (code, discord_user.name)
 	
 	username = 'verify.unswhoyosoc@gmail.com'
 	load_dotenv()
@@ -223,7 +223,13 @@ Use the code with the command  \\verify_me  to become verified. The command will
 		print("An exception occurred during emailing: ", error)
 		return False
 
-	print(discord_username + " has been emailed an verification code at " + email)
+	# Send dm to remind user
+	if send_remind:
+		channel = await discord_user.create_dm()
+		await channel.send("You have been sent a verification code at " + email + 
+						   ". Please check your spam and bin if you cannot find the email.")
+
+	print(discord_user.name + " has been emailed an verification code at " + email)
 	return True
 
 # Check if verification code is correct and not expired
