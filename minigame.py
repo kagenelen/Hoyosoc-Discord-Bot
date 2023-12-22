@@ -172,7 +172,7 @@ def blackjack_action(discord_id, action):
 	if res == 1:
 		gambling.update_user_currency(discord_id, session["bet"] * 2)
 		gambling.update_user_gambling(discord_id, session["bet"])
-		outcome_string = "You have won " + str(session["bet"] * 2) + helper.PRIMOJEM_EMOTE
+		outcome_string = "You have won " + str(session["bet"]) + helper.PRIMOJEM_EMOTE
 		data.pop(discord_id)
 	elif res == 2:
 		gambling.update_user_currency(discord_id, session["bet"])

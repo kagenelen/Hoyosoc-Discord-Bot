@@ -39,8 +39,8 @@ with open(absolute_path + 'config.json', 'r') as f:
 	
 	f.close()
 
-# NOTICE: Uncomment these two if testing on the test server
-# GENSOC_SERVER = 962970271545982986 # Test server
+# NOTICE: Uncomment these variables if testing on the test server
+# GENSOC_SERVER = 962970271545982986 
 # CARD_SPAM_CHANNEL = 1158232410299846747
 
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
@@ -310,14 +310,14 @@ async def view_tasks(interaction):
 @tree.command(name="send_code",
 	description="Send verification code. Admin only.",
 	guild=discord.Object(id=GENSOC_SERVER))
-async def send_code(interaction, target_user: discord.Member, email: str, is_unsw: bool):
+async def send_code(interaction, target_user: discord.Member, email: str, is_unsw: bool, send_reminder_dm: bool):
 	if not helper.is_team(interaction):
 		await interaction.response.send_message("Insuffient permission.",
 												ephemeral=True)
 		return
 
 	code = misc.generate_code(target_user, email, is_unsw)
-	is_sent = misc.send_verify_email(target_user.name, email, code)
+	is_sent = await misc.send_verify_email(target_user, email, code, send_reminder_dm)
 	if is_sent:
 		await interaction.response.send_message("Email  has been sent to " + target_user.name)
 	else:
@@ -336,7 +336,7 @@ async def admin_verify(interaction, verification_target: discord.Member):
 	await interaction.response.send_message("<@" + str(verification_target.id) + "> has been verified.")
 	
 	channel = client.get_channel(WELCOME_CHANNEL)
-	user_welcome = misc.create_welcome(interaction.user)
+	user_welcome = misc.create_welcome(verification_target)
 	await channel.send(user_welcome)
 	
 @tree.command(name="verify_me",
