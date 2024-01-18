@@ -774,7 +774,7 @@ async def checkin_freeze(interaction, date: str):
 		await interaction.response.send_message(res, ephemeral=True)
 	else:
 		await interaction.response.send_message(
-			"<@" + str(interaction.user.id) + ">'s checkin has been frozen till " + res + " UTC +11.")
+			"<@" + str(interaction.user.id) + ">'s checkin has been frozen till " + res)
 
 @tree.command(name="fortune",
 				description="Is it your lucky day today?",

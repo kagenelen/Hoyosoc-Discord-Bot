@@ -427,7 +427,7 @@ def currency_checkin(discord_id):
 
 # Freeze checkin until a certain date
 # Argument: discord id string, resume date string (format 4/12/23)
-# Return: next checkin time str, or error string
+# Return: next checkin timestamp, or error string
 def freeze_checkin(discord_id, resume_time):
 	discord_id = str(discord_id)
 	helper.get_user_entry(discord_id)
@@ -445,19 +445,18 @@ def freeze_checkin(discord_id, resume_time):
 		return "Invalid format. Please use the format d/m/y. Example: 4/6/23 for June 4 2023."
 
 	# Set next checkin to resume time at 12am
-	syd = pytz.timezone('Australia/Sydney')
 	resume_time_dt = resume_time_dt \
 				.replace(hour=HOUR_OFFSET, minute=0, second=0, microsecond=0)
 	next_checkin_unix = int(time.mktime(resume_time_dt.timetuple())) - 86400
 
 	if next_checkin_unix < user_entry["next_checkin"]:
-		checkin_str = datetime.datetime.utcfromtimestamp(user_entry["next_checkin"]).astimezone(syd).strftime('%d/%m/%y')
+		checkin_str = "<t:" + str(user_entry["next_checkin"]) + ":f>"
 		return "Resuming date cannot be before " + checkin_str + "."
 	
 	user_entry["next_checkin"] = next_checkin_unix
 
 	helper.write_file("users.json", data)
-	return datetime.datetime.utcfromtimestamp(user_entry["next_checkin"]).astimezone(syd).strftime('%d/%m/%y %H:%M')
+	return "<t:" + str(user_entry["next_checkin"]) + ":f>"
 
 # Gets daily fortune
 # Argument: discord id
@@ -480,17 +479,17 @@ def daily_fortune(discord_id):
 	if user_entry["next_fortune"] < time.time():
 		user_entry["next_fortune"] = user_entry["next_fortune"] + 86400
 
-	fortune_value = random.randint(0, 420)
+	fortune_value = random.randint(0, 220)
 
-	if fortune_value <= 100:
+	if fortune_value <= 50:
 		# Very unlucky
 		messages = ["Seems you're very unlucky today. If you gamble, you might go bankrupt.",
 					"Seems you're very unlucky today. Watch out, a piano might fall on you.",
 					"Seems you're very unlucky today. Did you break a mirror by accident?",
 				   	"Seems you're very unlucky today. Perhaps someone stole your luck."]
 		fortune_colour = 0x3b3b3b
-		fortune_level = "Very unlucky. (" + str(fortune_value - 200) + ")"
-	elif fortune_value <= 200:
+		fortune_level = "Very unlucky. (" + str(fortune_value - 100) + ")"
+	elif fortune_value <= 100:
 		# Unlucky
 		messages = ["A bit unlucky. You might pull a Qiqi.",
 					"A bit unlucky. You might pull a Dehya.",
@@ -500,42 +499,44 @@ def daily_fortune(discord_id):
 					"A bit unlucky. You might pull a Tighnari.",
 					"A bit unlucky. You might pull a Keqing."]
 		fortune_colour = 0xfd4869
-		fortune_level = "Unlucky. (" + str(fortune_value - 200) + ")"
-	elif fortune_value <= 220:
+		fortune_level = "Unlucky. (" + str(fortune_value - 100) + ")"
+	elif fortune_value <= 120:
 		# Neutral
 		messages = ["Neither good or bad luck. Your fate is in your hands today.",
 					"Neither good or bad luck. But I'm just a bot, so how would I know?",
 					"Error 404: Your fortune is not found."]
 		fortune_colour = 0x4cb6ff
 		fortune_level = "Neutral. (0)"
-	elif fortune_value <= 320:
+	elif fortune_value <= 170:
 		# Lucky
+		fortune_primo = int(fortune_value * 1.84) + random.randint(-5, 5)
 		messages = ["Lucky you! Perhaps you'll get more blue drops today.",
 					"Lucky you! You might win your 50/50!",
-					"Lucky you! You found " + str(fortune_value) + helper.PRIMOJEM_EMOTE + " on the ground."]
+					"Lucky you! You found " + str(fortune_primo) + helper.PRIMOJEM_EMOTE + " on the ground."]
 		fortune_colour = 0x2ee518
-		fortune_level = "Lucky. (" + str(fortune_value - 220) + ")"
-	elif fortune_value == 420:
+		fortune_level = "Lucky. (" + str(fortune_value - 120) + ")"
+	elif fortune_value == 220:
 		# Ultimate luck
+		fortune_primo = 5000
 		messages = ["You found 5000" + helper.PRIMOJEM_EMOTE + " on the ground. How did you get so much luck?"]
-		fortune_value = 5000
-		fortune_level = "Extremely lucky. (" + str(fortune_value - 220) + ")"
+		fortune_level = "Extremely lucky. (" + str(fortune_value - 120) + ")"
 		fortune_colour = 0x2ee518
 	else:
 		# Very lucky
+		fortune_primo = int(fortune_value * 2.84) + random.randint(0, 10)
 		messages = ["Wow, you are so lucky! Maybe you'll pull a double 5 star!",
 					"Wow, you are so lucky! Did you steal someone else's luck?",
-			"Wow, you are so lucky you found " + str(int(fortune_value * 1.5)) + helper.PRIMOJEM_EMOTE + " on the ground."]
+			"Wow, you are so lucky you found " + str(fortune_primo) + helper.PRIMOJEM_EMOTE + " on the ground."]
 		fortune_colour = 0xffda67
-		fortune_level = "Very lucky. (" + str(fortune_value - 220) + ")"
-		fortune_value = int(fortune_value * 1.5)
+		fortune_level = "Very lucky. (" + str(fortune_value - 120) + ")"
+		
 		
 
 	helper.write_file("users.json", data)
 
 	fortune_message = random.choice(messages)
 	if "ground" in fortune_message:
-		update_user_currency(discord_id, fortune_value)
+		update_user_currency(discord_id, fortune_primo)
 
 	return [fortune_level, fortune_message, fortune_colour]
 
