@@ -627,7 +627,7 @@ def buy_role(discord_id, role, duration, is_booster, recipient):
 	# Update role duration
 	if recipient == None:
 		current_end_time = user_entry["role"].get(role, int(time.time()))
-		if user_entry["role"].get(role, 0) == 2145919483:
+		if user_entry["role"].get(role, 0) == 2145919483 or role in user_entry["role_icon"]:
 			return "You already have this permanent role."
 
 		if jemdust_price != 0:

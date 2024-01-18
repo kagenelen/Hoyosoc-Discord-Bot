@@ -11,6 +11,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+NEWCOMER_EXPIRY = 604800 # 1 week
 YATTA_EMOTE = ["<:YattaNoText:1168444235620569160>",
 	  "<:Yatta:1168443429869592606>",
 	  "<:YattaBoom:1168443375645622282>",
@@ -266,13 +267,21 @@ async def add_verified(user):
 	role3 = discord.utils.get(user.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ About ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
 	role4 = discord.utils.get(user.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Misc ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
 	role5 = discord.utils.get(user.guild.roles, name="Unverified")
-	if role1 == None or role2 == None or role3 == None or role4 == None or role5 == None:
+	role6 = discord.utils.get(user.guild.roles, name="New Member")
+	if role1 == None or role2 == None or role3 == None or role4 == None or role5 == None or role6 == None:
 		return
 
 	await user.add_roles(role1)
 	await user.add_roles(role2)
 	await user.add_roles(role3)
 	await user.add_roles(role4)
+	await user.add_roles(role6)
+
+	# New Member role expiry
+	helper.get_user_entry(user.id)
+	data = helper.read_file("users.json")
+	user_entry = data.get(user.id)
+	user_entry["role"]["New Member"] = time.time() + NEWCOMER_EXPIRY
 	
 	print(user.name + " has been given a role.")
 
