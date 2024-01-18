@@ -278,9 +278,9 @@ async def add_verified(user):
 	await user.add_roles(role6)
 
 	# New Member role expiry
-	helper.get_user_entry(user.id)
+	helper.get_user_entry(str(user.id))
 	data = helper.read_file("users.json")
-	user_entry = data.get(user.id)
+	user_entry = data.get(str(user.id))
 	user_entry["role"]["New Member"] = time.time() + NEWCOMER_EXPIRY
 	
 	print(user.name + " has been given a role.")
