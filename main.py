@@ -40,8 +40,8 @@ with open(absolute_path + 'config.json', 'r') as f:
 	f.close()
 
 # NOTICE: Uncomment these variables if testing on the test server
-GENSOC_SERVER = 962970271545982986 
-CARD_SPAM_CHANNEL = 1158232410299846747
+# GENSOC_SERVER = 962970271545982986 
+# CARD_SPAM_CHANNEL = 1158232410299846747
 
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
 CHAT_PRIMOJEM = 50

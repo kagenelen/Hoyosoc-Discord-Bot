@@ -474,7 +474,7 @@ def daily_fortune(discord_id):
 	# Set next fortune to tomorrow 12am AEST
 	tomorrow_date = datetime.datetime.now() \
 				.replace(hour=HOUR_OFFSET, minute=0, second=0, microsecond=0)
-	# user_entry["next_fortune"] = int(time.mktime(tomorrow_date.timetuple()))
+	user_entry["next_fortune"] = int(time.mktime(tomorrow_date.timetuple()))
 
 	if user_entry["next_fortune"] < time.time():
 		user_entry["next_fortune"] = user_entry["next_fortune"] + 86400
