@@ -1,11 +1,11 @@
 {
     "318337790708547588": {
-        "currency": 441414,
-        "next_checkin": 1735650000,
+        "currency": 444472,
+        "next_checkin": 1705755600,
         "role": {
             "Imaginary": 2145919483
         },
-        "checkin_streak": 298,
+        "checkin_streak": 299,
         "role_icon": [
             "Heizou",
             "Keqing",
@@ -23,10 +23,10 @@
             "Mei"
         ],
         "jemdust": 97,
-        "chat_cooldown": 1705585026,
+        "chat_cooldown": 1705739422,
         "gambling_profit": 2000,
         "gambling_loss": 0,
-        "next_fortune": 706101200,
+        "next_fortune": 1705755600,
         "uids": {
             "genshin": [
                 "Nope. Stop looking."
@@ -40,7 +40,7 @@
         }
     },
     "280905494091005954": {
-        "currency": 27396,
+        "currency": 27696,
         "next_checkin": 1701176400,
         "role": {},
         "checkin_streak": 0,
@@ -51,7 +51,7 @@
             "Xiangling"
         ],
         "jemdust": 100,
-        "chat_cooldown": 1705458289,
+        "chat_cooldown": 1705737391,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 1701176400,
@@ -66,13 +66,13 @@
         }
     },
     "302346316959449088": {
-        "currency": 13700,
+        "currency": 14650,
         "next_checkin": 1701522000,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705580801,
+        "chat_cooldown": 1705740130,
         "gambling_profit": 250,
         "gambling_loss": 63743,
         "next_fortune": 1701522000,
@@ -112,7 +112,7 @@
         }
     },
     "305564624227401728": {
-        "currency": 4681,
+        "currency": 4931,
         "next_checkin": 1705582800,
         "role": {},
         "checkin_streak": 6,
@@ -125,7 +125,7 @@
             "Yaoyao"
         ],
         "jemdust": 220,
-        "chat_cooldown": 1705583868,
+        "chat_cooldown": 1705740028,
         "gambling_profit": 78537,
         "gambling_loss": 98607,
         "next_fortune": 1705582800,
@@ -201,13 +201,13 @@
         }
     },
     "368630963330220032": {
-        "currency": 63273,
+        "currency": 63423,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705548680,
+        "chat_cooldown": 1705731018,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -260,8 +260,8 @@
         }
     },
     "348414134636904452": {
-        "currency": 59051,
-        "next_checkin": 1705496400,
+        "currency": 59501,
+        "next_checkin": 1705669200,
         "role": {
             "Hydro": 2145919483,
             "Physical": 2145919483,
@@ -275,7 +275,6 @@
             "Heizou",
             "Noelle",
             "Xiangling",
-            "Tighnari",
             "Wanderer",
             "Fischl",
             "Hu Tao",
@@ -284,11 +283,11 @@
             "March 7",
             "Yaoyao"
         ],
-        "jemdust": 494,
-        "chat_cooldown": 1705471294,
+        "jemdust": 674,
+        "chat_cooldown": 1705663223,
         "gambling_profit": 0,
         "gambling_loss": 0,
-        "next_fortune": 1705496400,
+        "next_fortune": 1705669200,
         "uids": {
             "genshin": [
                 "613636035",
@@ -304,7 +303,7 @@
         }
     },
     "294049450882629632": {
-        "currency": 88811,
+        "currency": 89011,
         "next_checkin": 1682985630,
         "role": {
             "Hydro": 2145919483,
@@ -313,7 +312,7 @@
         "checkin_streak": 1,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705573427,
+        "chat_cooldown": 1705725979,
         "gambling_profit": 13480,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -330,7 +329,7 @@
         }
     },
     "937000926835773460": {
-        "currency": 127124,
+        "currency": 128679,
         "next_checkin": 1705410000,
         "role": {
             "Electro": 2145919483
@@ -350,7 +349,7 @@
             "Kirara"
         ],
         "jemdust": 0,
-        "chat_cooldown": 1705574665,
+        "chat_cooldown": 1705738346,
         "gambling_profit": 7700,
         "gambling_loss": 20812,
         "next_fortune": 0,
@@ -363,7 +362,7 @@
         }
     },
     "384949403452047362": {
-        "currency": 52240,
+        "currency": 52490,
         "next_checkin": 1697202000,
         "role": {
             "Pyro": 2145919483,
@@ -391,7 +390,7 @@
             "Mei"
         ],
         "jemdust": 1156,
-        "chat_cooldown": 1705574215,
+        "chat_cooldown": 1705730263,
         "gambling_profit": 14000,
         "gambling_loss": 2000,
         "next_fortune": 0,
@@ -407,7 +406,7 @@
         }
     },
     "308020379744600064": {
-        "currency": 269182,
+        "currency": 269806,
         "next_checkin": 1704200400,
         "role": {
             "Physical": 2145919483,
@@ -436,7 +435,7 @@
             "Nilou"
         ],
         "jemdust": 13,
-        "chat_cooldown": 1705542948,
+        "chat_cooldown": 1705717146,
         "gambling_profit": 154,
         "gambling_loss": 0,
         "next_fortune": 1704200400,
@@ -455,25 +454,26 @@
         }
     },
     "852095686932824087": {
-        "currency": 582804,
-        "next_checkin": 1705582800,
+        "currency": 594703,
+        "next_checkin": 1705755600,
         "role": {
             "Geo": 2145919483,
             "Hydro": 2145919483
         },
-        "checkin_streak": 221,
+        "checkin_streak": 223,
         "role_icon": [
             "Zhongli",
             "Furina"
         ],
         "jemdust": 4,
-        "chat_cooldown": 1705573124,
+        "chat_cooldown": 1705740290,
         "gambling_profit": 1006,
         "gambling_loss": 208,
-        "next_fortune": 1705496400,
+        "next_fortune": 1705669200,
         "uids": {
             "genshin": [
-                "629106473"
+                "629106473",
+                "672861775"
             ],
             "hsr": [],
             "honkai": [],
@@ -815,13 +815,13 @@
         }
     },
     "529608818556928001": {
-        "currency": 100483,
+        "currency": 101383,
         "next_checkin": 1695564000,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705582795,
+        "chat_cooldown": 1705737614,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -946,7 +946,7 @@
         }
     },
     "336774405986451457": {
-        "currency": 9120,
+        "currency": 9220,
         "next_checkin": 1699016400,
         "role": {},
         "checkin_streak": 0,
@@ -965,7 +965,7 @@
             "Qiqi"
         ],
         "jemdust": 94,
-        "chat_cooldown": 1705473042,
+        "chat_cooldown": 1705652931,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -982,16 +982,16 @@
         }
     },
     "508860948929314816": {
-        "currency": 95636,
-        "next_checkin": 1705582800,
+        "currency": 96340,
+        "next_checkin": 1705755600,
         "role": {},
-        "checkin_streak": 12,
+        "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705574735,
+        "chat_cooldown": 1705722930,
         "gambling_profit": 0,
         "gambling_loss": 0,
-        "next_fortune": 1705582800,
+        "next_fortune": 1705755600,
         "uids": {
             "genshin": [
                 "625749283",
@@ -1071,13 +1071,13 @@
         }
     },
     "771899922370265118": {
-        "currency": 46846,
+        "currency": 47046,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705568323,
+        "chat_cooldown": 1705740250,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -1348,13 +1348,13 @@
         }
     },
     "438896487812825098": {
-        "currency": 8350,
+        "currency": 8900,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705562809,
+        "chat_cooldown": 1705669632,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -1747,7 +1747,7 @@
         }
     },
     "303058183222591488": {
-        "currency": 2526,
+        "currency": 3631,
         "next_checkin": 1707829200,
         "role": {
             "Kaveh": 2145919483
@@ -1782,10 +1782,10 @@
             "Guinaifen"
         ],
         "jemdust": 113,
-        "chat_cooldown": 1705520430,
+        "chat_cooldown": 1705726679,
         "gambling_profit": 0,
         "gambling_loss": 0,
-        "next_fortune": 1705582800,
+        "next_fortune": 1705755600,
         "uids": {
             "genshin": [
                 "738807606",
@@ -2182,13 +2182,13 @@
         }
     },
     "410325825683193866": {
-        "currency": 39900,
+        "currency": 40100,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705578746,
+        "chat_cooldown": 1705735339,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -2335,13 +2335,13 @@
         }
     },
     "491070418497830924": {
-        "currency": 17750,
+        "currency": 17900,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705534529,
+        "chat_cooldown": 1705738382,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -2928,13 +2928,13 @@
         }
     },
     "419454258098995202": {
-        "currency": 6950,
+        "currency": 7000,
         "next_checkin": 1682985630,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1704887523,
+        "chat_cooldown": 1705669317,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -3880,7 +3880,7 @@
         }
     },
     "217933338407731200": {
-        "currency": 86903,
+        "currency": 87463,
         "next_checkin": 1700312400,
         "role": {
             "Hydro": 2145919483
@@ -3890,10 +3890,10 @@
             "Ganyu"
         ],
         "jemdust": 0,
-        "chat_cooldown": 1705571469,
+        "chat_cooldown": 1705682516,
         "gambling_profit": 1026,
         "gambling_loss": 14,
-        "next_fortune": 1705582800,
+        "next_fortune": 1705755600,
         "uids": {
             "genshin": [],
             "hsr": [],
@@ -4070,14 +4070,14 @@
         }
     },
     "435701153230094336": {
-        "currency": 20110,
-        "next_checkin": 1705582800,
+        "currency": 10936,
+        "next_checkin": 1705755600,
         "role": {
             "Dendro": 2145919483,
             "Electro": 2145919483,
             "Hydro": 2145919483
         },
-        "checkin_streak": 0,
+        "checkin_streak": 2,
         "role_icon": [
             "Kokomi",
             "Nahida",
@@ -4085,7 +4085,6 @@
             "Wanderer",
             "Blade",
             "Imbibitor Lunae",
-            "Tighnari",
             "Qiqi",
             "Qingque",
             "Ganyu",
@@ -4113,10 +4112,12 @@
             "Navia",
             "Clara",
             "Seele",
-            "Yelan"
+            "Yelan",
+            "Klee",
+            "Guinaifen"
         ],
-        "jemdust": 282,
-        "chat_cooldown": 1705575368,
+        "jemdust": 256,
+        "chat_cooldown": 1705740432,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -4152,7 +4153,7 @@
         }
     },
     "312172066482814979": {
-        "currency": 15776,
+        "currency": 15976,
         "next_checkin": 1691452849,
         "role": {},
         "checkin_streak": 14,
@@ -4165,7 +4166,7 @@
             "Yoimiya"
         ],
         "jemdust": 5,
-        "chat_cooldown": 1705467290,
+        "chat_cooldown": 1705725121,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -4178,15 +4179,17 @@
         }
     },
     "306912349120364547": {
-        "currency": 36210,
+        "currency": 36360,
         "next_checkin": 1701694800,
         "role": {
             "Hydro": 2145919483
         },
         "checkin_streak": 0,
-        "role_icon": [],
+        "role_icon": [
+            "Furina"
+        ],
         "jemdust": 1,
-        "chat_cooldown": 1705578849,
+        "chat_cooldown": 1705739749,
         "gambling_profit": 190,
         "gambling_loss": 188,
         "next_fortune": 0,
@@ -4367,18 +4370,18 @@
         }
     },
     "573019300328243200": {
-        "currency": 17093,
-        "next_checkin": 1705496400,
+        "currency": 19030,
+        "next_checkin": 1705669200,
         "role": {
             "Kaveh": 2145919483
         },
-        "checkin_streak": 2,
+        "checkin_streak": 0,
         "role_icon": [
             "Yaoyao",
             "March 7"
         ],
         "jemdust": 43,
-        "chat_cooldown": 1705553443,
+        "chat_cooldown": 1705738629,
         "gambling_profit": 1000,
         "gambling_loss": 2000,
         "next_fortune": 1705496400,
@@ -4432,13 +4435,14 @@
         }
     },
     "495781159431700481": {
-        "currency": 1562,
-        "next_checkin": 1705669200,
+        "currency": 375,
+        "next_checkin": 1705755600,
         "role": {
             "Electro": 2145919483,
-            "Kaveh": 2145919483
+            "Kaveh": 2145919483,
+            "Accidental C1 Ganyu": 2145919483
         },
-        "checkin_streak": 148,
+        "checkin_streak": 149,
         "role_icon": [
             "Fischl",
             "Xiangling",
@@ -4456,7 +4460,6 @@
             "Alhaitham",
             "Yoimiya",
             "Qiqi",
-            "Tighnari",
             "Nahida",
             "Yelan",
             "Kiana",
@@ -4465,15 +4468,21 @@
             "Seele",
             "Yae",
             "Guinaifen",
-            "Ganyu",
             "Zhongli",
-            "Keqing"
+            "Keqing",
+            "Kokomi",
+            "Furina",
+            "Silver Wolf",
+            "Imbibitor Lunae",
+            "Venti",
+            "Navia",
+            "Dottore"
         ],
-        "jemdust": 1418,
-        "chat_cooldown": 1705584942,
+        "jemdust": 398,
+        "chat_cooldown": 1705737036,
         "gambling_profit": 50,
         "gambling_loss": 170,
-        "next_fortune": 1705669200,
+        "next_fortune": 1705755600,
         "uids": {
             "genshin": [
                 "626402243"
@@ -4582,7 +4591,7 @@
         }
     },
     "184547402705797120": {
-        "currency": 30300,
+        "currency": 30550,
         "next_checkin": 1705582800,
         "role": {
             "Quantum": 2145919483
@@ -4593,7 +4602,7 @@
             "Qingque"
         ],
         "jemdust": 45,
-        "chat_cooldown": 1705572552,
+        "chat_cooldown": 1705716793,
         "gambling_profit": 129366,
         "gambling_loss": 155282,
         "next_fortune": 1705582800,
@@ -4608,13 +4617,13 @@
         }
     },
     "240433856031883264": {
-        "currency": 5050,
+        "currency": 5100,
         "next_checkin": 1686124584,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705372431,
+        "chat_cooldown": 1705725696,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -4648,12 +4657,12 @@
         }
     },
     "253448557518913536": {
-        "currency": 149,
-        "next_checkin": 1705669200,
+        "currency": 464,
+        "next_checkin": 1705755600,
         "role": {
             "Electro": 2145919483
         },
-        "checkin_streak": 70,
+        "checkin_streak": 71,
         "role_icon": [
             "Qingque",
             "Fu Hua",
@@ -4674,10 +4683,10 @@
             "Clara"
         ],
         "jemdust": 30,
-        "chat_cooldown": 1705584655,
+        "chat_cooldown": 1705735949,
         "gambling_profit": 87274,
-        "gambling_loss": 103008,
-        "next_fortune": 1705669200,
+        "gambling_loss": 103508,
+        "next_fortune": 1705755600,
         "uids": {
             "genshin": [],
             "hsr": [
@@ -4809,13 +4818,13 @@
         }
     },
     "386844748838862858": {
-        "currency": 32450,
+        "currency": 32650,
         "next_checkin": 1686365371,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705557942,
+        "chat_cooldown": 1705652914,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -4872,13 +4881,13 @@
         }
     },
     "500072682893606943": {
-        "currency": 62500,
+        "currency": 62900,
         "next_checkin": 1686365372,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705472855,
+        "chat_cooldown": 1705737610,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -4975,13 +4984,13 @@
         }
     },
     "526029918752997377": {
-        "currency": 15400,
+        "currency": 15750,
         "next_checkin": 1687168644,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705579610,
+        "chat_cooldown": 1705732927,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -5148,13 +5157,13 @@
         }
     },
     "415763406310866953": {
-        "currency": 3508,
+        "currency": 3608,
         "next_checkin": 1688551098,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705362605,
+        "chat_cooldown": 1705735745,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -5188,10 +5197,10 @@
         }
     },
     "818379054033010709": {
-        "currency": 98835,
-        "next_checkin": 1705582800,
+        "currency": 101113,
+        "next_checkin": 1705755600,
         "role": {},
-        "checkin_streak": 104,
+        "checkin_streak": 106,
         "role_icon": [
             "Yaoyao",
             "Heizou",
@@ -5211,11 +5220,11 @@
             "Seele",
             "Guinaifen"
         ],
-        "jemdust": 1399,
-        "chat_cooldown": 1705361789,
+        "jemdust": 1400,
+        "chat_cooldown": 1705709200,
         "gambling_profit": 9,
         "gambling_loss": 24,
-        "next_fortune": 1705150800,
+        "next_fortune": 1705755600,
         "uids": {
             "genshin": [],
             "hsr": [],
@@ -5484,8 +5493,8 @@
         }
     },
     "618758233342869526": {
-        "currency": 52028,
-        "next_checkin": 1701176400,
+        "currency": 53232,
+        "next_checkin": 1705755600,
         "role": {
             "Hydro": 2145919483
         },
@@ -5502,7 +5511,7 @@
             "Dottore"
         ],
         "jemdust": 0,
-        "chat_cooldown": 1705567473,
+        "chat_cooldown": 1705736427,
         "gambling_profit": 0,
         "gambling_loss": 300,
         "next_fortune": 0,
@@ -6528,13 +6537,13 @@
         }
     },
     "208897190783877120": {
-        "currency": 37429,
+        "currency": 37569,
         "next_checkin": 1695140751,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705439518,
+        "chat_cooldown": 1705685991,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -6549,7 +6558,7 @@
         }
     },
     "213201594072694784": {
-        "currency": 17787,
+        "currency": 18637,
         "next_checkin": 1695909600,
         "role": {},
         "checkin_streak": 1,
@@ -6557,7 +6566,7 @@
             "Heizou"
         ],
         "jemdust": 29,
-        "chat_cooldown": 1705579566,
+        "chat_cooldown": 1705732527,
         "gambling_profit": 0,
         "gambling_loss": 1,
         "next_fortune": 0,
@@ -6574,13 +6583,13 @@
         }
     },
     "1143898246582898714": {
-        "currency": 10700,
+        "currency": 10750,
         "next_checkin": 1695254050,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705269874,
+        "chat_cooldown": 1705610767,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -6672,13 +6681,13 @@
         }
     },
     "353050154292609028": {
-        "currency": 5850,
+        "currency": 6000,
         "next_checkin": 1695591639,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705494713,
+        "chat_cooldown": 1705726462,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -7419,13 +7428,13 @@
         }
     },
     "588311640949260301": {
-        "currency": 5100,
+        "currency": 5250,
         "next_checkin": 1697010297,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705582722,
+        "chat_cooldown": 1705663370,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -8031,13 +8040,13 @@
         }
     },
     "233165195491409920": {
-        "currency": 8500,
+        "currency": 8800,
         "next_checkin": 1699407762,
         "role": {},
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705583346,
+        "chat_cooldown": 1705715765,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -8240,20 +8249,20 @@
         }
     },
     "728969116161146951": {
-        "currency": 2030,
-        "next_checkin": 1705582800,
+        "currency": 2519,
+        "next_checkin": 1705755600,
         "role": {},
-        "checkin_streak": 3,
+        "checkin_streak": 5,
         "role_icon": [
             "March 7",
             "Raiden",
             "Heizou"
         ],
         "jemdust": 52,
-        "chat_cooldown": 1705570871,
+        "chat_cooldown": 1705729428,
         "gambling_profit": 0,
         "gambling_loss": 1,
-        "next_fortune": 1705410000,
+        "next_fortune": 1705755600,
         "uids": {
             "genshin": [
                 "847304103"
@@ -8353,7 +8362,7 @@
         "chat_cooldown": 1704978731,
         "gambling_profit": 0,
         "gambling_loss": 0,
-        "next_fortune": 1704891600,
+        "next_fortune": 1705755600,
         "uids": {
             "genshin": [],
             "hsr": [],
@@ -9071,13 +9080,15 @@
         }
     },
     "1025716162388045915": {
-        "currency": 550,
+        "currency": 7928,
         "next_checkin": 1705576347,
-        "role": {},
+        "role": {
+            "New Member": 1706274000
+        },
         "checkin_streak": 0,
         "role_icon": [],
         "jemdust": 0,
-        "chat_cooldown": 1705583538,
+        "chat_cooldown": 1705740298,
         "gambling_profit": 0,
         "gambling_loss": 0,
         "next_fortune": 0,
@@ -9085,6 +9096,29 @@
             "genshin": [
                 "812847464"
             ],
+            "hsr": [],
+            "honkai": [],
+            "tot": [],
+            "zzz": []
+        }
+    },
+    "675982408373370883": {
+        "currency": 582,
+        "next_checkin": 1705755600,
+        "role": {
+            "New Member": 1706274000
+        },
+        "checkin_streak": 1,
+        "role_icon": [
+            "Xiangling"
+        ],
+        "jemdust": 9,
+        "chat_cooldown": 1705740402,
+        "gambling_profit": 0,
+        "gambling_loss": 0,
+        "next_fortune": 1705755600,
+        "uids": {
+            "genshin": [],
             "hsr": [],
             "honkai": [],
             "tot": [],
