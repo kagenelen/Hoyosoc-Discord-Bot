@@ -1011,7 +1011,7 @@ async def leaderboard(interaction, category: app_commands.Choice[str]):
 			role_list = helper.read_file("role_icon.json")
 			role_num = len(role_list["5"]) + len(role_list["4"])
 			target_embed.add_field(name=str(rank) + ". " + user.display_name,
-							value=str(round(len(res[r][1]) / role_num * 100)) + "%",
+							value=str(round(len(set(res[r][1])) / role_num * 100)) + "%",
 							inline=False)
 		else:
 			target_embed.add_field(name=str(rank) + ". " + user.display_name,

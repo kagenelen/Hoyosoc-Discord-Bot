@@ -1,2 +1,18 @@
 {
+	"auction 1": {
+		"auction_description": "Highest bidder receives either a welkin or express supply",
+		"highest_bid": 100000,
+		"highest_bidder": "852095686932824087",
+		"bidder_name": "Dan the Man (AR60)",
+		"end_time": 1693648800,
+		"message_id": 1145648341951189134
+	},
+	"auction 2": {
+		"auction_description": "Highest bidder receives either a welkin or express supply",
+		"highest_bid": 27272,
+		"highest_bidder": "300937279197806604",
+		"bidder_name": "72727",
+		"end_time": 1694253600,
+		"message_id": 1147081376760344637
+	}
 }

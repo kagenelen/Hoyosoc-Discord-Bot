@@ -225,10 +225,13 @@ Use the code with the command  \\verify_me  to become verified. The command will
 		return False
 
 	# Send dm to remind user
-	if send_remind:
-		channel = await discord_user.create_dm()
-		await channel.send("You have been sent a verification code at " + email + 
-						   ". Please check your spam and bin if you cannot find the email.")
+	try:
+		if send_remind:
+			channel = await discord_user.create_dm()
+			await channel.send("You have been sent a verification code at " + email + 
+							   ". Please check your spam and bin if you cannot find the email.")
+	except:
+		print(discord_user.name + " cannot be sent a dm.")
 
 	print(discord_user.name + " has been emailed an verification code at " + email)
 	return True
@@ -282,6 +285,7 @@ async def add_verified(user):
 	data = helper.read_file("users.json")
 	user_entry = data.get(str(user.id))
 	user_entry["role"]["New Member"] = time.time() + NEWCOMER_EXPIRY
+	helper.write_file("users.json", data)
 	
 	print(user.name + " has been given a role.")
 
