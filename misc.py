@@ -152,11 +152,13 @@ async def verify_form(message):
 		await message.reply("WARNING: <@" + str(user.id) + "> is on the blacklist.")
 		return None
 
+	'''
 	# Security check: account age
 	if time.mktime(user.created_at.timetuple()) > time.time() - 2592000:
 		# Account is less than 1 month old
 		await message.reply("WARNING: <@" + str(user.id) + "> account is less than 1 month old. Please manually send verification email with //send_code")
 		return None
+	'''
 
 	# Send verification email to zid or supplied email
 	if email != None:

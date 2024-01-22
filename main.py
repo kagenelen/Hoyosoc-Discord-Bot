@@ -21,7 +21,7 @@ import followup
 # IMPORTANT: Replit code is using a test bot on the test server. Before committing please change GENSOC_SERVER back to actual server's id
 
 ############################ CONSTANTS ###################################
-WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to fill out the verification form to gain access to the server. \n Enjoy your stay at GenSoc and feel free to chuck an intro in <#822732136515764265> and grab your roles from <#827393050299858965>."
+WELCOME_MESSAGE = "Welcome traveller! <:GuobaWave:895891227067711548> Remember to go to <#1198949485498347520> and fill out the form to gain access to the server. \n\n Enjoy your stay at HoyoSoc and feel free to chuck an intro in <#822732136515764265> and grab your roles from <#827393050299858965>."
 
 # Read json file for config
 absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
@@ -918,6 +918,21 @@ async def view_shop(interaction, shop: app_commands.Choice[str]):
 
 	await interaction.response.send_message(embed=embed)
 
+@tree.command(name="modify_inventory",
+	description="Add role to user inventory. Admin only.",
+	guild=discord.Object(id=GENSOC_SERVER))
+async def add_role_to_inventory(interaction, target_user: discord.Member, role_name: str, expiry_date: str): 
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+
+	res = gambling.modify_inventory(target_user.id, role_name, expiry_date)
+	if res != None:
+		await interaction.response.send_message(target_user.display_name + " has been given the " + role_name.lower() + " role.")
+	else:
+		await interaction.response.send_message(res, ephemeral=True)
+				   
 @tree.command(name="buy",
 				description="Buy item from shop.",
 				guild=discord.Object(id=GENSOC_SERVER))
