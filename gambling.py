@@ -581,6 +581,29 @@ def get_inventory(discord_id):
 				 roles, ", ".join(five_star_roles), ", ".join(four_star_roles)]
 	return inventory
 
+# Admin add role to inventory["role"]
+# Argument: target user discord id string, role string, expiry date string (format 4/12/23)
+# Return: None if successful or error string
+def modify_inventory(discord_id, role, expiry_date):
+	discord_id = str(discord_id)
+	role = role.title()
+	helper.get_user_entry(discord_id)
+	data = helper.read_file("users.json")
+	user_entry = data.get(discord_id)
+
+	# Get expiry date unix time
+	if expiry_date.lower() == "permanent":
+		expiry_unix = 2145919483
+	else:
+		try:
+			expiry_dt = datetime.datetime.strptime(expiry_date, "%d/%m/%y")
+			expiry_unix = int(time.mktime(expiry_dt.timetuple()))
+		except:
+			return "Invalid format. Please use the format d/m/y or 'permanent'. Example: 4/6/23 for June 4 2023."
+
+	user_entry["role"][role] = expiry_unix
+	helper.write_file("users.json", data)
+	
 
 # Adds role to inventory or renew duration
 # Argument: discord id string, role string, duration (7 or permanent), server booster boolean
