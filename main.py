@@ -145,7 +145,7 @@ async def daily_role_expiry_check():
 		gensoc_guild = client.get_guild(GENSOC_SERVER)
 		user = gensoc_guild.get_member(int(e[0]))
 		role = discord.utils.get(gensoc_guild.roles,
-								 name=e[1][0].capitalize())
+								 name=e[1][0].title())
 		await user.remove_roles(role, reason="Expired role.")
 		print(role.name + " removed from " + user.display_name)
 
