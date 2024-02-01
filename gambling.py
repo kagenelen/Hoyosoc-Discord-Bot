@@ -497,7 +497,8 @@ def daily_fortune(discord_id):
 					"A bit unlucky. You might pull a Diluc.",
 					"A bit unlucky. You might pull a Mona.",
 					"A bit unlucky. You might pull a Tighnari.",
-					"A bit unlucky. You might pull a Keqing."]
+					"A bit unlucky. You might pull a Keqing.",
+				   	"A bit unlucky. You might pull many debate clubs."]
 		fortune_colour = 0xfd4869
 		fortune_level = "Unlucky. (" + str(fortune_value - 100) + ")"
 	elif fortune_value <= 120:
@@ -520,14 +521,19 @@ def daily_fortune(discord_id):
 		fortune_primo = 5000
 		messages = ["You found 5000" + helper.PRIMOJEM_EMOTE + " on the ground. How did you get so much luck?"]
 		fortune_level = "Extremely lucky. (" + str(fortune_value - 120) + ")"
-		fortune_colour = 0x2ee518
+		fortune_colour = 0xffd447
+	elif fortune_value == 0:
+		# Ultimate unluck
+		messages = ["It seems Bennett has found someone that shares the same luck as him."]
+		fortune_level = "Deathly unlucky. (0)"
+		fortune_colour = 0x000000
 	else:
 		# Very lucky
 		fortune_primo = int(fortune_value * 2.84) + random.randint(0, 10)
 		messages = ["Wow, you are so lucky! Maybe you'll pull a double 5 star!",
 					"Wow, you are so lucky! Did you steal someone else's luck?",
-			"Wow, you are so lucky you found " + str(fortune_primo) + helper.PRIMOJEM_EMOTE + " on the ground."]
-		fortune_colour = 0xffda67
+					"Wow, you are so lucky you found " + str(fortune_primo) + helper.PRIMOJEM_EMOTE + " on the ground."]
+		fortune_colour = 0xfff647
 		fortune_level = "Very lucky. (" + str(fortune_value - 120) + ")"
 		
 		
