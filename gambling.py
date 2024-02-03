@@ -513,7 +513,7 @@ def daily_fortune(discord_id):
 		fortune_primo = int(fortune_value * 1.84) + random.randint(-5, 5)
 		messages = ["Lucky you! Perhaps you'll get more blue drops today.",
 					"Lucky you! You might win your 50/50!",
-					"Lukcy you! You might pull a starter 4 star character!"
+					"Lucky you! You might pull a starter 4 star character!",
 					"Lucky you! You found " + str(fortune_primo) + helper.PRIMOJEM_EMOTE + " on the ground."]
 		fortune_colour = 0x2ee518
 		fortune_level = "Lucky. (" + str(fortune_value - 120) + ")"
