@@ -505,6 +505,19 @@ def number_validity(message):
 	helper.write_file("count.json", data)
 	return True
 
+# Checks whether a message deleted is a counting game number
+# Message object
+# Return true if message deleted is a valid number, false otherwise
+def counting_deletion_check(message):
+	is_valid_count = False
+	for react in message.reactions:
+		# Valid numbers have react from this bot
+		if react.me:
+			is_valid_count = True
+
+	return is_valid_count
+	
+
 ################### Connect 4  ############################
 
 # Start a new game of connect 4

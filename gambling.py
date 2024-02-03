@@ -487,7 +487,7 @@ def daily_fortune(discord_id):
 					"Seems you're very unlucky today. Watch out, a piano might fall on you.",
 					"Seems you're very unlucky today. Did you break a mirror by accident?",
 				   	"Seems you're very unlucky today. Perhaps someone stole your luck."]
-		fortune_colour = 0x3b3b3b
+		fortune_colour = 0x69524f
 		fortune_level = "Very unlucky. (" + str(fortune_value - 100) + ")"
 	elif fortune_value <= 100:
 		# Unlucky
@@ -513,6 +513,7 @@ def daily_fortune(discord_id):
 		fortune_primo = int(fortune_value * 1.84) + random.randint(-5, 5)
 		messages = ["Lucky you! Perhaps you'll get more blue drops today.",
 					"Lucky you! You might win your 50/50!",
+					"Lukcy you! You might pull a starter 4 star character!"
 					"Lucky you! You found " + str(fortune_primo) + helper.PRIMOJEM_EMOTE + " on the ground."]
 		fortune_colour = 0x2ee518
 		fortune_level = "Lucky. (" + str(fortune_value - 120) + ")"
@@ -524,7 +525,8 @@ def daily_fortune(discord_id):
 		fortune_colour = 0xffd447
 	elif fortune_value == 0:
 		# Ultimate unluck
-		messages = ["It seems Bennett has found someone that shares the same luck as him."]
+		fortune_primo = -1
+		messages = ["On this very unlucky day, a single primojem has escaped from the hole in your pocket."]
 		fortune_level = "Deathly unlucky. (0)"
 		fortune_colour = 0x000000
 	else:
@@ -541,7 +543,7 @@ def daily_fortune(discord_id):
 	helper.write_file("users.json", data)
 
 	fortune_message = random.choice(messages)
-	if "ground" in fortune_message:
+	if "ground" in fortune_message or "escape" in fortune_message:
 		update_user_currency(discord_id, fortune_primo)
 
 	return [fortune_level, fortune_message, fortune_colour]

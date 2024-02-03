@@ -128,6 +128,16 @@ async def on_message(message):
 			data = helper.read_file("config.json")
 			data["card_spam_counter"] += len(all_matches)
 			helper.write_file("config.json", data)
+
+@client.event
+async def on_message_delete(message):
+	##### This section deals with counting game deletions #######################
+	if message.channel.id == COUNTING_CHANNEL:
+		if minigame.counting_deletion_check(message):
+			# Valid number deleted, send moderation log message
+			mod_channel = client.get_channel(MODERATION_CHANNEL)
+			await mod_channel.send("<@" + str(message.author.id) + "> has delete the message \"" + 
+				message.content + "\" in the counting game.")
 	
 
 ########################## LOOPS ###########################################
