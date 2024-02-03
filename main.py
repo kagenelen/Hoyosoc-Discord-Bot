@@ -136,7 +136,7 @@ async def on_message_delete(message):
 		if minigame.counting_deletion_check(message):
 			# Valid number deleted, send moderation log message
 			mod_channel = client.get_channel(MODERATION_CHANNEL)
-			await mod_channel.send("<@" + str(message.author.id) + "> has delete the message \"" + 
+			await mod_channel.send("<@" + str(message.author.id) + "> has deleted the message \"" + 
 				message.content + "\" in the counting game.")
 	
 
