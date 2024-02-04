@@ -14,7 +14,7 @@ def save_uid(discord_id, uid, game):
 	if game == "honkai":
 		if int(uid) < 10000000 or int(uid) > 999999999:
 			return False
-	elif int(uid) < 100000000 or int(uid) > 999999999:
+	elif int(uid) < 100000000 or int(uid) > 1999999999:
 		return False
 	
 	if uid not in user["uids"][game]:
