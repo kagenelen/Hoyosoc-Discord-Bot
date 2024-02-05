@@ -125,7 +125,7 @@ async def verify_form(message):
 			email = message_words[index + 1].lower()
 
 		if "your zid" in word1.lower() and message_words[index + 1].lower() != "z0000000":
-			email = message_words[index + 1].lower() + "@ad.unsw.edu.au"
+			student_email = message_words[index + 1].lower() + "@ad.unsw.edu.au"
 			unsw = True
 
 	if username == None and email == None:
@@ -159,9 +159,27 @@ async def verify_form(message):
 		await message.reply("WARNING: <@" + str(user.id) + "> account is less than 1 month old. Please manually send verification email with //send_code")
 		return None
 	'''
+	
+	config = helper.read_file("config.json")
+	verification_level = config['verification_level']
+	
+	if verification_level == "low":
+		# Verify immediately if verification level is set to low
+		await add_verified(user)
+		await message.add_reaction("✅")
+	
+	# Send verification supplied email
+	elif email != None and verification_level == "medium":
+		# Send verification to supplied email, auto verifies once code is entered
+		verification_code = generate_code(user, email, True)
+		is_sent = await send_verify_email(user, email, verification_code, True)
+		if is_sent:
+			await message.add_reaction("✅")
 
-	# Send verification email to zid or supplied email
-	if email != None:
+	elif email != None and verification_level == "high":
+		# Send verification to email or student email, auto verifies for student email
+		if unsw:
+			email = student_email
 		verification_code = generate_code(user, email, unsw)
 		is_sent = await send_verify_email(user, email, verification_code, True)
 		if is_sent:
