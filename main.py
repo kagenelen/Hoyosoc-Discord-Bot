@@ -40,8 +40,11 @@ with open(absolute_path + 'config.json', 'r') as f:
 	f.close()
 
 # NOTICE: Uncomment these variables if testing on the test server
-# GENSOC_SERVER = 962970271545982986 
-# CARD_SPAM_CHANNEL = 1158232410299846747
+GENSOC_SERVER = 962970271545982986 
+CARD_SPAM_CHANNEL = 1158232410299846747
+VERIFICATION_CHANNEL = 986440303655399454
+MODERATION_CHANNEL = 1181463563722833961
+WELCOME_CHANNEL = 962970271545982989
 
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
 CHAT_PRIMOJEM = 50
@@ -214,9 +217,14 @@ async def send_welcome(interaction):
 	helper.write_file("config.json", data)
 
 @tree.command(name="set_verification",
-				description="Set verification channel. Admin only.",
+				description="Set verification security level. Admin only.",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def set_verification(interaction, verify_channel: discord.TextChannel):
+@app_commands.choices(security=[
+	discord.app_commands.Choice(name="Automatic verification upon form completion", value="low"),
+	discord.app_commands.Choice(name="Automatic verification for any email", value="medium"),
+	discord.app_commands.Choice(name="Automatic verification for UNSW students", value="high")
+])
+async def set_verification(interaction, security: app_commands.Choice[str]):
 	if not helper.is_team(interaction):
 		await interaction.response.send_message("Insuffient permission.",
 												ephemeral=True)
@@ -224,10 +232,10 @@ async def set_verification(interaction, verify_channel: discord.TextChannel):
 
 	# Set verification channel
 	await interaction.response.send_message(
-		"Verification channel has been set to " + verify_channel.name,
+		"Verification security level has been set to " + security.name,
 		ephemeral=True)
 	data = helper.read_file("config.json")
-	data['channel'] = verify_channel.id
+	data['verification_level'] = security.value
 	helper.write_file("config.json", data)
 
 @tree.command(name="blacklist_user",
@@ -369,6 +377,7 @@ async def user_self_verify(interaction, verification_code: str):
 	else:
 		# Not UNSW student, need exec to check details and manual verify
 		mod_channel = client.get_channel(MODERATION_CHANNEL)
+		await interaction.response.send_message("Thank you for the correct code.", ephemeral=True)
 		await mod_channel.send("<@" + str(interaction.user.id) + "> has entered the correct verification code. Please verify their details before using \\verify_user.")
 		
 	
