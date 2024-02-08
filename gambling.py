@@ -345,7 +345,7 @@ def update_user_list_currency(discord_list, change, server):
 		if "\n" in discord_list:
 			usernames = [d.strip() for d in discord_list.split("\n")]
 		else:
-			usernames = [d.strip() for d in discord_list.split(",")]
+			usernames = [d.strip() for d in discord_list.split(" ")]
 	
 		successful = []
 		for u in usernames:

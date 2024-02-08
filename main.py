@@ -1077,19 +1077,20 @@ async def leaderboard(interaction, category: app_commands.Choice[str]):
 	name="give_primojems",
 	description="Give primojems to list of people. Admin only.",
 	guild=discord.Object(id=GENSOC_SERVER))
-async def give_primojem(interaction, attendee_list: str, amount: int):
+async def give_primojem(interaction, user_list: str, amount: int):
 	if not helper.is_team(interaction):
 		await interaction.response.send_message("Insuffient permission.",
 												ephemeral=True)
 		return
 
-	if attendee_list == "all":
+	await interaction.response.defer()
+	if user_list == "all":
 		gambling.update_all_currency(amount)
-		await interaction.response.send_message(str(amount) + " apologems given to all users",
+		await interaction.followup.send(str(amount) + " apologems given to all users",
 												ephemeral=True)
 	else:
-		res = gambling.update_user_list_currency(attendee_list, amount, interaction.guild)
-	await interaction.response.send_message(str(amount) + " given to these users: " + ", ".join(res),
+		res = gambling.update_user_list_currency(user_list, amount, interaction.guild)
+	await interaction.followup.send(str(amount) + " given to these users: " + ", ".join(res),
 												ephemeral=True)
 
 ################### MINIGAMES ####################################################
