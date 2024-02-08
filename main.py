@@ -40,11 +40,13 @@ with open(absolute_path + 'config.json', 'r') as f:
 	f.close()
 
 # NOTICE: Uncomment these variables if testing on the test server
+'''
 GENSOC_SERVER = 962970271545982986 
 CARD_SPAM_CHANNEL = 1158232410299846747
 VERIFICATION_CHANNEL = 986440303655399454
 MODERATION_CHANNEL = 1181463563722833961
 WELCOME_CHANNEL = 962970271545982989
+'''
 
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
 CHAT_PRIMOJEM = 50
@@ -113,6 +115,12 @@ async def on_message(message):
 		user = await misc.verify_form(message)
 		if user == None:
 			return
+
+		data = helper.read_file("config.json")
+		if data['verification_level'] == 'low':
+			user_welcome = misc.create_welcome(user)
+			welcome_channel = client.get_channel(WELCOME_CHANNEL)
+			await welcome_channel.send(user_welcome)  
 
 	##### This section deals with the counting game #######################
 	if (message.channel.id == COUNTING_CHANNEL and not message.author.bot):
@@ -377,7 +385,7 @@ async def user_self_verify(interaction, verification_code: str):
 	else:
 		# Not UNSW student, need exec to check details and manual verify
 		mod_channel = client.get_channel(MODERATION_CHANNEL)
-		await interaction.response.send_message("Thank you for the correct code.", ephemeral=True)
+		await interaction.response.send_message("Thank you for the correct code. Please wait patiently for the Hoyosoc team to check the details you have provided.", ephemeral=True)
 		await mod_channel.send("<@" + str(interaction.user.id) + "> has entered the correct verification code. Please verify their details before using \\verify_user.")
 		
 	
@@ -486,7 +494,7 @@ async def help_commands(interaction):
 	embed_general.add_field(name="**/unyatta**", value="Bot sends unyatta emotes.", inline=False)
 
 	embed_admin.add_field(name="**/send_welcome**", value="Send welcome sticky message.", inline=False)
-	embed_admin.add_field(name="**/set_verification**", value="Set verification channel.", inline=False)
+	embed_admin.add_field(name="**/set_verification**", value="Set verification security level.", inline=False)
 	embed_admin.add_field(name="**/blacklist_user**", value="Blacklist user.", inline=False)
 	embed_admin.add_field(name="**/edit_shop**", value="Add or remove role icon from shop.", inline=False)
 	embed_admin.add_field(name="**/delete_messages**", value="Purge x messages from channel, optionally from a specific user.", inline=False)
@@ -499,6 +507,7 @@ async def help_commands(interaction):
 	embed_admin.add_field(name="**/auto_payout**", value="Schedule payout based on vote.", inline=False)
 	embed_admin.add_field(name="**/create_auction**", value="Start auction.", inline=False)
 	embed_admin.add_field(name="**/give_primojems**", value="Give primojem to a list of users.", inline=False)
+	embed_admin.add_field(name="**/edit_inventory**", value="Give user an inventory role.", inline=False)
 
 	embeds = [embed_general, embed_primojem, embed_minigame, embed_poll, embed_admin]
 	await paginator.run(embeds)
@@ -937,7 +946,7 @@ async def view_shop(interaction, shop: app_commands.Choice[str]):
 
 	await interaction.response.send_message(embed=embed)
 
-@tree.command(name="modify_inventory",
+@tree.command(name="edit_inventory",
 	description="Add role to user inventory. Admin only.",
 	guild=discord.Object(id=GENSOC_SERVER))
 async def add_role_to_inventory(interaction, target_user: discord.Member, role_name: str, expiry_date: str): 
@@ -950,7 +959,7 @@ async def add_role_to_inventory(interaction, target_user: discord.Member, role_n
 	if res != None:
 		await interaction.response.send_message(target_user.display_name + " has been given the " + role_name.lower() + " role.")
 	else:
-		await interaction.response.send_message(res, ephemeral=True)
+		await interaction.response.send_message(role_name + " has been given to " + target_user.display_name, ephemeral=True)
 				   
 @tree.command(name="buy",
 				description="Buy item from shop.",
