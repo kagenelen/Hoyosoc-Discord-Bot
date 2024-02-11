@@ -481,7 +481,7 @@ def daily_fortune(discord_id):
 
 	fortune_value = random.randint(0, 220)
 
-	if fortune_value <= 50:
+	if fortune_value <= 50 and fortune_value != 0:
 		# Very unlucky
 		messages = ["Seems you're very unlucky today. If you gamble, you might go bankrupt.",
 					"Seems you're very unlucky today. Watch out, a piano might fall on you.",
@@ -527,7 +527,7 @@ def daily_fortune(discord_id):
 		# Ultimate unluck
 		fortune_primo = -1
 		messages = ["On this very unlucky day, a single primojem has escaped from the hole in your pocket."]
-		fortune_level = "Deathly unlucky. (0)"
+		fortune_level = "Deathly unlucky. (-100)"
 		fortune_colour = 0x000000
 	else:
 		# Very lucky
