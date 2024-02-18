@@ -342,12 +342,14 @@ async def send_code(interaction, target_user: discord.Member, email: str, is_uns
 												ephemeral=True)
 		return
 
+	await interaction.response.defer()
+	
 	code = misc.generate_code(target_user, email, is_unsw)
 	is_sent = await misc.send_verify_email(target_user, email, code, send_reminder_dm)
 	if is_sent:
-		await interaction.response.send_message("Email  has been sent to " + target_user.name)
+		await interaction.followup.send("Email  has been sent to " + target_user.name)
 	else:
-		await interaction.response.send_message("Failed to send.")
+		await interaction.followup.send("Failed to send.")
 
 @tree.command(name="verify_user",
 	description="Manually verify user. Admin only.",
@@ -358,8 +360,10 @@ async def admin_verify(interaction, verification_target: discord.Member):
 												ephemeral=True)
 		return
 
+	await interaction.response.defer()
+	
 	await misc.add_verified(verification_target)
-	await interaction.response.send_message("<@" + str(verification_target.id) + "> has been verified.")
+	await interaction.followup.send("<@" + str(verification_target.id) + "> has been verified.")
 	
 	channel = client.get_channel(WELCOME_CHANNEL)
 	user_welcome = misc.create_welcome(verification_target)
@@ -369,15 +373,17 @@ async def admin_verify(interaction, verification_target: discord.Member):
 	description="New member self verification.",
 	guild=discord.Object(id=GENSOC_SERVER))
 async def user_self_verify(interaction, verification_code: str):
+	await interaction.response.defer()
+	
 	res = misc.is_code_correct(interaction.user.id, verification_code)
 	if isinstance(res, str):
-		await interaction.response.send_message(res, ephemeral=True)
+		await interaction.followup.send(res, ephemeral=True)
 		return
 
 	if res is True:
 		# Is UNSW student, auto verify
 		await misc.add_verified(interaction.user)
-		await interaction.response.send_message("Congratulations! You have been verified.", ephemeral=True)
+		await interaction.followup.send("Congratulations! You have been verified.", ephemeral=True)
 		channel = client.get_channel(WELCOME_CHANNEL)
 		user_welcome = misc.create_welcome(interaction.user)
 		await channel.send(user_welcome)
@@ -385,7 +391,7 @@ async def user_self_verify(interaction, verification_code: str):
 	else:
 		# Not UNSW student, need exec to check details and manual verify
 		mod_channel = client.get_channel(MODERATION_CHANNEL)
-		await interaction.response.send_message("Thank you for the correct code. Please wait patiently for the Hoyosoc team to check the details you have provided.", ephemeral=True)
+		await interaction.followup.send("Thank you for the correct code. Please wait patiently for the Hoyosoc team to check the details you have provided.", ephemeral=True)
 		await mod_channel.send("<@" + str(interaction.user.id) + "> has entered the correct verification code. Please verify their details before using \\verify_user.")
 		
 	
@@ -959,7 +965,7 @@ async def add_role_to_inventory(interaction, target_user: discord.Member, role_n
 	if res != None:
 		await interaction.response.send_message(target_user.display_name + " has been given the " + role_name.lower() + " role.")
 	else:
-		await interaction.response.send_message(role_name + " has been given to " + target_user.display_name, ephemeral=True)
+		await interaction.response.send_message("Failed to give role.", ephemeral=True)
 				   
 @tree.command(name="buy",
 				description="Buy item from shop.",
