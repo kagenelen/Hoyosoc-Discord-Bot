@@ -962,10 +962,10 @@ async def add_role_to_inventory(interaction, target_user: discord.Member, role_n
 		return
 
 	res = gambling.modify_inventory(target_user.id, role_name, expiry_date)
-	if res != None:
+	if res == None:
 		await interaction.response.send_message(target_user.display_name + " has been given the " + role_name.lower() + " role.")
 	else:
-		await interaction.response.send_message("Failed to give role.", ephemeral=True)
+		await interaction.response.send_message(res, ephemeral=True)
 				   
 @tree.command(name="buy",
 				description="Buy item from shop.",
