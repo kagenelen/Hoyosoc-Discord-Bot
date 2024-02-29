@@ -1120,7 +1120,7 @@ async def flip(interaction, coin_amount: int, head_amount: int, bet: str):
 	if res[1] == 0:
 		description += "You have lost " + bet + helper.PRIMOJEM_EMOTE + "\n\n"
 	else:
-		description += "You have won " + str(res[1]) + helper.PRIMOJEM_EMOTE + "\n\n"
+		description += "You have won " + str(res[1] - bet) + helper.PRIMOJEM_EMOTE + "\n\n"
 
 	embed = discord.Embed(title=interaction.user.display_name + "\'s Coinflip",
 							description=description,
