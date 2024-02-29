@@ -962,10 +962,10 @@ async def add_role_to_inventory(interaction, target_user: discord.Member, role_n
 		return
 
 	res = gambling.modify_inventory(target_user.id, role_name, expiry_date)
-	if res != None:
+	if res == None:
 		await interaction.response.send_message(target_user.display_name + " has been given the " + role_name.lower() + " role.")
 	else:
-		await interaction.response.send_message("Failed to give role.", ephemeral=True)
+		await interaction.response.send_message(res, ephemeral=True)
 				   
 @tree.command(name="buy",
 				description="Buy item from shop.",
@@ -1120,7 +1120,7 @@ async def flip(interaction, coin_amount: int, head_amount: int, bet: str):
 	if res[1] == 0:
 		description += "You have lost " + bet + helper.PRIMOJEM_EMOTE + "\n\n"
 	else:
-		description += "You have won " + str(res[1]) + helper.PRIMOJEM_EMOTE + "\n\n"
+		description += "You have won " + str(res[1] - bet) + helper.PRIMOJEM_EMOTE + "\n\n"
 
 	embed = discord.Embed(title=interaction.user.display_name + "\'s Coinflip",
 							description=description,

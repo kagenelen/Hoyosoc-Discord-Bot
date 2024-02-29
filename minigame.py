@@ -9,7 +9,6 @@ import numpy
 
 '''
 Minigames:
-Guess the number
 Blackjack
 Coinflip
 Hangman
@@ -28,85 +27,6 @@ COUNT_MAX = 40
 COUNT_BONUS = 2 
 ROW_COUNT = 6
 COLUMN_COUNT = 7
-
-
-################### Guess Number ############################
-
-# Make new guess session. Where the number range is 0 - bet.
-# Argument: discord id string, bet amount, self given attempts
-# Return: outcome string
-def new_guess(discord_id, bet, given_attempts):
-  discord_id = str(discord_id)
-  data = helper.read_file("minigame_session.json")
-
-  if bet <= 10:
-    return "Bets have to be higher than 10."
-
-  max_attempts = int(math.ceil(math.log(bet, 2)))
-  if given_attempts > max_attempts:
-    return "The maximum allowed guesses for this bet is " + str(
-      max_attempts) + "."
-
-  winnings = int(bet * (1.3 + 0.5 * (max_attempts - given_attempts)))
-  data[discord_id] = {
-    "minigame": "number guess",
-    "used_attempts": 0,
-    "bet": bet,
-    "target": random.randint(0, bet),
-    "allowed_attempts": given_attempts,
-    "winnings": winnings,
-    "time": int(time.time())
-  }
-
-  if gambling.update_user_currency(discord_id, -1 * bet) == None:
-    return "Insufficient primojems to make this bet."
-
-  helper.write_file("minigame_session.json", data)
-  return "You have 10 minutes to guess the correct number between 0 and " + str(
-    bet) + " and earn " + str(winnings) + " primojems."
-
-
-# Make a guess
-# Argument: discord id string, guessed number
-# Return: outcome string
-def make_guess(discord_id, guess):
-  discord_id = str(discord_id)
-  data = helper.read_file("minigame_session.json")
-  session = data.get(discord_id, None)
-
-  if session == None or session["minigame"] != "number guess":
-    return "No active session."
-
-  if time.time() - session["time"] > 600:
-    data.pop(discord_id)
-    helper.write_file("minigame_session.json", data)
-    return "Out of time."
-
-  res = ""
-  target = session["target"]
-  if guess == target:
-    # Correct
-    gambling.update_user_currency(discord_id, session["winnings"])
-    res = "Correct! You have earnt " + str(session["winnings"]) + " primojems!"
-    data.pop(discord_id)
-  elif guess < target:
-    # Go higher
-    session["used_attempts"] += 1
-    remaining_attempts = session["allowed_attempts"] - session["used_attempts"]
-    res = "Higher. You have " + str(remaining_attempts) + " attempts left."
-  else:
-    # Go lower
-    session["used_attempts"] += 1
-    remaining_attempts = session["allowed_attempts"] - session["used_attempts"]
-    res = "Lower. You have " + str(remaining_attempts) + " attempts left."
-
-  if session["used_attempts"] == session["allowed_attempts"]:
-    res = "Out of attempts. The correct number is " + str(
-      session["target"]) + "."
-    data.pop(discord_id)
-
-  helper.write_file("minigame_session.json", data)
-  return res
 
 ################### Blackjack ############################
 
@@ -129,8 +49,10 @@ def new_blackjack(discord_id, bet):
 		"your_hand": your_hand
 	}
 	
-	if gambling.update_user_currency(discord_id, -1 * bet) == None:
+	if gambling.check_user_currency(discord_id) - bet < 0:
 		return "Insufficient primojems to make this bet."
+		
+	gambling.update_user_currency(discord_id, -1 * bet)
 	
 	outcome_string = ""
 	if blackjack_get_value(your_hand) == 21:
@@ -276,8 +198,10 @@ def coinflip(discord_id, coin_amount, head_amount, bet):
 	if coin_amount <= 0 or head_amount > coin_amount or head_amount < 0:
 		return "Invalid coin or head amount."
 	
-	if gambling.update_user_currency(discord_id, -1 * bet) == None:
+	if gambling.check_user_currency(discord_id) - bet < 0:
 		return "Insufficient primojems to make this bet."
+
+	gambling.update_user_currency(discord_id, -1 * bet)
 	
 	flip_result = random.choices(["H", "T"], k=coin_amount)
 	
