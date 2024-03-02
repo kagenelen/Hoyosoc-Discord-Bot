@@ -501,7 +501,7 @@ def daily_fortune(discord_id):
 		messages = ["Qiqi thinks you're very unlucky today. But she wishes the bad luck to begone",
 					"Qiqi thinks you're very unlucky today. Perhaps you forgot where you put your luck?"]
 		fortune_colour = 0x69524f
-		fortune_level = "Very unlucky. (-77))"
+		fortune_level = "Very unlucky. (-77)"
 		
 	elif fortune_value <= 50:
 		# Very unlucky
