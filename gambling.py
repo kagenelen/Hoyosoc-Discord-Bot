@@ -564,7 +564,7 @@ def daily_fortune(discord_id):
 	helper.write_file("users.json", data)
 
 	fortune_message = random.choice(messages)
-	if "ground" in fortune_message or "escape" in fortune_message:
+	if "ground" in fortune_message or "escape" in fortune_message or "gift of" in fortune_message:
 		update_user_currency(discord_id, fortune_primo)
 
 	return [fortune_level, fortune_message, fortune_colour]
