@@ -79,8 +79,10 @@ def find_uid(discord_id):
 def whose_uid(uid, game):
 	data = helper.read_file("users.json")
 	for user in data:
-		if data[user]["uids"][game][uid]:
-			return user
+		for user_uid in data[user]["uids"][game]:
+			print(user_uid)
+			if user_uid == uid:
+				return user
 			
 	return False
 

@@ -40,13 +40,13 @@ with open(absolute_path + 'config.json', 'r') as f:
 	f.close()
 
 # NOTICE: Uncomment these variables if testing on the test server
-'''
+
 GENSOC_SERVER = 962970271545982986 
 CARD_SPAM_CHANNEL = 1158232410299846747
 VERIFICATION_CHANNEL = 986440303655399454
 MODERATION_CHANNEL = 1181463563722833961
 WELCOME_CHANNEL = 962970271545982989
-'''
+
 
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
 CHAT_PRIMOJEM = 50
@@ -586,7 +586,7 @@ async def reverse_find_uid(interaction, game:app_commands.Choice[str], uid: str)
 	if not uid.isnumeric() or int(uid) >= 999999999 or int(uid) <= 0:
 		await interaction.response.send_message("Invalid uid.", ephemeral=True)
 		return
-		
+
 	result = uid_finder.whose_uid(uid, game.value)
 	if result == False:
 		await interaction.response.send_message(
