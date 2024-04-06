@@ -80,7 +80,6 @@ def whose_uid(uid, game):
 	data = helper.read_file("users.json")
 	for user in data:
 		for user_uid in data[user]["uids"][game]:
-			print(user_uid)
 			if user_uid == uid:
 				return user
 			
