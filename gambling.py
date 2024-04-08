@@ -16,7 +16,7 @@ from operator import getitem
 '''
 
 TIME_OFFSET = 36000 # not daylight saving
-HOUR_OFFSET = 13 # daylight saving 13, not daylight saving 14
+HOUR_OFFSET = 14 # daylight saving 13, not daylight saving 14
 BET_LIMIT = 5000
 AUCTION_INCREMENT = 1.05
 ONE_WEEK_ROLE = 800
