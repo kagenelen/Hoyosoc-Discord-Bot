@@ -69,7 +69,6 @@ async def on_ready():
 	make_backup.start()
 	run_scheduled_tasks.start()
 	card_spam_description_update.start()
-	helper.rewrite_structure()
 
 @client.event
 async def on_member_join(member):

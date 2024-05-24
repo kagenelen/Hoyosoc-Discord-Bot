@@ -73,7 +73,8 @@ def get_user_entry(discord_id):
 				"hsr": [],
 				"honkai": [],
 				"tot": [],
-				"zzz": []
+				"zzz": [],
+				"wuwa": []
 			}
 		}
 		data[discord_id] = user_entry
