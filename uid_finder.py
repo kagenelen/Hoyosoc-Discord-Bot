@@ -49,7 +49,8 @@ def find_uid(discord_id):
 	user = helper.get_user_entry(discord_id)
 
 	merged_uids = user["uids"]["genshin"] + user["uids"]["hsr"] + \
-		user["uids"]["honkai"] + user["uids"]["tot"] + user["uids"]["zzz"]
+		user["uids"]["honkai"] + user["uids"]["tot"] + user["uids"]["zzz"] +\
+		user["uids"]["wuwa"]
 	
 	if len(merged_uids) == 0:
 		return False
@@ -70,6 +71,9 @@ def find_uid(discord_id):
 
 	if len(user["uids"]["zzz"]) != 0:
 		uid_list += "Zenless Zone Zero: " + ", ".join(user["uids"]["zzz"]) + "\n"
+
+	if len(user["uids"]["wuwa"]) != 0:
+		uid_list += "Wuthering Waves: " + ", ".join(user["uids"]["wuwa"]) + "\n"
 
 	return uid_list
 
