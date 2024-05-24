@@ -69,6 +69,7 @@ async def on_ready():
 	make_backup.start()
 	run_scheduled_tasks.start()
 	card_spam_description_update.start()
+	helper.rewrite_structure()
 
 @client.event
 async def on_member_join(member):
@@ -531,6 +532,7 @@ async def help_commands(interaction):
 	discord.app_commands.Choice(name="Honkai Impact", value="honkai"),
 	discord.app_commands.Choice(name="Tears of Themis", value="tot"),
 	discord.app_commands.Choice(name="Zenless Zone Zero", value="zzz"),
+	discord.app_commands.Choice(name="Wuthering Waves", value="wuwa"),
 ])
 async def add_uid(interaction, game: app_commands.Choice[str], uid: str):
 	result = uid_finder.save_uid(str(interaction.user.id), uid, game.value)
@@ -550,6 +552,7 @@ async def add_uid(interaction, game: app_commands.Choice[str], uid: str):
 	discord.app_commands.Choice(name="Honkai Impact", value="honkai"),
 	discord.app_commands.Choice(name="Tears of Themis", value="tot"),
 	discord.app_commands.Choice(name="Zenless Zone Zero", value="zzz"),
+	discord.app_commands.Choice(name="Wuthering Waves", value="wuwa"),
 ])
 async def remove_uid(interaction, game: app_commands.Choice[str], uid: str):
 	result = uid_finder.remove_uid(str(interaction.user.id), uid, game.value)
@@ -582,6 +585,7 @@ async def find_uid(interaction, target_user: discord.Member):
 	discord.app_commands.Choice(name="Honkai Impact", value="honkai"),
 	discord.app_commands.Choice(name="Tears of Themis", value="tot"),
 	discord.app_commands.Choice(name="Zenless Zone Zero", value="zzz"),
+	discord.app_commands.Choice(name="Wuthering Waves", value="wuwa"),
 ])
 async def reverse_find_uid(interaction, game:app_commands.Choice[str], uid: str):
 	if not uid.isnumeric() or int(uid) >= 999999999 or int(uid) <= 0:

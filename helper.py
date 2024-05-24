@@ -86,16 +86,8 @@ def get_user_entry(discord_id):
 def rewrite_structure():
 	data = read_file("users.json")
 	for user in data:
-		if data[user].get("uids", None) == None:
-			data[user]["uids"] = {
-				"genshin": data[user]["genshin_uids"],
-				"hsr": data[user]["hsr_uids"],
-				"honkai": [],
-				"tot": [],
-				"zzz": []
-			}
-			del data[user]["genshin_uids"]
-			del data[user]["hsr_uids"]
+		if data[user]["uids"].get("wuwa", None) == None:
+			data[user]["uids"]["wuwa"] = []
 		
 	write_file("users.json", data)
 
