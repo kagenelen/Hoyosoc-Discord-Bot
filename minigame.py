@@ -227,7 +227,7 @@ Returns: [
 
 
 # Create a new hangman session in minigame_session.json for that player
-def new_hangman(discord_id, difficulty):
+def new_hangman(discord_id, difficulty, fandom):
 
   discord_id = str(discord_id)
   difficulty = difficulty.lower()
@@ -247,7 +247,7 @@ def new_hangman(discord_id, difficulty):
     "difficulty": difficulty,
     "lives": lives,
     "guessed_letters": "",
-    "hangman_word": random.choice(helper.read_file("wordbank.json")),
+    "hangman_word": random.choice(helper.read_file("wordbank.json")[fandom]),
 	"message_id": None
   }
   helper.write_file("minigame_session.json", minigame_session)
