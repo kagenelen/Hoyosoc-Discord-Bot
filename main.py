@@ -1252,8 +1252,12 @@ async def stand(interaction):
 	discord.app_commands.Choice(name="Hard", value="hard"),
 	discord.app_commands.Choice(name="Extreme", value="extreme"),
 ])
-async def hangman(interaction, difficulty: app_commands.Choice[str]):
-	res = minigame.new_hangman(interaction.user.id, difficulty.value)
+@app_commands.choices(fandom=[
+	discord.app_commands.Choice(name="Genshin Impact", value="genshin"),
+	discord.app_commands.Choice(name="Star Rail", value="hsr")
+])
+async def hangman(interaction, difficulty: app_commands.Choice[str], fandom: app_commands.Choice[str]):
+	res = minigame.new_hangman(interaction.user.id, difficulty.value, fandom.value)
 	if res[0] == -1:
 		await interaction.response.send_message(res[1][0])
 	else:
