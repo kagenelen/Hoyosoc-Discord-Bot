@@ -290,9 +290,9 @@ def is_code_correct(discord_id, code):
 # Return: User (member class) or None if user not found
 async def add_verified(user):
 	role1 = discord.utils.get(user.guild.roles, name="Traveller")
-	role2 = discord.utils.get(user.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀ Cosmetic Roles ⠀⠀⠀⠀⠀⠀⠀")
-	role3 = discord.utils.get(user.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ About ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
-	role4 = discord.utils.get(user.guild.roles, name="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Misc ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+	role2 = discord.utils.get(user.guild.roles, name="★☆★☆★☆ COSMETIC ☆★☆★☆★")
+	role3 = discord.utils.get(user.guild.roles, name="★☆★☆★☆ ABOUT ☆★☆★☆★")
+	role4 = discord.utils.get(user.guild.roles, name="★☆★☆★☆ MISC ☆★☆★☆★")
 	role5 = discord.utils.get(user.guild.roles, name="Unverified")
 	role6 = discord.utils.get(user.guild.roles, name="New Member")
 	if role1 == None or role2 == None or role3 == None or role4 == None or role5 == None or role6 == None:

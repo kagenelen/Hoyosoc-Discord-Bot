@@ -104,8 +104,11 @@ async def on_message(message):
 
 		data = helper.read_file("config.json")
 		channel = client.get_channel(WELCOME_CHANNEL)
-		old_welcome = await channel.fetch_message(data["prev_welcome_message"])
-		await old_welcome.delete()
+		try:
+			old_welcome = await channel.fetch_message(data["prev_welcome_message"])
+			await old_welcome.delete()
+		except:
+			pass
 
 		data["prev_welcome_message"] = welcome.id
 		helper.write_file("config.json", data)
