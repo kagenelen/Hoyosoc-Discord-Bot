@@ -8,6 +8,7 @@ import re
 from dotenv import load_dotenv
 import os
 import smtplib
+import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -24,6 +25,8 @@ UNYATTA_EMOTE = \
 "<:Unyatta_01:1169516502576279552><:Unyatta_02:1169516506317590528><:Unyatta_03:1169516508523806741>\n" + \
 "<:Unyatta_04:1169516512214777896><:Unyatta_05:1169516516237127690><:Unyatta_06:1169516519001169952>\n" + \
 "<:Unyatta_07:1169516523082235934><:Unyatta_08:1169516527016476732><:Unyatta_09:1169516528757133352>"
+
+#################### Scheduled Tasks #####################################
 
 # Create scheduled task
 # Argument: task type, scheduled time to run task, dictionary containing other info
@@ -51,6 +54,8 @@ def list_tasks():
 		task_list.append([task["type"].title(), helper.unix_to_syd(task["time"])])
 
 	return task_list
+
+#################### Card Counter #####################################
 
 # Count number of times a substring appears in channel
 # Argument: channel object, output to file (0 or 1)
@@ -84,6 +89,8 @@ async def card_update(channel):
 
 	return data["card_spam_counter"]
 
+#################### Yatta #####################################
+
 # Generate a string of random number of yatta emotes
 # Return: Yatta string
 def yatta_random():
@@ -94,6 +101,160 @@ def yatta_random():
 
 	return yatta_str
 
+#################### Daylight Savings Settings #####################################
+
+# Turn daylight savings on or off in config.json
+# mode (on/off)
+# Return: None for success
+def switch_daylight(mode):
+	config = helper.read_file("config.json")
+	mode = mode.lower()
+	
+	if mode == "off":
+		# No daylight savings (UTC +10)
+		config["hour_offset"] = 14
+		config["time_offset"] = 36000
+		helper.write_file("config.json", config)
+		
+	elif mode == "on":
+		# Daylight savings time (UTC +11)
+		config["hour_offset"] = 13
+		config["time_offset"] = 39600
+		helper.write_file("config.json", config)
+		
+
+#################### Redemption Code #####################################
+
+# Add redemption code to code.json
+# redemption_code, game, expiry (string)
+# Return: error string or [redemption url, expiry_unix]
+def add_code(code, game, expiry, reward):
+	code = code.upper()
+	data = helper.read_file("codes.json")
+
+	# Check duplicate
+	if code in data[game]:
+		return code + " has already been added."
+	
+	# Fix expiry string timezone to match format
+	if expiry == None:
+		expiry = "19/1/38 00:00 +00:00"
+	elif ("+" in expiry or "-" in expiry) and ":" not in expiry[-3:]:
+		expiry += ":00"
+	elif "+" not in expiry and "-" not in expiry:
+		syd_timezone = str(24 - helper.read_file("config.json")["hour_offset"])
+		expiry += " +" + syd_timezone + ":00"
+		
+		
+	# Convert expiry string to unix. Expected format e.g. 4/12/23 20:00 +10:00
+	try:
+		expiry_dt = datetime.datetime.strptime(expiry, "%d/%m/%y %H:%M %z")
+		expiry_dt = expiry_dt.astimezone(datetime.timezone.utc)
+		expiry_unix = int(time.mktime(expiry_dt.timetuple()))
+	except:
+		return ("Invalid format. Please use the format d/m/y hh:mm ±hh:mm. \n\
+Example: 4/6/23 09:05 -08:00 for June 4 2023 9:05am UTC -8")
+
+	# Make redemption url
+	if game == "genshin":
+		url = "https://genshin.hoyoverse.com/en/gift?code=" + code
+	elif game == "hsr":
+		url = "https://hsr.hoyoverse.com/gift?code=" + code
+	elif game == "zzz":
+		url = "https://zenless.hoyoverse.com/redemption?code=" + code
+	else:
+		url = None
+
+	data[game][code] = {
+		"link": url,
+		"expiry": expiry_unix,
+		"reward": reward,
+		"users": []
+	}
+
+	helper.write_file("codes.json", data)
+	return [url, expiry_unix]
+	
+
+# Remove redemption code from code.json
+# redemption_code, game
+# Return: outcome string
+def remove_code(code, game):
+	code = code.upper()
+	data = helper.read_file("codes.json")
+
+	# Check duplicate
+	if code in data[game]:
+		del data[game][code]
+		helper.write_file("codes.json", data)
+		return code + " has been removed successfully."
+	else:
+		return code + " does not exist."
+
+
+# List redemption codes with filters
+# discord_id (string), game, filter for expiry (bool/None)
+# Return: List of dictionary{game, code, expiry, reward}
+def list_codes(discord_id, game, is_expired):
+	discord_id = str(discord_id)
+	data = helper.read_file("codes.json")
+	
+	# Filter 1: by game
+	filtered1 = []
+	for g in data:
+		for code in data[g]:
+			entry = {
+				"game": game_to_long(g),
+				"code": code,
+				"expiry": data[g][code]["expiry"],
+				"reward": data[g][code]["reward"]
+			}
+			if game == "all" or game == g:
+				filtered1.append(entry)
+	
+	# Filter 2: expired / unexpired / all
+	filtered2 = []
+	if is_expired == True:
+		filtered2 = [x for x in filtered1 if x["expiry"] < time.time()]
+			
+	elif is_expired == False:
+		filtered2 = [x for x in filtered1 if x["expiry"] > time.time()]
+
+	else:
+		filtered2 = filtered1
+	
+	# Remove expiry time from codes with no expiry or convert to discord timestamp
+	# Change reward to printable format
+	for entry in filtered2:
+		if entry["reward"] != "":
+			entry["reward"] = " | " + entry["reward"]
+		
+		if entry["expiry"] == 2147472000:
+			entry["expiry"] = "Expiry unknown"
+		else:
+			entry["expiry"] = "Expires <t:" + str(entry["expiry"]) + ":f>"
+	
+	return filtered2
+
+# Turns game abbreviated name to full form
+# Shorthand game
+# Return: Full name game
+def game_to_long(game):
+	if game == "genshin":
+		return "Genshin Impact",
+	elif game == "hsr":
+		return "Honkai Star Rail",
+	elif game == "zzz":
+		return "Zenless Zone Zero",
+	elif game == "tot":
+		return "Tears of Themis",
+	elif game == "hi3":
+		return "Honkai Impact 3",
+	elif game == "wuwa":
+		return "Wuthering Waves"
+
+
+#################### Verification Code #####################################
 
 # Parses necessary information from verification form
 # Argument: Message (class)

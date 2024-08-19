@@ -41,13 +41,13 @@ with open(absolute_path + 'config.json', 'r') as f:
 
 # NOTICE: Uncomment these variables if testing on the test server
 
-
+"""
 GENSOC_SERVER = 962970271545982986 
 CARD_SPAM_CHANNEL = 1158232410299846747
 VERIFICATION_CHANNEL = 986440303655399454
 MODERATION_CHANNEL = 1181463563722833961
 WELCOME_CHANNEL = 962970271545982989
-
+"""
 
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
 CHAT_PRIMOJEM = 50
@@ -243,13 +243,34 @@ async def set_verification(interaction, security: app_commands.Choice[str]):
 		return
 
 	# Set verification channel
-	await interaction.response.send_message(
-		"Verification security level has been set to " + security.name,
-		ephemeral=True)
 	data = helper.read_file("config.json")
 	data['verification_level'] = security.value
 	helper.write_file("config.json", data)
+	await interaction.response.send_message(
+		"Verification security level has been set to " + security.name,
+		ephemeral=True)
 
+
+@tree.command(name="daylight_savings",
+				description="Daylight savings settings. Admin only.",
+				guild=discord.Object(id=GENSOC_SERVER))
+@app_commands.choices(mode=[
+	discord.app_commands.Choice(name="Daylight savings", value="on"),
+	discord.app_commands.Choice(name="No daylight savings", value="off")
+])
+async def set_daylight(interaction, mode: app_commands.Choice[str]):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+
+	# Set daylight savings setting
+	misc.switch_daylight(mode.value)
+	await interaction.response.send_message(
+		"Daylight savings has been switch " + mode.value,
+		ephemeral=True)
+
+	
 @tree.command(name="blacklist_user",
 				description="Blacklist user from verification. Admin only.",
 				guild=discord.Object(id=GENSOC_SERVER))
@@ -467,7 +488,7 @@ async def help_commands(interaction):
 	embed_primojem.set_footer(text="Page 2/5")
 	embed_minigame = discord.Embed(title="Minigame Commands", color=0x61dff)
 	embed_minigame.set_footer(text="Page 3/5")
-	embed_poll = discord.Embed(title="Betting Commands", color=0x61dff)
+	embed_poll = discord.Embed(title="Auction Commands", color=0x61dff)
 	embed_poll.set_footer(text="Page 4/5")
 	embed_admin = discord.Embed(title="Admin Commands", color=0x61dff)
 	embed_admin.set_footer(text="Page 5/5")
@@ -489,9 +510,6 @@ async def help_commands(interaction):
 	embed_minigame.add_field(name="**/coinflip**", value="Play heads or tails.", inline=False)
 	embed_minigame.add_field(name="**/connect4**", value="Play connect 4.", inline=False)
 	
-	embed_poll.add_field(name="**/bet**", value="Make a bet on this-or-that bracket.", inline=False)
-	embed_poll.add_field(name="**/ongoing_bets**", value="See the bracket id of ongoing bets.", inline=False)
-	embed_poll.add_field(name="**/my_bets**", value="See which brackets you have betted on.", inline=False)
 	embed_poll.add_field(name="**/bid**", value="Bid on an auction.", inline=False)
 	embed_poll.add_field(name="**/auction_info**", value="Get info about an auction.", inline=False)
 	
@@ -499,6 +517,9 @@ async def help_commands(interaction):
 	embed_general.add_field(name="**/remove_uid**", value="Remove UID from bot database.", inline=False)
 	embed_general.add_field(name="**/find_uid**", value="List all UIDs of an user.", inline=False)
 	embed_general.add_field(name="**/whose_uid**", value="Find the owner of an UID.", inline=False)
+	embed_general.add_field(name="**/add_code**", value="Add redemption code to bot database", inline=False)
+	embed_general.add_field(name="**/remove_code**", value="Remove redemption code from bot database.", inline=False)
+	embed_general.add_field(name="**/list_codes**", value="List codes with filter rules.", inline=False)
 	embed_general.add_field(name="**/fortune**", value="Get your daily fortune.", inline=False)
 	embed_general.add_field(name="**/yatta**", value="Bot sends some yatta emotes.", inline=False)
 	embed_general.add_field(name="**/unyatta**", value="Bot sends unyatta emotes.", inline=False)
@@ -512,9 +533,6 @@ async def help_commands(interaction):
 	embed_admin.add_field(name="**/set_count**", value="Set counting game current number.", inline=False)
 	embed_admin.add_field(name="**/card_count**", value="Count card emotes in a channel.", inline=False)
 	embed_admin.add_field(name="**/scrape_uid**", value="Add all uids from a channel.", inline=False)
-	embed_admin.add_field(name="**/create_bet**", value="Start bet.", inline=False)
-	embed_admin.add_field(name="**/payout_bet**", value="Give earning to bet winners.", inline=False)
-	embed_admin.add_field(name="**/auto_payout**", value="Schedule payout based on vote.", inline=False)
 	embed_admin.add_field(name="**/create_auction**", value="Start auction.", inline=False)
 	embed_admin.add_field(name="**/give_primojems**", value="Give primojem to a list of users.", inline=False)
 	embed_admin.add_field(name="**/edit_inventory**", value="Give user an inventory role.", inline=False)
@@ -536,14 +554,13 @@ async def help_commands(interaction):
 	discord.app_commands.Choice(name="Zenless Zone Zero", value="zzz"),
 	discord.app_commands.Choice(name="Wuthering Waves", value="wuwa"),
 ])
-async def add_uid(interaction, game: app_commands.Choice[str], uid: str):
+async def add_uid(interaction, game: app_commands.Choice[str], uid: str, hide_message: bool = False):
 	result = uid_finder.save_uid(str(interaction.user.id), uid, game.value)
 	if result == False:
 		await interaction.response.send_message("Invalid UID",
 												ephemeral=True)
 	else:
-		await interaction.response.send_message(
-			str(uid) + " has been added.")
+		await interaction.response.send_message(str(uid) + " has been added.", ephemeral=hide_message)
 
 @tree.command(name="remove_uid",
 				description="Remove a UID from our database",
@@ -618,125 +635,116 @@ async def scrape_uid_message(interaction, channel_id: str, game: str):
 			await interaction.response.send_message("Scraping failed", ephemeral=True)
 	else:
 		await interaction.response.send_message("Scraping finished.", ephemeral=True)
+
+
+############################### REDEMPTION CODES ###################################
+@tree.command(name="add_code",
+				description="Add redemption code.",
+				guild=discord.Object(id=GENSOC_SERVER))
+@app_commands.choices(game=[
+	discord.app_commands.Choice(name="Genshin Impact", value="genshin"),
+	discord.app_commands.Choice(name="Honkai Star Rail", value="hsr"),
+	discord.app_commands.Choice(name="Honkai Impact", value="hi3"),
+	discord.app_commands.Choice(name="Tears of Themis", value="tot"),
+	discord.app_commands.Choice(name="Zenless Zone Zero", value="zzz"),
+	discord.app_commands.Choice(name="Wuthering Waves", value="wuwa"),
+])
+async def add_redemption_code(interaction, code: str, game: app_commands.Choice[str], reward: str = "", expiry: str = None):
+	result = misc.add_code(code, game.value, expiry, reward)
+	if isinstance(result, str):
+		await interaction.response.send_message(result, ephemeral=True)
+		return
+
+	embed = discord.Embed(
+		title=code.upper(),
+		description="Expires <t:" + str(result[1]) + ":R>",
+		color=0x61dfff)
+	embed.set_thumbnail(url=helper.game_thumbnail(game.value))
+
+	if expiry == None:
+		embed.description = "Expiry unknown"
+
+	if reward != "":
+		embed.add_field(name="Reward", value=reward)
+
+	view = View(timeout=None)
 	
+	# DM button 
+	dm_button = Button(label="DM Code", style=discord.ButtonStyle.primary)
+	async def dm_callback(b_interaction):
+		try:
+			await b_interaction.user.send(code.upper())
+			await b_interaction.response.send_message("DMed successfully", ephemeral=True)
+			
+		except:
+			await b_interaction.response.send_message("Unable to DM you the code due to your settings.", ephemeral=True)
 
-#################################### BETTING ###################################
+	if result[0] != None:
+		# Redeem button
+		url_button = Button(label="Redeem Now", style=discord.ButtonStyle.link, url=result[0])
+		view.add_item(url_button)
+			
+	dm_button.callback = dm_callback
+	view.add_item(dm_button)
 
-@tree.command(name="create_bet",
-				description="Create a betting bracket. Admin only.",
+	await interaction.response.send_message(embed=embed, view=view)
+
+@tree.command(name="remove_code",
+				description="Remove redemption code.",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def start_bet(interaction, bracket_id: str, candidates: str, end_time: str):
-	if not helper.is_team(interaction):
-		await interaction.response.send_message("Insuffient permission.",
-												ephemeral=True)
-		return
+@app_commands.choices(game=[
+	discord.app_commands.Choice(name="Genshin Impact", value="genshin"),
+	discord.app_commands.Choice(name="Honkai Star Rail", value="hsr"),
+	discord.app_commands.Choice(name="Honkai Impact", value="hi3"),
+	discord.app_commands.Choice(name="Tears of Themis", value="tot"),
+	discord.app_commands.Choice(name="Zenless Zone Zero", value="zzz"),
+	discord.app_commands.Choice(name="Wuthering Waves", value="wuwa"),
+])
+async def remove_redemption_code(interaction, code: str, game: app_commands.Choice[str]):
+	result = misc.remove_code(code, game.value)
+	await interaction.response.send_message(result, ephemeral=True)
 
-	gambling.create_bet(bracket_id, candidates, end_time)
-	await interaction.response.send_message(bracket_id + " has been created.", ephemeral=True)
-
-@tree.command(name="payout_bet",
-				description="Give earning to bet winners. Admin only.",
+@tree.command(name="list_codes",
+				description="List and filter redemption codes.",
 				guild=discord.Object(id=GENSOC_SERVER))
-async def payout_bet(interaction, bracket_id: str, winning_candidate: str):
-	if not helper.is_team(interaction):
-		await interaction.response.send_message("Insuffient permission.",
-												ephemeral=True)
-		return
+@app_commands.choices(game=[
+	discord.app_commands.Choice(name="Genshin Impact", value="genshin"),
+	discord.app_commands.Choice(name="Honkai Star Rail", value="hsr"),
+	discord.app_commands.Choice(name="Honkai Impact", value="hi3"),
+	discord.app_commands.Choice(name="Tears of Themis", value="tot"),
+	discord.app_commands.Choice(name="Zenless Zone Zero", value="zzz"),
+	discord.app_commands.Choice(name="Wuthering Waves", value="wuwa"),
+	discord.app_commands.Choice(name="All", value="all"),
+])
+async def list_redemption_codes(interaction, game: app_commands.Choice[str], is_expired: bool = None):
+	result = misc.list_codes(interaction.user.id, game.value, is_expired)
 
-	res = gambling.give_bet_rewards(bracket_id, winning_candidate)
-	await interaction.response.send_message(str(res[0]) + helper.PRIMOJEM_EMOTE + 
-											" has been distributed amongst " + str(res[1]) + 
-										   	" betters who chose **" + winning_candidate + 
-											"** for **" + bracket_id + "**.")
+	embed_1 = discord.Embed(title=game.name + " Redemption Codes", color=0x61dfff)
+	embed_2 = discord.Embed(title=game.name + " Redemption Codes", color=0x61dfff)
+	embed_3 = discord.Embed(title=game.name + " Redemption Codes", color=0x61dfff)
+	embed_unused = discord.Embed(title=game.name + " Redemption Codes", color=0x61dfff)
 
-@tree.command(name="bet",
-				description="Bet on a candidate for a bracket.",
-				guild=discord.Object(id=GENSOC_SERVER))
-async def make_bet(interaction, bracket_id: str, candidate: str, amount: int):
-	res = gambling.submit_bet(interaction.user.id, bracket_id, candidate,
-								amount)
-	if isinstance(res, str):
-		await interaction.response.send_message(res, ephemeral=True)
-	else:
-		if res[0] != None:
-			channel = client.get_channel(THIS_OR_THAT_CHANNEL)
-			bet_message = await channel.fetch_message(int(res[0]))
-			await bet_message.edit(embed=res[1])
-		
-		await interaction.response.send_message(
-			"Successfully made a bet of " + str(amount) + " for " + candidate.lower(), ephemeral=True)
-		
+	embed_1.set_thumbnail(url=helper.game_thumbnail(game.value))
+	embed_2.set_thumbnail(url=helper.game_thumbnail(game.value))
+	embed_3.set_thumbnail(url=helper.game_thumbnail(game.value))
 
-@tree.command(name="my_bets",
-				description="Check your 5 most recent bets.",
-				guild=discord.Object(id=GENSOC_SERVER))
-async def my_bets(interaction):
-	res = gambling.view_own_bets(interaction.user.id)
+	paginator = DiscordUtils.Pagination.AutoEmbedPaginator(interaction)
 
-	embed = discord.Embed(title=interaction.user.display_name + "\'s recent bets",
-							color=0x61dfff)
+	embeds = [embed_1]
+	for no, entry in enumerate(result):
+		if no < 10:
+			embed_1.add_field(name=entry["code"], value=entry["expiry"] + entry["reward"], inline=False)
+		if no < 20:
+			embeds.append(embed_2) if embed_2 not in embeds else None
+			embed_2.add_field(name=entry["code"], value=entry["expiry"] + entry["reward"], inline=False)
+		if no < 30:
+			embeds.append(embed_2) if embed_2 not in embeds else None
+			embed_3.add_field(name=entry["code"], value=entry["expiry"] + entry["reward"], inline=False)
+		else:
+			embed_unused.add_field(name=entry["code"], value=entry["expiry"] + entry["reward"], inline=False)
 
-	# Add embed field for each recent bet
-	# Format:
-	# bracket_id
-	# Candidate: candidate | Amount: amount
-	for r in range(0, len(res)):
-		embed.add_field(name="ID: " + res[r][0].title(),
-						value="Candidate: " + res[r][2].title() +
-						" | Amount: " + str(res[r][1]),
-						inline=False)
-
-	await interaction.response.send_message(embed=embed, ephemeral=True)
-
-@tree.command(name="ongoing_bets",
-				description="Check ongoing bets.",
-				guild=discord.Object(id=GENSOC_SERVER))
-async def ongoing_bets(interaction):
-	res = gambling.view_ongoing_bets()
-
-	embed = discord.Embed(title="Ongoing Bets", color=0x61dfff)
-
-	# Add embed field for each ongoing bet
-	# Format:
-	# bracket_id | Ending: end_date
-	# candidates
-	for r in range(0, len(res)):
-		embed.add_field(name="ID: " + res[r][0].title() + " | Current Prize Pool: " + str(res[r][3]) + " | Ending: " + res[r][2],
-						value=res[r][1],
-						inline=False)
-
-	await interaction.response.send_message(embed=embed)
-
-@tree.command(name="send_bet_info",
-				description="Create a bet live update message. Admin only.",
-				guild=discord.Object(id=GENSOC_SERVER))
-async def send_bet_message(interaction, bracket_id: str):
-	if not helper.is_team(interaction):
-		await interaction.response.send_message("Insuffient permission.",
-												ephemeral=True)
-		return
+	await paginator.run(embeds)
 	
-	res = gambling.create_bet_message(bracket_id)
-	await interaction.response.send_message(embed=res[1])
-	message = await interaction.original_response()
-	gambling.set_bet_message(bracket_id, message.id)
-
-@tree.command(name="auto_payout",
-				description="Schedule auto bet payout based on vote. Admin only.",
-				guild=discord.Object(id=GENSOC_SERVER))
-async def schedule_payout(interaction, message_id: str, bracket_id: str, end_time: str):
-	if not helper.is_team(interaction):
-		await interaction.response.send_message("Insuffient permission.", ephemeral=True)
-		return
-
-	res = gambling.add_auto_payout_bet(message_id, bracket_id, end_time)
-	if res != None:
-		await interaction.response.send_message(res, ephemeral=True)
-	else:
-		await interaction.response.send_message("Successfully scheduled auto payout for " + bracket_id,
-											   ephemeral=True)
-
-
 
 #################################### AUCTION ###################################
 
@@ -1048,6 +1056,7 @@ async def leaderboard(interaction, category: app_commands.Choice[str]):
 	
 	# Add embed field for each person in top 30
 	rank = 1
+	entry_number = 1
 	your_rank = 0
 
 	# Deal with tied 100% role collection
@@ -1059,11 +1068,11 @@ async def leaderboard(interaction, category: app_commands.Choice[str]):
 		if user == None:
 			continue
 
-		if rank <= 10:
+		if entry_number <= 10:
 			target_embed = embed_1
-		elif rank <= 20:
+		elif entry_number <= 20:
 			target_embed = embed_2
-		elif rank <= 30:
+		elif entry_number <= 30:
 			target_embed = embed_3
 		else:
 			target_embed = embed_unused
@@ -1076,6 +1085,8 @@ async def leaderboard(interaction, category: app_commands.Choice[str]):
 			# Deal with tied 100% collection rate
 			if role_collection == 100:
 				tied_first += user.display_name + ", "
+				rank += 1
+				continue
 				
 			elif role_collection != 100 and is_prev_tied == True:
 				# End of ties
@@ -1092,7 +1103,9 @@ async def leaderboard(interaction, category: app_commands.Choice[str]):
 				target_embed.add_field(name=str(rank) + ". " + user.display_name,
 							value=str(role_collection) + "%",
 							inline=False)
+		
 		else:
+			# Not role icon leaderboard
 			target_embed.add_field(name=str(rank) + ". " + user.display_name,
 							value=str(res[r][1]),
 							inline=False)
@@ -1101,6 +1114,7 @@ async def leaderboard(interaction, category: app_commands.Choice[str]):
 			your_rank = rank
 			
 		rank += 1
+		entry_number += 1
 	
 	embed_1.set_footer(text="Your rank: " + str(your_rank))
 	embed_2.set_footer(text="Your rank: " + str(your_rank))

@@ -16,5 +16,7 @@
     ],
     "role_colour_shop": "https://unswgensoc.com/wp-content/uploads/2023/08/Colour-Role-Preview-1.png",
     "role_icon_shop": "https://unswgensoc.com/wp-content/uploads/2023/10/Role-Icon-Shop-Preview-9.png",
-    "verification_level": "high"
+    "verification_level": "high",
+    "hour_offset": 13,
+    "time_offset": 39600
 }
