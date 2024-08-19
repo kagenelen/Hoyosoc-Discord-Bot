@@ -291,18 +291,21 @@ def auto_payout_bet(bracket_id, reactions):
 # Arguments: discord_id, change by x amount
 # Return: Currency amount or none if insufficient currency
 def update_user_currency(discord_id, change):
-    discord_id = str(discord_id)
-    helper.get_user_entry(discord_id)
-    data = helper.read_file("users.json")
-    user_entry = data.get(discord_id, None)
-
-    if user_entry["currency"] >= 0 and user_entry["currency"] + change < 0:
-        # Insufficient currency
-        return None
-
-    user_entry["currency"] = int(user_entry["currency"] + change)
-    helper.write_file("users.json", data)
-    return user_entry["currency"]
+	discord_id = str(discord_id)
+	helper.get_user_entry(discord_id)
+	data = helper.read_file("users.json")
+	user_entry = data.get(discord_id, None)
+	
+	if user_entry["currency"] >= 0 and user_entry["currency"] + change < 0:
+		# Insufficient currency
+		return None
+	elif user_entry["currency"] < 0 and change < 0:
+		# For users in debt
+		return None
+	
+	user_entry["currency"] = int(user_entry["currency"] + change)
+	helper.write_file("users.json", data)
+	return user_entry["currency"]
 
 
 # Check user's currency amount
@@ -311,7 +314,6 @@ def update_user_currency(discord_id, change):
 def check_user_currency(discord_id):
     user_entry = helper.get_user_entry(discord_id)
     return user_entry["currency"]
-
 
 # Get leaderboard for currency
 # Argument: leaderboard category

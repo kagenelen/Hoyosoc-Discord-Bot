@@ -41,13 +41,13 @@ with open(absolute_path + 'config.json', 'r') as f:
 
 # NOTICE: Uncomment these variables if testing on the test server
 
-'''
+
 GENSOC_SERVER = 962970271545982986 
 CARD_SPAM_CHANNEL = 1158232410299846747
 VERIFICATION_CHANNEL = 986440303655399454
 MODERATION_CHANNEL = 1181463563722833961
 WELCOME_CHANNEL = 962970271545982989
-'''
+
 
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
 CHAT_PRIMOJEM = 50
@@ -1049,6 +1049,11 @@ async def leaderboard(interaction, category: app_commands.Choice[str]):
 	# Add embed field for each person in top 30
 	rank = 1
 	your_rank = 0
+
+	# Deal with tied 100% role collection
+	tied_first = "1. "
+	is_prev_tied = True
+	
 	for r in range(0, len(res)):
 		user = interaction.guild.get_member(int(res[r][0]))
 		if user == None:
@@ -1066,8 +1071,26 @@ async def leaderboard(interaction, category: app_commands.Choice[str]):
 		if category.value == "role_icon":
 			role_list = helper.read_file("role_icon.json")
 			role_num = len(role_list["5"]) + len(role_list["4"])
-			target_embed.add_field(name=str(rank) + ". " + user.display_name,
-							value=str(round(len(set(res[r][1])) / role_num * 100)) + "%",
+			role_collection = round(len(set(res[r][1])) / role_num * 100)
+
+			# Deal with tied 100% collection rate
+			if role_collection == 100:
+				tied_first += user.display_name + ", "
+				
+			elif role_collection != 100 and is_prev_tied == True:
+				# End of ties
+				is_prev_tied = False
+				target_embed.add_field(name=tied_first[:-2],
+					value="100%",
+					inline=False)
+				
+				target_embed.add_field(name=str(rank) + ". " + user.display_name,
+					value=str(role_collection) + "%",
+					inline=False)
+
+			else:
+				target_embed.add_field(name=str(rank) + ". " + user.display_name,
+							value=str(role_collection) + "%",
 							inline=False)
 		else:
 			target_embed.add_field(name=str(rank) + ". " + user.display_name,
