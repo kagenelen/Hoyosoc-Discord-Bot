@@ -82,6 +82,25 @@ def get_user_entry(discord_id):
 	write_file("users.json", data)
 	return user_entry
 
+# Get game thumbnail image url
+# Game string
+# Return: image url string
+def game_thumbnail(game):
+	if game == "genshin":
+		return "https://play-lh.googleusercontent.com/DXwvOFxp_F8N9jw4FW8kCD0SWj8ba9YqDmMPphgkoG7qqEET_yV3vxuQcVcWQJkHX18"
+	elif game == "hsr":
+		return "https://play-lh.googleusercontent.com/cM6aszB0SawZNoAIPvtvy4xsfeFi5iXVBhZB57o-EGPWqE4pbyIUlKJzmdkH8hytuuQ"
+	elif game == "tot":
+		return "https://play-lh.googleusercontent.com/S1ruLmChgGXWGxODeR8UBngac3tvOHKQdpf_sgKpMhYjLHiTGxzz4iihvuCm_f4eqg"
+	elif game == "wuwa":
+		return "https://play-lh.googleusercontent.com/ameFGPYH-qhOSxdsSA_fA54I4Ch-eO8y7Pj4x6W6ejQkvKbhVjCehKlPerBY9X2L8ek"
+	elif game == "zzz":
+		return "https://play-lh.googleusercontent.com/DEkjrvPufl6TG4Gxq4m8goCSLYiE1bLNOTnlKrJbHDOAWZT40qG3oyALMZJ2BPHJoe8=w240-h480-rw"
+	elif game == "hi3":
+		return "https://play-lh.googleusercontent.com/GkTrAxuJjlp190L_rDqknKUpiqBouXP7imAVpVya6sgjVr1mcntKYDQPw2wUFwgdDQ0"
+	else:
+		return "https://img.utdstc.com/icon/408/9e2/4089e272d8c4774c9f7a62c50d394956282202e2386b722c155c6fad2c3bb6ab:200"
+
 # One time function for modifying database structure
 # Modify this function to suit your need
 def rewrite_structure():
