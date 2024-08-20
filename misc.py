@@ -193,10 +193,9 @@ def remove_code(code, game):
 
 
 # List redemption codes with filters
-# discord_id (string), game, filter for expiry (bool/None)
+# game, filter for expiry (bool/None)
 # Return: List of dictionary{game, code, expiry, reward}
-def list_codes(discord_id, game, is_expired):
-	discord_id = str(discord_id)
+def list_codes(game, is_expired):
 	data = helper.read_file("codes.json")
 	
 	# Filter 1: by game
@@ -236,6 +235,39 @@ def list_codes(discord_id, game, is_expired):
 	
 	return filtered2
 
+
+# Display redemption code list in embeds
+# game full name, game abbreviation, filter for expiry (bool/None), embed field number
+# Return: List of embeds
+def display_code_list(game_long, game_short, is_expired, page_size):
+	result = list_codes(game_short, is_expired)
+	result.reverse()
+	
+	embed_1 = discord.Embed(title=game_long + " Redemption Codes", color=0x61dfff)
+	embed_2 = discord.Embed(title=game_long + " Redemption Codes", color=0x61dfff)
+	embed_3 = discord.Embed(title=game_long + " Redemption Codes", color=0x61dfff)
+	embed_unused = discord.Embed(title=game_long + " Redemption Codes", color=0x61dfff)
+
+	embed_1.set_thumbnail(url=helper.game_thumbnail(game_short))
+	embed_2.set_thumbnail(url=helper.game_thumbnail(game_short))
+	embed_3.set_thumbnail(url=helper.game_thumbnail(game_short))
+
+	embeds = [embed_1]
+	for no, entry in enumerate(result):
+		if no < page_size:
+			embed_1.add_field(name=entry["code"], value=entry["expiry"] + entry["reward"], inline=False)
+		if no < page_size * 2:
+			embeds.append(embed_2) if embed_2 not in embeds else None
+			embed_2.add_field(name=entry["code"], value=entry["expiry"] + entry["reward"], inline=False)
+		if no < page_size * 3:
+			embeds.append(embed_2) if embed_2 not in embeds else None
+			embed_3.add_field(name=entry["code"], value=entry["expiry"] + entry["reward"], inline=False)
+		else:
+			embed_unused.add_field(name=entry["code"], value=entry["expiry"] + entry["reward"], inline=False)
+
+	return embeds
+
+	
 # Turns game abbreviated name to full form
 # Shorthand game
 # Return: Full name game
