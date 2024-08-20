@@ -365,11 +365,11 @@ def hangman_guess(discord_id, guess):
     elif user_session["difficulty"] == "hard":
       primojem = HM_HARD
     else:
-      word_length = len(user_session["hangman_word"].split())
+      word_length = len(user_session["hangman_word"])
       penalty = 1
-      if word_length == 2:
+      if word_length > 10:
         penalty = TWO_WORD_PENALTY
-      if word_length == 3:
+      if word_length > 15:
         penalty = THREE_WORD_PENALTY
       primojem = int(HM_EXTREME * penalty)
 
