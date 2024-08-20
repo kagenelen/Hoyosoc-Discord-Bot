@@ -1,95 +1,13 @@
 {
     "genshin": {
-        "GENSHIN1": {
-            "link": "https://genshin.hoyoverse.com/en/gift?code=GENSHIN1",
-            "expiry": 2147472000,
-            "reward": "60 primogems",
-            "users": []
-        },
-        "GENSHIN2": {
-            "link": "https://genshin.hoyoverse.com/en/gift?code=GENSHIN2",
-            "expiry": 2147472000,
-            "reward": "60 primogems",
-            "users": []
-        },
-        "GENSHIN3": {
-            "link": "https://genshin.hoyoverse.com/en/gift?code=GENSHIN3",
-            "expiry": 2147472000,
-            "reward": "60 primogems",
-            "users": []
-        },
-        "GENSHIN4": {
-            "link": "https://genshin.hoyoverse.com/en/gift?code=GENSHIN4",
-            "expiry": 2147472000,
-            "reward": "60 primogems",
-            "users": []
-        },
-        "GENSHIN5": {
-            "link": "https://genshin.hoyoverse.com/en/gift?code=GENSHIN5",
-            "expiry": 2147472000,
-            "reward": "60 primogems",
-            "users": []
-        },
-        "GENSHIN6": {
-            "link": "https://genshin.hoyoverse.com/en/gift?code=GENSHIN6",
-            "expiry": 2147472000,
-            "reward": "60 primogems",
-            "users": []
-        },
-        "GENSHIN7": {
-            "link": "https://genshin.hoyoverse.com/en/gift?code=GENSHIN7",
-            "expiry": 2147472000,
-            "reward": "60 primogems",
-            "users": []
-        },
-        "GENSHIN8": {
-            "link": "https://genshin.hoyoverse.com/en/gift?code=GENSHIN8",
-            "expiry": 2147472000,
-            "reward": "60 primogems",
-            "users": []
-        },
-        "GENSHIN9": {
-            "link": "https://genshin.hoyoverse.com/en/gift?code=GENSHIN9",
-            "expiry": 2147472000,
-            "reward": "60 primogems",
-            "users": []
-        },
-        "GENSHIN10": {
-            "link": "https://genshin.hoyoverse.com/en/gift?code=GENSHIN10",
-            "expiry": 2147472000,
-            "reward": "60 primogems",
-            "users": []
-        },
-        "GENSHIN11": {
-            "link": "https://genshin.hoyoverse.com/en/gift?code=GENSHIN11",
-            "expiry": 2147472000,
-            "reward": "60 primogems",
-            "users": []
-        },
-        "GENSHIN12": {
-            "link": "https://genshin.hoyoverse.com/en/gift?code=GENSHIN12",
-            "expiry": 2147472000,
-            "reward": "60 primogems",
-            "users": []
-        }
     },
     "hsr": {
-        "HSR1": {
-            "link": "https://hsr.hoyoverse.com/gift?code=HSR1",
-            "expiry": 1724194800,
-            "reward": "60 stellar jades",
-            "users": []
-        }
     },
-    "zzz": {
-        "ZZZGIFT": {
-            "link": "https://zenless.hoyoverse.com/redemption?code=ZZZGIFT",
-            "expiry": 1724022000,
-            "reward": "Nothing",
-            "users": []
-        }
+    "zzz": {},
+    "tot": {
     },
-    "tot": {},
-    "hi3": {},
-    "wuwa": {}
+    "hi3": {
+    },
+    "wuwa": {
+    }
 }
