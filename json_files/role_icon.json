@@ -4,10 +4,7 @@
 		"Jingliu",
 		"Hu Tao",
 		"Yoimiya",
-		"Blade",
-		"Wanderer",
 		"Zhongli",
-		"Raiden",
 		"Keqing",
 		"Yae",
 		"Nahida",
@@ -17,12 +14,15 @@
 		"Furina",
 		"Silver Wolf",
 		"Imbibitor Lunae",
-		"Venti",
-		"Dottore",
 		"Navia",
-		"Clara",
 		"Yelan",
-		"Klee"
+		"Klee",
+		"Aventurine",
+		"Ayaka",
+		"Firefly",
+		"Wanderer",
+		"Childe",
+		"Fu Xuan"
 	],
 	"4": [
 		"March 7",
@@ -30,14 +30,19 @@
 		"Xiangling",
 		"Heizou",
 		"Noelle",
-		"Fischl",
 		"Yaoyao",
 		"Qingque",
 		"Kiana",
 		"Fu Hua",
 		"Mei",
 		"Seele",
-		"Guinaifen"
+		"Guinaifen",
+		"Kirara",
+		"Beidou",
+		"Ningguang",
+		"Sucrose",
+		"Xingqiu",
+		"Elysia"
 	],
 	"3": [
 		"Debate Club",
@@ -67,6 +72,9 @@
 		"Quantum"
 	],
 	"other": [
-		"Kaveh"
+		"Kaveh",
+		"Tighnari",
+		"Avid Collector",
+		"Dottore"
 	]
 }
