@@ -33,6 +33,7 @@ with open(absolute_path + 'config.json', 'r') as f:
 	COUNTING_CHANNEL = data['counting_channel']
 	AUCTION_CHANNEL = data['auction_channel']
 	WELCOME_CHANNEL = data['welcome_channel']
+	CODE_CHANNEL = data['code_channel']
 	CARD_SPAM_CHANNEL = data['card_spam_channel']
 	MODERATION_CHANNEL = data['moderation_channel']
 	COLOUR_ROLE_PREVIEW = data['role_colour_shop']
@@ -47,6 +48,7 @@ CARD_SPAM_CHANNEL = 1158232410299846747
 VERIFICATION_CHANNEL = 986440303655399454
 MODERATION_CHANNEL = 1181463563722833961
 WELCOME_CHANNEL = 962970271545982989
+CODE_CHANNEL = 1275044091486539804
 """
 
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
@@ -222,8 +224,7 @@ async def send_welcome(interaction):
 		return
 
 	# Send message and store id
-	welcome = await client.get_channel(int(WELCOME_CHANNEL)
-										 ).send(WELCOME_MESSAGE)
+	welcome = await client.get_channel(WELCOME_CHANNEL).send(WELCOME_MESSAGE)
 	data = helper.read_file("config.json")
 	data["prev_welcome_message"] = welcome.id
 	helper.write_file("config.json", data)
@@ -267,7 +268,7 @@ async def set_daylight(interaction, mode: app_commands.Choice[str]):
 	# Set daylight savings setting
 	misc.switch_daylight(mode.value)
 	await interaction.response.send_message(
-		"Daylight savings has been switch " + mode.value,
+		"Daylight savings has been switched " + mode.value,
 		ephemeral=True)
 
 	
@@ -278,21 +279,44 @@ async def set_daylight(interaction, mode: app_commands.Choice[str]):
 	discord.app_commands.Choice(name="Add", value=1),
 	discord.app_commands.Choice(name="Remove", value=2),
 ])
-async def blacklist_user(interaction, target_user: discord.Member, action: app_commands.Choice[int]):
+async def blacklist_user(interaction, action: app_commands.Choice[int], target_user: discord.Member = None, zid: str = None):
 	if not helper.is_team(interaction):
 		await interaction.response.send_message("Insuffient permission.",
 												ephemeral=True)
 		return
 
+	
 	data = helper.read_file("config.json")
+	blacklist = data["user_blacklist"]
+	
 	if action.value == 1:
-		data["user_blacklist"].append(target_user.id)
-		await interaction.response.send_message(target_user.display_name + " has been blacklisted.")
+		if zid != None and zid not in blacklist: blacklist.append(zid)
+		if target_user != None and target_user.id not in blacklist : blacklist.append(target_user)
+		await interaction.response.send_message("Blacklist successful.")
+		
 	else:
-		data["user_blacklist"] = [j for i,j in enumerate(data["user_blacklist"]) if j != target_user.id]
-		await interaction.response.send_message(target_user.display_name + " has been removed from the blacklist.")
+		if zid != None:
+			blacklist = [j for j in blacklist if j != zid]
+		if target_user != None:
+			blacklist = [j for j in blacklist if j != target_user.id]
+		data["user_blacklist"] = blacklist
+		await interaction.response.send_message("Removal successful.")
 
 	helper.write_file("config.json", data)
+
+
+@tree.command(name="show_blacklist",
+				description="Show blacklisted users. Admin only.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def show_blacklist(interaction):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+
+	blacklist = helper.read_file("config.json")["user_blacklist"]
+	await interaction.response.send_message("\n".join([str(x) for x in blacklist]))
+
 
 @tree.command(name="edit_shop",
 				description="Add/remove role icon to shop. Admin only.",
@@ -476,7 +500,32 @@ async def yatta(interaction):
 	guild=discord.Object(id=GENSOC_SERVER))
 async def unyatta(interaction):
 	await interaction.response.send_message(misc.UNYATTA_EMOTE)
-	
+
+
+@tree.command(name="user_to_thread",
+	description="Add users to thread",
+	guild=discord.Object(id=GENSOC_SERVER))
+async def users_to_thread(interaction, thread: discord.Thread, role1: discord.Role, role2: discord.Role = None):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+
+	await interaction.response.defer()
+
+	num = 1
+	for member in interaction.guild.members:
+		if role1 in member.roles and (role2 == None or role2 in member.roles):
+			await thread.add_user(member)
+			num += 1
+
+		if num % 5 == 0:
+			await asyncio.sleep(6)
+
+	await interaction.followup.send("All " + role1.name + " users have been added to " + thread.name)
+	print("All " + role1.name + " users have been added to " + thread.name)
+
+
 
 @tree.command(name="help",
 				description="View all available bot commands.",
@@ -524,9 +573,9 @@ async def help_commands(interaction):
 	embed_general.add_field(name="**/yatta**", value="Bot sends some yatta emotes.", inline=False)
 	embed_general.add_field(name="**/unyatta**", value="Bot sends unyatta emotes.", inline=False)
 
-	embed_admin.add_field(name="**/send_welcome**", value="Send welcome sticky message.", inline=False)
 	embed_admin.add_field(name="**/set_verification**", value="Set verification security level.", inline=False)
 	embed_admin.add_field(name="**/blacklist_user**", value="Blacklist user.", inline=False)
+	embed_admin.add_field(name="**/show_blacklist**", value="Show blacklisted users.", inline=False)
 	embed_admin.add_field(name="**/edit_shop**", value="Add or remove role icon from shop.", inline=False)
 	embed_admin.add_field(name="**/delete_messages**", value="Purge x messages from channel, optionally from a specific user.", inline=False)
 	embed_admin.add_field(name="**/view_tasks**", value="View scheduled tasks.", inline=False)
@@ -536,6 +585,8 @@ async def help_commands(interaction):
 	embed_admin.add_field(name="**/create_auction**", value="Start auction.", inline=False)
 	embed_admin.add_field(name="**/give_primojems**", value="Give primojem to a list of users.", inline=False)
 	embed_admin.add_field(name="**/edit_inventory**", value="Give user an inventory role.", inline=False)
+	embed_admin.add_field(name="**/daylight_savings**", value="Switch on/off daylight savings.", inline=False)
+	embed_admin.add_field(name="**/user_to_thread**", value="Add users with a specified role to thread.", inline=False)
 
 	embeds = [embed_general, embed_primojem, embed_minigame, embed_poll, embed_admin]
 	await paginator.run(embeds)
@@ -649,12 +700,25 @@ async def scrape_uid_message(interaction, channel_id: str, game: str):
 	discord.app_commands.Choice(name="Zenless Zone Zero", value="zzz"),
 	discord.app_commands.Choice(name="Wuthering Waves", value="wuwa"),
 ])
-async def add_redemption_code(interaction, code: str, game: app_commands.Choice[str], reward: str = "", expiry: str = None):
+async def add_redemption_code(interaction, code: str, game: app_commands.Choice[str], reward: str = "", expiry: str = None, show_link: bool = True, hide_message: bool = True):
 	result = misc.add_code(code, game.value, expiry, reward)
 	if isinstance(result, str):
 		await interaction.response.send_message(result, ephemeral=True)
 		return
 
+	# Send code list message and delete previous code list
+	channel = client.get_channel(CODE_CHANNEL)
+
+	try:
+		async for message in channel.history(limit=3):
+			if message.author.bot:
+				await message.delete()
+		await channel.send(embed=misc.display_code_list("All", "all", False, 5)[0])
+	except Exception as e:
+		print(e)
+		pass
+
+	# Make embed for interaction response
 	embed = discord.Embed(
 		title=code.upper(),
 		description="Expires <t:" + str(result[1]) + ":R>",
@@ -679,7 +743,7 @@ async def add_redemption_code(interaction, code: str, game: app_commands.Choice[
 		except:
 			await b_interaction.response.send_message("Unable to DM you the code due to your settings.", ephemeral=True)
 
-	if result[0] != None:
+	if result[0] != None and show_link:
 		# Redeem button
 		url_button = Button(label="Redeem Now", style=discord.ButtonStyle.link, url=result[0])
 		view.add_item(url_button)
@@ -687,7 +751,8 @@ async def add_redemption_code(interaction, code: str, game: app_commands.Choice[
 	dm_button.callback = dm_callback
 	view.add_item(dm_button)
 
-	await interaction.response.send_message(embed=embed, view=view)
+	await interaction.response.send_message(embed=embed, view=view, ephemeral=hide_message)
+
 
 @tree.command(name="remove_code",
 				description="Remove redemption code.",
@@ -704,6 +769,7 @@ async def remove_redemption_code(interaction, code: str, game: app_commands.Choi
 	result = misc.remove_code(code, game.value)
 	await interaction.response.send_message(result, ephemeral=True)
 
+
 @tree.command(name="list_codes",
 				description="List and filter redemption codes.",
 				guild=discord.Object(id=GENSOC_SERVER))
@@ -717,31 +783,9 @@ async def remove_redemption_code(interaction, code: str, game: app_commands.Choi
 	discord.app_commands.Choice(name="All", value="all"),
 ])
 async def list_redemption_codes(interaction, game: app_commands.Choice[str], is_expired: bool = None):
-	result = misc.list_codes(interaction.user.id, game.value, is_expired)
-
-	embed_1 = discord.Embed(title=game.name + " Redemption Codes", color=0x61dfff)
-	embed_2 = discord.Embed(title=game.name + " Redemption Codes", color=0x61dfff)
-	embed_3 = discord.Embed(title=game.name + " Redemption Codes", color=0x61dfff)
-	embed_unused = discord.Embed(title=game.name + " Redemption Codes", color=0x61dfff)
-
-	embed_1.set_thumbnail(url=helper.game_thumbnail(game.value))
-	embed_2.set_thumbnail(url=helper.game_thumbnail(game.value))
-	embed_3.set_thumbnail(url=helper.game_thumbnail(game.value))
+	embeds = misc.display_code_list(game.name, game.value, is_expired, 10)
 
 	paginator = DiscordUtils.Pagination.AutoEmbedPaginator(interaction)
-
-	embeds = [embed_1]
-	for no, entry in enumerate(result):
-		if no < 10:
-			embed_1.add_field(name=entry["code"], value=entry["expiry"] + entry["reward"], inline=False)
-		if no < 20:
-			embeds.append(embed_2) if embed_2 not in embeds else None
-			embed_2.add_field(name=entry["code"], value=entry["expiry"] + entry["reward"], inline=False)
-		if no < 30:
-			embeds.append(embed_2) if embed_2 not in embeds else None
-			embed_3.add_field(name=entry["code"], value=entry["expiry"] + entry["reward"], inline=False)
-		else:
-			embed_unused.add_field(name=entry["code"], value=entry["expiry"] + entry["reward"], inline=False)
 
 	await paginator.run(embeds)
 	
