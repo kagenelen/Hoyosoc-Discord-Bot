@@ -22,11 +22,15 @@ HM_HARD = 50 # 400 at max
 HM_EXTREME = 130 # 520 at max
 TWO_WORD_PENALTY = 0.9615484 # 500 at max
 THREE_WORD_PENALTY = 0.923086 # 480 at max
+RANDOM_WORD_CHANCE = 0.5
+EARNINGS_CAP = 500
 COUNT_MULTIPLER = 0.2
 COUNT_MAX = 40
 COUNT_BONUS = 2 
 ROW_COUNT = 6
 COLUMN_COUNT = 7
+
+minigame_earnings = {}
 
 ################### Blackjack ############################
 
@@ -228,53 +232,53 @@ Returns: [
 
 # Create a new hangman session in minigame_session.json for that player
 def new_hangman(discord_id, difficulty, fandom):
-
-  discord_id = str(discord_id)
-  difficulty = difficulty.lower()
-
-  if difficulty == "normal":
-    lives = 12
-  elif difficulty == "hard":
-    lives = 8
-  elif difficulty == "extreme":
-    lives = 4
-  else:
-    return [-1, ["Invalid difficulty..."]]
-
-  minigame_session = helper.read_file("minigame_session.json")
-  minigame_session[discord_id] = {
-    "minigame": "hangman",
-    "difficulty": difficulty,
-    "lives": lives,
-    "guessed_letters": "",
-    "hangman_word": random.choice(helper.read_file("wordbank.json")[fandom]),
-	"message_id": None
-  }
-  helper.write_file("minigame_session.json", minigame_session)
-
-  hidden_word = ""
-  for letter in minigame_session[discord_id]["hangman_word"]:
-    if letter == " ":
-      hidden_word += "᲼᲼᲼"
-    else:
-      hidden_word += "\_ "
-
-  return [
-    0,
-    [
-      hidden_word,
-      minigame_session[discord_id]["difficulty"],
-      minigame_session[discord_id]["lives"],
-    ]
-  ]
-
-
-'''
-Returns: [
-  status,
-  [args]
-]
-'''
+	discord_id = str(discord_id)
+	hangman_word = random.choice(helper.read_file("wordbank.json")[fandom])
+	
+	if difficulty == "normal":
+		lives = 12
+	elif difficulty == "hard":
+		lives = 8
+	elif difficulty == "extreme":
+		lives = 4
+		hangman_word = hangman_word.replace(" ", "")
+	else:
+		return [-1, ["Invalid difficulty..."]]
+	
+	minigame_session = helper.read_file("minigame_session.json")
+	minigame_session[discord_id] = {
+		"minigame": "hangman",
+		"difficulty": difficulty,
+		"lives": lives,
+		"guessed_letters": "",
+		"hangman_word": hangman_word,
+		"message_id": None
+	}
+	helper.write_file("minigame_session.json", minigame_session)
+	
+	hidden_word = ""
+	for letter in minigame_session[discord_id]["hangman_word"]:
+		if letter == " ":
+			hidden_word += "᲼᲼᲼"
+		else:
+			hidden_word += "\_ "
+	
+	return [
+		0,
+		[
+			hidden_word,
+			minigame_session[discord_id]["difficulty"],
+			minigame_session[discord_id]["lives"],
+		]
+	]
+	
+	
+	'''
+	Returns: [
+		status,
+		[args]
+	]
+	'''
 
 
 # Ends the hangman session
@@ -294,6 +298,7 @@ def hangman_guess(discord_id, guess):
   # Case 1: No active session
   if user_session == None or user_session["minigame"] != "hangman":
     return [-1, ["No active session."]]
+
   # Case 2: The guess is a final guess (length of guess is length of word)
   elif len(guess.replace(" ", "")) == len(user_session["hangman_word"].replace(
       " ", "")):
@@ -305,14 +310,17 @@ def hangman_guess(discord_id, guess):
     else:
       for letter in guess:
         user_session["guessed_letters"] += letter
+
   # Case 3: The guess is invalid
   elif len(guess) != 1:
     return [
       -2, ["Guess ONE character...", "https://www.wikihow.com/Play-Hangman"]
     ]
+
   # Case 4: The guess is correct
   elif guess in user_session["hangman_word"].lower():
     guess_result = "Correct guess."
+
   # Case 5: The guess is incorrect
   else:
     if guess not in user_session["guessed_letters"]:
@@ -328,6 +336,7 @@ def hangman_guess(discord_id, guess):
     if letter not in user_session["hangman_word"].lower(
     ) and letter not in incorrect_letters:
       incorrect_letters += letter
+
   for letter in user_session["hangman_word"]:
     if letter in user_session["guessed_letters"] or letter.lower(
     ) in user_session["guessed_letters"]:
@@ -365,14 +374,21 @@ def hangman_guess(discord_id, guess):
       primojem = int(HM_EXTREME * penalty)
 
     primojem = primojem * user_session["lives"]
-    gambling.update_user_currency(discord_id, primojem)
+    curr_earnings = minigame_earnings.get(discord_id, 0)
+    minigame_earnings[discord_id] = curr_earnings + primojem
+    if minigame_earnings[discord_id] < EARNINGS_CAP:
+      gambling.update_user_currency(discord_id, primojem)
+      earnings_message = "You got " + str(primojem) + " primojems."
+    else:
+      earnings_message = "Daily earnings cap reached."
+	
 
     helper.write_file("minigame_session.json", minigame_session)
     return [
       2,
       [
         "You have guessed the word.", hidden_word, incorrect_letters,
-        user_session["lives"], "You got " + str(primojem) + " primojems."
+        user_session["lives"], earnings_message
       ]
     ]
 
@@ -422,7 +438,11 @@ def number_validity(message):
 	# Correct submission (except 1), increment count and reward primojem
 	if int(num) != 1:
 		primojem_reward = min(int(math.ceil(data["next_valid_number"] * COUNT_MULTIPLER)), COUNT_MAX) * fun_bonus
-		gambling.update_user_currency(message.author.id, primojem_reward)
+		curr_earnings = minigame_earnings.get(str(message.author.id), 0)
+		minigame_earnings[str(message.author.id)] = curr_earnings + primojem_reward
+		if minigame_earnings[str(message.author.id)] < EARNINGS_CAP:
+			gambling.update_user_currency(message.author.id, primojem_reward)
+	
 	data["next_valid_number"] += 1
 	data["last_user"] = message.author.id
 	

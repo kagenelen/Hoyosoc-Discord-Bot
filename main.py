@@ -179,6 +179,7 @@ async def daily_role_expiry_check():
 @tasks.loop(hours=24)
 async def make_backup():
 	helper.backup_file("users.json")
+	minigame.minigame_earnings = {}
 
 @tasks.loop(minutes=30)
 async def card_spam_description_update():
@@ -195,18 +196,8 @@ async def run_scheduled_tasks():
 	
 	for task in task_copy:
 		if task["time"] <= time.time():
-			if task["type"] == "vote":
-				# Auto payout task
-				channel = client.get_channel(THIS_OR_THAT_CHANNEL)
-				vote_message = await channel.fetch_message(task["message_id"])
-				res = gambling.auto_payout_bet(task["bracket_id"], vote_message.reactions)
-				if res != None:
-					await channel.send(str(res[0]) + helper.PRIMOJEM_EMOTE + 
-								" has been distributed amongst " + str(res[1]) + 
-								" betters who chose **" + res[3] + 
-								"** for **" + res[2] + "**.")
-				data.remove(task)
-				update_task_file = True
+			data.remove(task)
+			update_task_file = True
 
 	if update_task_file:
 		helper.write_file("tasks.json", data)
