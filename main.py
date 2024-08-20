@@ -42,14 +42,14 @@ with open(absolute_path + 'config.json', 'r') as f:
 
 # NOTICE: Uncomment these variables if testing on the test server
 
-"""
+
 GENSOC_SERVER = 962970271545982986 
 CARD_SPAM_CHANNEL = 1158232410299846747
 VERIFICATION_CHANNEL = 986440303655399454
 MODERATION_CHANNEL = 1181463563722833961
 WELCOME_CHANNEL = 962970271545982989
 CODE_CHANNEL = 1275044091486539804
-"""
+
 
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
 CHAT_PRIMOJEM = 50
@@ -279,21 +279,44 @@ async def set_daylight(interaction, mode: app_commands.Choice[str]):
 	discord.app_commands.Choice(name="Add", value=1),
 	discord.app_commands.Choice(name="Remove", value=2),
 ])
-async def blacklist_user(interaction, target_user: discord.Member, action: app_commands.Choice[int]):
+async def blacklist_user(interaction, action: app_commands.Choice[int], target_user: discord.Member = None, zid: str = None):
 	if not helper.is_team(interaction):
 		await interaction.response.send_message("Insuffient permission.",
 												ephemeral=True)
 		return
 
+	
 	data = helper.read_file("config.json")
+	blacklist = data["user_blacklist"]
+	
 	if action.value == 1:
-		data["user_blacklist"].append(target_user.id)
-		await interaction.response.send_message(target_user.display_name + " has been blacklisted.")
+		if zid != None and zid not in blacklist: blacklist.append(zid)
+		if target_user != None and target_user.id not in blacklist : blacklist.append(target_user)
+		await interaction.response.send_message("Blacklist successful.")
+		
 	else:
-		data["user_blacklist"] = [j for i,j in enumerate(data["user_blacklist"]) if j != target_user.id]
-		await interaction.response.send_message(target_user.display_name + " has been removed from the blacklist.")
+		if zid != None:
+			blacklist = [j for j in blacklist if j != zid]
+		if target_user != None:
+			blacklist = [j for j in blacklist if j != target_user.id]
+		data["user_blacklist"] = blacklist
+		await interaction.response.send_message("Removal successful.")
 
 	helper.write_file("config.json", data)
+
+
+@tree.command(name="show_blacklist",
+				description="Show blacklisted users. Admin only.",
+				guild=discord.Object(id=GENSOC_SERVER))
+async def show_blacklist(interaction):
+	if not helper.is_team(interaction):
+		await interaction.response.send_message("Insuffient permission.",
+												ephemeral=True)
+		return
+
+	blacklist = helper.read_file("config.json")["user_blacklist"]
+	await interaction.response.send_message("\n".join([str(x) for x in blacklist]))
+
 
 @tree.command(name="edit_shop",
 				description="Add/remove role icon to shop. Admin only.",
@@ -552,6 +575,7 @@ async def help_commands(interaction):
 
 	embed_admin.add_field(name="**/set_verification**", value="Set verification security level.", inline=False)
 	embed_admin.add_field(name="**/blacklist_user**", value="Blacklist user.", inline=False)
+	embed_admin.add_field(name="**/show_blacklist**", value="Show blacklisted users.", inline=False)
 	embed_admin.add_field(name="**/edit_shop**", value="Add or remove role icon from shop.", inline=False)
 	embed_admin.add_field(name="**/delete_messages**", value="Purge x messages from channel, optionally from a specific user.", inline=False)
 	embed_admin.add_field(name="**/view_tasks**", value="View scheduled tasks.", inline=False)

@@ -309,6 +309,7 @@ async def verify_form(message):
 			username_list = username.split("#")
 
 	email = None
+	zid = None
 	unsw = False
 	for index, word1 in enumerate(message_words):
 		if "discord username" in word1.lower(): # Discord new username format
@@ -318,7 +319,8 @@ async def verify_form(message):
 			email = message_words[index + 1].lower()
 
 		if "your zid" in word1.lower() and message_words[index + 1].lower() != "z0000000":
-			student_email = message_words[index + 1].lower() + "@ad.unsw.edu.au"
+			zid = message_words[index + 1].lower()
+			student_email = zid + "@ad.unsw.edu.au"
 			unsw = True
 
 	if username == None and email == None:
@@ -340,7 +342,7 @@ async def verify_form(message):
 
 	# Security check: blacklisted users
 	config = helper.read_file("config.json")
-	if user.id in config["user_blacklist"]:
+	if user.id in config["user_blacklist"] or (zid != None and zid in config["user_blacklist"]):
 		# Blacklisted user
 		await message.reply("WARNING: <@" + str(user.id) + "> is on the blacklist.")
 		return None
