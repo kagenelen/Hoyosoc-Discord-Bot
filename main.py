@@ -41,7 +41,6 @@ with open(absolute_path + 'config.json', 'r') as f:
 	f.close()
 
 # NOTICE: Uncomment these variables if testing on the test server
-
 """
 GENSOC_SERVER = 962970271545982986 
 CARD_SPAM_CHANNEL = 1158232410299846747
@@ -71,6 +70,8 @@ async def on_ready():
 	make_backup.start()
 	run_scheduled_tasks.start()
 	card_spam_description_update.start()
+
+	helper.write_encrypted_file("wordbank.json", str(helper.read_file("wordbank_decrypted.json")))
 
 @client.event
 async def on_member_join(member):

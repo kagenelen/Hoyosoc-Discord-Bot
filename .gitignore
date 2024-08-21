@@ -7,3 +7,4 @@ json_files/bets.json
 backup/
 bot_runner.py
 unused.py
+json_files/wordbank_decrypted.json

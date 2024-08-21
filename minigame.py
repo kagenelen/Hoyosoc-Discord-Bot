@@ -23,7 +23,7 @@ HM_EXTREME = 130 # 520 at max
 TWO_WORD_PENALTY = 0.9615484 # 500 at max
 THREE_WORD_PENALTY = 0.923086 # 480 at max
 RANDOM_WORD_CHANCE = 0.5
-EARNINGS_CAP = 500
+EARNINGS_CAP = 50000
 COUNT_MULTIPLER = 0.2
 COUNT_MAX = 40
 COUNT_BONUS = 2 
@@ -233,7 +233,7 @@ Returns: [
 # Create a new hangman session in minigame_session.json for that player
 def new_hangman(discord_id, difficulty, fandom):
 	discord_id = str(discord_id)
-	hangman_word = random.choice(helper.read_file("wordbank.json")[fandom])
+	hangman_word = random.choice(helper.read_encrypted_file("wordbank.json")[fandom])
 	
 	if difficulty == "normal":
 		lives = 12
@@ -367,9 +367,9 @@ def hangman_guess(discord_id, guess):
     else:
       word_length = len(user_session["hangman_word"])
       penalty = 1
-      if word_length > 10:
+      if word_length > 11:
         penalty = TWO_WORD_PENALTY
-      if word_length > 15:
+      if word_length > 16:
         penalty = THREE_WORD_PENALTY
       primojem = int(HM_EXTREME * penalty)
 
