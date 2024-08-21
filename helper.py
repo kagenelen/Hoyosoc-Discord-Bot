@@ -6,6 +6,7 @@ import time
 import datetime
 import shutil
 import pytz
+from cryptography.fernet import Fernet
 
 EXEC_ROLE = "2024 Hoyosoc Team"
 PRIMOJEM_EMOTE = "<:Primojem:1108620629902626816>"
@@ -25,6 +26,22 @@ def read_file(file):
   with open(absolute_path + file, 'rb') as f:
     data = json.load(f)
   return data
+
+def read_encrypted_file(file):
+	absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
+	with open(absolute_path + file, 'r') as f:
+		fernet = Fernet(bytes(os.getenv("FERNET_KEY"), "utf-8"))
+		decrypted_data = fernet.decrypt(bytes(f.read(), "utf-8"))
+		decrypted_data = decrypted_data.decode("utf-8").replace("\'", "\"")
+		data = json.loads(decrypted_data)
+	return data
+
+def write_encrypted_file(file, data):
+	absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
+	with open(absolute_path + file, 'wb') as f:
+		fernet = Fernet(bytes(os.getenv("FERNET_KEY"), "utf-8"))
+		encrypted_data = fernet.encrypt(bytes(data, "utf-8"))
+		f.write(encrypted_data)
 
 # Make file backup in backup folder
 # Argument: file name (must be in json_file folder)
