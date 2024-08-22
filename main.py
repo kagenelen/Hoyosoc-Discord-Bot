@@ -71,7 +71,7 @@ async def on_ready():
 	run_scheduled_tasks.start()
 	card_spam_description_update.start()
 
-	helper.write_encrypted_file("wordbank.json", str(helper.read_file("wordbank_decrypted.json")))
+	# helper.write_encrypted_file("wordbank.json", str(helper.read_file("wordbank_decrypted.json")))
 
 @client.event
 async def on_member_join(member):
@@ -702,8 +702,8 @@ async def add_redemption_code(interaction, code: str, game: app_commands.Choice[
 	channel = client.get_channel(CODE_CHANNEL)
 
 	try:
-		async for message in channel.history(limit=3):
-			if message.author.bot:
+		async for message in channel.history(limit=20):
+			if message.author.bot and message.embed.title == "All Redemption Codes":
 				await message.delete()
 		await channel.send(embed=misc.display_code_list("All", "all", False, 5)[0])
 	except Exception as e:
