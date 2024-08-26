@@ -692,7 +692,7 @@ async def scrape_uid_message(interaction, channel_id: str, game: str):
 	discord.app_commands.Choice(name="Zenless Zone Zero", value="zzz"),
 	discord.app_commands.Choice(name="Wuthering Waves", value="wuwa"),
 ])
-async def add_redemption_code(interaction, code: str, game: app_commands.Choice[str], reward: str = "", expiry: str = None, show_link: bool = True, hide_message: bool = True):
+async def add_redemption_code(interaction, code: str, game: app_commands.Choice[str], reward: str = "", expiry: str = None, show_link: bool = True, hide_message: bool = False):
 	result = misc.add_code(code, game.value, expiry, reward)
 	if isinstance(result, str):
 		await interaction.response.send_message(result, ephemeral=True)
