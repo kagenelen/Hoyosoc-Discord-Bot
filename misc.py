@@ -58,18 +58,13 @@ def list_tasks():
 #################### Card Counter #####################################
 
 # Count number of times a substring appears in channel
-# Argument: channel object, output to file (0 or 1)
+# Argument: channel object
 # Return: number of appearance of a substring
-async def channel_substring_counter(channel, output):
+async def channel_substring_counter(channel):
 	counter = 0
 	async for message in channel.history(limit=None):
 		all_matches = re.findall("<:\w*[Cc][Aa][Rr][Dd]\w*:[0-9]+>", message.content) # Change regex to suit needs
 		counter += len(all_matches)
-
-		if output == 1:
-			f = open("card.txt", "a")
-			f.write(message.content + "\n")
-			f.close()
 
 	print("There are " + str(counter) + " cards in " + channel.name)
 

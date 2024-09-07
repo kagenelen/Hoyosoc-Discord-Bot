@@ -41,14 +41,14 @@ with open(absolute_path + 'config.json', 'r') as f:
 	f.close()
 
 # NOTICE: Uncomment these variables if testing on the test server
-
+"""
 GENSOC_SERVER = 962970271545982986 
 CARD_SPAM_CHANNEL = 1158232410299846747
 VERIFICATION_CHANNEL = 986440303655399454
 MODERATION_CHANNEL = 1181463563722833961
 WELCOME_CHANNEL = 962970271545982989
 CODE_CHANNEL = 1275044091486539804
-
+"""
 
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
 CHAT_PRIMOJEM = 50
@@ -71,7 +71,7 @@ async def on_ready():
 	run_scheduled_tasks.start()
 	card_spam_description_update.start()
 
-	helper.write_encrypted_file("wordlist.json", str(helper.read_file("wordbank_decrypted.json")))
+	# helper.write_encrypted_file("wordlist.json", str(helper.read_file("wordbank_decrypted.json")))
 
 @client.event
 async def on_member_join(member):
@@ -455,11 +455,7 @@ async def set_count(interaction, number: int):
 @tree.command(name="card_count",
 				description="Count card emotes in current channel.",
 				guild=discord.Object(id=GENSOC_SERVER))
-@app_commands.choices(output=[
-	discord.app_commands.Choice(name="True", value=1),
-	discord.app_commands.Choice(name="False", value=0),
-])
-async def card_count(interaction, channel: discord.TextChannel, output: app_commands.Choice[int]):
+async def card_count(interaction, channel: discord.TextChannel):
 	if not helper.is_team(interaction):
 		await interaction.response.send_message(
 			"Insuffient permission. Command only available to admins due to long execution time.",
@@ -467,17 +463,14 @@ async def card_count(interaction, channel: discord.TextChannel, output: app_comm
 		return
 	
 	await interaction.response.defer()
-	if output.value == 1:
-		await interaction.followup.send("Check console for the result.", ephemeral=True)
 		
 	num = await misc.channel_substring_counter(channel, output.value)
 	if channel.id == CARD_SPAM_CHANNEL:
 		data = helper.read_file("config.json")
 		data["card_spam_counter"] = num
 		helper.write_file("config.json", data)
-
-	if output.value == 0:
-		await interaction.followup.send("There are " + str(num) + " card emotes in " + channel.name, ephemeral=True)
+	
+	await interaction.followup.send("There are " + str(num) + " card emotes in " + channel.name, ephemeral=True)
 
 
 @tree.command(name="yatta",
