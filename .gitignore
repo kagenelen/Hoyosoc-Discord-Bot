@@ -9,3 +9,4 @@ bot_runner.py
 unused.py
 json_files/wordbank_decrypted.json
 .env
+__pycache__/
