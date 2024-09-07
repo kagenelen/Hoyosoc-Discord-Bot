@@ -168,8 +168,7 @@ Example: 4/6/23 09:05 -08:00 for June 4 2023 9:05am UTC -8")
 	data[game][code] = {
 		"link": url,
 		"expiry": expiry_unix,
-		"reward": reward,
-		"users": []
+		"reward": reward
 	}
 
 	helper.write_file("codes.json", data)
@@ -387,7 +386,7 @@ async def verify_form(message):
 def generate_code(user, email, unsw):
 	digits = string.ascii_uppercase + "0123456789"
 	verification_code = ''.join(random.choice(digits) for i in range(8))
-	expiry = time.time() + 1800 # 30 minute expiry
+	expiry = time.time() + 86400 # 24 hour expiry
 
 	data = helper.read_file("verification.json")
 	data[str(user.id)] = {
@@ -410,7 +409,7 @@ async def send_verify_email(discord_user, email, code, send_remind):
 Your verification code is:
 %s
 
-This code will expire in 30 minutes, and will only work for the discord user: %s. 
+This code will expire in 24 hours, and will only work for the discord user: %s. 
 
 Use the code with the command   \\verify_me   to become verified. The command will immediately verify UNSW students. 
 
