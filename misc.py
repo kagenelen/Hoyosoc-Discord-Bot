@@ -425,7 +425,7 @@ If your code has expired or need further help with verification, please send a m
 	msg.attach(MIMEText(text))
 
 	try:
-		server = smtplib.SMTP('smtp.gmail.com:587')
+		server = smtplib.SMTP("smtp.gmail.com", 587, None, 30)
 		server.ehlo()
 		server.starttls()
 		server.ehlo()
