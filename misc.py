@@ -398,7 +398,7 @@ def generate_code(user, email, unsw):
 # Argument: discord user (object), email, verification code, send reminder dm true/false
 # Return: True if email sent, False if error occurs
 async def send_verify_email(discord_user, email, code, send_remind):
-	from_addr = 'UNSW Hoyoverse Society'
+	from_addr = 'verify@unswhoyosoc.org'
 	to_addr = email
 	text = """
 Your verification code is:
@@ -413,7 +413,7 @@ Non-UNSW user's verification form details will need to be manually checked by th
 If your code has expired or need further help with verification, please send a message in the 'self-verify' channel.
 """ % (code, discord_user.name)
 	
-	username = 'verify.unswhoyosoc@gmail.com'
+	username = 'verify@unswhoyosoc.org'
 	load_dotenv()
 	password = os.getenv("EMAIL_PASS")
 
@@ -425,7 +425,7 @@ If your code has expired or need further help with verification, please send a m
 	msg.attach(MIMEText(text))
 
 	try:
-		server = smtplib.SMTP("smtp.gmail.com", 587, None, 30)
+		server = smtplib.SMTP("mail.unswhoyosoc.org", 587, None, 30)
 		server.ehlo()
 		server.starttls()
 		server.ehlo()
