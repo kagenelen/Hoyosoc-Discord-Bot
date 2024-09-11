@@ -413,7 +413,7 @@ Non-UNSW user's verification form details will need to be manually checked by th
 If your code has expired or need further help with verification, please send a message in the 'self-verify' channel.
 """ % (code, discord_user.name)
 	
-	username = 'unswhoyosoc@gmail.com'
+	username = 'verify.unswhoyosoc@gmail.com'
 	load_dotenv()
 	password = os.getenv("EMAIL_PASS")
 
