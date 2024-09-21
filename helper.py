@@ -9,6 +9,7 @@ import pytz
 from cryptography.fernet import Fernet
 
 EXEC_ROLE = "2024 Hoyosoc Team"
+EXEC_ROLE2 = "2025 Hoyosoc Team"
 PRIMOJEM_EMOTE = "<:Primojem:1108620629902626816>"
 JEMDUST_EMOTE = "<:Jemdust:1108591111649362043>"
 BETTER_EMOTE = "<:Betters:1122383400418934846>"
@@ -135,13 +136,14 @@ def rewrite_structure():
 # Argument: Interaction (class)
 # Return: True if user is part of team, False otherwise
 def is_team(interaction):
-  admin = discord.utils.find(lambda r: r.name == EXEC_ROLE,
-                             interaction.guild.roles)
+	admin1 = discord.utils.find(lambda r: r.name == EXEC_ROLE, interaction.guild.roles)
+
+	admin2 = discord.utils.find(lambda r: r.name == EXEC_ROLE2, interaction.guild.roles)
 
 	# This no longer checks for subcom
-  if admin not in interaction.user.roles:
-    return False
-  return True
+	if admin1 not in interaction.user.roles and admin2 not in interaction.user.roles:
+		return False
+	return True
 
 
 # Determines whether user is a server booster
