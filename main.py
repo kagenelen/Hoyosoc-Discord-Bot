@@ -690,18 +690,6 @@ async def add_redemption_code(interaction, code: str, game: app_commands.Choice[
 		await interaction.response.send_message(result, ephemeral=True)
 		return
 
-	# Send code list message and delete previous code list
-	channel = client.get_channel(CODE_CHANNEL)
-
-	try:
-		async for message in channel.history(limit=20):
-			if message.author.bot and message.embed.title == "All Redemption Codes":
-				await message.delete()
-		await channel.send(embed=misc.display_code_list("All", "all", False, 5)[0])
-	except Exception as e:
-		print(e)
-		pass
-
 	# Make embed for interaction response
 	embed = discord.Embed(
 		title=code.upper(),
@@ -710,7 +698,7 @@ async def add_redemption_code(interaction, code: str, game: app_commands.Choice[
 	embed.set_thumbnail(url=helper.game_thumbnail(game.value))
 
 	if expiry == None:
-		embed.description = "Expiry unknown"
+		embed.description = ""
 
 	if reward != "":
 		embed.add_field(name="Reward", value=reward)
@@ -734,6 +722,11 @@ async def add_redemption_code(interaction, code: str, game: app_commands.Choice[
 			
 	dm_button.callback = dm_callback
 	view.add_item(dm_button)
+
+	# Send code message in code channel if message is not in it
+	if interaction.channel_id != CODE_CHANNEL:
+		channel = client.get_channel(CODE_CHANNEL)
+		await channel.send(embed=embed, view=view)
 
 	await interaction.response.send_message(embed=embed, view=view, ephemeral=hide_message)
 
@@ -767,7 +760,7 @@ async def remove_redemption_code(interaction, code: str, game: app_commands.Choi
 	discord.app_commands.Choice(name="All", value="all"),
 ])
 async def list_redemption_codes(interaction, game: app_commands.Choice[str], is_expired: bool = None):
-	embeds = misc.display_code_list(game.name, game.value, is_expired, 10)
+	embeds = misc.display_code_list(game.name, game.value, is_expired, 5)
 
 	paginator = DiscordUtils.Pagination.AutoEmbedPaginator(interaction)
 

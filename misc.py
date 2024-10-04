@@ -220,12 +220,12 @@ def list_codes(game, is_expired):
 	# Change reward to printable format
 	for entry in filtered2:
 		if entry["reward"] != "":
-			entry["reward"] = " | " + entry["reward"]
+			entry["reward"] = entry["reward"]
 		
-		if entry["expiry"] == 2147472000:
-			entry["expiry"] = "Expiry unknown"
+		if entry["expiry"] > 2147400000:
+			entry["expiry"] = ""
 		else:
-			entry["expiry"] = "Expires <t:" + str(entry["expiry"]) + ":f>"
+			entry["expiry"] = "Expires <t:" + str(entry["expiry"]) + ":f> | "
 	
 	return filtered2
 
