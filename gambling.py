@@ -30,8 +30,10 @@ THREE_STAR_RARITY = 944
 FIVE_STAR_DUP = 25
 FOUR_STAR_DUP = 5
 THREE_STAR_DUP = 1
+UNRANKED_STAR_DUP = 10
 FIVE_STAR_COST = 180
 FOUR_STAR_COST = 34
+UNRANKED_STAR_COST = 90
 
 
 ################## Functions that deal with user currency #############################################
@@ -421,9 +423,12 @@ def buy_role(discord_id, role, duration, is_booster, recipient):
 			
 	elif role in gacha_pool["5"]:
 		jemdust_price = FIVE_STAR_COST
-	
+		
 	elif role in gacha_pool["4"]:
 		jemdust_price = FOUR_STAR_COST
+
+	elif role in gacha_pool["unranked"]:
+		jemdust_price = UNRANKED_STAR_COST
 		
 	else: 
 		return "Invalid role."
@@ -438,11 +443,11 @@ def buy_role(discord_id, role, duration, is_booster, recipient):
 		if user_entry["role"].get(role, 0) == 2145919483 or role in user_entry["role_icon"]:
 			return "You already have this permanent role."
 
-		if jemdust_price != 0:
+		if jemdust_price != 0 and jemdust_price != UNRANKED_STAR_COST:
 			user_entry["role_icon"].append(role)
 		elif duration == 7:
 			user_entry["role"][role] = current_end_time + 604800
-		elif duration == 5000:
+		elif duration == 5000 or jemdust_price == UNRANKED_STAR_COST:
 			user_entry["role"][role] = 2145919483
 		
 	else:
@@ -453,11 +458,11 @@ def buy_role(discord_id, role, duration, is_booster, recipient):
 		if recipient_entry["role"].get(role, 0) == 2145919483:
 			return "The recipient already have this permanent role."
 
-		if jemdust_price != 0:
+		if jemdust_price != 0 and jemdust_price != UNRANKED_STAR_COST:
 			recipient_entry["role_icon"].append(role)
 		elif duration == 7:
 			recipient_entry["role"][role] = current_end_time + 604800
-		elif duration == 5000:
+		elif duration == 5000 or jemdust_price == UNRANKED_STAR_COST:
 			recipient_entry["role"][role] = 2145919483
 
 	user_entry["jemdust"] += -1 * jemdust_price
@@ -553,6 +558,9 @@ def scrap_role_icon(discord_id, role):
 	elif role in gacha_pool["4"]:
 		jemdust_amount = FOUR_STAR_DUP
 		user_entry["role_icon"].remove(role)
+	elif role in gacha_pool["unranked"]:
+		jemdust_amount = UNRANKED_STAR_DUP
+		user_entry["role"].pop(role)
 	else:
 		return False
 

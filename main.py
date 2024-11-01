@@ -50,6 +50,7 @@ WELCOME_CHANNEL = 962970271545982989
 CODE_CHANNEL = 1275044091486539804
 """
 
+
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
 CHAT_PRIMOJEM = 50
 
@@ -959,6 +960,7 @@ async def view_shop(interaction, shop: app_commands.Choice[str]):
 	elif shop.value == "jemdust":
 		description = ("5 star role icon: 180 " + helper.JEMDUST_EMOTE + "  |  " +
 			"4 star role icon: 34 " + helper.JEMDUST_EMOTE + "\n" + 
+			"Unranked role icon: 90 + helper.JEMDUST_EMOTE + "\n" + 
 			"Use **/gacha** to pull for role icons.\n\n" +
 			"Please message an exec if you would like a character to be added to the role icon shop.")
 
@@ -984,6 +986,7 @@ async def view_shop(interaction, shop: app_commands.Choice[str]):
 	elif shop.value == "jemdust":
 		embed.add_field(name="5 Star Role Icons", value=", ".join(gacha_pool["5"]), inline=False)
 		embed.add_field(name="4 Star Role Icons", value=", ".join(gacha_pool["4"]), inline=False)
+		embed.add_field(name="Unranked Role Icons", value=", ".join(gacha_pool["unranked"]), inline=False)
 		embed.set_image(url=config_file['role_icon_shop'])
 
 	await interaction.response.send_message(embed=embed)
@@ -1107,6 +1110,11 @@ async def leaderboard(interaction, category: app_commands.Choice[str]):
 			if role_collection == 100:
 				tied_first += user.display_name + ", "
 				rank += 1
+				if rank % 5 == 0:
+					# Better formatting
+					tied_first += "\n"
+				if user.id == interaction.user.id:
+					your_rank = 1
 				continue
 				
 			elif role_collection != 100 and is_prev_tied == True:
