@@ -960,7 +960,7 @@ async def view_shop(interaction, shop: app_commands.Choice[str]):
 	elif shop.value == "jemdust":
 		description = ("5 star role icon: 180 " + helper.JEMDUST_EMOTE + "  |  " +
 			"4 star role icon: 34 " + helper.JEMDUST_EMOTE + "\n" + 
-			"Unranked role icon: 90 + helper.JEMDUST_EMOTE + "\n" + 
+			"Unranked role icon: 90 " + helper.JEMDUST_EMOTE + "\n" + 
 			"Use **/gacha** to pull for role icons.\n\n" +
 			"Please message an exec if you would like a character to be added to the role icon shop.")
 
