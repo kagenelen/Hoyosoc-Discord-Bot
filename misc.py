@@ -132,23 +132,11 @@ def add_code(code, game, expiry, reward):
 		return code + " has already been added."
 	
 	# Fix expiry string timezone to match format
+	expiry_unix = None
 	if expiry == None:
-		expiry = "19/1/38 00:00 +00:00"
-	elif ("+" in expiry or "-" in expiry) and ":" not in expiry[-3:]:
-		expiry += ":00"
-	elif "+" not in expiry and "-" not in expiry:
-		syd_timezone = str(24 - helper.read_file("config.json")["hour_offset"])
-		expiry += " +" + syd_timezone + ":00"
-		
-		
-	# Convert expiry string to unix. Expected format e.g. 4/12/23 20:00 +10:00
-	try:
-		expiry_dt = datetime.datetime.strptime(expiry, "%d/%m/%y %H:%M %z")
-		expiry_dt = expiry_dt.astimezone(datetime.timezone.utc)
-		expiry_unix = int(time.mktime(expiry_dt.timetuple()))
-	except:
-		return ("Invalid format. Please use the format d/m/y hh:mm ±hh:mm. \n\
-Example: 4/6/23 09:05 -08:00 for June 4 2023 9:05am UTC -8")
+		expiry_unix = 2147400001
+	else:
+		expiry_unix = helper.text_to_date(expiry)
 
 	# Make redemption url
 	if game == "genshin":

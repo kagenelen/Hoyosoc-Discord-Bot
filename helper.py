@@ -7,14 +7,16 @@ import datetime
 import shutil
 import pytz
 from cryptography.fernet import Fernet
+import dateparser
 
-EXEC_ROLE = "2024 Hoyosoc Team"
+EXEC_ROLE = "Exec"
 EXEC_ROLE2 = "2025 Hoyosoc Team"
 PRIMOJEM_EMOTE = "<:Primojem:1108620629902626816>"
 JEMDUST_EMOTE = "<:Jemdust:1108591111649362043>"
 BETTER_EMOTE = "<:Betters:1122383400418934846>"
 HEADS_EMOTE = "<:Heads:1137589987962015815>"
 TAILS_EMOTE = "<:Tails:1137589996916850760>"
+
 
 
 def write_file(file, data):
@@ -63,6 +65,16 @@ def unix_to_syd(unix_time):
 	tz_Sydney = pytz.timezone('Australia/Sydney')
 	datetime_Sydney = datetime.datetime.now(tz_Sydney)
 	return datetime_Sydney.strftime("%d/%m %H:%M")
+
+# Convert date text to unix timestamp
+def text_to_date(date_string):
+	timezone = None
+	if read_file("config.json")["hour_offset"] == 13:
+		timezone = '+1100'
+	else:
+		timezone = '+1000'
+	settings = {'DATE_ORDER': 'DMY', 'TIMEZONE': timezone, 'RETURN_AS_TIMEZONE_AWARE': True}
+	return int(dateparser.parse(date_string, settings=settings).timestamp())
 
 # Get user entry
 # Function mainly used to create entry for new users

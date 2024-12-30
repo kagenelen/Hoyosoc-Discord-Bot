@@ -675,7 +675,7 @@ async def scrape_uid_message(interaction, channel_id: str, game: str):
 
 ############################### REDEMPTION CODES ###################################
 @tree.command(name="add_code",
-				description="Add redemption code.",
+				description="Add redemption code. Format: d/m/y hh:mm timezone. E.g. 14/3/24 19:00 +0900",
 				guild=discord.Object(id=GENSOC_SERVER))
 @app_commands.choices(game=[
 	discord.app_commands.Choice(name="Genshin Impact", value="genshin"),
