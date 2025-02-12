@@ -394,7 +394,7 @@ Your verification code is:
 
 This code will expire in 24 hours, and will only work for the discord user: %s. 
 
-Use the code with the command   \\verify_me   to become verified. The command will immediately verify UNSW students. 
+Use the code with the command  /verify_me  to become verified. The command will immediately verify UNSW students. 
 
 Non-UNSW user's verification form details will need to be manually checked by the society executive team after using this command. Please be patient while this happens.
 
