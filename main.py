@@ -36,7 +36,6 @@ with open(absolute_path + 'config.json', 'r') as f:
 	CODE_CHANNEL = data['code_channel']
 	CARD_SPAM_CHANNEL = data['card_spam_channel']
 	MODERATION_CHANNEL = data['moderation_channel']
-	COLOUR_ROLE_PREVIEW = data['role_colour_shop']
 	
 	f.close()
 
@@ -49,7 +48,6 @@ MODERATION_CHANNEL = 1181463563722833961
 WELCOME_CHANNEL = 962970271545982989
 CODE_CHANNEL = 1275044091486539804
 """
-
 
 CHAT_INTERVAL = 300 # 5 minute cooldown for chat primojem
 CHAT_PRIMOJEM = 50
@@ -311,35 +309,26 @@ async def show_blacklist(interaction):
 
 
 @tree.command(name="edit_shop",
-				description="Add/remove role icon to shop. Admin only.",
+				description="Edit role icon shop items. Admin only.",
 				guild=discord.Object(id=GENSOC_SERVER))
+@app_commands.choices(rarity=[
+	discord.app_commands.Choice(name="4", value='4'),
+	discord.app_commands.Choice(name="5", value='5'),
+	discord.app_commands.Choice(name="Unranked", value='unranked'),
+])
 @app_commands.choices(action=[
 	discord.app_commands.Choice(name="Add", value=1),
 	discord.app_commands.Choice(name="Remove", value=2),
+	discord.app_commands.Choice(name="Convert to unranked", value=3),
 ])
-async def edit_shop(interaction, role_name: str, rarity: int, action: app_commands.Choice[int], shop_image: str = None):
+async def edit_shop(interaction, role_name: str, rarity: app_commands.Choice[str], action: app_commands.Choice[int], shop_image: str = None):
 	if not helper.is_team(interaction):
 		await interaction.response.send_message("Insuffient permission.", ephemeral=True)
 		return
-
-	if rarity != 4 and rarity != 5:
-		await interaction.response.send_message("Rarity can only be 4 or 5", ephemeral=True)
-		return
-
-	data = helper.read_file("role_icon.json")
-	if action.value == 1:
-		data[str(rarity)].append(role_name.title())
-		await interaction.response.send_message(role_name.title() + " has been added to the shop.")
-	else:
-		data[str(rarity)].remove(role_name.title())
-		await interaction.response.send_message(role_name.title() + " has been removed from the shop.")
-
-	if shop_image != None:
-		config = helper.read_file("config.json")
-		config["role_icon_shop"] = shop_image
-		helper.write_file("config.json", config)
-
-	helper.write_file("role_icon.json", data)
+	
+	res = gambling.modify_shop(action.value, role_name, rarity.value, shop_image)
+	await interaction.response.send_message(res)
+	
 
 @tree.command(name="delete_messages",
 				description="Delete last x messages from a channel, optionally from a specific user. Admin only.",
@@ -877,7 +866,7 @@ async def fortune(interaction):
 	for x in range(7):
 		loading_message += elements[x]
 		embed.description = loading_message
-		await asyncio.sleep(1)
+		await asyncio.sleep(0.2)
 		await ori_response.edit(embed=embed)
 		
 	# Actual fortune
@@ -942,54 +931,8 @@ async def inventory(interaction, target_user: discord.Member = None):
 	discord.app_commands.Choice(name="Jemdust/Role Icon Shop", value="jemdust"),
 ])
 async def view_shop(interaction, shop: app_commands.Choice[str]):
-	res = gambling.get_inventory(interaction.user.id)
-	gacha_pool = helper.read_file("role_icon.json")
-	config_file = helper.read_file("config.json")
-
-	price = [gambling.ONE_WEEK_ROLE, gambling.PERMANENT_ROLE, gambling.ONE_PULL]
-	if helper.is_booster(interaction.user):
-		price = [int(x / 2) for x in price]
-
-	description = ""
-	if shop.value == "primojem":
-		description = ("7 days: " + str(price[0]) + " " + helper.PRIMOJEM_EMOTE + "  |  " +
-			"Permanent: " + str(price[1]) + " " + helper.PRIMOJEM_EMOTE + "\n" +
-			"1 pull: " + str(price[2]) + " " + helper.PRIMOJEM_EMOTE + "\n" + 
-			"Use **/shop jemdust** to see the role icons shop.\n" + 
-			"Use **/gacha** to pull for role icons.\n\n")
-	elif shop.value == "jemdust":
-		description = ("5 star role icon: 180 " + helper.JEMDUST_EMOTE + "  |  " +
-			"4 star role icon: 34 " + helper.JEMDUST_EMOTE + "\n" + 
-			"Unranked role icon: 90 " + helper.JEMDUST_EMOTE + "\n" + 
-			"Use **/gacha** to pull for role icons.\n\n" +
-			"Please message an exec if you would like a character to be added to the role icon shop.")
-
-	embed = discord.Embed(title="Shop",
-							description=description,
-							color=0x61dfff)
-	embed.set_footer(text="Primojems: " + str(res[0]) + "  |  " + "Jemdust: " + str(res[1]))
-	
-	# Add embed field for each role
-	if shop.value == "primojem":
-		embed.add_field(name="Anemo", value="(teal)", inline=True)
-		embed.add_field(name="Cryo", value="(whitish blue)", inline=True)
-		embed.add_field(name="Dendro", value="(green)", inline=True)
-		embed.add_field(name="Electro", value="(dark pink)", inline=True)
-		embed.add_field(name="Geo", value="(orange)", inline=True)
-		embed.add_field(name="Hydro", value="(blue)", inline=True)
-		embed.add_field(name="Pyro", value="(red)", inline=True)
-		embed.add_field(name="Physical", value="(gray)", inline=True)
-		embed.add_field(name="Imaginary", value="(yellow)", inline=True)
-		embed.add_field(name="Quantum", value="(indigo)", inline=True)
-		embed.set_image(url=COLOUR_ROLE_PREVIEW)
-		
-	elif shop.value == "jemdust":
-		embed.add_field(name="5 Star Role Icons", value=", ".join(gacha_pool["5"]), inline=False)
-		embed.add_field(name="4 Star Role Icons", value=", ".join(gacha_pool["4"]), inline=False)
-		embed.add_field(name="Unranked Role Icons", value=", ".join(gacha_pool["unranked"]), inline=False)
-		embed.set_image(url=config_file['role_icon_shop'])
-
-	await interaction.response.send_message(embed=embed)
+	res = gambling.get_shop(interaction.user, shop.value)
+	await interaction.response.send_message(embed=res)
 
 @tree.command(name="edit_inventory",
 	description="Add role to user inventory. Admin only.",
@@ -1221,7 +1164,7 @@ async def blackjack(interaction, bet: str):
 
 	embed = discord.Embed(
 		title=interaction.user.display_name + "\'s Blackjack Game",
-		description="Use **/hit** or **/stand**\n" + res[0],
+		description=res[0],
 		color=0x61dfff)
 	embed.set_thumbnail(url=interaction.user.display_avatar.url)
 
@@ -1235,81 +1178,9 @@ async def blackjack(interaction, bet: str):
 					inline=False)
 
 	# Buttons
-	view = View(timeout=60)
-
-	# Hit button
-	hit_button = Button(label="Hit", style=discord.ButtonStyle.blurple)
-	async def hit_callback(b_interaction):
-		if b_interaction.user.id == interaction.user.id:
-			await b_interaction.response.defer()
-			await followup.hit_followup(interaction)
-	hit_button.callback = hit_callback
-	view.add_item(hit_button)
-
-	# Stand button
-	stand_button = Button(label="Stand", style=discord.ButtonStyle.red)
-	async def stand_callback(b_interaction):
-		if b_interaction.user.id == interaction.user.id:
-			await b_interaction.response.defer()
-			await followup.stand_followup(interaction)
-	stand_button.callback = stand_callback
-	view.add_item(stand_button)
-
+	view = followup.add_blackjack_buttons(interaction, res[3])
 	await interaction.response.send_message(embed=embed, view=view)
 
-@tree.command(name="hit",
-				description="Hit in blackjack.",
-				guild=discord.Object(id=GENSOC_SERVER))
-async def hit(interaction):
-	res = minigame.blackjack_action(interaction.user.id, "hit")
-
-	if isinstance(res, str):
-		await interaction.response.send_message(res)
-		return
-
-	embed = discord.Embed(title=interaction.user.display_name +
-							"\'s Blackjack Game",
-							description=res[0],
-							color=0x61dfff)
-	embed.set_thumbnail(url=interaction.user.display_avatar.url)
-
-	dealer_value = str(minigame.blackjack_get_value(res[1]))
-	better_value = str(minigame.blackjack_get_value(res[2]))
-	embed.add_field(name="Dealer's Hand: " + dealer_value,
-					value=", ".join(res[1]),
-					inline=False)
-	embed.add_field(name="Your Hand: " + better_value,
-					value=", ".join(res[2]),
-					inline=False)
-
-	await interaction.response.send_message(embed=embed)
-
-@tree.command(name="stand",
-				description="Stand in blackjack.",
-				guild=discord.Object(id=GENSOC_SERVER))
-async def stand(interaction):
-	res = minigame.blackjack_action(interaction.user.id, "stand")
-
-	if isinstance(res, str):
-		await interaction.response.send_message(res)
-		return
-
-	embed = discord.Embed(title=interaction.user.display_name +
-							"\'s Blackjack Game",
-							description=res[0],
-							color=0x61dfff)
-	embed.set_thumbnail(url=interaction.user.display_avatar.url)
-
-	dealer_value = str(minigame.blackjack_get_value(res[1]))
-	better_value = str(minigame.blackjack_get_value(res[2]))
-	embed.add_field(name="Dealer's Hand: " + dealer_value,
-					value=", ".join(res[1]),
-					inline=False)
-	embed.add_field(name="Your Hand: " + better_value,
-					value=", ".join(res[2]),
-					inline=False)
-
-	await interaction.response.send_message(embed=embed)
 
 @tree.command(
 	name="hangman",

@@ -469,6 +469,126 @@ def buy_role(discord_id, role, duration, is_booster, recipient):
 	helper.write_file("users.json", data)
 	update_user_currency(discord_id, -1 * primojem_price)
 
+# Creates the shop message
+# Argument: user object, item type (colour/icon)
+# Return: embed
+def get_shop(user, type):
+	gacha_pool = helper.read_file("role_icon.json")
+	config_file = helper.read_file("config.json")
+	users = helper.read_file("users.json")[str(user.id)]
+
+	price = [ONE_WEEK_ROLE, PERMANENT_ROLE, ONE_PULL]
+	if helper.is_booster(user):
+		price = [int(x / 2) for x in price]
+
+	description = ""
+	if type == "primojem":
+		description = ("7 days: " + str(price[0]) + " " + helper.PRIMOJEM_EMOTE + "  |  " +
+			"Permanent: " + str(price[1]) + " " + helper.PRIMOJEM_EMOTE + "\n" +
+			"1 pull: " + str(price[2]) + " " + helper.PRIMOJEM_EMOTE + "\n" + 
+			"Use **/shop jemdust** to see the role icons shop.\n" + 
+			"Use **/gacha** to pull for role icons.\n\n")
+		
+	elif type == "jemdust":
+		description = ("5 star role icon: 180 " + helper.JEMDUST_EMOTE + "  |  " +
+			"4 star role icon: 34 " + helper.JEMDUST_EMOTE + "\n" + 
+			"Unranked role icon: 90 " + helper.JEMDUST_EMOTE + "\n" + 
+			"Use **/gacha** to pull for role icons.\n\n" +
+			"Role icon availability is subject to change. You will only be refunded for removed 5 star role icons.\n\n" +
+			"Please message an exec if you would like a character to be added to the role icon shop.\n"
+			)
+
+	# Create the shop embed
+	embed = discord.Embed(title="Shop",
+							description=description,
+							color=0x61dfff)
+	embed.set_footer(text="Primojems: " + str(users["currency"]) + "  |  " + "Jemdust: " + str(users["jemdust"]))
+	
+	# Add embed field for each role
+	if type == "primojem":
+		embed.add_field(name="Anemo", value="(teal)", inline=True)
+		embed.add_field(name="Cryo", value="(whitish blue)", inline=True)
+		embed.add_field(name="Dendro", value="(green)", inline=True)
+		embed.add_field(name="Electro", value="(dark pink)", inline=True)
+		embed.add_field(name="Geo", value="(orange)", inline=True)
+		embed.add_field(name="Hydro", value="(blue)", inline=True)
+		embed.add_field(name="Pyro", value="(red)", inline=True)
+		embed.add_field(name="Physical", value="(gray)", inline=True)
+		embed.add_field(name="Imaginary", value="(yellow)", inline=True)
+		embed.add_field(name="Quantum", value="(indigo)", inline=True)
+		embed.set_image(url=config_file['role_colour_shop'])
+		
+	elif type == "jemdust":
+		# Mark owned role icons
+		for role_item in gacha_pool['5']:
+			if role_item in users["role_icon"]:
+				gacha_pool['5'][gacha_pool['5'].index(role_item)] = "~~" + role_item + "~~"
+		for role_item in gacha_pool['4']:
+			if role_item in users["role_icon"]:
+				gacha_pool['4'][gacha_pool['4'].index(role_item)] = "~~" + role_item + "~~"
+		for role_item in gacha_pool['unranked']:
+			if role_item in users["role"]:
+				gacha_pool['unranked'][gacha_pool['unranked'].index(role_item)] = "~~" + role_item + "~~"
+		
+		embed.add_field(name="5 Star Role Icons", value=", ".join(gacha_pool["5"]), inline=False)
+		embed.add_field(name="4 Star Role Icons", value=", ".join(gacha_pool["4"]), inline=False)
+		embed.add_field(name="Unranked Role Icons", value=", ".join(gacha_pool["unranked"]), inline=False)
+		embed.set_image(url=config_file['role_icon_shop'])
+
+	return embed
+
+# Adds or remove item from shop, and refunds users accordingly
+# Argument: action, role name, rarity (4/5/unranked), shop image url
+# Return: Outcome message
+def modify_shop(action, role_name, rarity, image=None):
+	data = helper.read_file("role_icon.json")
+	users = helper.read_file("users.json")
+	role_name = role_name.title()
+	retval = None
+
+	if action == 1:
+		# Add role
+		data[str(rarity)].append(role_name)
+		retval = role_name + " has been added to the shop."
+	
+	elif action == 2:
+		# Remove role and refund users
+		data[str(rarity)].remove(role_name)
+
+		for user_item in users:
+			user = users[user_item]
+			if rarity != 'unranked' and role_name in user['role']:
+				user['role'].pop(role_name)
+			elif (rarity == '5' or rarity == '4') and role_name in user['role_icon']:
+				user['role_icon'].remove(role_name)
+				if rarity == '5':
+					user['jemdust'] += FIVE_STAR_COST
+
+		retval = role_name + " has been removed from the shop."
+	
+	elif action == 3:
+		# Convert ranked role to unranked and refund users 
+		data[str(rarity)].remove(role_name)
+		data['unranked'].append(role_name)
+
+		for user_item in users:
+				user = users[user_item]
+				if role_name in user['role_icon']:
+					user['role_icon'].remove(role_name)
+					user['role'][role_name] = 2145919483
+				if rarity == '5':
+					user['jemdust'] += FIVE_STAR_COST
+
+		retval = role_name + " has been converted to unranked."
+
+	if image != None:
+		config = helper.read_file("config.json")
+		config["role_icon_shop"] = image
+		helper.write_file("config.json", config)
+
+	helper.write_file("role_icon.json", data)
+	helper.write_file("users.json", users)
+	return retval
 
 # Function called daily to check expiry of all roles, and remove role if expired
 # Return: List of (discord id, role)

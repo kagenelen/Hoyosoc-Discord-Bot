@@ -5,6 +5,40 @@ import time
 import minigame
 import helper
 
+def add_blackjack_buttons(interaction, allow_double):
+	view = View(timeout=60)
+
+	# Hit button
+	hit_button = Button(label="Hit", style=discord.ButtonStyle.blurple)
+	async def hit_callback(b_interaction):
+		if b_interaction.user.id == interaction.user.id:
+			await b_interaction.response.defer()
+			await hit_followup(interaction)
+	hit_button.callback = hit_callback
+	view.add_item(hit_button)
+
+	# Stand button
+	stand_button = Button(label="Stand", style=discord.ButtonStyle.red)
+	async def stand_callback(b_interaction):
+		if b_interaction.user.id == interaction.user.id:
+			await b_interaction.response.defer()
+			await stand_followup(interaction)
+	stand_button.callback = stand_callback
+	view.add_item(stand_button)
+
+	# Double down button
+	double_button = Button(label="Double", style=discord.ButtonStyle.green)
+	async def double_callback(b_interaction):
+		if b_interaction.user.id == interaction.user.id:
+			await b_interaction.response.defer()
+			await double_followup(interaction)
+	double_button.callback = double_callback
+	if allow_double:
+		# Has sufficient currency to do double down
+		view.add_item(double_button)
+	
+	return view
+
 async def hit_followup(interaction):
 	res = minigame.blackjack_action(interaction.user.id, "hit")
 
@@ -27,7 +61,8 @@ async def hit_followup(interaction):
 					value=", ".join(res[2]),
 					inline=False)
 
-	await interaction.edit_original_response(embed=embed)
+	view = add_blackjack_buttons(interaction, False)
+	await interaction.edit_original_response(embed=embed, view=view)
 
 async def stand_followup(interaction):
 	res = minigame.blackjack_action(interaction.user.id, "stand")
@@ -51,7 +86,33 @@ async def stand_followup(interaction):
 					value=", ".join(res[2]),
 					inline=False)
 
-	await interaction.edit_original_response(embed=embed)
+	view = add_blackjack_buttons(interaction, False)
+	await interaction.edit_original_response(embed=embed, view=view)
+
+async def double_followup(interaction):
+	res = minigame.blackjack_action(interaction.user.id, "double")
+
+	if isinstance(res, str):
+		await interaction.edit_original_response(content=res)
+		return
+
+	embed = discord.Embed(title=interaction.user.display_name +
+							"\'s Blackjack Game",
+							description=res[0],
+							color=0x61dfff)
+	embed.set_thumbnail(url=interaction.user.display_avatar.url)
+
+	dealer_value = str(minigame.blackjack_get_value(res[1]))
+	better_value = str(minigame.blackjack_get_value(res[2]))
+	embed.add_field(name="Dealer's Hand: " + dealer_value,
+					value=", ".join(res[1]),
+					inline=False)
+	embed.add_field(name="Your Hand: " + better_value,
+					value=", ".join(res[2]),
+					inline=False)
+
+	view = add_blackjack_buttons(interaction, False)
+	await interaction.edit_original_response(embed=embed, view=view)
 
 async def drop_followup(interaction, column):
 	res = minigame.drop_token(interaction.user, column)

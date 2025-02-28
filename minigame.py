@@ -24,8 +24,8 @@ TWO_WORD_PENALTY = 0.9615484 # 500 at max
 THREE_WORD_PENALTY = 0.923086 # 480 at max
 RANDOM_WORD_CHANCE = 0.5
 EARNINGS_CAP = 50000
-COUNT_MULTIPLER = 0.2
-COUNT_MAX = 40
+COUNT_MULTIPLER = 0.08
+COUNT_MAX = 80
 COUNT_BONUS = 2 
 ROW_COUNT = 6
 COLUMN_COUNT = 7
@@ -36,12 +36,13 @@ minigame_earnings = {}
 
 # Make new blackjack session.
 # Argument: discord id string, bet amount
-# Return: [outcome string, [dealer cards], [your cards]] or error string
+# Return: [outcome string, [dealer cards], [your cards], allow_double bool] or error string
 def new_blackjack(discord_id, bet):
 	discord_id = str(discord_id)
 	data = helper.read_file("minigame_session.json")
 	dealer_hand = random.choices(CARDS, k=1)
 	your_hand = random.choices(CARDS, k=2)
+	allow_double = False
 	
 	if bet <= 0:
 		return "Bets have to be higher than 0."
@@ -55,6 +56,9 @@ def new_blackjack(discord_id, bet):
 	
 	if gambling.check_user_currency(discord_id) - bet < 0:
 		return "Insufficient primojems to make this bet."
+	
+	if gambling.check_user_currency(discord_id) - 2 * bet > 0:
+		allow_double = True
 		
 	gambling.update_user_currency(discord_id, -1 * bet)
 	
@@ -70,7 +74,7 @@ def new_blackjack(discord_id, bet):
 		data.pop(discord_id)
 	
 	helper.write_file("minigame_session.json", data)
-	return [outcome_string, dealer_hand, your_hand]
+	return [outcome_string, dealer_hand, your_hand, allow_double]
 
 
 # Do an action in blackjack
@@ -89,8 +93,10 @@ def blackjack_action(discord_id, action):
 		res = blackjack_hit(discord_id)
 	elif action == "stand":
 		res = blackjack_stand(discord_id)
+	elif action == "double":
+		res = blackjack_double(discord_id)
 
-	# Re-read the session file after hit and stand action
+	# Re-read the session file after action
 	data = helper.read_file("minigame_session.json")
 	session = data.get(discord_id)
 
@@ -106,7 +112,6 @@ def blackjack_action(discord_id, action):
 		data.pop(discord_id)
 	elif res == -1:
 		outcome_string = "You have lost " + str(session["bet"]) + helper.PRIMOJEM_EMOTE
-		gambling.update_user_gambling(discord_id, -1 * session["bet"])
 		data.pop(discord_id)
 
 	helper.write_file("minigame_session.json", data)
@@ -135,6 +140,39 @@ def blackjack_hit(discord_id):
 		return -1
 	
 	return 0
+
+# Blackjack double down
+# Argument: discord id string
+# Return: 0 insufficient bet, 1 better won, -1 dealer won, 2 tie
+def blackjack_double(discord_id):
+	discord_id = str(discord_id)
+	data = helper.read_file("minigame_session.json")
+	session = data.get(discord_id, None)
+	
+	# Double down can only happen on first action
+	if len(session["your_hand"]) > 2:
+		return 0
+
+	# Double bet
+	if gambling.check_user_currency(discord_id) - session['bet'] < 0:
+		# Insufficient to double
+		return 0
+	gambling.update_user_currency(discord_id, -1 * session['bet'])
+	session['bet'] += session['bet']
+
+	# Better draw 1 card and stands
+	session["your_hand"].append(random.choice(CARDS))
+	helper.write_file("minigame_session.json", data)
+	
+	# Check if better has won or lost
+	if blackjack_get_value(session["dealer_hand"]) > blackjack_get_value(session["your_hand"]):
+		return -1
+	elif blackjack_get_value(session["your_hand"]) > 21:
+		return -1
+	elif blackjack_get_value(session["dealer_hand"]) == blackjack_get_value(session["your_hand"]):
+		return 2
+	else:
+		return 1
 
 
 # Blackjack stand action
@@ -387,7 +425,7 @@ def hangman_guess(discord_id, guess):
     return [
       2,
       [
-        "You have guessed the word.", hidden_word, incorrect_letters,
+        "You have guessed the word.", user_session["hangman_word"], incorrect_letters,
         user_session["lives"], earnings_message
       ]
     ]
