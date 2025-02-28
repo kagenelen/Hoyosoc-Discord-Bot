@@ -72,7 +72,7 @@ def check_user_currency(discord_id):
 # Return: List of (discord id, currency) in order or error string
 def get_leaderboard(category):
 	category = category.lower()
-	if category not in ["currency", "gambling_profit", "gambling_loss","role_icon", "checkin_streak", "net_profit"]:
+	if category not in ["currency", "gambling_profit", "gambling_loss","role_icon", "checkin_streak", "net_profit", "net_loss"]:
 		return "Invalid category"
 	
 	data = helper.read_file("users.json")
@@ -95,6 +95,15 @@ def get_leaderboard(category):
      			for user_id, user_data in data.items()],
 			key=lambda x: x[2],  # Sort by net profit
 			reverse=True)
+		for user in sorted_data:
+			leaderboard.append([user[0], user[2]])
+	
+	elif category == "net_loss":
+		sorted_data = sorted(
+    		[( user_id, user_data, user_data.get("gambling_profit", 0) - user_data.get("gambling_loss", 0) ) 
+     			for user_id, user_data in data.items()],
+			key=lambda x: x[2],  # Sort by net profit
+			)
 		for user in sorted_data:
 			leaderboard.append([user[0], user[2]])
 

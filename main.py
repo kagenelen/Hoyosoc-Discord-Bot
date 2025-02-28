@@ -1009,7 +1009,8 @@ async def equip_role(interaction, role_name: str):
 	discord.app_commands.Choice(name="Role Icon Collection Rate", value="role_icon"),
 	discord.app_commands.Choice(name="Gambling Earning", value="gambling_profit"),
 	discord.app_commands.Choice(name="Gambling Loss", value="gambling_loss"),
-	discord.app_commands.Choice(name="Gambling Net Profit", value="net_profit"),
+	discord.app_commands.Choice(name="Net Profit", value="net_profit"),
+	discord.app_commands.Choice(name="Net Loss", value="net_loss"),
 	discord.app_commands.Choice(name="Check-in Streak", value="checkin_streak"),
 ])
 async def leaderboard(interaction, category: app_commands.Choice[str]):
@@ -1073,12 +1074,13 @@ async def leaderboard(interaction, category: app_commands.Choice[str]):
 				target_embed.add_field(name=str(rank) + ". " + user.display_name,
 							value=str(res[r][1]) + "%",
 							inline=False)
-		
+
 		else:
 			# Not role icon leaderboard
-			target_embed.add_field(name=str(rank) + ". " + user.display_name,
-							value=str(res[r][1]),
-							inline=False)
+			if res[r][1] != 0:
+				target_embed.add_field(name=str(rank) + ". " + user.display_name,
+								value=str(res[r][1]),
+								inline=False)
 
 		if user.id == interaction.user.id:
 			your_rank = rank
