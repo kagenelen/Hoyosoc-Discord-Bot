@@ -1007,8 +1007,9 @@ async def equip_role(interaction, role_name: str):
 @app_commands.choices(category=[
 	discord.app_commands.Choice(name="Primojem", value="currency"),
 	discord.app_commands.Choice(name="Role Icon Collection Rate", value="role_icon"),
-	discord.app_commands.Choice(name="Gambling Profit", value="gambling_profit"),
+	discord.app_commands.Choice(name="Gambling Earning", value="gambling_profit"),
 	discord.app_commands.Choice(name="Gambling Loss", value="gambling_loss"),
+	discord.app_commands.Choice(name="Gambling Net Profit", value="net_profit"),
 	discord.app_commands.Choice(name="Check-in Streak", value="checkin_streak"),
 ])
 async def leaderboard(interaction, category: app_commands.Choice[str]):
@@ -1025,6 +1026,7 @@ async def leaderboard(interaction, category: app_commands.Choice[str]):
 	rank = 1
 	entry_number = 1
 	your_rank = 0
+	your_value = 0
 
 	# Deal with tied 100% role collection
 	tied_first = "1. "
@@ -1045,22 +1047,18 @@ async def leaderboard(interaction, category: app_commands.Choice[str]):
 			target_embed = embed_unused
 			
 		if category.value == "role_icon":
-			role_list = helper.read_file("role_icon.json")
-			role_num = len(role_list["5"]) + len(role_list["4"])
-			role_collection = round(len(set(res[r][1])) / role_num * 100)
-
-			# Deal with tied 100% collection rate
-			if role_collection == 100:
+			# Deal with tied 100% collection rate (res[r][1])
+			if res[r][1] == 100:
 				tied_first += user.display_name + ", "
 				rank += 1
-				if rank % 5 == 0:
+				if rank % 3 == 0:
 					# Better formatting
 					tied_first += "\n"
 				if user.id == interaction.user.id:
 					your_rank = 1
 				continue
 				
-			elif role_collection != 100 and is_prev_tied == True:
+			elif res[r][1] != 100 and is_prev_tied == True:
 				# End of ties
 				is_prev_tied = False
 				target_embed.add_field(name=tied_first[:-2],
@@ -1068,12 +1066,12 @@ async def leaderboard(interaction, category: app_commands.Choice[str]):
 					inline=False)
 				
 				target_embed.add_field(name=str(rank) + ". " + user.display_name,
-					value=str(role_collection) + "%",
+					value=str(res[r][1]) + "%",
 					inline=False)
 
 			else:
 				target_embed.add_field(name=str(rank) + ". " + user.display_name,
-							value=str(role_collection) + "%",
+							value=str(res[r][1]) + "%",
 							inline=False)
 		
 		else:
@@ -1084,13 +1082,14 @@ async def leaderboard(interaction, category: app_commands.Choice[str]):
 
 		if user.id == interaction.user.id:
 			your_rank = rank
+			your_value = str(res[r][1])
 			
 		rank += 1
 		entry_number += 1
 	
-	embed_1.set_footer(text="Your rank: " + str(your_rank))
-	embed_2.set_footer(text="Your rank: " + str(your_rank))
-	embed_3.set_footer(text="Your rank: " + str(your_rank))
+	embed_1.set_footer(text="Your rank: " + str(your_rank) + " | Value: " + str(your_value))
+	embed_2.set_footer(text="Your rank: " + str(your_rank) + " | Value: " + str(your_value))
+	embed_3.set_footer(text="Your rank: " + str(your_rank) + " | Value: " + str(your_value))
 	embeds = [embed_1, embed_2, embed_3]
 	
 	await paginator.run(embeds)

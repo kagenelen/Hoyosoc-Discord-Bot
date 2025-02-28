@@ -72,22 +72,41 @@ def check_user_currency(discord_id):
 # Return: List of (discord id, currency) in order or error string
 def get_leaderboard(category):
 	category = category.lower()
-	if category not in ["currency", "gambling_profit", "gambling_loss","role_icon", "checkin_streak"]:
+	if category not in ["currency", "gambling_profit", "gambling_loss","role_icon", "checkin_streak", "net_profit"]:
 		return "Invalid category"
 	
 	data = helper.read_file("users.json")
+	leaderboard = []
+
 	if category == "role_icon":
-		sorted_data = sorted(data.items(),
-							 key=lambda x: len(set(getitem(x[1], category))),
-							 reverse=True)
+		role_list = helper.read_file("role_icon.json")
+		role_num = len(role_list["5"]) + len(role_list["4"])
+		sorted_data = sorted(
+				[( user_id, user_data, round( len( set(user_data.get("role_icon")) ) / role_num * 100 ) )
+					for user_id, user_data in data.items()],
+				key=lambda x: x[2],  # Sort by role collection percentage
+				reverse=True)
+		for user in sorted_data:
+			leaderboard.append([user[0], user[2]])
+			
+	elif category == "net_profit":
+		sorted_data = sorted(
+    		[( user_id, user_data, user_data.get("gambling_profit", 0) - user_data.get("gambling_loss", 0) ) 
+     			for user_id, user_data in data.items()],
+			key=lambda x: x[2],  # Sort by net profit
+			reverse=True)
+		for user in sorted_data:
+			leaderboard.append([user[0], user[2]])
+
 	else:
 		sorted_data = sorted(data.items(),
 							 key=lambda x: getitem(x[1], category),
 							 reverse=True)
+		for user in sorted_data:
+			leaderboard.append([user[0], user[1][category]])
 	
-	leaderboard = []
-	for user in sorted_data:
-		leaderboard.append([user[0], user[1][category]])
+	
+	
 	
 	return leaderboard
 
