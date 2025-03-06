@@ -35,6 +35,13 @@ def word_to_int(textnum, numwords={}):
 
     return result + current
 
+# Function to fix even rounding
+def proper_round(x):
+	frac = x - math.floor(x)
+	if frac < 0.5: return math.floor(x)
+	return math.ceil(x)
+
+
 # Helper function for counting game to convert math equations to number
 # Source: https://stackoverflow.com/questions/11951701/safe-way-to-parse-user-supplied-mathematical-formula-in-python
 class NumericStringParser(object):
@@ -121,4 +128,4 @@ class NumericStringParser(object):
 		self.exprStack = []
 		results = self.bnf.parseString(num_string, parseAll)
 		val = self.evaluateStack( self.exprStack[:] )
-		return int(round(val))
+		return int(proper_round(val))

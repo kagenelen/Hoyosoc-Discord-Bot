@@ -441,7 +441,7 @@ def number_validity(message):
 	num = num.replace("*", "x")
 	num = num.replace("×", "x")
 
-	# Parse any word form number to int or solve math equation
+	# Solve math equation
 	math_eq_res = None
 	fun_bonus = 1
 	if not num.isdigit():
