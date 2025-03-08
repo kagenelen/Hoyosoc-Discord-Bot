@@ -112,6 +112,7 @@ def blackjack_action(discord_id, action):
 		data.pop(discord_id)
 	elif res == -1:
 		outcome_string = "You have lost " + str(session["bet"]) + helper.PRIMOJEM_EMOTE
+		gambling.update_user_gambling(discord_id, -1 * session["bet"])
 		data.pop(discord_id)
 
 	helper.write_file("minigame_session.json", data)
