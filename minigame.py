@@ -160,14 +160,29 @@ def blackjack_double(discord_id):
 	gambling.update_user_currency(discord_id, -1 * session['bet'])
 	session['bet'] += session['bet']
 
-	# Better draw 1 card and stands
+	# Better draw 1 card and stand
 	session["your_hand"].append(random.choice(CARDS))
 	helper.write_file("minigame_session.json", data)
-	
+
+	# Check if your double is a bust or blackjack
+	if blackjack_get_value(session["your_hand"]) > 21:
+		return -1
+	if blackjack_get_value(session["your_hand"]) == 21:
+		return 1
+
+	# Player not bust, dealer must hit under 17 (not including 17)
+	while blackjack_get_value(session["dealer_hand"]) < 17:
+		session["dealer_hand"].append(random.choice(CARDS))
+		helper.write_file("minigame_session.json", data)
+
+    # Check if dealer has won or lost
+	if blackjack_get_value(session["dealer_hand"]) == 21:
+		return -1
+	if blackjack_get_value(session["dealer_hand"]) > 21:
+		return 1
+
 	# Check if better has won or lost
 	if blackjack_get_value(session["dealer_hand"]) > blackjack_get_value(session["your_hand"]):
-		return -1
-	elif blackjack_get_value(session["your_hand"]) > 21:
 		return -1
 	elif blackjack_get_value(session["dealer_hand"]) == blackjack_get_value(session["your_hand"]):
 		return 2
