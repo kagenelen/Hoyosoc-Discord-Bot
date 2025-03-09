@@ -225,19 +225,28 @@ def blackjack_stand(discord_id):
 # Argument: card list
 # Return: hand value
 def blackjack_get_value(hand):
-  hand = ["10" if c == "J" or c == "Q" or c == "K" else c for c in hand]
-  hand1 = ["1" if c == "A" else c for c in hand]
-  hand2 = ["11" if c == "A" else c for c in hand]
-  hand1 = [int(c) for c in hand1]
-  hand2 = [int(c) for c in hand2]
+	ace_num = hand.count('A')
+	soft = False
+	sum = 0
 
-  # Account for A can be 1 or 11
-  hand1_value = sum(hand1)
-  hand2_value = sum(hand2)
-  if hand2_value <= 21:
-    return hand2_value
-  else:
-    return hand1_value
+	# Get lowest possible value for hand
+	for c in hand:
+		if c.isdigit():
+			sum += int(c)
+		elif c == 'A':
+			sum += 1
+		else:
+			# Face cards
+			sum += 10
+
+	# Start changing each A to 11 and check if it's under 21
+	counter = 0
+	while (sum + 10) <= 21 and counter < ace_num:
+		sum += 10
+		counter += 1
+		soft = True
+	
+	return sum
 
 ################### Coinflip ############################
 
