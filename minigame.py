@@ -530,12 +530,13 @@ def counting_earning_calc(num):
 	# Up to 2000: exp function cap at 100
 	
 	primo = 0
-	if 1 < num and num <= 200:
+	if 1 < num and num < 200:
 		primo = num / 8
-	elif num > 200:
-		primo = 24.31 * math.exp(0.000719 * num)
+	elif num >= 200:
+		primo = 29.47 * math.exp(0.000611 * num)
+		# 200 is 33, 500 is 40, 1000 is 54, 2000 is 100
 	
-	return min(math.ceil(primo), COUNT_MAX)
+	return min(math.floor(primo), COUNT_MAX)
 	
 
 ################### Connect 4  ############################
