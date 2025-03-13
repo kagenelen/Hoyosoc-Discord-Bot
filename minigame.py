@@ -24,7 +24,6 @@ TWO_WORD_PENALTY = 0.9615484 # 500 at max
 THREE_WORD_PENALTY = 0.923086 # 480 at max
 RANDOM_WORD_CHANCE = 0.5
 EARNINGS_CAP = 50000
-COUNT_MULTIPLER = 0.05
 COUNT_MAX = 100 # Need 2000 to get this
 COUNT_BONUS = 2 
 ROW_COUNT = 6
@@ -499,12 +498,11 @@ def number_validity(message):
 		return "<@" + str(message.author.id) + "> You cannot make consecutive counts. Resetting counting game..."
 
 	# Correct submission (except 1), increment count and reward primojem
-	if int(num) != 1:
-		primojem_reward = min(int(math.ceil(data["next_valid_number"] * COUNT_MULTIPLER)), COUNT_MAX) * fun_bonus
-		curr_earnings = minigame_earnings.get(str(message.author.id), 0)
-		minigame_earnings[str(message.author.id)] = curr_earnings + primojem_reward
-		if minigame_earnings[str(message.author.id)] < EARNINGS_CAP:
-			gambling.update_user_currency(message.author.id, primojem_reward)
+	primojem_reward = counting_earning_calc(data["next_valid_number"]) * fun_bonus
+	curr_earnings = minigame_earnings.get(str(message.author.id), 0)
+	minigame_earnings[str(message.author.id)] = curr_earnings + primojem_reward
+	if minigame_earnings[str(message.author.id)] < EARNINGS_CAP:
+		gambling.update_user_currency(message.author.id, primojem_reward)
 	
 	data["next_valid_number"] += 1
 	data["last_user"] = message.author.id
@@ -523,6 +521,21 @@ def counting_deletion_check(message):
 			is_valid_count = True
 
 	return is_valid_count
+
+# Calculates earning for a number
+# Argument: Number
+# Return: Primojem amount
+def counting_earning_calc(num):
+	# Below 200: divide by 8
+	# Up to 2000: exp function cap at 100
+	
+	primo = 0
+	if 1 < num and num <= 200:
+		primo = num / 8
+	elif num > 200:
+		primo = 24.31 * math.exp(0.000719 * num)
+	
+	return min(math.ceil(primo), COUNT_MAX)
 	
 
 ################### Connect 4  ############################
