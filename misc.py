@@ -60,13 +60,17 @@ def list_tasks():
 # Count number of times a substring appears in channel
 # Argument: channel object
 # Return: number of appearance of a substring
-async def channel_substring_counter(channel):
+async def channel_substring_counter(channel, word):
+	regex_str = ""
+	for letter in word:
+		regex_str += "[" + letter.upper() + letter.lower() + "]"
+
 	counter = 0
 	async for message in channel.history(limit=None):
-		all_matches = re.findall("<:\w*[Cc][Aa][Rr][Dd]\w*:[0-9]+>", message.content) # Change regex to suit needs
+		all_matches = re.findall("<:\w*" + regex_str + "\w*:[0-9]+>", message.content) # Change regex to suit needs
 		counter += len(all_matches)
 
-	print("There are " + str(counter) + " cards in " + channel.name)
+	print("There are " + str(counter) + " " + word + " emote in " + channel.name)
 
 	return counter
 

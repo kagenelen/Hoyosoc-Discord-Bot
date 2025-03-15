@@ -526,17 +526,17 @@ def counting_deletion_check(message):
 # Argument: Number
 # Return: Primojem amount
 def counting_earning_calc(num):
-	# Below 200: divide by 8
-	# Up to 2000: exp function cap at 100
+	# Below 200: divide by 6.66
+	# Up to 1000: exp function cap at 100
 	
 	primo = 0
 	if 1 < num and num < 200:
-		primo = num / 8
+		primo = math.ceil(num / 6.66)
 	elif num >= 200:
-		primo = 29.47 * math.exp(0.000611 * num)
-		# 200 is 33, 500 is 40, 1000 is 54, 2000 is 100
+		primo = math.floor(0.0001083 * math.pow(num, 2) - 0.0425 * num + 34.2)
+		# 200 is 30, 500 is 40, 1000 is 100
 	
-	return min(math.floor(primo), COUNT_MAX)
+	return min(primo, COUNT_MAX)
 	
 
 ################### Connect 4  ############################
