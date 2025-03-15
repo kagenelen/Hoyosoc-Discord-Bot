@@ -68,7 +68,7 @@ async def on_ready():
 	make_backup.start()
 	card_spam_description_update.start()
 
-	helper.write_encrypted_file("wordlist.json", str(helper.read_file("wordbank_decrypted.json")))
+	# helper.write_encrypted_file("wordlist.json", str(helper.read_file("wordbank_decrypted.json")))
 
 @client.event
 async def on_member_join(member):
