@@ -576,7 +576,7 @@ def new_connect(inviter_player, invited_player, wager):
 		"player1_name": player1.display_name,
 		"player2_name": player2.display_name,
 		"turn": 0,
-		"timeout": int(time.time()) + 60,
+		"timeout": int(time.time()) + 300,
 		"board": board.tolist()
 	}
 	
