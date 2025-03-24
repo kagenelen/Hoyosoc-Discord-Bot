@@ -89,7 +89,7 @@ def get_user_entry(discord_id):
 		# Create entry for new user
 		user_entry = {
 			"currency": 0,
-			"next_checkin": int(time.time()),
+			"next_checkin": 0,
 			"role": {},
 			"checkin_streak": 0,
 			"role_icon": [],
