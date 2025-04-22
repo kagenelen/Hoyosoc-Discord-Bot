@@ -390,22 +390,22 @@ def generate_code(user, email, unsw):
 # Argument: discord user (object), email, verification code, send reminder dm true/false
 # Return: True if email sent, False if error occurs
 async def send_verify_email(discord_user, email, code, send_remind):
-	from_addr = 'unswhoyosoc@gmail.com'
+	from_addr = 'admin@unswhoyosoc.org'
 	to_addr = email
 	text = """
-Your verification code is:
+Hello %s!
+
+Your verification code (valid for 24 hours) is:
 %s
 
-This code will expire in 24 hours, and will only work for the discord user: %s. 
-
-Use the code with the command  /verify_me  to become verified. The command will immediately verify UNSW students. 
-
-Non-UNSW user's verification form details will need to be manually checked by the society executive team after using this command. Please be patient while this happens.
-
+Use the code with the command /verify_me. 
 If your code has expired or need further help with verification, please send a message in the 'self-verify' channel.
-""" % (code, discord_user.name)
+
+Regards,
+UNSW Hoyoverse Society
+""" % (discord_user.name, code)
 	
-	username = 'verify.unswhoyosoc@gmail.com'
+	username = 'admin@unswhoyosoc.org'
 	load_dotenv()
 	password = os.getenv("EMAIL_PASS")
 
@@ -413,11 +413,12 @@ If your code has expired or need further help with verification, please send a m
 
 	msg['From'] = from_addr
 	msg['To'] = to_addr
-	msg['Subject'] = 'Hoyoverse Society Verification Code'
+	msg['Subject'] = 'HoyoSoc Discord Verification'
 	msg.attach(MIMEText(text))
 
 	try:
-		server = smtplib.SMTP("smtp.gmail.com", 587, None, 30)
+		# server = smtplib.SMTP("smtp.gmail.com", 587, None, 30)
+		server = smtplib.SMTP("mail.unswhoyosoc.org", 587)
 		server.ehlo()
 		server.starttls()
 		server.ehlo()
