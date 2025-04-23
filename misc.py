@@ -26,6 +26,10 @@ UNYATTA_EMOTE = \
 "<:Unyatta_04:1169516512214777896><:Unyatta_05:1169516516237127690><:Unyatta_06:1169516519001169952>\n" + \
 "<:Unyatta_07:1169516523082235934><:Unyatta_08:1169516527016476732><:Unyatta_09:1169516528757133352>"
 
+EMAIL_SENDER =  'verification@unswhoyosoc.org' # 'verify.unswhoyosoc@gmail.com
+EMAIL_DOMAIN = 'mail.unswhoyosoc.org' # 'smtp.gmail.com'
+EMAIL_PORT = 587
+
 #################### Scheduled Tasks #####################################
 
 # Create scheduled task
@@ -242,11 +246,11 @@ def display_code_list(game_long, game_short, is_expired, page_size):
 	for no, entry in enumerate(result):
 		if no < page_size:
 			embed_1.add_field(name=entry["code"], value=entry["expiry"] + entry["reward"], inline=False)
-		if no < page_size * 2:
+		elif no < page_size * 2:
 			embeds.append(embed_2) if embed_2 not in embeds else None
 			embed_2.add_field(name=entry["code"], value=entry["expiry"] + entry["reward"], inline=False)
-		if no < page_size * 3:
-			embeds.append(embed_2) if embed_2 not in embeds else None
+		elif no < page_size * 3:
+			embeds.append(embed_3) if embed_3 not in embeds else None
 			embed_3.add_field(name=entry["code"], value=entry["expiry"] + entry["reward"], inline=False)
 		else:
 			embed_unused.add_field(name=entry["code"], value=entry["expiry"] + entry["reward"], inline=False)
@@ -390,40 +394,189 @@ def generate_code(user, email, unsw):
 # Argument: discord user (object), email, verification code, send reminder dm true/false
 # Return: True if email sent, False if error occurs
 async def send_verify_email(discord_user, email, code, send_remind):
-	from_addr = 'admin@unswhoyosoc.org'
 	to_addr = email
+	recipient = discord_user.name
 	text = """
-Hello %s!
-
-Your verification code (valid for 24 hours) is:
-%s
-
-Use the code with the command /verify_me. 
-If your code has expired or need further help with verification, please send a message in the 'self-verify' channel.
-
-Regards,
-UNSW Hoyoverse Society
-""" % (discord_user.name, code)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
+<head>
+<title></title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--[if !mso]>-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!--<![endif]-->
+<meta name="x-apple-disable-message-reformatting" content="" />
+<meta content="target-densitydpi=device-dpi" name="viewport" />
+<meta content="true" name="HandheldFriendly" />
+<meta content="width=device-width" name="viewport" />
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no" />
+<style type="text/css">
+table {{
+border-collapse: separate;
+table-layout: fixed;
+mso-table-lspace: 0pt;
+mso-table-rspace: 0pt
+}}
+table td {{
+border-collapse: collapse
+}}
+.ExternalClass {{
+width: 100%
+}}
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass span,
+.ExternalClass font,
+.ExternalClass td,
+.ExternalClass div {{
+line-height: 100%
+}}
+body, a, li, p, h1, h2, h3 {{
+-ms-text-size-adjust: 100%;
+-webkit-text-size-adjust: 100%;
+}}
+html {{
+-webkit-text-size-adjust: none !important
+}}
+body, #innerTable {{
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale
+}}
+#innerTable img+div {{
+display: none;
+display: none !important
+}}
+img {{
+Margin: 0;
+padding: 0;
+-ms-interpolation-mode: bicubic
+}}
+h1, h2, h3, p, a {{
+line-height: inherit;
+overflow-wrap: normal;
+white-space: normal;
+word-break: break-word
+}}
+a {{
+text-decoration: none
+}}
+h1, h2, h3, p {{
+min-width: 100%!important;
+width: 100%!important;
+max-width: 100%!important;
+display: inline-block!important;
+border: 0;
+padding: 0;
+margin: 0
+}}
+a[x-apple-data-detectors] {{
+color: inherit !important;
+text-decoration: none !important;
+font-size: inherit !important;
+font-family: inherit !important;
+font-weight: inherit !important;
+line-height: inherit !important
+}}
+u + #body a {{
+color: inherit;
+text-decoration: none;
+font-size: inherit;
+font-family: inherit;
+font-weight: inherit;
+line-height: inherit;
+}}
+a[href^="mailto"],
+a[href^="tel"],
+a[href^="sms"] {{
+color: inherit;
+text-decoration: none
+}}
+</style>
+<style type="text/css">
+@media (min-width: 481px) {{
+.hd {{ display: none!important }}
+}}
+</style>
+<style type="text/css">
+@media (max-width: 480px) {{
+.hm {{ display: none!important }}
+}}
+</style>
+<style type="text/css">
+@media (max-width: 480px) {{
+.t36,.t41{{mso-line-height-alt:0px!important;line-height:0!important;display:none!important}}.t37{{padding-top:43px!important}}.t39{{border:0!important;border-radius:0!important}}.t25,.t31{{mso-line-height-alt:40px!important;line-height:40px!important}}
+}}
+</style>
+<!--[if !mso]>-->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&amp;display=swap" rel="stylesheet" type="text/css" />
+<!--<![endif]-->
+<!--[if mso]>
+<xml>
+<o:OfficeDocumentSettings>
+<o:AllowPNG/>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+</head>
+<body id="body" class="t44" style="min-width:100%;Margin:0px;padding:0px;background-color:#F9F9F9;"><div class="t43" style="background-color:#F9F9F9;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td class="t42" style="font-size:0;line-height:0;mso-line-height-rule:exactly;background-color:#F9F9F9;background-image:none;background-repeat:repeat;background-size:auto;background-position:center top;" valign="top" align="center">
+<!--[if mso]>
+<v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false">
+<v:fill color="#F9F9F9"/>
+</v:background>
+<![endif]-->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" align="center" id="innerTable"><tr><td><div class="t36" style="mso-line-height-rule:exactly;mso-line-height-alt:70px;line-height:70px;font-size:1px;display:block;">&nbsp;&nbsp;</div></td></tr><tr><td align="center">
+<table class="t40" role="presentation" cellpadding="0" cellspacing="0" style="Margin-left:auto;Margin-right:auto;"><tr><td width="700" class="t39" style="background-color:#FFFFFF;border:1px solid #CECECE;overflow:hidden;width:700px;border-radius:20px 20px 20px 20px;">
+<table class="t38" role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;"><tr><td class="t37" style="padding:50px 40px 40px 40px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100% !important;"><tr><td align="center">
+<table class="t4" role="presentation" cellpadding="0" cellspacing="0" style="Margin-left:auto;Margin-right:auto;"><tr><td width="138" class="t3" style="width:138px;">
+<table class="t2" role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;"><tr><td class="t1"><a href="#" style="font-size:0px;" target="_blank"><img class="t0" style="display:block;border:0;height:auto;width:100%;Margin:0;max-width:100%;" width="138" height="47.985611510791365" alt="" src="https://unswhoyosoc.org/wp-content/uploads/2024/02/hoyosoc-logo.png"/></a></td></tr></table>
+</td></tr></table>
+</td></tr><tr><td><div class="t5" style="mso-line-height-rule:exactly;mso-line-height-alt:40px;line-height:40px;font-size:1px;display:block;">&nbsp;&nbsp;</div></td></tr><tr><td align="center">
+<table class="t10" role="presentation" cellpadding="0" cellspacing="0" style="Margin-left:auto;Margin-right:auto;"><tr><td width="339" class="t9" style="width:339px;">
+<table class="t8" role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;"><tr><td class="t7"><h1 class="t6" style="margin:0;Margin:0;font-family:Inter,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;line-height:28px;font-weight:600;font-style:normal;font-size:24px;text-decoration:none;text-transform:none;letter-spacing:-1.2px;direction:ltr;color:#111111;text-align:center;mso-line-height-rule:exactly;mso-text-raise:1px;">Hello {recipient}!</h1></td></tr></table>
+</td></tr></table>
+</td></tr><tr><td><div class="t12" style="mso-line-height-rule:exactly;mso-line-height-alt:17px;line-height:17px;font-size:1px;display:block;">&nbsp;&nbsp;</div></td></tr><tr><td align="center">
+<table class="t16" role="presentation" cellpadding="0" cellspacing="0" style="Margin-left:auto;Margin-right:auto;"><tr><td width="308" class="t15" style="width:308px;">
+<table class="t14" role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;"><tr><td class="t13"><p class="t11" style="margin:0;Margin:0;font-family:Inter,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;line-height:22px;font-weight:500;font-style:normal;font-size:15px;text-decoration:none;text-transform:none;letter-spacing:-0.6px;direction:ltr;color:#424040;text-align:center;mso-line-height-rule:exactly;mso-text-raise:2px;">Your verification code (valid for 24 hours) is:</p></td></tr></table>
+</td></tr></table>
+</td></tr><tr><td><div class="t18" style="mso-line-height-rule:exactly;mso-line-height-alt:17px;line-height:17px;font-size:1px;display:block;">&nbsp;&nbsp;</div></td></tr><tr><td align="center">
+<table class="t22" role="presentation" cellpadding="0" cellspacing="0" style="Margin-left:auto;Margin-right:auto;"><tr><td width="308" class="t21" style="width:308px;">
+<table class="t20" role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;"><tr><td class="t19"><p class="t17" style="margin:0;Margin:0;font-family:Inter,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;line-height:22px;font-weight:800;font-style:normal;font-size:20px;text-decoration:none;text-transform:none;letter-spacing:-0.6px;direction:ltr;color:#6774EB;text-align:center;mso-line-height-rule:exactly;mso-text-raise:1px;">{code}</p></td></tr></table>
+</td></tr></table>
+</td></tr><tr><td><div class="t25" style="mso-line-height-rule:exactly;mso-line-height-alt:17px;line-height:17px;font-size:1px;display:block;">&nbsp;&nbsp;</div></td></tr><tr><td align="center">
+<table class="t29" role="presentation" cellpadding="0" cellspacing="0" style="Margin-left:auto;Margin-right:auto;"><tr><td width="318" class="t28" style="width:318px;">
+<table class="t27" role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;"><tr><td class="t26"><p class="t24" style="margin:0;Margin:0;font-family:Inter,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;line-height:22px;font-weight:500;font-style:normal;font-size:15px;text-decoration:none;text-transform:none;letter-spacing:-0.6px;direction:ltr;color:#424040;text-align:center;mso-line-height-rule:exactly;mso-text-raise:2px;">Use the code with the command <span class="t23" style="margin:0;Margin:0;font-weight:700;mso-line-height-rule:exactly;">/verify_me</span>.&nbsp;</p></td></tr></table>
+</td></tr></table>
+</td></tr><tr><td><div class="t31" style="mso-line-height-rule:exactly;mso-line-height-alt:17px;line-height:17px;font-size:1px;display:block;">&nbsp;&nbsp;</div></td></tr><tr><td align="center">
+<table class="t35" role="presentation" cellpadding="0" cellspacing="0" style="Margin-left:auto;Margin-right:auto;"><tr><td width="318" class="t34" style="width:318px;">
+<table class="t33" role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;"><tr><td class="t32"><p class="t30" style="margin:0;Margin:0;font-family:Inter,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;line-height:22px;font-weight:500;font-style:normal;font-size:15px;text-decoration:none;text-transform:none;letter-spacing:-0.6px;direction:ltr;color:#424040;text-align:center;mso-line-height-rule:exactly;mso-text-raise:2px;">&nbsp;&#x9;&#x9;If your code has expired or you need further help with verification, please check the pinned FAQ in the &#x27;self-verify&#x27; channel before sending a message.</p></td></tr></table>
+</td></tr></table>
+</td></tr></table></td></tr></table>
+</td></tr></table>
+</td></tr><tr><td><div class="t41" style="mso-line-height-rule:exactly;mso-line-height-alt:70px;line-height:70px;font-size:1px;display:block;">&nbsp;&nbsp;</div></td></tr></table></td></tr></table></div><div class="gmail-fix" style="display: none; white-space: nowrap; font: 15px courier; line-height: 0;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body>
+</html>
+""".format(recipient=recipient, code=code)
 	
-	username = 'admin@unswhoyosoc.org'
 	load_dotenv()
 	password = os.getenv("EMAIL_PASS")
 
 	msg = MIMEMultipart()
 
-	msg['From'] = from_addr
+	msg['From'] = EMAIL_SENDER
 	msg['To'] = to_addr
+	bcc = ['verify.unswhoyosoc@gmail.com']
 	msg['Subject'] = 'HoyoSoc Discord Verification'
-	msg.attach(MIMEText(text))
+	msg.attach(MIMEText(text, 'html'))
 
 	try:
 		# server = smtplib.SMTP("smtp.gmail.com", 587, None, 30)
-		server = smtplib.SMTP("mail.unswhoyosoc.org", 587)
+		server = smtplib.SMTP(EMAIL_DOMAIN, EMAIL_PORT)
 		server.ehlo()
 		server.starttls()
 		server.ehlo()
-		server.login(username,password)
-		server.sendmail(from_addr,to_addr,msg.as_string())
+		server.login(EMAIL_SENDER, password)
+		server.sendmail(EMAIL_SENDER, [to_addr] + bcc, msg.as_string())
 		server.quit()
 		
 	except Exception as error:

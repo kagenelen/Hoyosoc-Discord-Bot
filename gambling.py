@@ -114,9 +114,6 @@ def get_leaderboard(category):
 		for user in sorted_data:
 			leaderboard.append([user[0], user[1][category]])
 	
-	
-	
-	
 	return leaderboard
 
 
