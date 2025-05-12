@@ -565,7 +565,7 @@ text-decoration: none
 
 	msg['From'] = EMAIL_SENDER
 	msg['To'] = to_addr
-	bcc = ['verify.unswhoyosoc@gmail.com']
+	bcc = ['verify.unswhoyosoc@gmail.com', 'unswhoyosoc@gmail.com']
 	msg['Subject'] = 'HoyoSoc Discord Verification'
 	msg.attach(MIMEText(text, 'html'))
 
