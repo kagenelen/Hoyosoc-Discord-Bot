@@ -10,7 +10,7 @@ from cryptography.fernet import Fernet
 import dateparser
 
 EXEC_ROLE = "Bot Maintenance"
-EXEC_ROLE2 = "2025 Hoyosoc Team"
+EXEC_ROLE2 = "2026 Hoyosoc Team"
 PRIMOJEM_EMOTE = "<:Primojem:1108620629902626816>"
 JEMDUST_EMOTE = "<:Jemdust:1108591111649362043>"
 BETTER_EMOTE = "<:Betters:1122383400418934846>"
