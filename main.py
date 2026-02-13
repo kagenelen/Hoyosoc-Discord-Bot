@@ -121,7 +121,7 @@ async def on_message(message):
 			return
 
 		data = helper.read_file("config.json")
-		if data['verification_level'] == 'low':
+		if data['verification_level'] == helper.LOW:
 			user_welcome = misc.create_welcome(user)
 			welcome_channel = client.get_channel(WELCOME_CHANNEL)
 			await welcome_channel.send(user_welcome)  
@@ -224,11 +224,11 @@ async def send_welcome(interaction):
 				description="Set verification security level. Admin only.",
 				guild=discord.Object(id=GENSOC_SERVER))
 @app_commands.choices(security=[
-	discord.app_commands.Choice(name="Automatic verification upon form completion", value="low"),
-	discord.app_commands.Choice(name="Automatic verification for any email", value="medium"),
-	discord.app_commands.Choice(name="Automatic verification for UNSW students", value="high")
+	discord.app_commands.Choice(name="Automatic verification upon form completion", value=helper.LOW),
+	discord.app_commands.Choice(name="Automatic verification for any email", value=helper.MED),
+	discord.app_commands.Choice(name="Automatic verification for UNSW students", value=helper.HIGH)
 ])
-async def set_verification(interaction, security: app_commands.Choice[str]):
+async def set_verification(interaction, security: app_commands.Choice[int]):
 	if not helper.is_team(interaction):
 		await interaction.response.send_message("Insuffient permission.",
 												ephemeral=True)
@@ -378,7 +378,7 @@ async def send_code(interaction, target_user: discord.Member, email: str, is_uns
 	code = misc.generate_code(target_user, email, is_unsw)
 	is_sent = await misc.send_verify_email(target_user, email, code, send_reminder_dm)
 	if is_sent:
-		await interaction.followup.send("Email  has been sent to " + target_user.name)
+		await interaction.followup.send("Email has been sent to " + target_user.name)
 	else:
 		await interaction.followup.send("Failed to send.")
 
@@ -423,7 +423,7 @@ async def user_self_verify(interaction, verification_code: str):
 		# Not UNSW student, need exec to check details and manual verify
 		mod_channel = client.get_channel(MODERATION_CHANNEL)
 		await interaction.followup.send("Thank you for the correct code. Please wait patiently for the Hoyosoc team to check the details you have provided.", ephemeral=True)
-		await mod_channel.send("<@" + str(interaction.user.id) + "> has entered the correct verification code. Please verify their details before using \\verify_user.")
+		await mod_channel.send("<@" + str(interaction.user.id) + "> has entered the correct verification code. Please verify their details before using **/verify_user**.")
 		
 	
 @tree.command(name="set_count",

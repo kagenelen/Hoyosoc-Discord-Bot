@@ -26,7 +26,7 @@ UNYATTA_EMOTE = \
 "<:Unyatta_04:1169516512214777896><:Unyatta_05:1169516516237127690><:Unyatta_06:1169516519001169952>\n" + \
 "<:Unyatta_07:1169516523082235934><:Unyatta_08:1169516527016476732><:Unyatta_09:1169516528757133352>"
 
-EMAIL_SENDER =  'verification@unswhoyosoc.org' # 'verify.unswhoyosoc@gmail.com
+EMAIL_SENDER =  'verification@unswhoyosoc.org' # 'verify.unswhoyosoc@gmail.com'
 EMAIL_DOMAIN = 'mail.unswhoyosoc.org' # 'smtp.gmail.com'
 EMAIL_PORT = 587
 
@@ -327,6 +327,7 @@ async def verify_form(message):
 
 	if user == None:
 		await message.add_reaction("❌")
+		await message.reply(username + " does not exist in the server.")
 		print(username + " does not exist in the server")
 		return None
 
@@ -348,20 +349,20 @@ async def verify_form(message):
 	config = helper.read_file("config.json")
 	verification_level = config['verification_level']
 	
-	if verification_level == "low":
+	if verification_level == helper.LOW:
 		# Verify immediately if verification level is set to low
 		await add_verified(user)
 		await message.add_reaction("✅")
 	
 	# Send verification supplied email
-	elif email != None and verification_level == "medium":
+	elif email != None and verification_level == helper.MED:
 		# Send verification to supplied email, auto verifies once code is entered
 		verification_code = generate_code(user, email, True)
 		is_sent = await send_verify_email(user, email, verification_code, True)
 		if is_sent:
 			await message.add_reaction("✅")
 
-	elif email != None and verification_level == "high":
+	elif email != None and verification_level == helper.HIGH:
 		# Send verification to email or student email, auto verifies for student email
 		if unsw:
 			email = student_email
@@ -604,7 +605,7 @@ def is_code_correct(discord_id, code):
 	
 	entry = data.get(discord_id, None)
 	if entry == None:
-		return "You do not have an associated verification code, as you may have provided the wrong username."
+		return "You do not have an associated verification code, as you may have provided the wrong username or not filled out our google form."
 
 	if time.time() > entry["expiry"]:
 		return "Your verification code has expired. Please ask an executive to resend a verification email."

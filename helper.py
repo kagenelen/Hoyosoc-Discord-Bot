@@ -16,8 +16,9 @@ JEMDUST_EMOTE = "<:Jemdust:1108591111649362043>"
 BETTER_EMOTE = "<:Betters:1122383400418934846>"
 HEADS_EMOTE = "<:Heads:1137589987962015815>"
 TAILS_EMOTE = "<:Tails:1137589996916850760>"
-
-
+LOW = 1
+MED = 2
+HIGH = 3
 
 def write_file(file, data):
   absolute_path = os.path.dirname(os.path.abspath(__file__)) + "/json_files/"
