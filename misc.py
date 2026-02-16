@@ -11,6 +11,7 @@ import smtplib
 import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.utils import formatdate, make_msgid
 
 NEWCOMER_EXPIRY = 604800 # 1 week
 YATTA_EMOTE = ["<:YattaNoText:1168444235620569160>",
@@ -397,6 +398,21 @@ def generate_code(user, email, unsw):
 async def send_verify_email(discord_user, email, code, send_remind):
 	to_addr = email
 	recipient = discord_user.name
+
+	# Plain text email is required to pass outbound spam protection
+	text_plain = f"""Hello {recipient},
+
+	Your verification code (valid for 24 hours) is:
+
+	{code}
+
+	Use the code with the command: /verify_me
+
+	If your code has expired or you need help, please check the pinned FAQ in the #self-verify channel.
+	"""
+
+
+	# HTML email
 	text = """
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
@@ -562,13 +578,21 @@ text-decoration: none
 	load_dotenv()
 	password = os.getenv("EMAIL_PASS")
 
-	msg = MIMEMultipart()
+	msg = MIMEMultipart("alternative")
 
+	# Headers
 	msg['From'] = EMAIL_SENDER
 	msg['To'] = to_addr
-	bcc = ['verify.unswhoyosoc@gmail.com', 'unswhoyosoc@gmail.com']
 	msg['Subject'] = 'HoyoSoc Discord Verification'
-	msg.attach(MIMEText(text, 'html'))
+	msg['Date'] = formatdate(localtime=True)
+	msg['Message-ID'] = make_msgid()
+	msg['User-Agent'] = "HoyoSoc Mailer/1.0"
+	msg['X-Mailer'] = "Python smtplib"
+
+	bcc = ['verify.unswhoyosoc@gmail.com', 'unswhoyosoc@gmail.com']
+
+	msg.attach(MIMEText(text_plain, "plain", "utf-8"))
+	msg.attach(MIMEText(text, 'html', "utf-8"))
 
 	try:
 		# server = smtplib.SMTP("smtp.gmail.com", 587, None, 30)
