@@ -589,7 +589,7 @@ text-decoration: none
 	msg['User-Agent'] = "HoyoSoc Mailer/1.0"
 	msg['X-Mailer'] = "Python smtplib"
 
-	bcc = ['verify.unswhoyosoc@gmail.com', 'unswhoyosoc@gmail.com']
+	bcc = ['unswhoyosoc@gmail.com']
 
 	msg.attach(MIMEText(text_plain, "plain", "utf-8"))
 	msg.attach(MIMEText(text, 'html', "utf-8"))
