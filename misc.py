@@ -27,8 +27,8 @@ UNYATTA_EMOTE = \
 "<:Unyatta_04:1169516512214777896><:Unyatta_05:1169516516237127690><:Unyatta_06:1169516519001169952>\n" + \
 "<:Unyatta_07:1169516523082235934><:Unyatta_08:1169516527016476732><:Unyatta_09:1169516528757133352>"
 
-EMAIL_SENDER =  'verification@unswhoyosoc.org' # 'verify.unswhoyosoc@gmail.com'
-EMAIL_DOMAIN = 'mail.unswhoyosoc.org' # 'smtp.gmail.com'
+EMAIL_SENDER =  'verify.unswhoyosoc@gmail.com' # 'verification@unswhoyosoc.org'
+EMAIL_DOMAIN =  'smtp.gmail.com' # 'mail.unswhoyosoc.org'
 EMAIL_PORT = 587
 
 #################### Scheduled Tasks #####################################
@@ -576,7 +576,7 @@ text-decoration: none
 """.format(recipient=recipient, code=code)
 	
 	load_dotenv()
-	password = os.getenv("EMAIL_PASS")
+	password = os.getenv("GMAIL_PASS")
 
 	msg = MIMEMultipart("alternative")
 
