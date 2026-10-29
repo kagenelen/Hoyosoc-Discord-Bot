@@ -115,7 +115,7 @@ async def on_message(message):
 		return
 
 	####### This section deals with verifying ##############################
-	if (message.channel.id == VERIFICATION_CHANNEL and message.author != bot.user ):
+	if (message.channel.id == VERIFICATION_CHANNEL and message.author != client.user ):
 		user = await misc.verify_form(message)
 		if user == None:
 			return
