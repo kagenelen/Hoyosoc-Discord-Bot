@@ -40,9 +40,9 @@ UNRANKED_STAR_COST = 90
 
 
 # Change user's currency amount
-# Arguments: discord_id, change by x amount
+# Arguments: discord_id, change by x amount, override insufficient currency
 # Return: Currency amount or none if insufficient currency
-def update_user_currency(discord_id, change):
+def update_user_currency(discord_id, change, override=False):
 	discord_id = str(discord_id)
 	helper.get_user_entry(discord_id)
 	data = helper.read_file("users.json")
@@ -50,7 +50,8 @@ def update_user_currency(discord_id, change):
 	
 	if user_entry["currency"] >= 0 and user_entry["currency"] + change < 0:
 		# Insufficient currency
-		return None
+		if override == False:
+			return None
 	elif user_entry["currency"] < 0 and change < 0:
 		# For users in debt
 		return None
@@ -137,7 +138,7 @@ def update_user_list_currency(discord_list, change, server):
 																	 name=username_parts[0],
 																	 discriminator=username_parts[1])
 				if user != None:
-						update_user_currency(user.id, change)
+						update_user_currency(user.id, change, True)
 						successful.append(u)
 	
 		return successful
